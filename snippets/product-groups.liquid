@@ -1,0 +1,176 @@
+{%- comment -%}
+  Product groups (linked products via metaobject) for PDP and product cards.
+  params: product, on ('card'|'page'), type_on
+{%- endcomment -%}
+
+{%- liquid
+  assign pg_img_w = 64
+  if type_on == 'card'
+    assign pg_img_w = 24
+  endif
+
+  assign pg_groups_mo = shop.metaobjects[settings.metaobject_for_product_groups]
+  assign pg_opt_mo = shop.metaobjects[settings.metaobject_for_product_options_type_values]
+
+  assign pg_matching = ''
+  for pg_group in pg_groups_mo.values
+    for pg_prod in pg_group.group.value
+      if pg_prod.id == product.id
+        assign pg_matching = pg_matching | append: pg_group.system.handle | append: ','
+      endif
+    endfor
+  endfor
+  assign pg_matching_arr = pg_matching | split: ','
+-%}
+
+<div class="product__product-groups">
+  {%- for pg_handle in pg_matching_arr -%}
+    {%- assign pg_meta = shop.metaobjects['product_groups'][pg_handle] -%}
+    <fieldset class="product__product-group product__variant-options">
+      {% if on != 'card' %}
+        {%- liquid
+          assign pg_custom_lbl = ''
+          assign pg_custom_on = false
+          if pg_meta.custom_label_on_page.value and pg_meta.custom_label_on_page.value == true
+            assign pg_custom_on = true
+          endif
+          if pg_custom_on
+            assign pg_title_lower = product.title | downcase
+            for pg_opt_val in pg_opt_mo.values
+              assign pg_opt_text = pg_opt_val.text | default: pg_opt_val.name | strip | downcase
+              if pg_title_lower contains pg_opt_text
+                assign pg_custom_lbl = pg_opt_text
+                break
+              endif
+            endfor
+          endif
+          if pg_custom_lbl == ''
+            assign pg_custom_on = false
+          endif
+        -%}
+        <legend class="form__label">
+          {{ pg_meta.group_by_option }}
+          <span data-current-product>{%- if pg_custom_on -%}{{ pg_custom_lbl }}{%- else -%}{{ product.title }}{%- endif -%}</span>
+        </legend>
+      {% endif %}
+
+      {%- if on == 'card' -%}
+        {%- assign pg_type = pg_meta.type_on_card | handleize -%}
+        {%- for pg_prod in pg_meta.group.value -%}
+          {%- assign pg_curr = '' -%}
+          {%- if pg_prod.id == product.id -%}{%- assign pg_curr = 'active' -%}{%- endif -%}
+          {% if pg_type == 'image' %}
+            <label class="product-option__label product-option__label--image{% if settings.swatches_shape == 'circle' %} product-option__label--circle{% endif %} {{ pg_curr }}">
+              <a href="{{ pg_prod.url }}" class="product-option__link media product-option__swatch product-option__swatch--{{ settings.swatches_shape }} product-swatch__inner-border--{{ settings.swatches_inner_border_color }}" title="{{ pg_prod.title }}">
+                {%- liquid
+                  assign pt = pg_prod.title | downcase
+                  for ov in pg_opt_mo.values
+                    assign ot = ov.text | default: ov.name | strip | downcase
+                    if pt contains ot
+                      render 'image', image: ov.image, width: '128'
+                      break
+                    endif
+                  endfor
+                -%}
+              </a>
+            </label>
+          {% elsif pg_type == 'swatch' %}
+            <label class="product-option__label product-option__label--{{ settings.swatches_shape }} {{ pg_curr }}">
+              <a href="{{ pg_prod.url }}" class="product-option__link media product-option__swatch product-option__swatch--{{ settings.swatches_shape }}" title="{{ pg_prod.title }}">
+                {%- liquid
+                  assign pt = pg_prod.title | downcase
+                  for ov in pg_opt_mo.values
+                    assign ot = ov.text | default: ov.name | strip | downcase
+                    if pt contains ot
+                      echo '<span class="product-option__swatch-color" style="background-color: ' | append: ov.swatch | append: '"></span>'
+                      break
+                    endif
+                  endfor
+                -%}
+              </a>
+            </label>
+          {% elsif pg_type == 'text' %}
+            <label class="product-option__label {{ pg_curr }}">
+              <a href="{{ pg_prod.url }}" class="product-option__link product-option__only-text product-option__swatch--{{ settings.swatches_shape }}" title="{{ pg_prod.title }}">
+                {%- liquid
+                  assign pt = pg_prod.title | downcase
+                  for ov in pg_opt_mo.values
+                    assign ot = ov.text | default: ov.name | strip | downcase
+                    if pt contains ot
+                      echo ot
+                      break
+                    endif
+                  endfor
+                -%}
+              </a>
+            </label>
+          {% else %}
+            <label class="product-option__label product-option__label--image {% if settings.swatches_shape == 'circle' %} product-option__label--circle{% endif %} {{ pg_curr }}">
+              <a href="{{ pg_prod.url }}" class="product-option__link media product-swatch__inner-border--{{ settings.swatches_inner_border_color }}" title="{{ pg_prod.title }}">
+                {% render 'image', image: pg_prod.featured_image, width: '128' %}
+              </a>
+            </label>
+          {% endif %}
+        {%- endfor -%}
+      {%- elsif on == 'page' -%}
+        {%- assign pg_type = pg_meta.type_on_page | handleize -%}
+        {%- for pg_prod in pg_meta.group.value -%}
+          {%- assign pg_curr = '' -%}
+          {%- if pg_prod.id == product.id -%}{%- assign pg_curr = 'active' -%}{%- endif -%}
+          {% if pg_type == 'image' %}
+            <label class="product-option__label product-option__label--image{% if settings.swatches_shape == 'circle' %} product-option__label--circle{% endif %} {{ pg_curr }}">
+              <a href="{{ pg_prod.url }}" class="product-option__link media product-option__swatch product-option__swatch--{{ settings.swatches_shape }} product-swatch__inner-border--{{ settings.swatches_inner_border_color }}" title="{{ pg_prod.title }}">
+                {%- liquid
+                  assign pt = pg_prod.title | downcase
+                  for ov in pg_opt_mo.values
+                    assign ot = ov.text | default: ov.name | strip | downcase
+                    if pt contains ot
+                      render 'image', image: ov.image, width: '128'
+                      break
+                    endif
+                  endfor
+                -%}
+              </a>
+            </label>
+          {% elsif pg_type == 'swatch' %}
+            <label class="product-option__label product-option__label--{{ settings.swatches_shape }} {{ pg_curr }}">
+              <a href="{{ pg_prod.url }}" class="product-option__link media product-option__swatch product-option__swatch--{{ settings.swatches_shape }}" title="{{ pg_prod.title }}">
+                {%- liquid
+                  assign pt = pg_prod.title | downcase
+                  for ov in pg_opt_mo.values
+                    assign ot = ov.text | default: ov.name | strip | downcase
+                    if pt contains ot
+                      echo '<span class="product-option__swatch-color" style="background-color: ' | append: ov.swatch | append: '"></span>'
+                      break
+                    endif
+                  endfor
+                -%}
+              </a>
+            </label>
+          {% elsif pg_type == 'text' %}
+            <label class="product-option__label {{ pg_curr }}">
+              <a href="{{ pg_prod.url }}" class="product-option__link product-option__only-text product-option__swatch--{{ settings.swatches_shape }}" title="{{ pg_prod.title }}">
+                {%- liquid
+                  assign pt = pg_prod.title | downcase
+                  for ov in pg_opt_mo.values
+                    assign ot = ov.text | default: ov.name | strip | downcase
+                    if pt contains ot
+                      echo ot
+                      break
+                    endif
+                  endfor
+                -%}
+              </a>
+            </label>
+          {% else %}
+            <label class="product-option__label product-option__label--image {% if settings.swatches_shape == 'circle' %} product-option__label--circle{% endif %} {{ pg_curr }}">
+              <a href="{{ pg_prod.url }}" class="product-option__link media product-swatch__inner-border--{{ settings.swatches_inner_border_color }}" title="{{ pg_prod.title }}">
+                {% render 'image', image: pg_prod.featured_image, width: '128' %}
+              </a>
+            </label>
+          {% endif %}
+        {%- endfor -%}
+      {%- endif -%}
+    </fieldset>
+  {%- endfor -%}
+</div>

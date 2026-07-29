@@ -1,0 +1,30 @@
+{%- comment -%}
+  Tab item (trigger button or content panel) for product page tabs.
+  params: type ('trigger'|'content'), index, heading, icon, custom_icon,
+          content, page, is_description, is_active, block
+{%- endcomment -%}
+
+{%- assign ti_id = 'tab-' | append: index | append: '-' | append: block.id -%}
+
+{% if type == 'trigger' %}
+  <button class="product__tab product__tab--trigger" data-tab="{{- ti_id -}}" {% if is_active %}data-default-open="{{ ti_id }}"{% endif %}>
+    {% if custom_icon != blank %}
+      {{ custom_icon | image_url: width: 24 | image_tag: alt: custom_icon.alt }}
+    {% elsif custom_icon == blank and icon != blank %}
+      {% render 'icon', icon_name: icon %}
+    {% endif %}
+    {% unless is_description %}
+      <span>{{- heading -}}</span>
+    {% else %}
+      {% if heading != blank %}<span>{{- heading -}}</span>{% else %}<span>{{ 'product.description' | t }}</span>{% endif %}
+    {% endunless %}
+  </button>
+{% elsif type == 'content' %}
+  <div id="{{- ti_id -}}" class="product__tab-content">
+    {% unless is_description %}
+      {%- if page != blank and page.content != blank -%}{{- page.content -}}{%- elsif content != blank -%}{{- content -}}{%- endif -%}
+    {% else %}
+      {{- product.description -}}
+    {% endunless %}
+  </div>
+{% endif %}

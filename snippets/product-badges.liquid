@@ -1,0 +1,206 @@
+{%- comment -%}
+  Product badges (custom, discount, sold out, preorder).
+  params: product, block, show_badges_custom, show_badges_discount
+{%- endcomment -%}
+
+{%- liquid
+  assign badge_on_pdp = block | default: false
+  assign badge_show_custom = show_badges_custom | default: false
+  assign badge_show_discount = show_badges_discount | default: false
+  assign badge_show_sold = false
+
+  if badge_on_pdp and block.settings.show_badges
+    assign badge_show_custom = true
+  elsif badge_on_pdp == false and settings.show_product_card_badges
+    assign badge_show_custom = true
+  endif
+
+  if badge_on_pdp and block.settings.show_badges_discount
+    assign badge_show_discount = true
+  elsif badge_on_pdp == false and settings.show_product_card_badges_discount
+    assign badge_show_discount = true
+  endif
+
+  if badge_on_pdp and block.settings.show_badges_sold
+    assign badge_show_sold = true
+  elsif badge_on_pdp == false and settings.show_product_card_badges_sold
+    assign badge_show_sold = true
+  endif
+
+  assign all_badges = ''
+  assign bestseller_badge_text = ''
+
+  if product and product != empty
+    # Bestseller / Best selection tag badge
+    for tag in product.tags
+      assign tag_lower = tag | downcase | strip
+      assign tag_clean = tag_lower | remove: 'badge:' | strip
+      if tag_clean contains 'best'
+        if tag_clean contains 'select' or tag_clean contains 'sellect' or tag_clean contains 'selection'
+          assign bestseller_badge_text = 'BEST SELECTION'
+          break
+        elsif tag_clean contains 'sell' or tag_clean contains 'seller'
+          assign bestseller_badge_text = 'BEST SELLER'
+          break
+        else
+          assign bestseller_badge_text = tag | remove: 'badge:' | strip | upcase
+          break
+        endif
+      endif
+    endfor
+
+    if bestseller_badge_text != ''
+      assign all_badges = bestseller_badge_text | append: ','
+    endif
+
+    # Custom badges from metafield
+    assign mf_badges = product.metafields.custom.badges
+    if mf_badges != blank
+      assign mf_val = mf_badges.value
+      if mf_val != blank
+        assign badge_count = 0
+        for item in mf_val
+          assign item_text = item | strip
+          if item_text != blank
+            unless all_badges contains item_text
+              assign all_badges = all_badges | append: item_text | append: ','
+              assign badge_count = badge_count | plus: 1
+            endunless
+          endif
+        endfor
+        if badge_count == 0
+          assign single_text = mf_val | strip
+          if single_text != blank
+            if single_text contains ','
+              assign single_arr = single_text | split: ','
+              for item in single_arr
+                assign trimmed = item | strip
+                if trimmed != blank
+                  unless all_badges contains trimmed
+                    assign all_badges = all_badges | append: trimmed | append: ','
+                  endunless
+                endif
+              endfor
+            else
+              unless all_badges contains single_text
+                assign all_badges = all_badges | append: single_text | append: ','
+              endunless
+            endif
+          endif
+        endif
+      endif
+    endif
+
+    # Discount badge
+    assign badge_prod = product.selected_or_first_available_variant | default: product
+    if badge_on_pdp and badge_prod.compare_at_price > badge_prod.price and badge_show_discount
+      assign badge_pct = badge_prod.compare_at_price | minus: badge_prod.price | times: 100 | divided_by: badge_prod.compare_at_price
+      assign badge_disc_txt = 'product.discount_badge_html' | t: percentage: badge_pct
+      assign all_badges = all_badges | append: badge_disc_txt | append: ','
+    elsif badge_on_pdp and product.compare_at_price > product.price and badge_show_discount
+      assign badge_pct = product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price
+      assign badge_disc_ghost = 'product.discount_badge_html' | t: percentage: badge_pct
+      assign all_badges = all_badges | append: badge_disc_ghost | append: ','
+    endif
+
+    # Preorder
+    if product.metafields.theme.preorder.value
+      assign all_badges = all_badges | append: 'product.preorder_badge' | t | append: ','
+    endif
+
+    # Tag-based badges
+    if badge_show_custom
+      for tag in product.tags
+        if tag contains 'badge:'
+          assign tag_badge = tag | remove: 'badge:' | strip
+          assign tag_badge_lower = tag_badge | downcase
+          unless tag_badge_lower contains 'best'
+            unless all_badges contains tag_badge
+              assign all_badges = all_badges | append: tag_badge | append: ','
+            endunless
+          endunless
+        endif
+      endfor
+    endif
+
+    # Sold out
+    if product.available == false and badge_show_sold
+      assign all_badges = all_badges | append: 'product.sold_out' | t | append: ','
+    endif
+  endif
+-%}
+
+{%- if all_badges != '' -%}
+  {% style %}
+  :root {
+    --color-badge-discount-background: {{- settings.product_badge_background_color -}};
+    --color-badge-discount-foreground: {{- settings.product_badge_foreground_color -}};
+  }
+  .product-card-tag,
+  .product-card__badge--bestseller {
+    background-color: #e60000 !important;
+    color: #ffffff !important;
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    border-radius: 5px !important;
+    z-index: 10;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+    animation: seller-flash 1.4s infinite ease-in-out !important;
+    display: inline-block !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+  @keyframes seller-flash {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+      box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
+    }
+  }
+  @media (max-width: 768px) {
+    .product-card-tag,
+    .product-card__badge--bestseller {
+      padding: 5px 10px !important;
+      font-size: 11px !important;
+    }
+  }
+  {% endstyle %}
+  <link rel="stylesheet" href="{{- 'component-product-badges.css' | asset_url -}}" media="print" onload="this.media='all'">
+
+  {%- assign badge_list = all_badges | split: ',' -%}
+  <span class="product-card__badges">
+    {%- for badge in badge_list -%}
+      {%- assign badge_stripped = badge | strip -%}
+      {%- if badge_stripped != blank -%}
+        {%- assign badge_lower = badge_stripped | downcase -%}
+        {%- liquid
+          assign badge_css = 'product-card__badge'
+          assign is_bestseller = false
+          if badge_lower contains 'best'
+            assign is_bestseller = true
+            assign badge_css = badge_css | append: ' product-card-tag product-card__badge--bestseller'
+          elsif badge_disc_txt != blank and badge_stripped contains badge_disc_txt
+            assign badge_css = badge_css | append: ' product-card__badge--discount'
+          elsif badge_disc_ghost != blank and badge_stripped contains badge_disc_ghost
+            assign badge_css = badge_css | append: ' product-card__badge--discount hidden'
+          elsif settings.button_border_radius == "0"
+            assign badge_css = badge_css | append: ' product-card__badge--square'
+          else
+            assign badge_css = badge_css | append: ' product-card__badge--rounded'
+          endif
+        -%}
+        <span class="{{ badge_css }}" {% if is_bestseller %}style="background-color: #e60000 !important; color: #ffffff !important;"{% endif %}>{{- badge_stripped -}}</span>
+      {%- endif -%}
+    {%- endfor -%}
+  </span>
+{%- endif -%}

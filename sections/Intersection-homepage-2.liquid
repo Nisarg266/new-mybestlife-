@@ -1,0 +1,168 @@
+﻿{% schema %}
+{
+  "name": "Responsive Image Banner",
+  "tag": "section",
+  "class": "responsive-image-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "Image Link (optional)"},
+    {
+      "type": "select",
+      "id": "height_mode",
+      "label": "Image Height",
+      "default": "auto",
+      "options": [
+        { "value": "auto", "label": "Auto (natural height)" },
+        { "value": "300", "label": "Fixed: 300px" },
+        { "value": "400", "label": "Fixed: 400px" },
+        { "value": "500", "label": "Fixed: 500px" },
+        { "value": "600", "label": "Fixed: 600px" },
+        { "value": "700", "label": "Fixed: 700px" },
+        { "value": "800", "label": "Fixed: 800px" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Responsive Image Banner"
+    }
+  ]
+}
+{% endschema %}
+
+{% assign b8_height_mode = section.settings.height_mode %}
+{% assign b8_fixed_class = '' %}
+{% if b8_height_mode != 'auto' %}
+  {% assign b8_fixed_class = 'fixed-' | append: b8_height_mode %}
+{% endif %}
+
+<div class="responsive-image-wrapper {% unless section.settings.height_mode == 'auto' %}{{ b8_fixed_class }}{% endunless %}">
+  {% if section.settings.image_link != blank %}
+    <a href="{{ section.settings.image_link }}">
+  {% endif %}
+
+  {% if section.settings.desktop_image %}
+    <img
+      src="{{ section.settings.desktop_image | img_url: 'master' }}"
+      alt="Desktop Banner"
+      class="desktop-img"
+      loading="lazy"
+    >
+  {% endif %}
+
+  {% if section.settings.mobile_image %}
+    <img
+      src="{{ section.settings.mobile_image | img_url: 'master' }}"
+      alt="Mobile Banner"
+      class="mobile-img"
+      loading="lazy"
+    >
+  {% endif %}
+
+  {% if section.settings.image_link != blank %}
+    </a>
+  {% endif %}
+</div>
+
+<style>
+  .responsive-image-wrapper.fixed-300 img,
+  .responsive-image-wrapper.fixed-400 img,
+  .responsive-image-wrapper.fixed-500 img,
+  .responsive-image-wrapper.fixed-600 img,
+  .responsive-image-wrapper.fixed-700 img,
+  .responsive-image-wrapper.fixed-800 img {
+    height: 100%;
+  }
+
+  .responsive-image-wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .responsive-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .responsive-image-wrapper .desktop-img {
+    display: block;
+  }
+
+  .responsive-image-wrapper .mobile-img {
+    display: none;
+  }
+  .responsive-image-wrapper {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.responsive-image-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+  .responsive-image-wrapper.fixed-300 {
+    height: 300px;
+  }
+  .responsive-image-wrapper.fixed-400 {
+    height: 400px;
+  }
+  .responsive-image-wrapper.fixed-500 {
+    height: 500px;
+  }
+  .responsive-image-wrapper.fixed-600 {
+    height: 600px;
+  }
+  .responsive-image-wrapper.fixed-700 {
+    height: 700px;
+  }
+  .responsive-image-wrapper.fixed-800 {
+    height: 800px;
+  }
+
+  .responsive-image-wrapper .desktop-img {
+    display: block;
+  }
+  .responsive-image-wrapper .mobile-img {
+    display: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    .responsive-image-wrapper .desktop-img {
+      display: none;
+    }
+    .responsive-image-wrapper .mobile-img {
+      display: block;
+    }
+  }
+
+
+    @media screen and (max-width: 768px) {
+      .responsive-image-wrapper .desktop-img {
+        display: none;
+      }
+
+      .responsive-image-wrapper .mobile-img {
+        display: block;
+      }
+    }
+</style>

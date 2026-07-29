@@ -1,0 +1,145 @@
+{% schema %}
+{
+  "name": "Testimonial Carousel",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "source",
+          "label": "Source (e.g., WIRED, GQ)"
+        },
+        {
+  "type": "range",
+  "id": "rating",
+  "label": "Star Rating",
+  "min": 1,
+  "max": 5,
+  "step": 1,
+  "default": 5
+}
+
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [{
+    "name": "Testimonial Carousel",
+    "category": "Custom"
+  }]
+}
+{% endschema %}
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+{%- assign s10_testimonials = section.blocks -%}
+
+<div class="testimonial-marquee">
+  <div class="testimonial-track">
+    {%- for s10_item in s10_testimonials -%}
+      <div class="testimonial-slide">
+        <p class="testimonial-text">"{{ s10_item.settings.quote }}"</p>
+        <div class="testimonial-stars">
+  {% for s10_star in (1..s10_item.settings.rating) %}★{% endfor %}
+</div>
+        <p class="testimonial-source">— {{ s10_item.settings.source }}</p>
+      </div>
+    {%- endfor -%}
+    {%- for s10_item in s10_testimonials -%}
+      <div class="testimonial-slide">
+        <p class="testimonial-text">"{{ s10_item.settings.quote }}"</p>
+      <div class="testimonial-stars">
+  {% for s10_star in (1..s10_item.settings.rating) %}★{% endfor %}
+</div>
+      <p class="testimonial-source">— {{ s10_item.settings.source }}</p>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+<style>
+  .testimonial-stars {
+  color: #FFD700; /* gold color */
+  font-size: 18px;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+.testimonial-marquee {
+  overflow: hidden;
+  background: #2A2A2A;
+  color: white;
+  padding: 50px 0;
+  position: relative;
+}
+
+.testimonial-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+}
+
+.testimonial-slide {
+  flex: 0 0 100vw;
+  max-width: 40vw;
+  text-align: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.testimonial-text {
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+.testimonial-source {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+</style>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Swiper(".testimonial-swiper", {
+      loop: true,
+      speed: 2000, // Smooth slow transition
+      autoplay: {
+        delay: 0, // No delay between slides
+        disableOnInteraction: false,
+      },
+      slidesPerView: 1,
+      spaceBetween: 0,
+      allowTouchMove: false, // Prevent manual drag
+      effect: 'slide', // smooth horizontal slide
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      }
+    });
+  });
+</script>

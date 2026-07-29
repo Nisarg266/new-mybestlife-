@@ -1,0 +1,618 @@
+﻿{% schema %}
+{
+  "name": "Accordion",
+  "settings": [
+
+      {
+            "type": "text",
+            "id": "section_id",
+            "label": "Section ID"
+
+        },
+    {
+        "type": "richtext",
+      "id": "heading",
+    "default": "<p>Default Heading</p>",
+          "label": "Heading"
+    },
+      {
+        "type": "richtext",
+      "id": "sub-heading",
+    "default": "<p>Default Heading</p>",
+          "label": "Heading"
+    },
+        {
+            "type": "richtext",
+            "id": "short_description",
+            "label": "Text"
+        },
+   {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+{
+  "type": "select",
+  "id": "accordion-position",
+  "label": "Accordion Position",
+  "options": [
+    {
+      "value": "accordion-left",
+      "label": "Left"
+    },
+    {
+      "value": "accordion-right",
+      "label": "Right"
+    }
+
+  ],
+  "default": "accordion-left"
+},
+
+            {
+          "type": "checkbox",
+          "id": "show_button_view",
+          "label": "Show Button",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "button_label_view",
+          "label": "Button Label",
+          "default": "View All"
+        },
+        {
+          "type": "url",
+          "id": "button_link_view",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "pre_button_description",
+          "label": "Pre Button",
+          "default": "Still have questions?"
+        },
+
+     {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 92
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 92
+    },
+    {
+  "type": "range",
+  "id": "left_padding",
+  "label": "Left padding",
+  "min": 0,
+  "max": 160,
+  "step": 2,
+  "unit": "px",
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "right_padding",
+  "label": "Right padding",
+  "min": 0,
+  "max": 160,
+  "step": 2,
+  "unit": "px",
+  "default": 20
+},
+
+    {
+  "type": "image_picker",
+  "id": "image-bg",
+  "label": "Image"
+},
+       {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom mobile",
+        "default": 0
+      }],
+  "blocks": [
+    {
+      "type": "accordion_item",
+      "name": "Accordion Item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Question",
+          "default": "This is a question"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Answer",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Accordion",
+      "blocks": [
+        {
+          "type": "accordion_item"
+        },
+        {
+          "type": "accordion_item"
+        },
+        {
+          "type": "accordion_item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.top_padding | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.bottom_padding | times: 0.75 | round: 0 }}px;
+    padding-left: {{ section.settings.left_padding | times: 0.75 | round: 0 }}px;
+    padding-right: {{ section.settings.right_padding | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.top_padding }}px;
+      padding-bottom: {{ section.settings.bottom_padding }}px;
+      padding-left: {{ section.settings.left_padding }}px;
+      padding-right: {{ section.settings.right_padding }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="section--accordion-faq container">
+  <div
+    class="accordion-faq--container page-container section-{{ section.id }}-padding "
+  >
+    <div
+      class="accordion-faq--content  {{ section.settings.accordion-position }}"
+    >
+      <div class="gt-faq-box">
+        <div class="gt-faq-image-wrapper">
+          <img src="{{ section.settings.image-bg | img_url: 'master' }}" alt="Help Image" class="gt-faq-image">
+        </div>
+
+        <div class="gt-faq-content">
+          <div class="gt-faq-description {{ section.settings.text-color }}">
+            {{ section.settings.short_description }}
+            <p class="gt-faq-pre-desc">{{ section.settings.pre_button_description }}</p>
+          </div>
+
+          {% if section.settings.show_button_view %}
+            <div class="gt-faq-cta">
+              <a href="{{ section.settings.button_link_view }}" class="gt-faq-button">
+                {{ section.settings.button_label_view }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="accordion-faq--column" animation-trigger>
+        <div class="gt-faq-sub-heading">{{ section.settings['sub-heading'] }}</div>
+
+        <div class="gt-faq-title">{{ section.settings.heading }}</div>
+
+        <div class="accordion" animation-child>
+          {% for block in section.blocks %}
+            <div class="accordion-item{% if forloop.first %} active{% endif %}" {{ block.shopify_attributes }}>
+              <div class="accordion-question">
+                <h3>{{ block.settings.title }}</h3>
+                <span class="accordion-icon">
+                  <svg
+                    class="plus"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                  >
+                    <path d="M0 7H14" stroke="#fff" stroke-width="1.5"/>
+                    <path d="M7 14L7 0" stroke="#fff" stroke-width="1.5"/>
+                  </svg>
+
+                  <svg
+                    class="minus"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="2"
+                    viewBox="0 0 14 2"
+                    fill="none"
+                  >
+                    <path d="M0 1H14" stroke="#F5F5F5" stroke-width="1.5"/>
+                  </svg>
+                </span>
+              </div>
+              <div class="accordion-answer">
+                <p>{{ block.settings.description }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+  .gt-faq-box {
+      overflow: hidden;
+      position: relative;
+max-height: none;
+  }
+  .gt-faq-image-wrapper {
+      width: 100%;
+      overflow: hidden;
+      width: 650px;
+      display: block;
+      height: 650px;
+  }
+  .gt-faq-image {
+      border-radius: 12px;
+
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .gt-faq-content {
+      
+      /* text-align: center; */
+    
+      bottom: 0;
+      width: calc(100% - 24px);
+      background: white;
+      padding-top: 20px;
+      display: block;
+      align-items: center;
+      justify-content: space-between;
+              left: -4px;
+        border-radius: 20px;
+        font-family: "Fira Sans", "Inter", sans-serif;
+  }
+  .gt-faq-sub-heading {
+    
+      margin-bottom: 20px;
+  }
+  .gt-faq-title h4 {
+   font-weight: bold !important;
+    font-size: clamp(28px, 5vw, 50px) !important;
+    color: #b4975a; /* gold-like color */
+          text-transform:uppercase;
+      /* font-weight: 450; -- COMMENTED OUT - Using theme font settings */
+        font-family: "Fira Sans", "Inter", sans-serif; -- COMMENTED OUT - Using theme font settings 
+      margin-bottom: 25px;
+  }
+
+  .gt-faq-description h5 {
+    font-size: 25px !important;
+    font-family: "Fira Sans";
+       font-weight: bold !important;
+    color:#2a2a2a !important;
+  }
+
+  .gt-faq-pre-desc {
+    color:#2a2a2a !important;
+    line-height:1.2;
+   font-size: 25px !important;
+ MARGIN-TOP: 0px;
+    font-family: "Fira Sans";
+       font-weight: bold !important;
+  }
+
+  .gt-faq-button {
+    padding: 8px 20px;
+    font-size: 23px !important;
+    background-color: #1e1e1e;
+    color: #b4975a;
+    text-decoration: none;
+    font-weight: 500 !important;
+    display: inline-block;
+    font-family: "Fira Sans";
+    transition: background-color 0.3s ease;
+  }
+
+  .gt-faq-button:hover {
+    background: #b4975a;
+    color: #2a2a2a;
+    border: 1px solid black;
+  }
+</style>
+{% stylesheet %}
+     .accordion-faq--bottom-cta {
+       display: flex;
+       justify-content: flex-start;
+       align-items: flex-end;
+       gap: 20px;
+     }
+     .accordion-faq--bottom-cta p {
+       color: #2A2A2A;
+       font-size: 16px !important;
+       margin-bottom: 10px;
+     }
+
+     .section--accordion-faq .accordion {
+       width: 100%;
+       margin: 0 auto;
+       color: #fff;
+     }
+  .section--accordion-faq .accordion-item {
+      cursor: pointer;
+      user-select: none;
+  }
+  .section--accordion-faq .accordion-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding-block: 15px;
+  }
+     .section--accordion-faq .accordion-question h3 {
+       color: #2A2A2A;
+       font-size: 22px;
+         font-family: "Fira Sans";
+       /*font-weight: 500; */
+       margin: 0;
+     }
+  .section--accordion-faq .accordion-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .4s ease;
+      max-width: 100%;
+      font-size: 18px;
+      color: #2A2A2A;
+  }
+    .section--accordion-faq .accordion-question .accordion-icon {
+      height: 30px;
+      width: 30px;
+      min-width: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #2A2A2A;
+      transition: .3s;
+  }
+    .gt-faq-sub-heading h6{
+      font-size: 20px;
+         font-family: "Fira Sans"
+    }
+
+     .section--accordion-faq .accordion-item.active .accordion-icon {
+       background-color: #2A2A2A;
+       transition: 300ms;
+     }
+     .section--accordion-faq .accordion-item.active .accordion-answer {
+       margin-top: 12px;
+      font-family: "Fira Sans";
+
+     }
+
+     .section--accordion-faq .accordion-icon svg {
+       width: 14px;
+       height: 14px;
+       transition: opacity 0.3s ease;
+     }
+     .section--accordion-faq .accordion-icon svg.minus {
+       display: none;
+     }
+     .section--accordion-faq .accordion-item.active .accordion-icon svg.plus {
+       display: none;
+     }
+     .section--accordion-faq .accordion-item.active .accordion-icon svg.minus {
+       display: inline;
+     }
+
+     .section--accordion-faq {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+     }
+
+     .accordion-faq--content {
+       display: flex;
+       align-items: stretch;
+       gap: 30px;
+         font-family: "Fira Sans";
+     }
+
+     .accordion-faq--column.content-details {
+       align-items: stretch;
+       display: flex;
+       flex-wrap: wrap;
+      font-family: "Fira Sans";
+
+     }
+
+    .accordion-faq--content  .pre-button-desc {
+       color: #F5F5F5;
+      opacity: 0.8;
+      font-family: "Fira Sans";
+
+     }
+
+     @media only screen and (min-width: 1281px) {
+       .accordion-faq--content.accordion-left {
+         flex-direction: row-reverse;
+       }
+       .accordion-faq--content.accordion-right {
+       max-width: 1300PX;
+         flex-direction: row;
+       }
+
+       .accordion-faq--content.accordion-left .content-details {
+         padding-left: 82px;
+       }
+       .accordion-faq--content.accordion-right .content-details {
+         padding-right: 82px;
+       }
+       .accordion-faq--column {
+         width: 50%;
+       }
+     }
+
+     @media only screen and (min-width: 981px) and (max-width: 1280px) {
+       .accordion-faq--content.accordion-left {
+         flex-direction: row-reverse;
+       }
+       .accordion-faq--content.accordion-right {
+         flex-direction: row;
+       }
+
+       .accordion-faq--content.accordion-left .content-details {
+         padding-left: 50px;
+       }
+       .accordion-faq--content.accordion-right .content-details {
+         padding-right: 50px;
+       }
+       .accordion-faq--column {
+         width: 50%;
+       }
+     }
+
+     @media only screen and (max-width: 980px) {
+           .section--accordion-faq .accordion-item.active .accordion-answer {
+            text-align: left;
+          }
+       .accordion-faq--content.accordion-left {
+         flex-direction: column-reverse !important;
+       }
+  
+       .accordion-faq--content.accordion-left .content-details {
+         padding-left: 0px;
+       }
+       .accordion-faq--content.accordion-right .content-details {
+         padding-right: 0px;
+       }
+       .accordion-faq--column {
+         width: 100%;
+       }
+
+     }
+
+
+     @media only screen and (max-width: 980px) {
+       .accordion-faq--content {
+        text-align: center;
+         display: flex;
+         flex-wrap: wrap;
+         flex-direction: column-reverse;
+         gap: 30px;
+       }
+       .gt-faq-image-wrapper {
+      width: 100%;
+      height: 100%;
+  }
+     .gt-faq-box  .gt-faq-image-wrapper {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 1/1;
+  }
+       .gt-faq-box  .gt-faq-content {
+        
+      flex-direction: column;
+      align-items: start;
+      gap: 10px;
+      left: -8px;
+  }
+       a.gt-faq-button {
+      font-size: 12px;
+  }
+       .gt-faq-title h4 {
+      font-size: 22px !important;
+  }
+       .section--accordion-faq .accordion-question h3 {
+        text-align: left;
+      font-size: 20px;
+  }
+     }
+{% endstylesheet %}
+<style>
+    @media only screen and (max-width: 767px) {
+    .accordion-faq--container {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      padding-left:20px;
+      padding-right:20px;
+    }
+      .gt-faq-button {
+    padding: 5px 15px;
+    font-size: 18px !important;
+  }
+  }
+</style>
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', function() {
+    const items = document.querySelectorAll('.accordion-item');
+
+    items.forEach(item => {
+      const answer = item.querySelector('.accordion-answer');
+      if (item.classList.contains('active')) {
+        answer.style.maxHeight = answer.scrollHeight + "px";
+      }
+    });
+
+    items.forEach(item => {
+      const question = item.querySelector('.accordion-question');
+      const answer = item.querySelector('.accordion-answer');
+
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+
+
+        items.forEach(i => {
+          const a = i.querySelector('.accordion-answer');
+          if (i !== item) {
+            i.classList.remove('active');
+            a.style.maxHeight = null;
+          }
+        });
+
+
+        if (isActive) {
+          item.classList.remove('active');
+          answer.style.maxHeight = null;
+        } else {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        }
+      });
+    });
+  });
+{% endjavascript %}

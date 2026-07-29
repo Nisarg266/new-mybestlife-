@@ -1,0 +1,89 @@
+{%- comment -%}
+  Individual facet filter (list/boolean/price_range) inside an accordion.
+  params: filter, index, section_id, opened_accordions, total_active_values, product_form_id
+{%- endcomment -%}
+
+{%- liquid
+  assign fc_comma_currencies = 'ANG,ARS,BRL,BYN,BYR,CLF,CLP,COP,CRC,CZK,DKK,EUR,HRK,HUF,IDR,ISK,MZN,NOK,PLN,RON,RUB,SEK,TRY,UYU,VES,VND' | split: ','
+  assign fc_uses_comma = false
+  if fc_comma_currencies contains cart.currency.iso_code
+    assign fc_uses_comma = true
+  endif
+
+  assign fc_open = opened_accordions | default: false
+  assign fc_total_active = total_active_values | plus: filter.active_values.size
+  assign fc_presentation = filter.presentation | default: 'text'
+-%}
+
+<details class="accordion__section facets__accordion-section{% if fc_open %} is-active{% endif %}" id="Filters-accordion-section-{{- index -}}"{% if fc_open %} open{% endif %}>
+  <summary class="facets__accordion-btn h4 js-btn" id="Filters-accordion-button-{{- index -}}">
+    {{- filter.label | escape -}}
+    <div class="facets__accordion-icon">{%- render 'icon', icon_name: 'theme-chevron', class: 'icon' -%}</div>
+  </summary>
+
+  <div class="accordion__body facets__accordion-body slim-scrollbar" id="Filters-accordion-dropdown-{{- index -}}" {% if fc_open %} style="height: auto;"{% endif %}>
+    <div id="Filter-{{ filter.param_name | escape }}-{{ section.id }}" class="js-filter" data-index="{{- index -}}">
+
+      {%- case filter.type -%}
+        {%- when 'list' or 'boolean' -%}
+          <ul class="facets__list list-unstyled" role="list">
+            {%- for value in filter.values -%}
+              <li class="facets__item{% if value.active %} facets__item--checked{% endif %}">
+                {%- liquid
+                  assign fc_extra_class = ''
+                  capture fc_chk_attr
+                    if value.active
+                      echo 'checked'
+                    endif
+                    if value.count == 0 and value.active == false
+                      echo 'disabled'
+                    endif
+                  endcapture
+                  assign fc_id = 'Filter-' | append: filter.param_name | escape | append: '-' | append: forloop.index | strip
+                  assign fc_chk_attr = fc_chk_attr | strip
+                  if value.count == 0 and value.active == false
+                    assign fc_extra_class = fc_extra_class | append: 'checkbox--disabled'
+                  endif
+                -%}
+
+                <div class="checkbox facet-checkbox {{ fc_extra_class }}" tabindex="0">
+                  {%- if fc_presentation == 'swatch' -%}
+                    {% render 'product-option', type: 'checkbox', id: fc_id, name: value.param_name, value: value.value, form_id: product_form_id, swatch_value: value.swatch, checked: value.active, visually_hidden: true, where: 'facet' %}
+                    <label for="{{- fc_id -}}" class="checkbox__label" aria-hidden="true">{{- value.label | escape -}}</label>
+                  {%- else -%}
+                    <input type="checkbox" name="{{- value.param_name -}}" value="{{- value.value -}}" id="{{- fc_id -}}" class="product-option__input" {{ fc_chk_attr }}>
+                    {%- if fc_presentation == 'image' -%}
+                      {%- if value.image -%}
+                        <label for="{{- fc_id -}}" class="varian-option__label media product-option__image">{% render 'image', image: value.image, width: 200 %}</label>
+                      {%- endif -%}
+                    {%- else -%}
+                      <label for="{{- fc_id -}}">{{- value.label | escape -}}</label>
+                    {%- endif -%}
+                  {%- endif -%}
+                </div>
+              </li>
+            {%- endfor -%}
+          </ul>
+
+        {%- when 'price_range' -%}
+          <price-range class="facets__price">
+            <div class="facets__price-row">
+              <span>{{- cart.currency.symbol -}}</span>
+              {%- liquid
+                assign fc_min_ph = '0' | money_without_currency
+                assign fc_max_val = filter.range_max | money_without_currency
+                render 'text-input', type: 'number', class: 'facets__price-field', name: filter.min_value.param_name, id: 'Filter-' | append: filter.label | escape | append: '-GTE', label: 'collection.filters_from' | t, placeholder: fc_min_ph, min: 0, max: fc_max_val, hide_label: false
+              -%}
+            </div>
+            <div class="facets__price-row">
+              <span>{{- cart.currency.symbol -}}</span>
+              {%- liquid
+                assign fc_max_ph = filter.range_max | money_without_currency
+                render 'text-input', type: 'number', class: 'facets__price-field', name: filter.max_value.param_name, id: 'Filter-' | append: filter.label | escape | append: '-LTE', label: 'collection.filters_to' | t, placeholder: fc_max_ph, min: 0, max: fc_max_ph, hide_label: false
+              -%}
+            </div>
+          </price-range>
+      {%- endcase -%}
+    </div>
+  </div>
+</details>

@@ -1,0 +1,176 @@
+{%- comment -%}
+  Highlighted product variant picker (for quick-cart / highlighted product sections).
+  params: product, block, product_form_id, product_block_class, product_form_installments_id, collection
+{%- endcomment -%}
+
+{%- assign hp_curr_var = product.selected_or_first_available_variant -%}
+
+{%- if product.has_only_default_variant == false -%}
+  {%- assign hp_block_cls = 'product__variant-picker' | append: ' ' | append: product_block_class -%}
+  <div class="{{ hp_block_cls }} product__selector no-js-hidden" id="ProductSelector-{{- section.id -}}" {{ block.shopify_attributes }}>
+    <product-selector class="product-selector {% if block.settings.variant_picker_type == 'dropdowns' %}{{ block.settings.variant_picker_layout }}{% else %}product-selector--default{% endif %}" data-url="{%- if collection -%}{{- collection.url -}}{%- endif -%}{{- product.url -}}" data-section-id="{{- section.id -}}" data-installments-form-id="#{{- product_form_installments_id -}}" {% if product.requires_selling_plan %}data-product-requires-selling-plan{% endif %}>
+      <input type="hidden" name="id" value="{{- hp_curr_var.id -}}" form="{{ product_form_id }}">
+
+      {%- liquid
+        assign hp_var_avail = product.variants | map: 'available'
+        assign hp_var_o1 = product.variants | map: 'option1'
+        assign hp_bar_selects = ''
+      -%}
+
+      {%- for hp_opt in product.options_with_values -%}
+        {% capture hp_size_guide %}
+          {%- if hp_opt.name == block.settings.sizes_option and block.settings.size_guide_page != blank -%}
+            <menu-drawer class="product__size-guide section__drawer">
+              <details id="Size-Guide-drawer" class="drawer__container">
+                <summary class="drawer__button section__drawer-button"><button class="button button--text">{{- 'product.size_guide' | t -}}</button></summary>
+                <div class="drawer__content js-drawer" id="Size-Guide-menu-drawer" tabindex="-1">
+                  <button class="drawer__button-close button-reset no-js-hidden js-btn-close-drawer" aria-label="{{- 'theme.actions.close' | t -}}" aria-controls="Size-Guide-menu-drawer" aria-expanded="false">{%- render 'icon', icon_name: 'theme-close' -%}</button>
+                  <div class="drawer__row drawer__row--gutter-sm"><h2 class="drawer__title heading-static">{{- block.settings.size_guide_page.title -}}</h2><div class="rte">{{- block.settings.size_guide_page.content -}}</div></div>
+                </div>
+              </details>
+            </menu-drawer>
+          {%- endif -%}
+        {% endcapture %}
+
+        <fieldset class="product-selector__buttons product__variant-options js-product-variants{% if product.has_only_default_variant %} hidden {% endif %}" data-input-wrapper>
+          {%- if block.settings.variant_picker_layout != 'product-selector--stacked' or block.settings.variant_picker_type == 'buttons' -%}
+            <legend class="product-selector__label">{{- hp_opt.name -}}{%- if hp_size_guide -%}{{- hp_size_guide -}}{%- endif -%}</legend>
+          {%- endif -%}
+
+          {%- assign hp_sel_opts = '' -%}
+          {%- capture hp_opts_html -%}
+            {%- for hp_val in hp_opt.values -%}
+              {%- liquid
+                assign hp_disabled = true
+                assign hp_id = 'Bar-option-' | append: section.id | append: '-' | append: hp_opt.name | append: '-' | append: forloop.index0
+                assign hp_name = 'options' | append: '_' | append: section.id | append: '[' | append: hp_opt.name | append: ']'
+                for hp_o1 in hp_var_o1
+                  unless hp_opt.position != 1
+                    if hp_var_o1[forloop.index0] == hp_val and hp_var_avail[forloop.index0]
+                      assign hp_disabled = false
+                    endif
+                  endunless
+                endfor
+              -%}
+              {%- capture hp_sel_opt -%}
+                <option value="{{- hp_val | escape -}}" data-id="{{- hp_id -}}" {% if hp_opt.selected_value == hp_val %}selected="selected"{% endif %}{% if hp_disabled %}disabled{% endif %}>{{- hp_val -}}</option>
+              {%- endcapture -%}
+              {%- assign hp_sel_opts = hp_sel_opts | append: hp_sel_opt -%}
+              {%- if block.settings.variant_picker_type == 'buttons' and product.gift_card? == false -%}
+                {%- liquid
+                  assign hp_attr = ''
+                  assign hp_sw_cls = ''
+                  assign hp_chk = false
+                  if hp_opt.selected_value == hp_val
+                    assign hp_sw_cls = hp_sw_cls | append: ' is-active'
+                    assign hp_attr = 'checked'
+                    assign hp_chk = true
+                  endif
+                  if hp_disabled
+                    assign hp_attr = hp_attr | append: ' disabled'
+                  endif
+                  assign hp_thumb_opts = block.settings.variant_options_with_thumbnails | split: ','
+                  assign hp_show_img = false
+                  for hp_tw in hp_thumb_opts
+                    assign hp_tw_h = hp_tw | handleize
+                    assign hp_opt_h = hp_opt.name | handleize
+                    if hp_tw_h == hp_opt_h
+                      assign hp_show_img = true
+                      break
+                    else
+                      assign hp_show_img = false
+                    endif
+                  endfor
+                  assign hp_v_img = false
+                  if hp_show_img
+                    assign hp_v_img = 'product-placeholder'
+                    for hp_v in product.variants
+                      for hp_vo in hp_v.options
+                        if hp_vo == hp_val and hp_v.featured_image
+                          assign hp_v_img = hp_v.featured_image
+                          break
+                        endif
+                      endfor
+                    endfor
+                  endif
+                  assign hp_sw_val = false
+                  if hp_val.swatch
+                    assign hp_sw_val = hp_val.swatch
+                  endif
+                  render 'product-option', id: hp_id, name: hp_name, value: hp_val, swatch_value: hp_sw_val, attr: hp_attr, shape: block.settings.swatch_shape, variant_img: hp_v_img, visually_hidden: true, checked: hp_chk, where: 'highlighted-product'
+                -%}
+              {%- else -%}
+                {{- hp_sel_opt -}}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endcapture -%}
+
+          {% capture hp_var_sel %}
+            {% assign hp_sel_id = 'Product-Variants-Select-1' | append: '-' | append: forloop.index %}
+            {% render 'select-input', id: hp_sel_id, name: hp_name, options: hp_sel_opts, class: 'product-selector__dropdown' %}
+          {% endcapture %}
+          {% assign hp_bar_selects = hp_bar_selects | append: hp_var_sel %}
+
+          {%- if block.settings.variant_picker_layout == 'product-selector--stacked' and block.settings.variant_picker_type == 'dropdowns' -%}
+            {%- assign hp_sel_id2 = 'Product-Variants-Select-2' | append: '-' | append: forloop.index -%}
+            {%- render 'select-input', id: hp_sel_id2, name: hp_name, options: hp_sel_opts, class: 'product-selector__dropdown' -%}
+          {%- else -%}
+            {%- if block.settings.variant_picker_type == 'buttons' and product.gift_card? == false -%}
+              <div class="product__variant-options">{{- hp_opts_html -}}</div>
+            {%- else -%}
+              {%- assign hp_sel_id2 = 'Product-Variants-Select-2' | append: '-' | append: forloop.index -%}
+              {%- render 'select-input', id: hp_sel_id2, name: hp_name, options: hp_sel_opts, class: 'product-selector__dropdown' -%}
+            {%- endif -%}
+          {%- endif -%}
+        </fieldset>
+      {%- endfor -%}
+
+      <script type="application/json">{{- product.variants | json -}}</script>
+    </product-selector>
+  </div>
+{%- endif -%}
+
+<noscript>
+  {%- unless product.has_only_default_variant -%}
+    <div class="product-selector">
+      {%- capture hp_ns_opts -%}
+        {%- for hp_ns_var in product.variants -%}
+          <option {% if hp_ns_var == product.selected_or_first_available_variant %}selected="selected"{% endif %} {% if hp_ns_var.available == false %}disabled="disabled"{% endif %} value="{{- hp_ns_var.id -}}">
+            {{- hp_ns_var.title -}}{%- if hp_ns_var.available == false %} - {{ 'product.sold_out' | t }}{% endif %} -
+            {% if settings.show_currency_codes %}{{ hp_ns_var.price | money_with_currency | strip_html }}{% else %}{{ hp_ns_var.price | money | strip_html }}{% endif %}
+          </option>
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- render 'select-input', id: 'Product-Variants-Select-3', name: 'id', options: hp_ns_opts, class: 'product-selector__dropdown' -%}
+    </div>
+  {%- else -%}
+    <input type="hidden" name="id" form="{{- product_form_id -}}" value="{{- product.selected_or_first_available_variant.id | default: product.variants.first.id -}}">
+  {%- endunless -%}
+</noscript>
+
+<script>
+  let initialProductVariants = null;
+  window.productVariants = {{ product.variants | json }};
+  if (window.productVariants && window.productVariants.length > 0) {
+    initialProductVariants = window.productVariants;
+  }
+  document.querySelectorAll('.product-option__input').forEach(option => {
+    option.addEventListener('change', function() {
+      const clickedVal = event.target.value;
+      if (event.target.classList.contains('product-option__input')) {
+        const matched = initialProductVariants.filter(variant => variant.option2 === clickedVal);
+        if (matched.length > 0) {
+          document.querySelectorAll('.product-option__input').forEach(input => {
+            const opt1 = input.value;
+            let disable = false;
+            matched.some(variant => {
+              if (variant.option1 === opt1 && !variant.available) { disable = true; return true; }
+            });
+            if (disable) input.setAttribute('disabled', 'disabled');
+            else if (input.hasAttribute('disabled')) input.removeAttribute('disabled');
+          });
+        }
+      }
+    });
+  });
+</script>

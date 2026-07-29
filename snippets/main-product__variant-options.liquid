@@ -1,0 +1,48 @@
+{%- comment -%}
+  Product variant options (swatch/button/dropdown) for main-product.
+  params: product, option, block, picker_type, product_form_id
+{%- endcomment -%}
+
+{%- assign vo_form_id = 'product-form-' | append: section.id -%}
+
+{%- for value in option.values -%}
+  {%- liquid
+    if picker_type == 'swatch'
+      assign vo_focal = null
+      if value.swatch.image
+        assign vo_img_url = value.swatch.image | image_url: width: 50
+        assign vo_swatch_val = 'url(' | append: vo_img_url | append: ')'
+        assign vo_focal = value.swatch.image.presentation.focal_point
+      elsif value.swatch.color
+        assign vo_swatch_val = 'rgb(' | append: value.swatch.color.rgb | append: ')'
+      else
+        assign vo_swatch_val = null
+      endif
+    endif
+
+    assign vo_disabled = true
+    if value.available
+      assign vo_disabled = false
+    endif
+  -%}
+
+  {%- capture vo_input_id -%}{{ section.id }}-{{ option.position }}-{{ forloop.index0 }}{%- endcapture -%}
+  {%- capture vo_input_name -%}{{ option.name }}-{{ option.position }}{%- endcapture -%}
+  {%- capture vo_dataset -%}data-product-url="{{ value.product_url }}" data-option-value-id="{{ value.id }}"{%- endcapture -%}
+  {%- capture vo_unavailable -%}<span class="visually-hidden label-unavailable">{{- 'product.variant_sold_out_or_unavailable' | t -}}</span>{%- endcapture -%}
+
+  {%- if picker_type == 'swatch' or picker_type == 'button' -%}
+    {%- liquid
+      assign vo_label_hidden = false
+      assign vo_swatch = value.swatch | default: false
+      if value.swatch or variant_img
+        assign vo_label_hidden = true
+      endif
+      render 'product-option', id: vo_input_id, name: vo_input_name, value: value, option: option, form_id: vo_form_id, checked: value.selected, disabled: vo_disabled, visually_hidden: true, additional_props: vo_dataset, variant_img: variant_image_test, swatch_value: vo_swatch, label_hidden: vo_label_hidden, label_unavailable: vo_unavailable, block: block, product: product, option: option, where: 'main-product'
+    -%}
+  {%- elsif picker_type == 'dropdown' or picker_type == 'swatch_dropdown' -%}
+    <option id="{{ vo_input_id }}" value="{{ value | escape }}" {% if value.selected %}selected="selected"{% endif %} {% if vo_swatch_val and picker_type == 'swatch_dropdown' %}data-option-swatch-value="{{ vo_swatch_val }}"{% if vo_focal %} data-option-swatch-focal-point="{{ vo_focal }}"{% endif %}{% endif %} {{ vo_dataset }}>
+      {%- if vo_disabled -%}{{- 'product.value_unavailable' | t: option_value: value -}}{%- else -%}{{- value -}}{%- endif -%}
+    </option>
+  {%- endif -%}
+{%- endfor -%}

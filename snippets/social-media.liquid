@@ -1,0 +1,40 @@
+{%- comment -%}
+  Social media link list from theme settings.
+  params: item_tag (default 'li'), in_new_tab (default false), item_icon (default true)
+{%- endcomment -%}
+
+{%- liquid
+  assign soc_tag = item_tag | default: 'li'
+  assign soc_blank = in_new_tab | default: false
+  assign soc_show_icon = item_icon
+
+  assign platforms = 'Facebook,Instagram,YouTube,TikTok,X,Linkedin,Twitter,Pinterest,Snapchat,Vimeo' | split: ','
+
+  for platform in platforms
+    assign platform_handle = platform | handleize
+    assign setting_key = 'social_' | append: platform_handle | append: '_link'
+    assign icon_id = 'brand-' | append: platform_handle
+
+    if settings[setting_key] == blank
+      continue
+    endif
+
+    assign link_url = settings[setting_key]
+
+    if soc_blank
+      assign link_target = ' target="_blank" rel="noopener noreferrer"'
+    else
+      assign link_target = ''
+    endif
+
+    echo '<' | append: soc_tag | append: '>'
+    echo '<a href="' | append: link_url | append: '" title="' | append: platform | append: '" ' | append: link_target | append: '>'
+    if soc_show_icon
+      render 'icon', icon_name: icon_id
+    else
+      echo platform
+    endif
+    echo '</a>'
+    echo '</' | append: soc_tag | append: '>'
+  endfor
+-%}

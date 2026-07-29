@@ -1,0 +1,881 @@
+﻿{% schema %}
+{
+  "name": "Features Lines",
+  "settings": [
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Section Class (Optional)"
+    },
+    {
+  "type": "color",
+  "id": "background_color",
+  "label": "Section Background Color",
+  "default": "#ffffff"
+},
+{
+  "type": "text",
+  "id": "heading",
+  "label": "Heading",
+  "default": "Your Heading Text"
+},
+{
+  "type": "range",
+  "id": "heading_margin_top",
+  "label": "Heading Margin Top (px)",
+  "min": 0,
+  "max": 100,
+  "step": 5,
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "heading_margin_bottom",
+  "label": "Heading Margin Bottom (px)",
+  "min": 0,
+  "max": 100,
+  "step": 5,
+  "default": 20
+},
+{
+  "type": "select",
+  "id": "heading_alignment",
+  "label": "Heading Text Alignment",
+  "default": "center",
+  "options": [
+    { "value": "left", "label": "Left" },
+    { "value": "center", "label": "Center" },
+    { "value": "right", "label": "Right" }
+  ]
+},
+
+    {
+      "type": "text",
+      "id": "load_css_section",
+      "label": "Load CSS for Features Section"
+    },
+         {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 92
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 92
+    },
+    {
+  "type": "range",
+  "id": "left_padding",
+  "label": "Left padding",
+  "min": 0,
+  "max": 160,
+  "step": 2,
+  "unit": "px",
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "right_padding",
+  "label": "Right padding",
+  "min": 0,
+  "max": 160,
+  "step": 2,
+  "unit": "px",
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "feature_description_margin_top",
+  "label": "Feature Description Margin Top (px)",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "default": 20
+},
+          {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom mobile",
+        "default": 0
+      }],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Feature Image"
+        },
+           {
+  "type": "image_picker",
+  "id": "image_2",
+  "label": "Feature Image 2"
+},
+        {
+  "type": "url",
+  "id": "video_url",
+  "label": "Video URL",
+  "info": "Paste a video URL (MP4 or WebM). Overrides images if set."
+},
+
+    {
+  "type": "checkbox",
+  "id": "show_feature_box",
+  "label": "Show Feature Box",
+  "default": true
+},
+        {
+  "type": "select",
+  "id": "flex_direction",
+  "label": "Content Direction",
+  "options": [
+    { "value": "row", "label": "Image Left, Text Right" },
+    { "value": "row-reverse", "label": "Image Right, Text Left" }
+  ],
+  "default": "row"
+},
+        {
+  "type": "richtext",
+  "id": "heading_1",
+  "label": "Heading 1",
+   "default": "<p> OmegiaÂ®: Omega-7 boost for youthful skin</p>"
+},
+{
+  "type": "image_picker",
+  "id": "icon_1",
+  "label": "Icon for Heading 1"
+},
+{
+  "type": "richtext",
+  "id": "heading_2",
+  "label": "Heading 2",
+     "default": "<p> OmegiaÂ®: Omega-7 boost for youthful skin</p>"
+},
+{
+  "type": "image_picker",
+  "id": "icon_2",
+  "label": "Icon for Heading 2"
+},
+{
+  "type": "richtext",
+  "id": "heading_3",
+  "label": "Heading 3",
+     "default": "<p> OmegiaÂ®: Omega-7 boost for youthful skin</p>"
+},
+{
+  "type": "image_picker",
+  "id": "icon_3",
+  "label": "Icon for Heading 3"
+},
+                {
+  "type": "richtext",
+  "id": "heading_4",
+  "label": "Heading 4",
+  "default": "<p> OmegiaÂ®: Omega-7 boost for youthful skin</p>"
+},
+{
+  "type": "image_picker",
+  "id": "icon_4",
+  "label": "Icon for Heading 4"
+},
+{
+  "type": "richtext",
+  "id": "heading_5",
+  "label": "Heading 5",
+     "default": "<p> OmegiaÂ®: Omega-7 boost for youthful skin</p>"
+},
+{
+  "type": "image_picker",
+  "id": "icon_5",
+  "label": "Icon for Heading 5"
+},
+{
+  "type": "richtext",
+  "id": "heading_6",
+  "label": "Heading 6",
+     "default": "<p> OmegiaÂ®: Omega-7 boost for youthful skin</p>"
+},
+{
+  "type": "image_picker",
+  "id": "icon_6",
+  "label": "Icon for Heading 6"
+},
+        {
+          "type": "text",
+          "id": "small_heading",
+          "label": "Small Heading",
+          "default": "Speed"
+        },
+        {
+          "type": "text",
+          "id": "feature_heading",
+          "label": "Feature Heading",
+          "default": "No Downtime, Just Results!"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Feature Description",
+          "default": "<p>With rapid design and installation, youâ€™ll experience minimal downtime. No delays, no stock issuesâ€”get your racking faster and avoid costly disruptions. Get back to business quickly with optimized storage solutions that keep your operations running smoothly. Use Direct Pallet Racking to streamline your projects and stay ahead of the competition.</p>"
+        },
+        {
+          "type": "url",
+          "id": "feature_btn_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "text",
+          "id": "feature_btn_text",
+          "label": "Button Text",
+          "default": "Get a Quote Today"
+        },
+        {
+          "type": "text",
+          "id": "custom_class_feature",
+          "label": "Feature Custom Class (Optional)"
+        }
+      ]
+    },
+    {
+      "type": "banner",
+      "name": "Middle Banner",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner Background Image"
+        },
+        {
+          "type": "text",
+          "id": "banner_text",
+          "label": "Banner Text",
+          "default": "Centered Banner Text"
+        }
+      ]
+    }],
+  "presets": [
+    {
+      "name": "Features Lines"}
+  ]
+}
+{% endschema %}
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.top_padding | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.bottom_padding | times: 0.75 | round: 0 }}px;
+    padding-left: {{ section.settings.left_padding | times: 0.75 | round: 0 }}px;
+    padding-right: {{ section.settings.right_padding | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.top_padding }}px;
+      padding-bottom: {{ section.settings.bottom_padding }}px;
+      padding-left: {{ section.settings.left_padding }}px;
+      padding-right: {{ section.settings.right_padding }}px;
+    }
+  }
+{%- endstyle -%}
+
+<section style="    background-color: {{ section.settings.background_color }};" class="features-v2 features-{{ section.id }} section-{{ section.id }}-padding  section-index-{{ section.index }} {% if section.settings.custom_class %}{{ section.settings.custom_class }}{% endif %}">
+  <div class="container {% if section.settings.custom_class_container %}{{ section.settings.custom_class_container }}{% endif %}">
+    <h1
+      class="custom-heading-GR"
+      style="margin: {{ section.settings.heading_margin_top }}px 0 {{ section.settings.heading_margin_bottom }}px 0; text-align: {{ section.settings.heading_alignment }};"
+    >
+      {{ section.settings.heading }}
+    </h1>
+
+    <div class="features-inner-wrap d-flex">
+      {% for block in section.blocks %}
+        {% if block.type == 'feature' %}
+          <div class="feature-item-wrap {% if block.settings.custom_class_feature %}{{ block.settings.custom_class_feature }}{% endif %}">
+            <div class="feature-item feature-direction-{{ block.settings.flex_direction }}">
+              <div class="feature-content-main">
+                <div class="feature-image-wrapper">
+                {% assign video_url = block.settings.video_url %}
+
+{% if video_url %}
+  <div class="feature-video-wrapper">
+    <video autoplay muted loop playsinline class="feature-video" preload="auto">
+      <source src="{{ video_url }}" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+{% else %}
+  {% assign image_1 = block.settings.image_1 %}
+  {% assign image_2 = block.settings.image_2 %}
+
+  {% if image_1 and image_2 %}
+    <div class="feature-image-two-column">
+      <div class="feature-image">
+        <img src="{{ image_1 | img_url: 'master' }}" alt="Image 1">
+      </div>
+      <div class="feature-image">
+        <img src="{{ image_2 | img_url: 'master' }}" alt="Image 2">
+      </div>
+    </div>
+  {% elsif image_1 %}
+    <div class="feature-image-single">
+      <img src="{{ image_1 | img_url: 'master' }}" alt="Image 1">
+    </div>
+  {% elsif image_2 %}
+    <div class="feature-image-double">
+      <img src="{{ image_2 | img_url: 'master' }}" alt="Image 2">
+    </div>
+  {% else %}
+    {{ 'image' | placeholder_svg_tag }}
+  {% endif %}
+{% endif %}
+
+                </div>
+
+                {% if block.settings.show_feature_box %}
+                  <div class="gt-feature-box">
+                    <div class="gt-feature-item">
+                      <div class="gt-feature-title">CLEAN, PREMIUM INGREDIENTS</div>
+                      <div class="gt-feature-bar">
+                        <div class="gt-bar-fill" style="width: 80%;"></div>
+                      </div>
+                    </div>
+
+                    <div class="gt-feature-item">
+                      <div class="gt-feature-title">TARGETED WELLNESS SOLUTIONS</div>
+                      <div class="gt-feature-bar">
+                        <div class="gt-bar-fill" style="width: 90%;"></div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+
+              <div class="feature-text">
+                <div class="small-heading">{{ block.settings.small_heading }}</div>
+                <h2 class="feature-heading">{{ block.settings.feature_heading }}</h2>
+                <div class="feature-description">{{ block.settings.description }}</div>
+                <div class="feature-vertical-wrapper">
+                  <div class="feature-item-text-small-container">
+
+                    {% for i in (1..6) %}
+                      {% capture heading_key %}heading_{{ i }}{% endcapture %}
+                      {% capture icon_key %}icon_{{ i }}{% endcapture %}
+
+                      {% assign heading_value = block.settings[heading_key] %}
+                      {% assign icon_value = block.settings[icon_key] %}
+
+                      {% if heading_value != blank %}
+                        <div class="feature-item-text-small step-wrapper">
+                          <div class="dot"></div>
+                          <div class="text">
+                            {% if icon_value %}
+                              <img src="{{ icon_value | img_url: 'master' }}" alt="Icon {{ i }}">
+                            {% endif %}
+                            <p>{{ heading_value }}</p>
+                          </div>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+
+              {% if block.settings.feature_btn_link %}
+                <a href="{{ block.settings.feature_btn_link }}" class="btn-theme">
+                  {{- block.settings.feature_btn_text -}}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+          </div>
+        {% elsif block.type == 'banner' %}
+          <div
+            class="feature-banner"
+            {% if block.settings.banner_image %}
+              style="background-image: url('{{ block.settings.banner_image | image_url }}');"
+            {% endif %}
+          >
+            <p class="banner-text">{{ block.settings.banner_text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+    .feature-item-text-small {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+      gap: 8px;
+    }
+
+    .feature-item-text-small img{
+        width: 35px;
+        height: 35px;
+    }
+
+    .feature-item-text-small p {
+        font-family: "Fira Sans";
+        font-weight: 400;
+        font-size: 24px;
+        margin: 0;
+        line-height: 140%;
+    }
+    .feature-item-text-small-container {
+        padding: 20px 0px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: start;
+    }
+      .feature-image-two-column {
+        display: flex;
+        width: 100%;
+        gap: 20px;
+    }
+      a.btn-theme {
+        font-size: 16px;
+        line-height: 40px;
+        background: #B4975A;
+        color: white;
+        padding: 5px 20px;
+        border-radius: 30px;
+        /* margin-top: 20px; */
+        display: flex;
+        width: 150px;
+        align-items: center;
+        justify-content: center;
+    }
+
+      .feature-image img{
+            object-fit: cover;
+        display: block;
+        border-radius: 20px;
+      }
+      .feature-item-wrap {
+        position: relative;
+      }
+      .unmatched{
+        background: rgba(241, 206, 199, 0.75);
+    }
+      .feature-item-wrap:first-child:before {
+        background: inherit;
+      }
+      .feature-item-wrap::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 50%;
+          background:
+            linear-gradient(0deg, rgba(255, 255, 255, 0) 79.49%, #FFFFFF 100%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0) 79.49%, #FFFFFF 100%),
+            {% if section.settings.background %}
+              url('{{ section.settings.background | image_url }}') no-repeat top / 721px 560px
+            {% endif %};
+          z-index: -1;
+          background-position: top -30px right;
+      }
+      .feature-item-wrap:not(.reverse)::before {
+        left: 0;
+      }
+
+      .feature-description h4 {
+        margin-top: 20px
+          font-family: "Fira Sans";
+    }
+      .feature-item-wrap.reverse::before {
+        right: 0;
+        transform: scaleX(-1);
+      }
+    .feature-item {
+        display: flex;
+        gap: 50px;
+    }
+      .feature-content {
+        display: flex;
+        align-items: center;
+        gap: 80px;
+      }
+      .reverse .feature-item .feature-content {
+        flex-direction: row-reverse;
+      }
+      .feature-image-single img {
+        max-width: 100%;
+        height: 544px;
+        width: 700px;
+        object-fit: cover;
+        display: block;
+        border-radius: 20px;
+      }
+  .feature-video-wrapper video.feature-video {
+  max-width: 100%;
+  width: 700px;
+  height: 544px;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+}
+
+        .feature-image-double img {
+        max-width: 100%;
+        height: 544px;
+        width: 700px;
+        object-fit: cover;
+        display: block;
+        border-radius: 20px;
+      }
+    .feature-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        /* gap: 20px; */
+    }
+    .feature-direction-row {
+      flex-direction: row;
+    }
+
+    .feature-direction-row-reverse {
+      flex-direction: row-reverse;
+    }
+      .small-heading {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 23.4px;
+        margin-bottom: 10px;
+        color: #2A2A2A;
+          font-family: "Fira Sans";
+      }
+      .feature-heading {
+  font-family: Fira Sans;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 120%;
+  letter-spacing: 1px;
+  vertical-align: middle;
+  text-transform: capitalize;
+
+      }
+    .feature-description p {
+        font-weight: 400;
+        font-size: 23px;
+        line-height: 30px;
+       margin-top: {{ section.settings.feature_description_margin_top }}px;
+        font-family: "Fira Sans";
+    }
+      .Misssion   .feature-description p { margin: 0;}
+
+      .feature-banner {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+        border-radius: 20px;
+        margin: 50px 0 60px;
+        padding: 0 15px;
+        text-align: center;
+      }
+      .banner-text {
+        font-size: 20px;
+        line-height: 28px;
+        max-width: 680px;
+        margin: 30px 0;
+          font-family: "Fira Sans";
+      }
+      .banner-text span {
+        font-weight: 600;
+          font-family: "Fira Sans";
+      }
+      .features_shift2 .feature-item-wrap:nth-child(2) {
+        order: 1;
+      }
+      @media (max-width: 1024px) {
+        .feature-content { gap: 40px; }
+        .feature-item { margin-bottom: 30px; padding-bottom: 10px; }
+        .feature-image img { width: 350px; height: 350px; }
+      }
+
+      @media (max-width: 768px) {
+        .feature-item-wrap:not(:last-child) .feature-item { border-bottom: 1px solid #ebebeb; border-radius: inherit; }
+        .feature-content { flex-direction: column; gap: 24px; text-align: center; }
+        .reverse .feature-item .feature-content { flex-direction: column; }
+        .feature-image img { width: 280px; height: 280px; }
+        .feature-heading { font-size: 30px; line-height: 34px; }
+        .feature-description { font-size: 16px; line-height: 35px; }
+        .feature-banner {margin-top: 0;}
+        .banner-text { font-size: 18px; line-height: 26px; max-width: 100%; }
+        .features_shift2 .feature-item-wrap:nth-child(2) .feature-item { border-bottom: 0; }
+        .feature-item-text-small img {
+        width: 36px;
+        height: 36px;
+    }
+        .feature-item-text-small p {
+        font-size: 16px;
+    }
+      }
+
+      @media (max-width: 480px) {
+        .feature-description { font-size: 14px; line-height: 20px; }
+        .feature-image img { width: 220px; height: 220px; }
+        .banner-text { font-size: 16px; line-height: 24px; }
+      }
+
+    .gt-feature-box {
+        box-shadow: 4px 4px 43px 0px #2A2A2A40;
+         padding: 30px 10px 10px;
+        border-radius: 12px;
+        height: 156px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        min-width: 322px;
+        margin: auto;
+        position: absolute;
+        right: -35px;
+      background: white;
+        bottom: -45px;
+    }
+      .feature-image-two-column .feature-image:nth-child(2) {
+        position: absolute;
+        top: -50px;
+        right: -28px;
+    }
+
+      .features-{{ section.id }} .feature-image img {
+        object-fit: cover;
+        display: block;
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+    }
+
+      .features-{{ section.id }} .feature-image {
+        height: 500px;
+        width: 380px;
+    }
+      .features-{{ section.id }} .feature-content-main {
+        position: relative;
+        width: 50%;
+    }
+      .double-image-section .feature-content-main {
+        position: relative;
+        width: 60%;
+    }
+    .gt-feature-item {
+      margin-bottom: 20px;
+    }
+
+    .gt-feature-title {
+        font-weight: 600;
+        font-size: 15px;
+        margin-bottom: 10px;
+        color: #2A2A2A;
+        display: flex;
+        justify-content: end;
+        font-family: "Fira Sans";s
+    }
+
+    .gt-feature-bar {
+      height: 4px;
+      background: #d9d9d9;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .gt-bar-fill {
+      height: 100%;
+      background: #b99c59;
+      border-radius: 10px;
+      transition: width 0.5s ease;
+      display: block !important;
+    }
+      @media screen and (max-width: 1300px) {
+           .features-template--24341481521436__features_cbrbAb .feature-image {
+        height: 500px;
+        width:50%;
+    }
+      }
+      @media screen and (max-width: 990px) {
+      .feature-item {
+        flex-direction: column;
+      }
+        .features-template--24341481521436__features_KBTKDc   .feature-item {
+        flex-direction: column;
+        gap: 80px;
+      }
+      .feature-content-main {
+        width: 100%;
+      }
+        .gt-feature-box{
+          right: 10px;
+          height: 135px;
+          min-width: 250px;
+        }
+        .feature-image-single img{
+          height: 100%;
+        }
+        .gt-feature-item {
+        margin-bottom: 10px;
+    }
+        a.btn-theme{
+          width: 100%;
+        }
+        .feature-description p {
+        font-size: 16px;
+          line-height: 1.3;
+
+    }
+        .feature-text{gap: 10px}
+
+    .features-{{ section.id }} .feature-content-main {
+        position: relative;
+        width: 100%;
+    }
+
+        .double-image-section .feature-content-main {
+        position: relative;
+        width: 100%;
+    }
+    .features-{{ section.id }}  .feature-image-two-column .feature-image:nth-child(2) {
+        position: absolute;
+        top: -50px;
+        right: -13px;
+    }
+    .double-image-section  .feature-image {
+        width: 50%;
+        height: 225px;
+    }
+      }
+        @media screen and (max-width:768px){
+        .features-{{ section.id }}{
+
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      }
+      }
+  .vertical-line {
+  position: absolute;
+  left: 10px;
+  width: 2px;
+  height: 0;
+  border: 1px solid #ccc;
+  transition: height 0.3s ease;
+  display: inline-block;
+  z-index: 0;
+}
+
+.feature-item-text-small-container {
+  position: relative;
+}
+
+.step-wrapper.active p,
+.step-wrapper.active img {
+  opacity: 1;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+.step-wrapper p,
+.step-wrapper img {
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.querySelector("  .unmatched .feature-item-text-small-container");
+  const line = document.querySelector(".unmatched .vertical-line");
+  const steps = container.querySelectorAll("  .unmatched .step-wrapper");
+
+  function updateLinePosition() {
+    if (!steps.length) return;
+
+    const firstStep = steps[0];
+    const lastStep = steps[steps.length - 1];
+
+    const containerTop = container.offsetTop;
+    const firstTop = firstStep.offsetTop + firstStep.offsetHeight / 2;
+    const lastTop = lastStep.offsetTop + lastStep.offsetHeight / 2;
+
+    line.style.top = `${firstTop}px`;
+    line.style.height = `${lastTop - firstTop}px`;
+  }
+
+  window.addEventListener("load", updateLinePosition);
+  window.addEventListener("resize", updateLinePosition);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const stepContainers = document.querySelectorAll(".feature-item-text-small-container");
+
+  stepContainers.forEach(container => {
+    const steps = container.querySelectorAll(".step-wrapper");
+    const line = container.querySelector(".vertical-line");
+
+    function updateLine() {
+      const windowHeight = window.innerHeight;
+      const containerRect = container.getBoundingClientRect();
+
+      if (containerRect.top > windowHeight * 0.8) {
+        line.style.height = `0px`;
+        steps.forEach(step => step.classList.remove("active"));
+        return;
+      }
+
+      let lastVisibleStep = 0;
+
+      steps.forEach((step, index) => {
+        const rect = step.getBoundingClientRect();
+        if (rect.top < windowHeight * 0.7) {
+          lastVisibleStep = index + 1;
+          step.classList.add("active");
+        } else {
+          step.classList.remove("active");
+        }
+      });
+
+      if (lastVisibleStep > 0) {
+        const lastStep = steps[lastVisibleStep - 1];
+        const stepOffsetTop = lastStep.offsetTop + lastStep.offsetHeight / 2;
+        line.style.height = `${stepOffsetTop - 20}px`;
+      }
+    }
+
+    window.addEventListener("scroll", updateLine);
+    updateLine();
+  });
+});
+</script>
+

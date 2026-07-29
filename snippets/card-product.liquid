@@ -1,0 +1,256 @@
+{%- comment -%}
+  Product card with media, badges, variant swatches, add-to-cart.
+  params: product_ref, section_id, block_index, image_per_view, is_small,
+          search_product, is_in_drawer, show_variants, product_index
+{%- endcomment -%}
+
+{%- liquid
+  assign cp_per_view = image_per_view | default: 3
+  assign cp_is_small = is_small | default: false
+  assign cp_is_search = search_product | default: false
+  assign cp_in_drawer = is_in_drawer | default: false
+  assign cp_variant_imgs = product_ref.variants | map: 'featured_image' | uniq
+  assign cp_vd_desktop = settings.product_card_variants_display_desktop
+  assign cp_vd_mobile = settings.product_card_variants_display_mobile
+  assign cp_vd_limit = settings.product_card_variants_display_limit | default: 3
+  assign cp_title_fallback = 'product.label' | t
+-%}
+
+{%- comment -%} MEDIA {%- endcomment -%}
+{%- capture cp_media -%}
+  {%- assign cp_media_cls = "media product-card__media" -%}
+  {%- if settings.product_card_media_hover and product_ref.gift_card? == false -%}
+    {%- assign cp_media_cls = cp_media_cls | append: ' product-card__media--hoverable' -%}
+  {%- endif -%}
+
+  <style>
+    .product-card__media { --product-card-media-aspect-ratio: {{ settings.product_card_media_aspect_ratio }}; --product-card-media-object-fit: {{ settings.product_card_media_object_fit }}; position: relative; }
+    .product-card, .product-card__actions, .product-card__link { overflow: visible !important; }
+    .product-card__actions .product-card__badges { position: absolute; top: -10px !important; left: 1.2rem; z-index: 10; }
+  </style>
+
+  <div class="{{ cp_media_cls }}" data-update-media="{% if product_ref.first_available_variant == product_ref.selected_variant %}true{% else %}false{% endif %}">
+    {%- liquid
+      assign cp_hover = product_ref.media[1]
+      if cp_hover.media_type == 'video' or cp_hover.media_type == 'external_video'
+        assign cp_hover = product_ref.media[2]
+      endif
+
+      if product_ref.featured_image
+        if cp_variant_imgs.size > 1 and cp_vd_desktop != 'none' or cp_vd_mobile != 'none'
+          for cp_v_img in cp_variant_imgs
+            if cp_v_img != blank
+              assign cp_data_imgs = ''
+              for cp_var in product_ref.variants
+                if cp_var.featured_image == cp_v_img
+                  assign cp_data_imgs = cp_data_imgs | append: cp_var.id | append: ','
+                endif
+              endfor
+              assign cp_data_imgs = cp_data_imgs | split: ',' | uniq | join: ','
+              if cp_data_imgs != ""
+                assign cp_img_attr = 'data-product-images="' | append: cp_data_imgs | append: '"'
+              endif
+
+              assign cp_show_img = false
+              if product_ref.selected_or_first_available_variant.featured_image and product_ref.selected_or_first_available_variant.featured_image.id == cp_v_img.id
+                assign cp_show_img = true
+              elsif product_ref.selected_or_first_available_variant.featured_image == nil and forloop.first
+                assign cp_show_img = true
+              endif
+
+              assign cp_load = 'lazy'
+              if product_index and product_index <= cp_per_view and forloop.index0 < 1
+                assign cp_load = 'eager'
+              endif
+
+              if cp_show_img
+                render 'image', image: cp_v_img, attr: cp_img_attr, image_per_view: cp_per_view, loading: cp_load
+              else
+                render 'image', image: cp_v_img, attr: cp_img_attr, class: 'hidden', image_per_view: cp_per_view, loading: cp_load
+              endif
+            endif
+          endfor
+        else
+          render 'image', image: product_ref.featured_image, image_per_view: cp_per_view, loading: cp_load
+        endif
+
+        if settings.product_card_media_hover and product_ref.media.size > 1 and cp_hover != nil
+          render 'image', image: cp_hover, alt: cp_hover.alt | default: product_ref.title, class: 'hover-img', image_per_view: cp_per_view
+        endif
+      else
+        echo 'product-1' | placeholder_svg_tag: 'placeholder-svg'
+      endif
+    %}
+  </div>
+  {% render 'product-badges', product: product_ref %}
+{%- endcapture -%}
+
+{%- comment -%} ADD TO CART BUTTON {%- endcomment -%}
+{%- capture cp_atc_btn -%}
+  {%- if settings.product_card_enable_quick_add_to_cart_button or settings.product_card_enable_single_add_to_cart_button -%}
+    {%- assign cp_btn_cls = 'button product-card__add-to-cart--button color-' | append: settings.product_card_action_buttons_color_scheme | append: ' ' -%}
+    {%- if settings.product_card_add_to_cart_btn_content == 'icon-hover' -%}
+      {%- assign cp_btn_cls = cp_btn_cls | append: ' product-card__add-to-cart--button-icon-with-hover ' -%}
+    {%- endif -%}
+    {% if cp_is_small %}{% assign cp_btn_cls = cp_btn_cls | append: 'product-card-small__button ' %}{% endif %}
+    {%- if settings.product_card_add_to_cart_btn_content == 'icon' or settings.product_card_add_to_cart_btn_content == 'icon-hover' -%}
+      {%- assign cp_btn_cls = cp_btn_cls | append: 'button--icon' -%}
+      {%- if settings.button_border_radius == '0' -%}{%- assign cp_btn_cls = cp_btn_cls | append: ' button--rounded-0' -%}{%- endif -%}
+    {%- else -%}
+      {%- assign cp_btn_cls = cp_btn_cls | append: 'button--uppercase button--filled' -%}
+    {%- endif -%}
+
+    {%- capture cp_btn_inner -%}
+      {%- assign cp_btn_lbl = '' -%}
+      {%- if product_ref.metafields.theme.preorder.value -%}
+        {%- assign cp_btn_lbl = 'product.preorder' | t -%}
+      {%- else -%}
+        {%- if product_ref.variants.size == 1 -%}{%- assign cp_btn_lbl = 'theme.actions.add_to_cart' | t -%}
+        {%- elsif product_ref.variants.size > 1 -%}{%- assign cp_btn_lbl = 'product.choose_options' | t -%}{%- endif -%}
+      {%- endif -%}
+      {%- if cp_in_drawer -%}{%- assign cp_btn_lbl = 'product.select_size' | t -%}{%- endif -%}
+      {%- if settings.product_card_add_to_cart_btn_content contains 'icon' -%}{% render 'icon', icon_name: 'theme-plus' %}{%- endif -%}
+      {%- if settings.product_card_add_to_cart_btn_content contains 'hover' -%}<span class="product-card__add-to-cart--text">{{- settings.product_card_add_to_cart_icon_hover_text -}}</span>{%- endif -%}
+      {%- if settings.product_card_add_to_cart_btn_content contains 'text' -%}<span>{{- cp_btn_lbl -}}</span>{%- else -%}<span class="visually-hidden">{{- cp_btn_lbl -}}</span>{%- endif -%}
+    {%- endcapture -%}
+
+    {%- if product_ref.variants.size == 1 and settings.product_card_enable_single_add_to_cart_button -%}
+      <button type="submit" class="{{ cp_btn_cls }}" {%- unless product_ref.available -%}disabled{%- endunless -%}>{{- cp_btn_inner -}}</button>
+    {%- endif -%}
+    {%- if product_ref.variants.size > 1 and settings.product_card_enable_quick_add_to_cart_button -%}
+      <button type="button" class="quick-cart-drawer__trigger {{ cp_btn_cls }}" tabindex="{% if cp_in_drawer == true %}-1{% else %}0{% endif %}" aria-expanded="false" aria-controls="quick-cart-drawer" data-product-url="{{- product_ref.handle | prepend: '/products/' -}}" {%- unless product_ref.available -%}disabled{%- endunless -%}>
+        {{- cp_btn_inner -}}
+        <div class="quick-cart-drawer__trigger--loading">{%- render 'loading-spinner' -%}</div>
+      </button>
+    {%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- comment -%} ADD TO CART FORM {%- endcomment -%}
+{%- capture cp_atc -%}
+  {%- if product_ref.available -%}
+    {%- capture cp_var_id_input -%}<input type='hidden' name='id' value='{{- product_ref.selected_or_first_available_variant.id -}}'>{%- endcapture -%}
+    {%- if product_ref.variants.size == 1 and settings.product_card_enable_single_add_to_cart_button -%}
+      <form class="product-card__add-to-cart--form">{{ cp_var_id_input }}<input type='hidden' name='quantity' value='1'>{{ cp_atc_btn }}</form>
+    {%- else -%}
+      {{ cp_var_id_input }}
+    {%- endif -%}
+    {%- if product_ref.variants.size > 1 and settings.product_card_enable_quick_add_to_cart_button -%}{{ cp_atc_btn }}{%- endif -%}
+  {%- endif -%}
+{%- endcapture -%}
+
+{%- comment -%} VARIANTS / SWATCHES {%- endcomment -%}
+{%- capture cp_variants -%}
+  {%- if product_ref.available and cp_vd_desktop != 'none' or cp_vd_mobile != 'none' -%}
+    {%- assign cp_sw_opts = settings.swatches_option | split: ',' -%}
+    {%- assign cp_sw_vals = '' -%}
+    {%- for cp_so in cp_sw_opts -%}
+      {%- assign cp_so_s = cp_so | strip -%}
+      {%- assign cp_so_v = product_ref.options_by_name[cp_so_s].values | join: ',' -%}
+      {%- assign cp_sw_vals = cp_sw_vals | append: cp_so_v | append: ',' -%}
+    {%- endfor -%}
+    {%- assign cp_sw_vals = cp_sw_vals | split: ',' -%}
+    {%- assign cp_sw_arr = settings.swatches_option | split: ',' -%}
+    {%- liquid
+      assign cp_var_avail = product_ref.variants | map: 'available'
+      assign cp_var_o1 = product_ref.variants | map: 'option1'
+      assign cp_var_o2 = product_ref.variants | map: 'option2'
+      assign cp_var_o3 = product_ref.variants | map: 'option3'
+    -%}
+
+    <div class="product-card__variants">
+      <ul class="product-card__variants--list product-card__variants--list--{{ settings.product_card_product_options_position }}">
+        {%- for cp_i in (1..3) -%}
+          {%- assign cp_opts = blank -%}
+          {%- if cp_i == 1 -%}{%- assign cp_opts = product_ref.options_with_values[0] -%}
+          {%- elsif cp_i == 2 -%}{%- assign cp_opts = product_ref.options_with_values[1] -%}
+          {%- elsif cp_i == 3 -%}{%- assign cp_opts = product_ref.options_with_values[2] -%}{%- endif -%}
+          {%- if cp_opts.values != blank -%}
+            {%- if cp_opts.values.size > 1 -%}
+              {%- capture cp_sw_cls -%}
+                {%- unless cp_sw_arr contains cp_opts.name -%}hidden
+                {%- else -%}
+                  {%- if cp_vd_desktop != 'button' and cp_vd_mobile == 'button' -%}small-up-hide
+                  {%- elsif cp_vd_mobile != 'button' and cp_vd_desktop == 'button' -%}small-hide
+                  {%- elsif cp_vd_desktop != 'button' and cp_vd_mobile != 'button' -%}hidden{%- endif -%}
+                {%- endunless -%}
+              {%- endcapture -%}
+              <li class="{{ cp_sw_cls }}">
+                <fieldset class="product__variant-options js-product-card-options" role="radiogroup">
+                  {%- for cp_opt in cp_opts.values -%}
+                    {%- liquid
+                      assign cp_sid = section.id | default: 'section'
+                      assign cp_bid = block.id | default: 'block'
+                      assign cp_vid = cp_sid | append: '-' | append: product_ref.id | append: '-variant-option-' | append: cp_i | append: '-' | append: forloop.index | append: '-' | append: cp_bid
+                      assign cp_sel_var = product_ref.selected_or_first_available_variant
+                      assign cp_is_checked = false
+                      for cp_so_val in cp_sel_var.options
+                        if cp_so_val == cp_opt
+                          assign cp_is_checked = true
+                        endif
+                      endfor
+                      assign cp_is_disabled = false
+                      assign cp_all_vars = product_ref.variants
+                      for cp_av in cp_all_vars
+                        for cp_avo in cp_av.options
+                          if cp_avo == cp_opt and cp_av.available == false
+                            assign cp_is_disabled = true
+                          endif
+                        endfor
+                      endfor
+                      assign cp_in_name = product_ref.id | append: '-option[' | append: cp_i | append: ']'
+                    -%}
+                    <div class="button--variant" tabindex="0">
+                      {%- render 'product-option', id: cp_vid, name: cp_in_name, value: cp_opt, swatch_value: cp_opt.swatch, checked: cp_is_checked, class: 'hidden variant-option-radio-input', visually_hidden: true, block: block, product: product_ref, option: cp_opts, where: 'card-product' -%}
+                    </div>
+                    {%- if forloop.index == cp_vd_limit -%}
+                      {%- assign cp_more = cp_opts.values.size | minus: cp_vd_limit -%}
+                      {%- unless cp_more == 0 -%}<li class="product-card__variants--more">{{- "+" | append: cp_more -}}</li>{%- endunless -%}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </fieldset>
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endif -%}
+  <script data-product-variants-json type="application/json">{{- product_ref.variants | json -}}</script>
+{%- endcapture -%}
+
+{%- assign cp_link = product_ref.url | append: '?variant=' | append: product_ref.selected_or_first_available_variant.id -%}
+{%- if cp_is_search -%}{%- assign cp_link = product_ref.url -%}{%- endif -%}
+
+<product-card class="product-card{% if cp_is_small %} product-card--small{% endif %}{% unless product_ref.available %} product-card__sold-out{% endunless %}">
+  <div class="product-card__actions">
+    <a href="{{ cp_link }}" tabindex="-1" class="product-card__link" data-product-link title="{{ 'product.go_to_title' | t : title: product_ref.title }}">{{ cp_media }}</a>
+  </div>
+  <div class="product-card__content">
+    {%- liquid
+      assign cp_info_cls = 'product-card__info'
+      if settings.product_card_badge_position == 'start'
+        assign cp_info_cls = cp_info_cls | append: ' product-card__badge--on-start'
+      endif
+      if settings.product_card_price_position == 'inline'
+        assign cp_info_cls = cp_info_cls | append: ' product-card__price--inline'
+      endif
+    -%}
+    <div class="{{ cp_info_cls }}">
+      {%- if settings.show_product_card_vendor -%}<span class="product-card__vendor">{{ product_ref.vendor | link_to_vendor }}</span>{%- endif -%}
+      <h3 class="product-card__title">
+        <a href="{{ cp_link }}" class="product-card__link" tabindex="{% if cp_in_drawer == true %}-1{% else %}0{% endif %}" data-product-link title="{{ 'product.go_to_title' | t : title: product_ref.title }}">
+          <span style="font-size: clamp(18px, 2.5vw, 30px);">{{ product_ref.title | default: cp_title_fallback }}</span>
+        </a>
+      </h3>
+      <span class="product-card__price">{%- render 'price', product: product_ref -%}</span>
+      {% if cp_is_small == false %}{{ cp_atc }}{% endif %}
+    </div>
+    <div class="product-card__options product-card__options--{{ settings.product_card_product_options_position }}">
+      {% if settings.show_product_groups_on_product_card %}{% render 'product-groups', product: product_ref, on: 'card' %}{% endif %}
+      {{ cp_variants }}
+    </div>
+    {% if cp_in_drawer %}{{ cp_atc }}{% endif %}
+  </div>
+</product-card>

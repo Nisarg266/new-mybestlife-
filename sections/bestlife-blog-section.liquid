@@ -1,0 +1,288 @@
+{% stylesheet %}
+.bestlife-section-wrapper {
+  padding: 60px 150px;
+  margin-left: auto;
+  margin-right: auto;
+ max-width: var(--max-width);
+}
+
+.bestlife-article-grid {
+  height: 80%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .bestlife-article-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bestlife-card {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.bestlife-card__image-wrapper {
+  position: relative;
+}
+
+.bestlife-card__image-wrapper img {
+  align-items: center;
+  border-radius: 5px;
+  padding-bottom: 30px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+  display: block;
+}
+
+.bestlife-card__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* instead of space-between */
+  height: auto; /* remove the fixed 80% height */
+  text-align: left;
+}
+
+.bestlife-card__title {
+  line-height: 1.4;
+  font-size: 21px;
+  font-weight: 700 !important;
+  margin-bottom: 6px;
+  color: #2A2A2A;
+}
+
+.bestlife-card__excerpt {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.bestlife-read-more-button {
+  margin-top: auto;
+  background: #b4975a;
+  color: #2a2a2a;
+  font-weight: 500 !important;
+  padding: 8px 20px;
+  font-size: 23px !important;
+  text-decoration: none;
+  width: fit-content;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.bestlife-read-more-button:hover {
+  background: #2a2a2a;
+  color: #b4975a;
+}
+
+.bestlife-section-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.bestlife-section-header h2 {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #2A2A2A;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+
+/* Scroll wrapper for mobile */
+.bestlife-article-scroll-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container, .max-w-page {
+  max-width: var(--max-width) !important;
+}
+.container{
+      padding: 0 0 !important;
+}
+/* On mobile, turn grid into horizontal scroll */
+@media screen and (max-width: 767px) {
+  .bestlife-section-header {
+    margin: 0 auto;
+  max-width: 355px;
+
+}
+  .bestlife-read-more-button {
+
+  padding: 5px 15px;
+  font-size: 18px !important;
+ 
+}
+
+  .bestlife-section-wrapper{
+    padding:0 0px !important;
+  }
+  .bestlife-article-grid {
+    display: flex !important;
+    flex-wrap: nowrap;
+    gap: 20px;
+  }
+
+  .bestlife-card {
+    flex: 0 0 85%;
+    max-width: 85%;
+  }
+.bestlife-article-scroll-container {
+    padding: 20px;
+}
+}
+{% endstylesheet %}
+
+<div class="bestlife-section-wrapper" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background-color: {{ section.settings.background_color }};">
+  <div class="container {{ section.settings.section_width }}">
+    <div class="bestlife-section-header">
+      {% if section.settings.heading != blank %}
+        <h2 style="text-transform: uppercase;   color: #b4975a;"class="{{ section.settings.heading_size }}">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+    </div>
+
+    {% assign blog = section.settings.blog %}
+    {% if blog.articles_count > 0 %}
+  <div class="bestlife-article-scroll-container">
+  <div class="bestlife-article-grid">
+    {% assign counter = 0 %}
+    {% for article in blog.articles %}
+      {% if article.tags contains "home" %}
+        <div class="bestlife-card">
+          <div class="bestlife-card__image-wrapper">
+            {% assign grid_image = article.metafields.custom.grid_image.value %}
+            {% assign mobile_image = article.metafields.custom.mobile_featured_image.value %}
+            {% if grid_image != blank %}
+              <img src="{{ grid_image | img_url: '720x' }}" alt="{{ article.image.alt | default: article.title }}">
+            {% elsif mobile_image != blank %}
+              <img src="{{ mobile_image | img_url: '720x' }}" alt="{{ article.image.alt | default: article.title }}">
+            {% elsif article.image %}
+              <img src="{{ article.image | img_url: '720x' }}" alt="{{ article.image.alt | default: article.title }}">
+            {% endif %}
+          </div>
+          <div class="bestlife-card__content">
+            <h3 class="bestlife-card__title">{{ article.title }}</h3>
+            {% if section.settings.show_excerpt %}
+              <p class="bestlife-card__excerpt">{{ article.excerpt | strip_html }}</p>
+            {% endif %}
+          </div>
+          {% if section.settings.show_read_more %}
+            <a href="{{ article.url }}" class="bestlife-read-more-button">Read more</a>
+          {% endif %}
+        </div>
+        {% assign counter = counter | plus: 1 %}
+        {% if counter == section.settings.article_limit %}
+          {% break %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BestLife Blog Grid",
+  "tag": "section",
+  "class": "bestlife-section",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "MY BEST LIFE™ HEALTHY LIFESTYLE BLOG"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "h6", "label": "XS" },
+        { "value": "h5", "label": "S" },
+        { "value": "h4", "label": "M" },
+        { "value": "h3", "label": "L" },
+        { "value": "h2", "label": "XL" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Select Blog"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "default": true,
+      "label": "Show Excerpt"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_read_more",
+      "default": true,
+      "label": "Show 'Read More' Button"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "max-w-page",
+      "options": [
+        { "value": "max-w-page", "label": "Page Width" },
+        { "value": "max-w-fluid", "label": "Full Width" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "article_limit",
+      "label": "Number of Articles",
+      "min": 1,
+      "max": 12,
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "BestLife Blog Grid"
+    }
+  ]
+}
+{% endschema %}

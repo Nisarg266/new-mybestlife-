@@ -1,0 +1,299 @@
+{% comment %}
+  Section: Pairwise Recommended Product (A ↔ B)
+  Shows the OTHER product from a fixed pair.
+  - On Product A page → shows Product B
+  - On Product B page → shows Product A
+  Renders nothing on any other product.
+
+  Setup:
+  1) Add this section to your product template.
+  2) In settings, pick Product A and Product B.
+{% endcomment %}
+
+{%- liquid
+  assign a_ref = section.settings.product_a
+  assign b_ref = section.settings.product_b
+
+  # Normalize: product picker may return a product object or a handle string
+  assign a_handle = ''
+  assign b_handle = ''
+  if a_ref != blank
+    assign a_handle = a_ref.handle | default: a_ref
+  endif
+  if b_ref != blank
+    assign b_handle = b_ref.handle | default: b_ref
+  endif
+
+  assign show_section = false
+  assign recommended = nil
+
+  if a_handle != blank and b_handle != blank and product
+    if product.handle == a_handle
+      assign recommended = all_products[b_handle]
+    elsif product.handle == b_handle
+      assign recommended = all_products[a_handle]
+    endif
+
+    if recommended
+      assign show_section = true
+    endif
+  endif
+-%}
+
+{% if show_section and recommended %}
+<section class="pair-recos" id="pair-recos-{{ section.id }}">
+  {% if section.settings.heading != blank %}
+    <h2 class="pair-recos__heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <div class="pair-recos__grid">
+    <article class="pair-card" itemscope itemtype="https://schema.org/Product">
+      <div class="pair-card__media-wrap">
+        <a class="pair-card__media" href="{{ recommended.url }}" aria-label="{{ recommended.title | escape }}">
+          {%- assign img = recommended.featured_media | default: recommended.featured_image -%}
+          {% if img %}
+            {{ img | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 1024px) 520px, (min-width: 640px) 70vw, 92vw', class: 'pair-card__img', alt: recommended.title }}
+          {% else %}
+            <div class="pair-card__placeholder" aria-hidden="true"></div>
+          {% endif %}
+        </a>
+
+        <div class="pair-card__badges">
+          {% render 'product-badges', product: recommended %}
+        </div>
+
+        {% if section.settings.show_quick_add %}
+          {%- assign first_variant = recommended.selected_or_first_available_variant -%}
+          <form method="post" action="/cart/add" class="pair-card__atc" data-product-id="{{ recommended.id }}">
+            <input type="hidden" name="id" value="{{ first_variant.id }}">
+            <button type="submit" class="pair-card__btn" {% unless recommended.available %}disabled aria-disabled="true"{% endunless %}>
+              {% if recommended.available %}
+                {{ section.settings.add_to_cart_label | default: 'Add to cart' | upcase }}
+              {% else %}
+                {{ section.settings.sold_out_label | default: 'Sold out' | upcase }}
+              {% endif %}
+            </button>
+          </form>
+        {% endif %}
+      </div>
+
+      <div class="pair-card__info">
+        {% if section.settings.show_vendor and recommended.vendor %}
+          <div class="pair-card__vendor" itemprop="brand">{{ recommended.vendor }}</div>
+        {% endif %}
+
+        <h3 class="pair-card__title" itemprop="name">
+          <a href="{{ recommended.url }}">{{ recommended.title | escape }}</a>
+        </h3>
+
+        {% if section.settings.show_price %}
+          {%- assign price_var = recommended.selected_or_first_available_variant -%}
+          {%- assign discount_percentage = 0 -%}
+          {%- if price_var.compare_at_price > price_var.price -%}
+            {%- assign discount_percentage = price_var.compare_at_price | minus: price_var.price | times: 100 | divided_by: price_var.compare_at_price -%}
+            {%- assign discount_percentage = discount_percentage | round -%}
+          {%- endif -%}
+
+          <div class="pair-card__price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+            <span class="pair-card__price-current" itemprop="price" content="{{ price_var.price | divided_by: 100.0 }}">
+              {% if section.settings.price_prefix != blank %}{{ section.settings.price_prefix }} {% endif %}{{ price_var.price | money_without_currency }}
+            </span>
+            {% if section.settings.show_compare_at and price_var.compare_at_price > price_var.price %}
+              <s class="pair-card__price-compare">
+                {% if section.settings.price_prefix != blank %}{{ section.settings.price_prefix }} {% endif %}{{ price_var.compare_at_price | money_without_currency }}
+              </s>
+              <span class="price-badge">SAVE {{ discount_percentage }}%</span>
+            {% endif %}
+            <meta itemprop="priceCurrency" content="{{ cart.currency.iso_code }}">
+            <link itemprop="availability" href="https://schema.org/{% if recommended.available %}InStock{% else %}OutOfStock{% endif %}">
+          </div>
+        {% endif %}
+      </div>
+    </article>
+  </div>
+</section>
+{% endif %}
+
+<style>
+  /* ---------- Layout ---------- */
+  .pair-recos {
+    padding: clamp(24px, 5vw, 56px);
+    max-width: 1600px;
+    margin-inline: auto;
+  }
+
+  .pair-recos__heading {
+    font-size: clamp(28px, 4.2vw, 50px) !important;
+    font-weight: 800;
+    margin: 0 0 20px;
+    color: #b4975a;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: .02em;
+  }
+
+  .pair-recos__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  /* ---------- Card ---------- */
+  .pair-card {
+    width: 100%;
+    max-width: 520px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  }
+
+  /* ---------- Media ---------- */
+  .pair-card__media-wrap {
+    position: relative;
+    padding: 12px;
+  }
+
+  .pair-card__badges {
+    position: absolute;
+    top:5px;
+    left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    pointer-events: none;
+  }
+
+  .pair-card__badges .product-card__badges {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .pair-card__media {
+    display: block;
+    background: #f6f6f6;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1; /* Perfect square */
+  }
+
+  .pair-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pair-card__placeholder {
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg, #eee 0 10px, #f7f7f7 10px 20px);
+  }
+
+  /* ---------- Quick Add ---------- */
+  .pair-card__atc {
+    position: absolute;
+    inset-inline: 24px;
+    bottom: 24px;
+    margin: 0;
+  }
+
+  .pair-card__btn {
+    font-size: 18px;
+    font-family:"Fira Sans";
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 4px;
+    border: none;
+    background: #2f2f2f;
+    color: #b4975a;
+    cursor: pointer;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    transition: filter .2s ease;
+  }
+
+  .pair-card__btn:hover { filter: brightness(1.06); }
+  .pair-card__btn[disabled] { opacity: .5; cursor: not-allowed; }
+
+  /* ---------- Info ---------- */
+  .pair-card__info {
+    padding: 8px 14px 16px;
+    display: grid;
+    gap: 6px;
+  }
+
+  .pair-card__vendor {
+    font-size: 12px;
+    opacity: .7;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  .pair-card__title {
+    font-size: clamp(16px, 2.6vw, 20px);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .pair-card__title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .pair-card__title a:hover { opacity: .85; }
+
+  .pair-card__price {
+    color: #111;
+    margin-top: 4px;
+    font-size: 14px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .pair-card__price-current { font-weight: 700; }
+  .pair-card__price-compare { opacity: .6; }
+
+  /* ---------- Responsive tweaks ---------- */
+  @media (min-width: 640px) {
+    .pair-recos__grid { justify-items: stretch; }
+    .pair-card { max-width: 555px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pair-card__btn { transition: none; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Paired Product",
+  "tag": "section",
+  "class": "section--pair-recos",
+  "templates": ["product"],
+  "settings": [
+    { "type": "product", "id": "product_a", "label": "Product A", "info": "Pick the first product in the pair" },
+    { "type": "product", "id": "product_b", "label": "Product B", "info": "Pick the second product in the pair" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "You may also like" },
+    { "type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": false },
+    { "type": "checkbox", "id": "show_price", "label": "Show price", "default": true },
+    { "type": "checkbox", "id": "show_compare_at", "label": "Show compare-at price when discounted", "default": true },
+    { "type": "checkbox", "id": "show_quick_add", "label": "Show Add to cart button", "default": true },
+    { "type": "text", "id": "price_prefix", "label": "Price prefix (e.g., RS.)", "default": "RS." },
+    { "type": "text", "id": "add_to_cart_label", "label": "Add to cart label", "default": "Add to cart" },
+    { "type": "text", "id": "sold_out_label", "label": "Sold out label", "default": "Sold out" }
+  ],
+  "presets": [ { "name": "Paired recommendation" } ]
+}
+{% endschema %}

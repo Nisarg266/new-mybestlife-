@@ -1,0 +1,248 @@
+.section__heading {
+  font-family: 'Fira Sans';
+  /* font-weight: 700; -- COMMENTED OUT - Using theme font settings */
+  font-size: 50px;
+  line-height: 80px;
+  letter-spacing: 1px;
+  text-align: center;
+  vertical-align: middle;
+  color: #231f20;
+  text-transform: capitalize;
+  margin-bottom: 25px;
+}
+
+.price-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.price-current {
+  /* font-weight: 700; -- COMMENTED OUT - Using theme font settings */
+  font-size: 40px;
+  color: #2A2A2A;
+}
+
+.price-compare {
+  color: #999;
+  font-size: 21px;
+  text-decoration: line-through;
+}
+
+.price-badge {
+  background: #d5f4e3;
+  color: #008950;
+  /* font-weight: 600; -- COMMENTED OUT - Using theme font settings */
+  font-size: 16px;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Collection page product card price styling */
+.product-card .price-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.product-card .price-current {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2A2A2A;
+}
+
+.product-card .price-compare {
+  color: #999;
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
+.product-card .price-badge {
+  background: #d5f4e3;
+  color: #008950;
+  font-size: 16px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.product-form__buttons .product-form__submit {
+  grid-column: span 7 / span 7;
+  border-radius: 6px;
+  background: rgba(236, 189, 180, 1);
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: rgba(47, 47, 47, 1);
+  /* font-weight: 600; -- COMMENTED OUT - Using theme font settings */
+  letter-spacing: 0.5px;
+  padding: 16px 24px;
+  text-transform: capitalize;
+  min-height: 48px;
+  transition: all 0.3s ease;
+}
+
+.product-form__buttons .product-form__submit:hover {
+  background: rgba(226, 179, 170, 1);
+  transform: translateY(-1px);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Quantity selector improvements */
+.product-form__quantity {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.product-form__quantity .quantity__wrapper {
+  gap: 0;
+}
+
+.product-form__quantity .quantity__button {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: rgba(47, 47, 47, 1);
+  transition: all 0.2s ease;
+}
+
+.product-form__quantity .quantity__button:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.product-form__quantity .quantity__input {
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  /* font-weight: 600; -- COMMENTED OUT - Using theme font settings */
+  color: rgba(47, 47, 47, 1);
+}
+
+.stock-alert {
+  /* font-weight: 600; -- COMMENTED OUT - Using theme font settings */
+  font-size: 16px;
+  color: #2A2A2A;
+}
+
+.wsp-section__compare img {
+  border-radius: 10px;
+}
+
+.section-trust-indicators__icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  padding: 5px;
+}
+
+.swiper-pagination {
+  bottom: -5px !important;
+  top: var(--swiper-pagination-top, auto);
+  left: 0;
+  width: 100%;
+  position: relative !important;
+  z-index: 99;
+}
+
+.swiper-pagination-bullet-active {
+  background: rgba(241, 206, 199, 0.75) !important;
+}
+
+span.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  opacity: 1;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 768px) {
+  .product-form__buttons .product-form__submit {
+    font-size: 14px;
+    /* font-weight: 600; -- COMMENTED OUT - Using theme font settings */
+    padding: 14px 20px;
+    min-height: 44px;
+  }
+
+  img.main-title-image {
+    width: auto !important;
+    max-width: 200px;
+    height: auto;
+  }
+
+  .section__heading {
+    font-size: 26px;
+    line-height: 40px;
+    letter-spacing: 1px;
+  }
+
+  h2.h2-section-heading-faq {
+    font-size: 24px;
+  }
+}
+
+[data-menu-content="Health Interests"] .header__nav-links-item.header__nav-links-item--link.js-nav-item.h5>a::after {
+  content: "Coming Soon";
+  background-color: red;
+  color: #fff;
+  font-size: 10px;
+  padding: 8px;
+  margin-left: 8px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  display: inline-block;
+  vertical-align: middle;
+  letter-spacing: 1px;
+}
+
+/* Product Accordion Improvements */
+.WI_pD_a_acc_heading {
+  transition: color 0.3s ease;
+}
+
+.WI_pD_a_acc_heading:hover {
+  color: rgba(236, 189, 180, 1);
+}
+
+.WI_pD_a_acc_heading.active {
+  color: rgba(236, 189, 180, 1);
+}
+
+.WI_pD_a_des {
+  padding-top: 15px;
+}
+
+/* Right-aligned accordion improvements */
+.accordion-item {
+  border-bottom-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.accordion-toggle {
+  transition: all 0.3s ease;
+}
+
+.accordion-toggle:hover .accordion-title {
+  color: rgba(236, 189, 180, 1);
+}
+
+.accordion-item.active .accordion-title {
+  color: rgba(236, 189, 180, 1);
+}
+
+.accordion-icon {
+  transition: all 0.3s ease;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

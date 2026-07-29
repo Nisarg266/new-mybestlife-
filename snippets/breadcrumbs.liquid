@@ -1,0 +1,52 @@
+{%- comment -%}
+  Breadcrumb navigation.
+  params: class, alignment ('center'), product_collection
+{%- endcomment -%}
+
+{%- liquid
+  assign crumb_align = alignment | default: ''
+  assign crumb_class = class | default: ''
+  if crumb_align != ''
+    assign crumb_class = crumb_class | append: 'breadcrumbs--' | append: crumb_align
+  endif
+-%}
+
+<nav class="breadcrumbs {{ crumb_class }} {{ template.name }}__breadcrumbs" role="navigation" aria-label="{{- 'theme.breadcrumb.label' | t -}}">
+  <ul class="breadcrumbs__list list-unstyled no-scrollbar" role="list">
+    <li>
+      <a href="{{- routes.root_url -}}" class="breadcrumbs__link">{{- 'theme.breadcrumb.home' | t -}}</a>
+    </li>
+    <li class="breadcrumbs__separator">/</li>
+
+    {%- if product and collection -%}
+      <li>
+        <a href="{{- collection.url -}}" class="breadcrumbs__link">THE SKIN COLLECTION</a>
+      </li>
+      <li class="breadcrumbs__separator">/</li>
+    {%- endif -%}
+
+    {%- if product_collection -%}
+      <li>
+        <a href="{{- product_collection.url -}}" class="breadcrumbs__link">THE SKIN COLLECTION</a>
+      </li>
+      <li class="breadcrumbs__separator">/</li>
+    {%- endif -%}
+
+    {%- if template.name == 'article' -%}
+      <li>
+        <a href="{{- blog.url -}}" class="breadcrumbs__link" title="{{- blog.title | escape -}}">{{- blog.title | escape -}}</a>
+      </li>
+      <li class="breadcrumbs__separator">/</li>
+    {%- endif -%}
+
+    <li>
+      <span>
+        {%- if template.name != 'search' -%}
+          {{- page_title | escape -}}
+        {%- else -%}
+          {{- 'theme.breadcrumb.search' | t -}}
+        {%- endif -%}
+      </span>
+    </li>
+  </ul>
+</nav>

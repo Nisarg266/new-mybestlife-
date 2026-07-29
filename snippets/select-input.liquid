@@ -1,0 +1,48 @@
+{%- comment -%}
+  Custom dropdown select input.
+  params: id, label, name, class, label_class, options, attr, custom, element, swatch_value, shape
+{%- endcomment -%}
+
+{%- liquid
+  assign sel_id = id | default: false
+  assign sel_label = label | default: false
+  assign sel_name = name | default: false
+  assign sel_class = class | default: ''
+  assign sel_label_class = label_class | default: ''
+  assign sel_options = options | default: ''
+  assign sel_element = element | default: 'dropdown-input'
+-%}
+
+<{{- sel_element -}}>
+  {%- assign opt_name = sel_name | split: '[' | last | split: ']' | first -%}
+
+  <select
+    {%- if sel_name %} name="{{- sel_name -}}"{% endif -%}
+    {%- if sel_id %} id="{{- sel_id -}}"{% endif -%}
+    {{ attr }}
+  >{{- sel_options -}}</select>
+
+  <template data-name="option">
+    <li class="dropdown__item" data-item>
+      <button type="button" class="dropdown__item-button"></button>
+    </li>
+  </template>
+
+  <template data-name="details">
+    <details class="dropdown disclosure-has-popup no-js-hidden">
+      <summary class="dropdown__summary">
+        {%- if sel_label -%}
+          <div class="dropdown__label">{{- sel_label | escape -}}</div>
+        {%- endif -%}
+        <div class="dropdown__button" data-option-name="{{- opt_name -}}">
+          {% if swatch_value %}{% render 'swatch', swatch: swatch_value, shape: shape %}{% endif %}
+          <span data-label>{{- sel_label | escape -}}</span>
+          {% render 'icon', icon_name: 'theme-chevron-down', class: 'icon' %}
+        </div>
+      </summary>
+      <div class="dropdown__list">
+        <ul class="dropdown__items list-unstyled" data-options></ul>
+      </div>
+    </details>
+  </template>
+</{{- sel_element -}}>

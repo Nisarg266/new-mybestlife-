@@ -1,0 +1,360 @@
+{% schema %}
+{
+  "name": "Launching Soon Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+     {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading Text",
+      "default": "WE ARE LAUNCHING IN"
+    },
+    {
+      "type": "text",
+      "id": "launch_date",
+      "label": "Launch Date (YYYY-MM-DDTHH:MM:SSZ)",
+      "default": "2025-12-31T00:00:00Z"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Description",
+      "default": "Are you ready to get something new from us? Then subscribe the newsletter to get latest updates!"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email Placeholder",
+      "default": "Enter your email"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Subscribe"
+    },
+    {
+  "type": "color",
+  "id": "heading_color",
+  "label": "Heading Text Color",
+  "default": "#ffffff"
+},
+{
+  "type": "color",
+  "id": "overlay_color",
+  "label": "Overlay Color",
+  "default": "#2A2A2A"
+},
+{
+  "type": "range",
+  "id": "overlay_opacity",
+  "label": "Overlay Opacity",
+  "min": 0,
+  "max": 1,
+  "step": 0.1,
+  "default": 0.4
+},
+{
+  "type": "color",
+  "id": "countdown_bg",
+  "label": "Countdown Background Color",
+  "default": "rgba(255,255,255,0.1)"
+},
+{
+  "type": "color",
+  "id": "description_color",
+  "label": "Description Text Color",
+  "default": "#ffffff"
+},
+{
+  "type": "color",
+  "id": "input_bg",
+  "label": "Input Background Color",
+  "default": "#ffffff"
+},
+{
+  "type": "color",
+  "id": "input_text_color",
+  "label": "Input Text Color",
+  "default": "#2A2A2A"
+},
+{
+  "type": "color",
+  "id": "button_bg",
+  "label": "Button Background Color",
+  "default": "#54BFBF"
+},
+{
+  "type": "color",
+  "id": "button_text_color",
+  "label": "Button Text Color",
+  "default": "#ffffff"
+}
+
+  ],
+  "presets": [
+    {
+      "name": "Launching Soon Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section
+   id="launch100"
+
+  class="launching-soon-section"
+  style="
+    background-image: url('{{ section.settings.background_image | img_url: 'master' }}');
+  "
+>
+  <div
+    class="overlay"
+    style="background-color: {{ section.settings.overlay_color }}; opacity: {{ section.settings.overlay_opacity }};"
+  ></div>
+  <div class="container">
+    <h2 style="color: {{ section.settings.heading_color }}">{{ section.settings.heading }}</h2>
+
+    <div class="countdown" id="countdown-timer">
+      <div style="background-color: {{ section.settings.countdown_bg }};">
+        <span id="days">0</span><small>Days</small>
+      </div>
+      <div style="background-color: {{ section.settings.countdown_bg }};">
+        <span id="hours">0</span><small>Hours</small>
+      </div>
+      <div style="background-color: {{ section.settings.countdown_bg }};">
+        <span id="minutes">0</span><small>Minutes</small>
+      </div>
+      <div style="background-color: {{ section.settings.countdown_bg }};">
+        <span id="seconds">0</span><small>Seconds</small>
+      </div>
+    </div>
+
+    <p class="description" style="color: {{ section.settings.description_color }} !important;">
+      {{ section.settings.description }}
+    </p>
+
+    <form method="post" action="/contact#contact_form" accept-charset="UTF-8" class="newsletter-form" id="contact_form">
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
+
+      <input
+        type="email"
+        name="contact[email]"
+        placeholder="{{ section.settings.email_placeholder }}"
+        required
+        style="background-color: {{ section.settings.input_bg }}; color: {{ section.settings.input_text_color }};"
+      >
+
+      <button
+        type="submit"
+        style="background-color: {{ section.settings.button_bg }}; color: {{ section.settings.button_text_color }};"
+      >
+        {{ section.settings.button_label | default: 'Subscribe' }}
+      </button>
+    </form>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const countdown = document.getElementById('countdown-timer');
+    const launchDate = new Date("{{ section.settings.launch_date }}").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance < 0) {
+        countdown.innerHTML = '<p>We have launched!</p>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  });
+</script>
+
+<style>
+    .launching-soon-section .newsletter-form input[type="email"]:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* Mobile-specific background image */
+  @media screen and (max-width: 767px) {
+    .launching-soon-section {
+      background-image: url('{{ section.settings.background_image_mobile | img_url: 'master' }}') !important;
+      background-size: cover !important;
+      padding:100px 40px;
+    }
+  }
+  
+    .launching-soon-section {
+        position: relative;
+    background-size: cover !important; /* prevent cropping */
+    background-repeat: no-repeat;
+    background-position: center;
+   
+    text-align: center;
+    color: white;
+    max-width: 1800px;
+    margin: 0 auto;
+    }
+
+    .launching-soon-section .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 0;
+      display: block;
+    }
+
+    .launching-soon-section .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .launching-soon-section h2 {
+   font-size: clamp(28px, 5vw, 50px) !important;
+      font-weight: 500 !important;
+      margin-bottom: 30px;
+      color: white;
+    }
+
+    .launching-soon-section .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 26px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .launching-soon-section .countdown div {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 24px;
+      border-radius: 8px;
+    }
+
+    .launching-soon-section .countdown span {
+      font-size: 36px;
+      font-weight: bold;
+      display: block;
+    }
+
+    .launching-soon-section .description {
+      font-size: 20px;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .launching-soon-section .newsletter-form {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .launching-soon-section .newsletter-form input[type="email"] {
+      padding: 12px 20px;
+      flex-grow: 1;
+      border: none;
+      min-width: 250px;
+      font-size: 16px;
+      border-radius:4px;
+    }
+
+    .launching-soon-section .newsletter-form button {
+      padding: 12px 28px;
+      background-color: #2a2a2a;
+      border-radius:4px;
+
+      color: #b4975a;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+      /* Responsive adjustments for mobile */
+    @media screen and (max-width: 767px) {
+        .launching-soon-section .countdown {
+      display: grid;
+     grid-template-columns: repeat(2, 1fr); /* 2 by 2 layout */
+
+      justify-items: center;
+    }
+      .launching-soon-section .countdown {
+        grid-template-columns: repeat(2, 1fr); /* 2 by 2 layout */
+      }
+
+      .launching-soon-section h2 {
+        font-size: 32px;
+      }
+
+      .launching-soon-section .description {
+        font-size: 18px;
+      }
+
+      .launching-soon-section .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .launching-soon-section .newsletter-form input,
+      .launching-soon-section .newsletter-form button {
+        width: 100%;
+      }
+    }
+
+    @media screen and (min-width: 1400px) {
+      .launching-soon-section {
+        padding: 120px 60px;
+      }
+
+      .launching-soon-section h2 {
+        font-size: 52px;
+      }
+
+      .launching-soon-section .description {
+        font-size: 22px;
+      }
+
+      .launching-soon-section .newsletter-form input[type="email"],
+      .launching-soon-section .newsletter-form button {
+        font-size: 18px;
+      }
+
+      .launching-soon-section .countdown span {
+        font-size: 44px;
+      }
+    }
+</style>

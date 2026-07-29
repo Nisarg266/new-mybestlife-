@@ -1,0 +1,480 @@
+{% schema %}
+{
+  "name": "Testimonials Section Home",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Take It From Them..."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real Reviews from Real People. Trust is built from the words of those who love our products."
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "see_reviews_button_label",
+      "label": "See Reviews Button Label",
+      "default": "See Reviews"
+    },
+    {
+      "type": "url",
+      "id": "see_reviews_button_link",
+      "label": "See Reviews Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Reviewer Question",
+          "default": "What changed for you after trying this?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "It has changed the way I feel about my skin."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Reviewer Name",
+          "default": "Jane Doe"
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Reviewer Role",
+          "default": "Verified Customer"
+        },
+        {
+          "type": "image_picker",
+          "id": "reviewer_image",
+          "label": "Reviewer Image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Testimonials Section Home",
+      "category": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<div class="custom-testimonial-section" style="background-image: url('{{ section.settings.bg_image | image_url }}');">
+  <div class="custom-white-overlay"></div>
+  <div class="custom-header">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+  </div>
+
+  <div class="custom-swiper-wrapper">
+    <div class="swiper custom-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <p class="reviewer-question">“{{ block.settings.question }}”</p>
+              <p class="testimonial-text">{{ block.settings.answer }}</p>
+
+              <div class="testimonial-footer">
+                <div class="reviewer-info">
+                  <img
+                    src="{{ block.settings.reviewer_image | image_url: width: 50 }}"
+                    alt="Reviewer"
+                    class="reviewer-img"
+                  >
+                  <div class="reviewer-details">
+                    <div class="reviewer-stars">
+                      {% for i in (1..5) %}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="#FFB800"
+                          viewBox="0 0 24 24"
+                          width="16"
+                          height="16"
+                        >
+                          <path d="M12 .587l3.668 7.57 8.332 1.151-6.064 5.905 1.516 8.287L12 18.896l-7.452 4.604 1.516-8.287-6.064-5.905 8.332-1.151z"/>
+                        </svg>
+                      {% endfor %}
+                    </div>
+                    <span class="reviewer-name">{{ block.settings.name }}</span>
+                  </div>
+                </div>
+                <div class="verified-badge">VERIFIED</div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% if section.settings.see_reviews_button_label != blank %}
+      <div class="see-reviews-button">
+        <a href="{{ section.settings.see_reviews_button_link | default: '#' }}" class="see-reviews-link">
+          {{ section.settings.see_reviews_button_label }}
+        </a>
+      </div>
+    {% endif %}
+    <div class="swiper-pagination custom-swiper-pagination"></div>
+  </div>
+</div>
+
+<style>
+                     .custom-testimonial-section {
+                    position: relative;
+                    padding: 3rem 1rem;
+                    background-size: cover;
+                    background-position: center;
+                  }
+
+                  .custom-white-overlay {
+                    position: absolute;
+                    inset: 0;
+                    background-color: rgba(255, 255, 255, 0.95); /* white semi-transparent */
+                    z-index: 1;
+                  }
+
+                  .custom-header {
+                    position: relative;
+                    z-index: 2;
+                    text-align: center;
+                    color: #2A2A2A;
+                    max-width: 800px;
+                    margin: 0 auto 2rem;
+                  }
+
+                  .custom-header h2 {
+                    font-size: 2rem;
+                    font-weight: bold;
+                    margin-bottom: 0.5rem;
+                    color:#3D3935;
+                  }
+
+                  .custom-header p {
+                    font-size: 1rem;
+                  }
+
+                  .custom-swiper-wrapper {
+                    position: relative;
+                    z-index: 2;
+                    max-width: 100%;
+                  }
+
+                  .swiper.custom-swiper {
+                    padding-bottom: 2rem;
+                  }
+
+                  .testimonial-card {
+                    background: white;
+                    border-radius: 50px;
+                    padding: 1.5rem;
+                    max-width: 90%;
+                    margin: auto;
+                    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+                    min-height: 200px;
+                  }
+
+                  .reviewer-question {
+                    font-weight: 600;
+                    font-size: 1rem;
+                    margin-bottom: 0.75rem;
+                    color: #333;
+                  }
+
+                  .testimonial-text {
+                    font-size: 0.95rem;
+                    color: #555;
+                    margin-bottom: 1rem;
+                  }
+
+                  .testimonial-footer {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 1rem;
+                  }
+
+                  .reviewer-info {
+                    display: flex;
+                    align-items: center;
+                  }
+
+                  .reviewer-img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 9999px;
+                    object-fit: cover;
+                    margin-right: 0.75rem;
+                  }
+
+                  .reviewer-details {
+                    display: flex;
+                    flex-direction: column;
+                  }
+
+                  .reviewer-name {
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                  }
+
+
+                  .reviewer-stars {
+                    display: flex;
+                    gap: 2px;
+                    margin: 0.25rem 0;
+                  }
+
+                  .verified-badge {
+                    background-color:#B4975A;
+                    color: #F7F1E9;
+                    padding: 0.4rem 0.75rem;
+                    border-radius: 9999px;
+                    font-size: 1rem;
+                    font-weight: 500;
+                  }
+
+                  .swiper-pagination.custom-swiper-pagination {
+                    text-align: center;
+                    margin-top: 1rem;
+                  }
+
+                  .swiper-pagination-bullet {
+                    background: #3D3935;
+                    opacity: 1;
+                  }
+
+                  .swiper-pagination-bullet-active {
+                    background: #B4975A;
+                  }
+
+                  /* Mobile-specific */
+                  @media screen and (max-width: 768px) {
+                    .swiper-slide {
+                      display: flex;
+                      justify-content: center;
+                    }
+
+                    .testimonial-card {
+                      width: 100%;
+                      max-width: calc(100dvw - 20px) !important;
+                    }
+                  }
+              .custom-testimonial-section {
+                position: relative;
+                background-size: cover;
+                background-position: center;
+                padding: 4rem 1rem;
+                overflow: hidden;
+              }
+
+              .custom-white-overlay {
+                position: absolute;
+                inset: 0;
+                background-color: rgba(255, 255, 255, 0.65); /* White with 85% opacity */
+                backdrop-filter: blur(4px); /* 👈 This adds the frosted-glass effect */
+                -webkit-backdrop-filter: blur(4px);
+                z-index: 1;
+                display: block !important;
+              }
+
+              /* Ensure content goes above the overlay */
+              .custom-header,
+              .custom-swiper-wrapper {
+                position: relative;
+                z-index: 2;
+              }
+              .see-reviews-button {
+              text-align: center;
+              margin-bottom: 0.5rem;
+              position: relative;
+              z-index: 2;
+            }
+
+            .see-reviews-link {
+              background-color: #B4975A;
+              color: white;
+              font-size: 0.9rem;
+              padding: 0.5rem 1.25rem;
+              border-radius: 9999px;
+              font-weight: 600;
+              text-decoration: none;
+              transition: background-color 0.3s ease;
+              display: inline-block;
+            }
+
+            .see-reviews-link:hover {
+              background-color: #c8aa4a;
+            }
+            .swiper-pagination.custom-swiper-pagination {
+            text-align: center;
+            margin-top: 2.5rem; /* or adjust as needed */
+            position: relative;
+            z-index: 2;
+          }
+        @media screen and (min-width: 1300px) {
+           .reviewer-stars svg {
+      margin: 0;
+      padding: 0;
+      width: 14px; /* smaller stars if needed */
+      height: 14px;
+    }
+               .custom-testimonial-section {
+
+                    padding: 5rem 3rem;
+
+                  }
+        /* Bigger header */
+        .custom-header h2 {
+          font-size: 3.5rem;
+          line-height: 1.1;
+        }
+
+
+           .reviewer-img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 9999px;
+                    object-fit: cover;
+                    margin-right: 0.75rem;
+                  }
+
+        .custom-header p {
+          font-size: 2rem;
+          line-height: 1.4;
+        }
+
+        /* Testimonial card bigger and well padded */
+        .testimonial-card {
+          max-width: 90%;
+          padding: 2rem 2.5rem;
+          min-height: 350px;
+          font-size: 1.5rem;
+          box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Testimonial text larger with line height */
+        .testimonial-text {
+          font-size: 1.5rem;
+          line-height: 1.6;
+          margin-bottom: 1.5rem;
+          margin-top:-3%;
+        }
+
+        /* Reviewer question bigger */
+        .reviewer-question {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+        }
+
+        /* Reviewer details bigger */
+        .reviewer-name {
+          font-size: 1.5rem;
+          font-weight: 700;
+        }
+
+
+        /* Closer stars and reviewer name with bigger stars */
+        .reviewer-info {
+          gap: 6px;
+        }
+        .reviewer-stars {
+          gap: 3px;
+          margin-left: -2px;
+        }
+
+        /* Verified badge larger */
+        .verified-badge {
+          font-size: 1.5rem;
+          padding: 0.75rem 1.25rem;
+        }
+
+        /* Bigger See Reviews button */
+        .see-reviews-link {
+          font-size: 2rem;
+          padding: 0.5rem 3rem;
+          margin-top:10px;
+        }
+      }
+      .reviewer-details-inline {
+      display: flex;
+      align-items: center;
+      gap: 4px; /* reduce gap or even use 2px or 0px for overlap */
+    }
+
+    .reviewer-name {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin: 0;
+      padding: 0;
+      line-height: 1;
+      color:#4A5D44;
+    }
+
+    .reviewer-stars svg {
+      margin: 0;
+      padding: 0;
+      width: 12px; /* smaller stars if needed */
+      height: 12px;
+    }
+    .testimonial-card {
+    background: white;
+    border-radius: 50px;
+    padding: 1.5rem;
+
+    margin: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.custom-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      pagination: {
+        el: '.custom-swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+      },
+    });
+  });
+</script>

@@ -1,0 +1,102 @@
+{% schema %}
+{
+  "name": "Transform",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "TRANSFORM YOUR SKIN WITH NUTRADEW™"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Transform"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.full-height-center-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 60px 80px;
+  box-sizing: border-box;
+}
+
+.full-height-center-section .content-wrapper {
+  width: 100%;
+  max-width: 1600px;
+  margin: auto;
+}
+
+.section-heading {
+  font-size: clamp(28px, 5vw, 50px) !important;
+  line-height: 1.2;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #b4975a;
+}
+
+.section-image {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Wrapper to allow horizontal scroll on mobile */
+.image-scroll-wrapper {
+      display: flex
+;
+    justify-content: center;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.image-scroll-wrapper img {
+  display: block;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .full-height-center-section {
+    padding: 20px;
+  }
+
+  .section-heading {
+    font-size: clamp(20px, 5vw, 32px) !important;
+  }
+.image-scroll-wrapper {
+  display: flex;
+  justify-content: left;
+}
+  /* Make image bigger and scrollable */
+  .image-scroll-wrapper img {
+    width: 200%;
+    max-width: none;
+  }
+}
+</style>
+
+{%- assign s4_settings = section.settings -%}
+{%- assign s4_img = s4_settings.section_image -%}
+
+<section class="full-height-center-section">
+  <div class="content-wrapper">
+    <h2 class="section-heading">{{ s4_settings.heading }}</h2>
+    {%- unless s4_img == blank -%}
+      <div class="image-scroll-wrapper">
+        <img style="width: 100%" src="{{ s4_img | image_url: width: 1600 }}"
+             alt="Section Image"
+             class="section-image" />
+      </div>
+    {%- endunless -%}
+  </div>
+</section>

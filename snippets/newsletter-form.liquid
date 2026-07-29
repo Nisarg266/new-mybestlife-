@@ -1,0 +1,52 @@
+{%- comment -%}
+  Newsletter signup form.
+  params: namespace, js_class, submit_button_text
+{%- endcomment -%}
+
+{%- liquid
+  assign form_css = 'newsletter-form ' | append: js_class
+  assign form_ns = namespace | default: 'Newsletter'
+  assign default_btn_text = 'theme.newsletter.button_label' | t
+  assign btn_text = submit_button_text | default: default_btn_text
+-%}
+
+{%- form 'customer', id: form_ns, class: form_css -%}
+  <input type="hidden" name="contact[tags]" value="newsletter">
+
+  <div class="newsletter__controls">
+    {%- liquid
+      assign lbl = 'theme.newsletter.label' | t
+      assign ph = 'theme.newsletter.email_placeholder' | t
+      capture field_attrs
+        echo 'aria-required="true" '
+        echo 'autocapitalize="off" '
+        echo 'autocomplete="email" '
+        if form.errors
+          echo 'autofocus '
+        endif
+      endcapture
+      if form.errors
+        assign status_msg = form.errors.translated_fields.email | capitalize | append: ' ' | append: form.errors.messages.email
+        assign has_err = true
+      elsif form.posted_successfully?
+        assign status_msg = 'theme.newsletter.success' | t
+      endif
+      assign field_id = 'NewsletterForm--' | append: section.id
+      render 'text-input', id: field_id, label: lbl, type: 'email', name: 'contact[email]', placeholder: ph, attr: field_attrs, message: status_msg, has_error: has_err, required: true, value: form.email, hide_label: true, class: 'newsletter__field'
+    -%}
+
+    {% if settings.show_newsletter_form_terms %}
+      {%- assign terms_html = settings.newsletter_form_terms | replace: '<p>', '' | replace: '</p>', '' -%}
+      <div class="newsletter__terms">
+        <div class="checkbox checkbox--plain">
+          <input type="checkbox" name="terms" required id="Terms-Conditions-{{- section.id -}}">
+          <label for="Terms-Conditions-{{- section.id -}}">{{- terms_html -}}</label>
+        </div>
+      </div>
+    {% endif %}
+
+    <button type="submit" class="button-reset newsletter__button" id="Subscribe-{{- section.id -}}" name="commit" aria-label="{{- btn_text -}}">
+      {{- btn_text -}}
+    </button>
+  </div>
+{%- endform -%}

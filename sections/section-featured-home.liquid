@@ -1,0 +1,300 @@
+{% schema %}
+{
+  "name": "Health Icon Grid Section",
+  "tag": "section",
+  "class": "health-icon-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#fefcf9"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 160,
+      "step": 10,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 160,
+      "step": 10,
+      "default": 80
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Side Image"
+    },
+    {
+      "type": "textarea",
+      "id": "heading1",
+      "label": "Main Heading",
+      "default": "OWN YOUR HEALTH."
+    },
+    {
+      "type": "text",
+      "id": "heading2",
+      "label": "Main Heading2",
+      "default": "LIVE YOUR BEST LIFE."
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_1",
+      "label": "Icon 1"
+    },
+    {
+      "type": "text",
+      "id": "label_1",
+      "label": "Icon 1 Label",
+      "default": "Clean. Premium. Proven."
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_2",
+      "label": "Icon 2"
+    },
+    {
+      "type": "text",
+      "id": "label_2",
+      "label": "Icon 2 Label",
+      "default": "Clinically Backed Formulas"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_3",
+      "label": "Icon 3"
+    },
+    {
+      "type": "text",
+      "id": "label_3",
+      "label": "Icon 3 Label",
+      "default": "Third-Party Tested for Trust"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_4",
+      "label": "Icon 4"
+    },
+    {
+      "type": "text",
+      "id": "label_4",
+      "label": "Icon 4 Label",
+      "default": "Targeted for Real Results"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_5",
+      "label": "Icon 5"
+    },
+    {
+      "type": "text",
+      "id": "label_5",
+      "label": "Icon 5 Label",
+      "default": "Trusted by Health Experts"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_6",
+      "label": "Icon 6"
+    },
+    {
+      "type": "text",
+      "id": "label_6",
+      "label": "Icon 6 Label",
+      "default": "Built for Modern Lifestyles"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Health Icon Grid Section"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="health-section"
+  style="background-color: {{ section.settings.background_color }};
+         padding-top: {{ section.settings.padding_top }}px;
+         padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="health-container">
+    <div class="health-left">
+      {% if section.settings.left_image %}
+        <img src="{{ section.settings.left_image | img_url: 'master' }}" alt="Health Image">
+      {% endif %}
+    </div>
+    <div class="health-right">
+      <h2 class="gold-text">
+        {{ section.settings.heading1 }}<br>
+        {{ section.settings.heading2 }}
+      </h2>
+
+      <div class="icon-grid">
+        {% for i in (1..6) %}
+          {% assign icon_id = 'icon_' | append: i %}
+          {% assign label_id = 'label_' | append: i %}
+          {% assign icon = section.settings[icon_id] %}
+          {% assign label = section.settings[label_id] %}
+          <div class="icon-item">
+            <div class="icon-circle">
+              {% if icon %}
+                <img src="{{ icon | image_url: width: 100 }}" alt="Icon {{ i }}">
+              {% endif %}
+            </div>
+            <p>{{ label }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.health-section {
+ 
+    max-width: 100%;
+      margin-left: auto;
+    margin-right: auto;
+
+}
+
+.health-container {
+  display: flex;
+  flex-wrap: nowrap;
+ max-width: var(--max-width);
+      margin-left: auto;
+   margin-right: auto;
+   gap: 40px;
+    padding:60px clamp(16px, 11vw, 150px);
+}
+
+.health-left,
+.health-right {
+  flex: 1 1 50%;
+}
+
+.health-left img {
+  width: 100%;
+  height: 500px;
+
+  object-fit: cover;
+  border-radius: 12px;
+}
+.health-right {
+  
+}
+.health-right h2 {
+  font-size: 28px;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 50px;
+  color: #000;
+  line-height: 1.3;
+}
+
+.health-right .gold-text {
+  color: #b4975a;
+}
+
+.icon-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 50px;
+}
+
+.icon-item {
+  text-align: center;
+}
+
+.icon-circle {
+  background-color: #b4975a;
+  border-radius: 50%;
+  width: 84px;
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+
+.icon-circle img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+}
+
+.icon-item p {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  color: #2a2a2a;
+  line-height: 1.4;
+}
+
+@media screen and (max-width: 768px) {
+.icon-item {
+  text-align: center;
+      margin-left: 15px;
+}
+ .health-section{
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+  .health-container {
+     padding: 20px clamp(16px, 4vw, 24px);
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .health-left,
+  .health-right {
+    flex: 1 1 100%;
+  }
+
+  .health-left img{
+      height:auto;              /* stop fighting fixed heights */
+    aspect-ratio: 16 / 9;     /* gives a nice tall shape */
+    min-height: 260px;        /* safety floor */
+    object-fit: cover;
+    object-position: 50% 20%;
+    max-height:none;          /* kill any stray caps */
+  }
+
+  .icon-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 30px;
+  }
+
+  .health-right h2 {
+    text-align:center;
+    font-size: 22px;
+     margin: 8px 0 24px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .health-section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  .health-left img {
+    height: 220px;
+  }
+
+  .icon-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .icon-item p {
+    font-size: 14px;
+  }
+}
+</style>

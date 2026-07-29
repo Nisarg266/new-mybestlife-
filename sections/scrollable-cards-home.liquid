@@ -1,0 +1,349 @@
+{% schema %}
+{
+  "name": "Four Grid Cards Enhanced",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Section Heading",
+      "default": "Explore Our Categories"
+    },
+    {
+      "type": "range",
+      "id": "section_heading_font_size",
+      "label": "Section Heading Font Size (px)",
+      "min": 20,
+      "max": 60,
+      "step": 1,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "section_padding_top",
+      "label": "Section Padding Top (px)",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "section_padding_bottom",
+      "label": "Section Padding Bottom (px)",
+      "min": 20,
+      "max": 120,
+      "step": 10,
+      "default": 60
+    },
+    {
+      "type": "color",
+      "id": "section_background_color",
+      "label": "Section Background Color",
+      "default": "#f7f1e9"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "card_heading",
+          "label": "Card Heading",
+          "default": "Category Title"
+        },
+        {
+          "type": "text",
+          "id": "card_subheading",
+          "label": "Card Subheading",
+          "default": "Short description or detail"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_flag",
+          "label": "Flag Image"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size",
+          "label": "Heading Font Size (px)",
+          "min": 16,
+          "max": 36,
+          "step": 1,
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "subheading_font_size",
+          "label": "Subheading Font Size (px)",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "default": 14
+        },
+        {
+          "type": "range",
+          "id": "padding_vertical",
+          "label": "Vertical Padding (Top & Bottom)",
+          "min": 10,
+          "max": 80,
+          "step": 5,
+          "default": 30
+        },
+        {
+          "type": "color",
+          "id": "card_background",
+          "label": "Card Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "image_picker",
+          "id": "card_image",
+          "label": "Card Image"
+        },
+        {
+          "type": "url",
+          "id": "card_link",
+          "label": "Card Link"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Grid Cards 2x2",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<section
+  class="grid-card-section"
+  style="padding-top: {{ section.settings.section_padding_top }}px; padding-bottom: {{ section.settings.section_padding_bottom }}px; background-color: {{ section.settings.section_background_color }};"
+>
+  <h2
+    class="section-heading"
+    style="font-size: {{ section.settings.section_heading_font_size }}px;"
+  >
+    {{ section.settings.section_heading }}
+  </h2>
+
+  <div class="grid-card-wrapper">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.card_link }}" class="grid-card" style="padding-top: {{ block.settings.padding_vertical }}px; background-color: {{ block.settings.card_background }};">
+        <div class="grid-card-inner">
+          <div class="grid-card-top">
+            <h3 class="grid-card-title" style="font-size: {{ block.settings.heading_font_size }}px;">
+              {{ block.settings.card_heading }}
+            </h3>
+            <p class="grid-card-subheading" style="font-size: {{ block.settings.subheading_font_size }}px;">
+              {{ block.settings.card_subheading }}
+            </p>
+          </div>
+
+          {% if block.settings.card_image %}
+            <div class="grid-card-img-wrapper">
+              {% if block.settings.card_flag %}
+                <img src="{{ block.settings.card_flag | image_url: width: 40 }}" alt="flag" class="flag-overlay" />
+              {% endif %}
+              <img src="{{ block.settings.card_image | image_url: width: 800 }}" alt="{{ block.settings.card_heading }}" class="grid-card-img" />
+              <span class="grid-card-arrow"></span>
+            </div>
+          {% endif %}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+.grid-card-section {
+  background-color: #f7f1e9;
+  text-align: center;
+}
+.section-heading {
+  font-family: 'Fira Sans', 'Inter', sans-serif;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #b4975a;
+  text-transform: uppercase;
+}
+.grid-card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  justify-items: center;
+  padding: 60px clamp(16px, 11vw, 150px);
+}
+.grid-card {
+  background: #fff;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.grid-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.grid-card:hover .grid-card-img {
+  transform: scale(1.05);
+}
+
+.grid-card-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.grid-card-top {
+  text-align: left;
+  padding: 0 20px;
+}
+.grid-card-title {
+  font-family: 'Fira Sans', 'Inter', sans-serif;
+  margin-bottom: 6px;
+  font-weight: 400;
+}
+.grid-card-subheading {
+  font-family: 'Fira Sans', 'Inter', sans-serif;
+  color: #666;
+  margin-bottom: 10px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+.grid-card-img-wrapper {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  margin-top: 20px;
+}
+.grid-card-img {
+  padding-top:20px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 1.8s ease-out;
+}
+.flag-overlay {
+  position: absolute;
+  top: 3%; /* Moves it 25% of its own height above the image */
+  right: 8%; /* Moves it 25% of its own width outside to the right */
+  width: 40px;
+  height: auto;
+  border-radius: 0; /* Rectangle */
+
+  z-index: 3;
+  object-fit: contain;
+}
+
+
+.grid-card-arrow {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #2a2a2a;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.grid-card-arrow::after {
+  content: "→";
+  color: white;
+  font-size: 1.3rem;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+.grid-card:hover .grid-card-arrow::after {
+  animation: arrow-loop 0.6s ease-in-out forwards;
+}
+@keyframes arrow-loop {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(16px);
+    opacity: 0;
+  }
+  41% {
+    transform: translateX(-16px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .section-heading {
+    padding: 10px;
+  }
+  .grid-card-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0px clamp(16px, 4vw, 24px);
+  }
+  .grid-card-img {
+  padding-top:20px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 1.8s ease-out;
+}
+  .grid-card-subheading {
+    display: none;
+  }
+  .grid-card-title {
+      margin-bottom: 0px;
+
+    font-size: 14px !important;
+  }
+
+  .flag-overlay {
+    width: 40px;
+    top: 6px;
+    right: 6px;
+  }
+  .grid-card-arrow {
+    width: 28px;
+    height: 28px;
+    bottom: 8px;
+    left: 8px;
+  }
+  .grid-card-arrow::after {
+    font-size: 1rem;
+  }
+}
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .grid-card-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0px 40px; 
+  }
+  .grid-card {
+      max-width: 100%;
+  }
+}
+
+</style>

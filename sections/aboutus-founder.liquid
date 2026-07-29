@@ -1,0 +1,168 @@
+{% comment %}
+  Founder Story Section (Full Background with Overlay + Founder Image on Mobile)
+{% endcomment %}
+<div class="abv">
+<section id="meet-mind-{{ section.id }}" class="meet-mind-section" style="background-image: url({{ section.settings.bg_image | img_url: 'master' }});">
+  <div class="meet-mind-overlay">
+    <h2 class="meet-mind-heading">{{ section.settings.heading }}</h2>
+
+{%- unless section.settings.founder_image == blank -%}
+  <div class="meet-mind-founder-mobile">
+    {{ section.settings.founder_image
+      | image_url: width: 1200
+      | image_tag:
+        widths: "360,480,720,960,1200",
+        sizes: "(max-width: 768px) 100vw, 720px",
+        alt: "Founder",
+        loading: "lazy" }}
+  </div>
+{%- endunless -%}
+
+
+    <div class="meet-mind-text">{{ section.settings.text }}</div>
+    <p class="meet-mind-author">{{ section.settings.author }}</p>
+  </div>
+</section>
+</div>
+
+{% schema %}
+{
+  "name": "Founder Story",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "founder_image",
+      "label": "Founder Image (Mobile Only)"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "MEET THE MIND BEHIND MY BEST LIFE™"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Content Text",
+      "default": "<p>As a doctor deeply invested in health and wellness, I've witnessed firsthand...</p>"
+    },
+    {
+      "type": "text",
+      "id": "author",
+      "label": "Author",
+      "default": "–Dr. Vikram Shetty"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Founder Story",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .meet-mind-section {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 600px;
+    background-size: contain;
+    background-repeat:no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: stretch;
+  }
+
+  .abv{
+    max-width: 100%;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #b49566; /* gold background */
+    display: flex;
+    align-items: stretch;
+  }
+
+.meet-mind-founder-mobile img{
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100vw; /* don’t exceed viewport on mobile */
+  object-fit: cover; /* keeps the image sharp if cropped by container */
+}
+
+  /* Founder image hidden by default */
+  .meet-mind-founder-mobile {
+    max-width:100%;
+    display: none;
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .meet-mind-overlay {
+    max-width: 700px;
+    margin-left: 492px;
+    flex: 0 0 60%;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .meet-mind-author {
+    font-weight: bold;
+    color:#2a2a2a !important;
+    margin-top: 20px;
+  }
+
+  .meet-mind-text p {
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.6;
+    color:#2a2a2a !important;
+    margin-bottom: 20px;
+  }
+
+  .meet-mind-text {
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 1.6;
+    color:#2a2a2a !important;
+    margin-bottom: 20px;
+  }
+
+  .meet-mind-heading {
+
+    font-size: clamp(28px, 5vw, 50px) !important;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 20px;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .meet-mind-heading {
+      max-width:355px;
+      text-align:center;
+    }
+    .meet-mind-section {
+      flex-direction: column;
+      background-image: none !important; /* Hides background image */
+      background-color: #b49566; /* Keeps gold background */
+    }
+    .meet-mind-overlay {
+      max-width: 100%;
+      margin-left: 0px;
+      padding: 20px 20px;
+    }
+
+    /* Show founder image only on mobile */
+    .meet-mind-founder-mobile {
+      display: block;
+    }
+  }
+</style>

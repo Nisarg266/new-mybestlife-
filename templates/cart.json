@@ -1,0 +1,40 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-cart",
+      "settings": {
+        "button_url": "shopify://collections/all",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "13608375-b086-4634-863b-df6b4d0bc7ca": {
+      "type": "product-recommendations",
+      "settings": {
+        "layout": "layout-1",
+        "enable_slideshow_overflow": false,
+        "heading": "You may also like",
+        "heading_size": "h3",
+        "subheading": "",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "button--filled",
+        "show_navigation_arrows": false,
+        "slider_autoplay": 3,
+        "tabs_button_style": "tab-btn-filled",
+        "max_products": 8,
+        "show_unavailable_products": true,
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "13608375-b086-4634-863b-df6b4d0bc7ca"
+  ]
+}

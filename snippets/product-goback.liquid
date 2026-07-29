@@ -1,0 +1,48 @@
+{%- comment -%}
+  Go-back button for product pages.
+  params: fallback, style, label, show_on
+{%- endcomment -%}
+
+{%- liquid
+  assign goback_visibility = show_on
+  case goback_visibility
+    when 'mobile'
+      assign goback_visibility = 'large-up-hide'
+    when 'desktop'
+      assign goback_visibility = 'small-hide medium-hide'
+    else
+      assign goback_visibility = ''
+  endcase
+  assign goback_style = style | default: 'filled'
+-%}
+
+<product-goback class="button button--uppercase product-button__goback--{{ goback_style }} {{ goback_visibility }}">
+  {%- render 'icon', icon_name: 'theme-chevron', class: 'icon icon--rotate-180' -%}
+  <span {%- if style == 'text' %} class="button button--text"{% endif %}>
+    {%- if label != blank -%}{{ label }}{%- else -%}{{ 'product.go_back' | t }}{%- endif -%}
+  </span>
+</product-goback>
+
+<script>
+  if (!customElements.get("product-goback")) {
+    class ProductGoBackBtn extends HTMLElement {
+      constructor() { super(); }
+
+      connectedCallback() {
+        this.addEventListener("click", () => {
+          const ref = document.referrer;
+          if (ref === "") {
+            location.href = "{{ fallback | default: collections.all.url }}";
+          } else {
+            history.back();
+          }
+        });
+      }
+
+      disconnectedCallback() {
+        this.removeEventListener("click");
+      }
+    }
+    customElements.define("product-goback", ProductGoBackBtn);
+  }
+</script>

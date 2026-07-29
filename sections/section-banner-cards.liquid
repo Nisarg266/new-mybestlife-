@@ -1,0 +1,171 @@
+<div class="banner-cards-section" style="background-image: url({{ section.settings.background_image | image_url: width: 2000 }});">
+  <div class="overlay" style="background-color: {{ section.settings.overlay_color }}; opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};">
+    <div class="content-wrapper">
+      <h2 class="banner-heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+
+      <div class="cards-row">
+        {% for b7_item in section.blocks %}
+          <div class="card-item">
+            {% if b7_item.settings.logo %}
+              <div class="card-logo">
+                <img src="{{ b7_item.settings.logo | image_url: width: 100 }}" alt="{{ b7_item.settings.heading }}">
+              </div>
+            {% endif %}
+            <h4 class="card-heading">{{ b7_item.settings.heading }}</h4>
+            <p class="card-description">{{ b7_item.settings.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="scroll-buttons">
+    <button class="scroll-btn left"  style="font-size:28px; padding:0px; padding-bottom:30px;" aria-label="Scroll left">←</button>
+    <button class="scroll-btn right" style=" padding-bottom:30px;" aria-label="Scroll right">→</button>
+  </div>
+    </div>
+  </div>
+</div>
+
+{{ 'section-banner-cards.css' | asset_url | stylesheet_tag }}
+<style>
+  .card-heading{
+    font-size:23px !important;
+  line-height:1.4;
+  }
+</style>
+<style>
+  @media (max-width: 738px) {
+.scroll-btn .left
+{
+padding:0px !important;
+font-size:18px;
+}
+.scroll-btn .right
+{
+padding:0px !important;
+font-size:18px;
+}
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const b7_row = document.querySelector('.cards-row');
+    const b7_btnLeft = document.querySelector('.scroll-btn.left');
+    const b7_btnRight = document.querySelector('.scroll-btn.right');
+    const b7_cards = document.querySelectorAll('.card-item');
+
+    // Scroll actions
+    b7_btnLeft.addEventListener('click', () => {
+      b7_row.scrollBy({ left: -300, behavior: 'smooth' });
+    });
+
+    b7_btnRight.addEventListener('click', () => {
+      b7_row.scrollBy({ left: 300, behavior: 'smooth' });
+    });
+
+    // Show arrows based on screen size and number of cards
+    function toggleScrollButtons() {
+      const b7_screenWidth = window.innerWidth;
+      const b7_cardCount = b7_cards.length;
+
+      if (b7_screenWidth <= 550) {
+        // Always show on mobile
+        b7_btnLeft.style.display = 'block';
+        b7_btnRight.style.display = 'block';
+      } else {
+        // Show only if more than 2 cards on tablet/desktop
+        if (b7_cardCount > 3) {
+          b7_btnLeft.style.display = 'block';
+          b7_btnRight.style.display = 'block';
+        } else {
+          b7_btnLeft.style.display = 'none';
+          b7_btnRight.style.display = 'none';
+        }
+      }
+    }
+
+    toggleScrollButtons();
+    window.addEventListener('resize', toggleScrollButtons);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Banner with Cards",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color",
+      "default": "#2A2A2A"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity (%)",
+      "min": 0,
+      "max": 100,
+      "default": 60
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Explore Our Features"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "h2", "label": "Large" },
+        { "value": "h3", "label": "Medium" },
+        { "value": "h4", "label": "Small" }
+      ],
+      "default": "h2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo Image"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Card Heading",
+          "default": "Card Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Card Description",
+          "default": "Card description goes here."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Banner with Cards",
+      "category": "Custom",
+      "blocks": [
+        { "type": "card" },
+        { "type": "card" },
+        { "type": "card" }
+      ]
+    }
+  ]
+}
+{% endschema %}

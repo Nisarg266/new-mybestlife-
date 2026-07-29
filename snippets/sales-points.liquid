@@ -1,0 +1,62 @@
+{%- comment -%}
+  Delivery timeline trust badges with dynamic dates.
+  params: block (settings: icon_1/2/3, text_1/2/3, arrow, top_margin, bottom_margin)
+{%- endcomment -%}
+
+<div class="trust-badges-wrapper section-{{ block.id }}-margin">
+  <ul class="trust-badges-list">
+    <li class="trust-badge-item">
+      <div class="trust-badge-image"><img src="{{ block.settings.icon_1 | img_url: 'master' }}" alt="{{ block.settings.text_1 }}"></div>
+      <div class="trust-badge-text"><p>{{ block.settings.text_1 }}</p><p class="date-ordered"></p></div>
+    </li>
+    <img class="arrow-delivery" src="{{ block.settings.arrow | img_url: 'master' }}" alt="{{ block.settings.text_3 }}">
+    <li class="trust-badge-item">
+      <div class="trust-badge-image"><img src="{{ block.settings.icon_2 | img_url: 'master' }}" alt="{{ block.settings.text_2 }}"></div>
+      <div class="trust-badge-text"><p>{{ block.settings.text_2 }}</p><p class="date-ready"></p></div>
+    </li>
+    <img class="arrow-delivery" src="{{ block.settings.arrow | img_url: 'master' }}" alt="{{ block.settings.text_3 }}">
+    <li class="trust-badge-item">
+      <div class="trust-badge-image"><img src="{{ block.settings.icon_3 | img_url: 'master' }}" alt="{{ block.settings.text_3 }}"></div>
+      <div class="trust-badge-text"><p>{{ block.settings.text_3 }}</p><p class="date-delivered"></p></div>
+    </li>
+  </ul>
+</div>
+
+{%- style -%}
+  .section-{{ block.id }}-margin {
+    margin-top: {{ block.settings.top_margin | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ block.settings.bottom_margin | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ block.id }}-margin {
+      margin-top: {{ block.settings.top_margin }}px;
+      margin-bottom: {{ block.settings.bottom_margin }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  .trust-badge-item:nth-last-child(-n+2) { border-bottom: none; }
+  .trust-badges-wrapper { display: flex; align-items: center; justify-content: center; }
+  .trust-badges-list { display: flex; list-style: none; padding: 0; width: 100%; justify-content: space-evenly; background: #ECBDB4; border-radius: 12px; align-items: center; padding: 10px; }
+  .trust-badge-item { display: flex; align-items: center; text-align: center; flex-direction: column; }
+  img.arrow-delivery { width: 14px; height: 18px; }
+  .trust-badge-image img { width: 36px; height: 36px; object-fit: contain; }
+  .trust-badge-item:nth-child(4) { border-right: none; }
+  .trust-badge-item:nth-child(2) { border-right: none; }
+  .trust-badge-text p { font-size: 14px; color: #0f0f0f; margin: 0; font-weight: 500; }
+</style>
+
+<script>
+  function fmtDate(d) { return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }
+  function dateRange(start, end) {
+    const now = new Date();
+    const s = new Date(now); const e = new Date(now);
+    s.setDate(now.getDate() + start);
+    e.setDate(now.getDate() + end);
+    return `${fmtDate(s)} - ${fmtDate(e)}`;
+  }
+  document.querySelector('.date-ordered').textContent = dateRange(0, 1);
+  document.querySelector('.date-ready').textContent = dateRange(1, 2);
+  document.querySelector('.date-delivered').textContent = dateRange(2, 3);
+</script>

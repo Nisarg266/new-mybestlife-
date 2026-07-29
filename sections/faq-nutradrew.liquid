@@ -1,0 +1,372 @@
+﻿<section class="faq-wrapper-{{ section.id }}" style="background-color: {{ section.settings.bg_color }};">
+  <div class="container">
+    <h2 class="h2-section-heading-faq">{{ section.settings.heading }}</h2>
+    <div class="faq-container">
+      <div class="faq-right">
+        <div class="faq-right-inner">
+          {% for block in section.blocks %}
+            <details class="faq-item" style="background: {{ section.settings.faq_bg_color }};">
+              <summary style="color: {{ section.settings.faq_text_color }}">
+                <span class="faq-question-text">{{ block.settings.question }}</span>
+                <span class="faq-toggle-icon">
+ {% render 'icon', icon_name: 'theme-chevron-down' %}
+                </span>
+              </summary>
+              <div class="answer" style="color: {{ section.settings.answer_text_color }}">
+                {{ block.settings.answer }}
+              </div>
+            </details>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="faq-left">
+        {% if section.settings.qr_image != blank %}
+          <div class="qr-code-image" style="background: {{ section.settings.qr_bg_color }};">
+            <img src="{{ section.settings.qr_image | img_url: 'master' }}" alt="QR Code to download PDF">
+            <p class="contact-info" style="color: {{ section.settings.contact_note_color }}">
+              {{ section.settings.contact_note }}
+            </p>
+          </div>
+        {% endif %}
+
+        <div class="faq-contact-wrap">
+          <a
+            href="{{ section.settings.contact_link }}"
+            class="faq-btn"
+            style="background: {{ section.settings.button_bg_color }}; color: {{ section.settings.button_text_color }};"
+          >
+            {{- section.settings.button_label -}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-wrapper-{{ section.id }}{
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  .faq-container {
+    padding: 50px 50px !important;
+  display: flex;
+  gap: 40px;
+  justify-content: space-between;
+  /* padding: 20px; */
+  }
+  h2.h2-section-heading-faq {
+        font-size: clamp(28px, 5vw, 50px) !important;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #b4975a;
+  text-transform:uppercase;
+        text-align: center;
+  font-family: "Fira Sans";
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 1px;
+  }
+  .faq-right h2{
+  font-family: "Fira Sans";
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  letter-spacing: 1px;
+
+  }
+  span.faq-question-text {
+  font-family: ""Fira Sans"";
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 100%;
+  {% comment %} letter-spacing: 1px; {% endcomment %}
+  }
+
+  .faq-left {
+  width: 45%
+  }
+  .faq-right {
+  width: 55%;
+  }
+ 
+
+  .faq-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 10px;
+  }
+
+  .qr-code-image {
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+  }
+
+/* Override FAQ accordion styling to match provided design */
+.faq-right-inner {
+  gap: 20px; /* Matches .accordions spacing */
+}
+
+.faq-item {
+  padding: 1rem;
+  border: 1px solid rgba(8, 15, 52, 0.2);
+  box-shadow: 0 4px 10px #080F3433;
+  border-radius: 12px;
+  background-color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: underline solid transparent .1rem;
+  text-underline-offset: .3rem;
+  transition: text-decoration-color 0.3s ease;
+  letter-spacing: var(--font-heading-letter-spacing, 0.5px);
+  padding: 20px;
+  font-size: 20px;
+}
+
+.faq-item summary:hover {
+  text-decoration-color: currentColor;
+}
+
+.faq-item summary span.faq-question-text {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.faq-item[open] .faq-toggle-icon {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.faq-toggle-icon {
+  background-color: #F7F7FF;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease; /* smooth rotation */
+}
+.faq-item .answer {
+  margin: 0 0 1.6rem;
+  color: rgba(var(--color-foreground, 0, 0, 0), .75);
+  padding-left: 20px;
+  font-size: 18px;
+}
+
+
+  @media(max-width: 768px) {
+  .faq-wrapper-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+  padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+  .faq-left {
+  width: 100%;
+  }
+  .faq-container {
+        padding: 0px 20px !important;
+  flex-direction: column;
+  }
+  .faq-right {
+  width: 100%;
+  }
+  
+.faq-right-inner {
+    gap: 30px;
+}.qr-code-image {
+  height: 100%;
+  padding-block: 48px;
+  }
+  .qr-code-image img{
+  width: 100%;
+  }
+  p.contact-info {
+  font-size: 18px;
+  line-height: 100%;
+  }
+  }
+</style>
+{% schema %}
+{
+  "name": "FAQ Section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#f4dad5"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Frequently asked questions"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "All the things you need to know about our services"
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#666666"
+    },
+    {
+      "type": "text",
+      "id": "contact_note",
+      "label": "Contact Note",
+      "default": "Still something in mind? Reach out to us directly"
+    },
+    {
+      "type": "color",
+      "id": "contact_note_color",
+      "label": "Contact Note Color",
+      "default": "#aaaaaa"
+    },
+    {
+      "type": "url",
+      "id": "contact_link",
+      "label": "Contact Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Contact us"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "qr_image",
+      "label": "QR Code Image"
+    },
+    {
+      "type": "color",
+      "id": "qr_bg_color",
+      "label": "QR Box Background"
+    },
+    {
+      "type": "color",
+      "id": "faq_bg_color",
+      "label": "FAQ Item Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "faq_text_color",
+      "label": "FAQ Question Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "answer_text_color",
+      "label": "FAQ Answer Text Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Plus/Minus Icon Color",
+      "default": "#333333"
+    },
+          {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom mobile",
+        "default": 0
+      }],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is UI Wiki?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "UI Wiki is a place to find UI-related design answers and guides."
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "FAQ Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,196 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "localization_FXcM4j": {
+          "type": "localization",
+          "disabled": true,
+          "settings": {
+            "show_on": "desktop"
+          }
+        },
+        "link_pEAxig": {
+          "type": "link",
+          "disabled": true,
+          "settings": {
+            "show_on": "desktop",
+            "link_label": "Our Stores",
+            "link": "",
+            "icon": "theme-box"
+          }
+        },
+        "5e0cad2e-d931-416e-ac29-51a4a683ade2": {
+          "type": "text-slide",
+          "settings": {
+            "content": "<p>10% OFF Your First Order! Use Code: GLOW10</p>",
+            "icon": "theme-info"
+          }
+        },
+        "cee0c4f6-5546-43a3-bfc3-2f3afa36d9d5": {
+          "type": "text-slide",
+          "settings": {
+            "content": "<p>Limited Stock! Shop Now for Health Supplements</p>",
+            "icon": "theme-world"
+          }
+        },
+        "text_slide_NGkUbU": {
+          "type": "text-slide",
+          "settings": {
+            "content": "<p>Free Shipping </p>",
+            "icon": "theme-world"
+          }
+        },
+        "text_slide_aDV6jL": {
+          "type": "text-slide",
+          "settings": {
+            "content": "<p>New Health & Skin Supplements — Shop Now!</p>",
+            "icon": "theme-world"
+          }
+        },
+        "link_h8t4xz": {
+          "type": "link",
+          "disabled": true,
+          "settings": {
+            "show_on": "desktop",
+            "link_label": "New Products",
+            "link": "",
+            "icon": "theme-box"
+          }
+        },
+        "timer_UXXqcR": {
+          "type": "timer",
+          "disabled": true,
+          "settings": {
+            "show_on": "desktop",
+            "timer_year": 2024,
+            "timer_month": "08",
+            "timer_day": 1,
+            "timer_hour": 0,
+            "timer_minute": 0,
+            "timer_end_message": "Sale has ended",
+            "show_timer_days": true,
+            "show_timer_hours": true,
+            "show_timer_minutes": true,
+            "show_timer_seconds": true
+          }
+        }
+      },
+      "block_order": [
+        "localization_FXcM4j",
+        "link_pEAxig",
+        "5e0cad2e-d931-416e-ac29-51a4a683ade2",
+        "cee0c4f6-5546-43a3-bfc3-2f3afa36d9d5",
+        "text_slide_NGkUbU",
+        "text_slide_aDV6jL",
+        "link_h8t4xz",
+        "timer_UXXqcR"
+      ],
+      "disabled": true,
+      "settings": {
+        "text_block_behaviour": "marquee",
+        "slider_autoplay_interval": 5,
+        "font_weight": "700",
+        "section_width": "max-w-fluid",
+        "color_scheme": "scheme-6"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "dropdown_card_abpjkM": {
+          "type": "dropdown_card",
+          "settings": {
+            "menu_link_title": "Health Interests",
+            "image": "shopify://shop_images/Skin_copy.jpg",
+            "title": "Skin Health",
+            "subtitle": "Mouth-melt supplements for glowing skin and superior absorption",
+            "link": "shopify://collections/collection",
+            "button_type": "shop"
+          }
+        },
+        "dropdown_card_kmTq3A": {
+          "type": "dropdown_card",
+          "settings": {
+            "menu_link_title": "Health Interests",
+            "image": "shopify://shop_images/Women_copy.jpg",
+            "title": "Women's Health",
+            "subtitle": "Holistic support for PCOS and hormonal balance <br><br>",
+            "link": "shopify://products/hormonize",
+            "button_type": "coming"
+          }
+        },
+        "dropdown_card_PExWWP": {
+          "type": "dropdown_card",
+          "settings": {
+            "menu_link_title": "Health Interests",
+            "image": "shopify://shop_images/Mind_copy_1.jpg",
+            "title": "Brain Health",
+            "subtitle": "360° support for sharper focus, cognitive clarity, and better sleep",
+            "link": "shopify://products/mind360",
+            "button_type": "coming"
+          }
+        },
+        "dropdown_card_ihxhHF": {
+          "type": "dropdown_card",
+          "settings": {
+            "menu_link_title": "Health Interests",
+            "image": "shopify://shop_images/Cellular_copy.jpg",
+            "title": "Cellular Health",
+            "subtitle": "Protect your cells, slow aging, and boost energy with potent antioxidants",
+            "link": "shopify://products/ageslo™",
+            "button_type": "coming"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_card_abpjkM",
+        "dropdown_card_kmTq3A",
+        "dropdown_card_PExWWP",
+        "dropdown_card_ihxhHF"
+      ],
+      "custom_css": [
+        "#Country-drawer-button-header-sections--24151537090844__header {display: none;}"
+      ],
+      "settings": {
+        "layout": "header--nav-centered",
+        "sticky": true,
+        "nav_items_border": false,
+        "drawer_layer": true,
+        "logo": "shopify://shop_images/073_My_Best_Life_Logosfwa.png",
+        "logo_svg_code": "",
+        "logo_width": 200,
+        "logo_width_mobile": 100,
+        "logo_font_size": 3,
+        "transparent_header_bottom_border": true,
+        "country_drawer_header": false,
+        "country_drawer_navigation_menu": true,
+        "utils_link_display": "icon",
+        "first_additional_link_title": "",
+        "first_additional_link_url": "",
+        "second_additional_link_title": "",
+        "second_additional_link_url": "",
+        "nav_font_size": 14,
+        "menu": "main-menu",
+        "menu_mobile": "",
+        "submenu": "",
+        "menu_mobile_card_column_count": "2",
+        "parent_link_size": "md",
+        "parent_without_submenu_size": "lg",
+        "spacing_between_cards": "2",
+        "card_aspect_ratio": "3/4",
+        "card_aspect_ratio_mobile": "3/4",
+        "section_width": "max-w-fluid",
+        "color_scheme": "scheme-1",
+        "color_scheme_for_dropdown": "",
+        "color_scheme_for_drawer": ""
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
+}

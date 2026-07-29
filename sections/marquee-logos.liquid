@@ -1,0 +1,146 @@
+{% schema %}
+{
+  "name": "Marquee Logos",
+  "settings": [
+  {
+    "type": "color",
+    "id": "background_color",
+    "label": "Background color",
+    "default": "#ffffff"
+  },
+  {
+    "type": "range",
+    "id": "logo_size",
+    "label": "Logo Height (px)",
+    "min": 20,
+    "max": 100,
+    "step": 1,
+    "default": 40
+  },
+  {
+    "type": "number",
+    "id": "speed",
+    "label": "Marquee Speed (seconds)",
+    "default": 20
+  },
+  {
+    "type": "range",
+    "id": "padding_top",
+    "label": "Padding Top (px)",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "default": 16
+  },
+  {
+    "type": "range",
+    "id": "padding_bottom",
+    "label": "Padding Bottom (px)",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "default": 16
+  },
+  {
+    "type": "color",
+    "id": "font_color",
+    "label": "Text Color",
+    "default": "#333333"
+  }
+  ],
+  "blocks": [
+    {
+      "type": "logo_pair",
+      "name": "Logo + Text Pair",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_img",
+          "label": "Upload Logo"
+        },
+       {
+  "type": "richtext",
+  "id": "logo_text",
+  "label": "Logo Text",
+  "default": "<p>Your Brand</p>"
+}
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "Marquee Logos",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{%- assign s11_cfg = section.settings -%}
+{%- assign s11_logo_blocks = section.blocks -%}
+{%- assign s11_loops = 20 -%}
+
+<style>
+.marquee-wrapper {
+  overflow: hidden;
+  position: relative;
+  background-color: {{ s11_cfg.background_color }};
+  padding-top: {{ s11_cfg.padding_top }}px;
+  padding-bottom: {{ s11_cfg.padding_bottom }}px;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-left {{ s11_cfg.speed }}s linear infinite;
+  align-items: center;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-text-pair {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 2rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.logo-text-pair img {
+  height: {{ s11_cfg.logo_size }}px;
+  width: auto;
+  display: block;
+}
+
+.marquee-text {
+  font-size: {{ s11_cfg.logo_size }}px;
+  line-height: 1;
+  font-weight: 500;
+  color: {{ s11_cfg.font_color }};
+  white-space: nowrap;
+}
+</style>
+
+<div class="marquee-wrapper">
+  <div class="marquee-track">
+    {% for s11_pass in (1..s11_loops) %}
+      {%- for s11_blk in s11_logo_blocks -%}
+        <div class="logo-text-pair">
+          {% if s11_blk.settings.logo_img %}
+            <img src="{{ s11_blk.settings.logo_img | image_url: width: 300 }}" alt="logo" loading="lazy" />
+          {% endif %}
+<div class="marquee-text">{{ s11_blk.settings.logo_text | rich_text }}</div>
+        </div>
+      {%- endfor -%}
+    {% endfor %}
+  </div>
+</div>

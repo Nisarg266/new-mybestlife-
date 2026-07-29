@@ -1,0 +1,38 @@
+{%- comment -%}
+  External video iframe (YouTube / Vimeo).
+  params: video, title, class, params, video_id, video_type, controls, youtube_container
+{%- endcomment -%}
+
+{%- liquid
+  assign vid_title = title | default: ''
+  assign vid_class = class | default: 'video'
+  assign vid_id = video_id | default: video.id
+  assign vid_type = video_type | default: video.type
+  assign yt_wrapper = youtube_container | default: false
+
+  if controls
+    assign ctl = 1
+  else
+    assign ctl = 0
+  endif
+
+  if vid_type == 'youtube'
+    assign default_params = 'autoplay=1&controls=' | append: ctl | append: '&fs=0&loop=1&playsinline=1&mute=1&iv_load_policy=3&rel=0&enablejsapi=1&disablekb=1&enablejsapi=1&color=white'
+    assign vid_params = params | default: default_params | append: '&playlist=' | append: vid_id
+    assign vid_src = 'https://www.youtube.com/embed/' | append: vid_id | append: '?' | append: vid_params
+    assign vid_class = vid_class | append: ' js-youtube'
+  else
+    assign default_params = 'autopause=0&autoplay=1&background=1&byline=0&loop=1&muted=1&playsinline=1&title=0&transparent=0&keyboard=0&controls=' | append: ctl
+    assign vid_params = params | default: default_params
+    assign vid_src = 'https://player.vimeo.com/video/' | append: vid_id | append: '?' | append: vid_params
+    assign vid_class = vid_class | append: ' js-vimeo'
+  endif
+-%}
+
+{%- if vid_type == 'youtube' and yt_wrapper -%}
+<div class="youtube-container">
+{%- endif -%}
+<iframe src="{{- vid_src -}}" class="{{- vid_class -}}" allow="autoplay; encrypted-media" allowfullscreen title="{{- vid_title -}}"></iframe>
+{%- if vid_type == 'youtube' and yt_wrapper -%}
+</div>
+{%- endif -%}

@@ -1,0 +1,210 @@
+{
+  "sections": {
+    "hero_banner_hPbyqp": {
+      "type": "hero-banner",
+      "blocks": {
+        "slide_dUAq7g": {
+          "type": "slide",
+          "settings": {
+            "banner_layout": "hero-banner--full",
+            "color_scheme": "scheme-1",
+            "header_menu_text_color": "#ffffff",
+            "heading": "<p>Highlight your promotion</p>",
+            "subheading": "Highlight your promotion",
+            "subheading_link": "",
+            "text": "<p>Highlight your promotion</p>",
+            "button_link_1": "/",
+            "button_link_1_type": "button",
+            "button_label_1": "View more",
+            "button_style_1": "button--filled",
+            "button_link_2": "/",
+            "button_label_2": "View more",
+            "button_style_2": "button--outlined",
+            "content_position": "end",
+            "content_alignment": "center",
+            "video_external": "",
+            "show_controls_on_video": false,
+            "enable_media_overlay_desktop": true,
+            "content_position_mobile": "center",
+            "content_alignment_mobile": "center",
+            "video_external_mobile": "",
+            "show_controls_on_video_mobile": false,
+            "enable_media_overlay_mobile": true
+          }
+        }
+      },
+      "block_order": [
+        "slide_dUAq7g"
+      ],
+      "disabled": true,
+      "name": "t:sections.hero-banner.name",
+      "settings": {
+        "enable_transparent_header": true,
+        "slider_height": 100,
+        "slideshow_autoplay_interval": 6,
+        "show_slideshow_navigation": true,
+        "slideshow_navigation_position": "hero__swiper-buttons--start",
+        "color_scheme_arrows": "",
+        "show_slideshow_pagination": true,
+        "slideshow_pagination_style": "style-1",
+        "floating_bar": false
+      }
+    },
+    "coming_soon_WHibEp": {
+      "type": "coming-soon",
+      "disabled": true,
+      "name": "Hero Banner",
+      "settings": {
+        "button_link": "",
+        "logo_margin_top": 0,
+        "logo_margin_bottom": 20,
+        "subheading": "Discover something amazing today.",
+        "subheading_size": 20,
+        "subheading_color": "#eeeeee",
+        "subheading_margin_top": 10,
+        "subheading_margin_bottom": 10,
+        "subheading_padding_left": 200,
+        "subheading_padding_right": 200,
+        "heading": "Welcome to Our Store",
+        "heading_size": 48,
+        "heading_color": "#ffffff",
+        "heading_margin_top": 10,
+        "heading_margin_bottom": 10,
+        "background_color": "#2a2a2a",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 100,
+        "logo_width": 200,
+        "section_height": "85vh"
+      }
+    },
+    "ingrediant_hero_section_AiknYr": {
+      "type": "Ingrediant-hero-section",
+      "name": "Hero Image Left Content",
+      "settings": {
+        "extra_heading": "",
+        "heading": "",
+        "heading_size": 62,
+        "subheading": "",
+        "button_label": "",
+        "button_link": "",
+        "secondary_button_label": "",
+        "secondary_button_link": "shopify://products/melt-n-glo",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "button_bg_color": "#000000",
+        "button_text_color": "#ecbdb4",
+        "button_hover_bg_color": "#ecbdb4",
+        "button_hover_text_color": "#000000",
+        "background_color": "#000000",
+        "background_image": "shopify://shop_images/Blogs_Web_Banner_1_copy_4.jpg",
+        "mobile_background_image": "shopify://shop_images/Blogs_Mobile_Banner_1_copy_7.jpg",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "section_height": "70vh"
+      }
+    },
+    "banner": {
+      "type": "full-width-banner",
+      "blocks": {
+        "heading_KKwpjb": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "<strong>Stay in Sync with the Best of Life</strong>",
+            "heading_size": "h3"
+          }
+        },
+        "breadcrumbs_EnCfjq": {
+          "type": "breadcrumbs",
+          "disabled": true,
+          "settings": {
+            "show_on": "both"
+          }
+        },
+        "subheading_WTByyz": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "heading_KKwpjb",
+        "breadcrumbs_EnCfjq",
+        "subheading_WTByyz"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "h2 {color: White;}"
+      ],
+      "settings": {
+        "enable_transparent_header": true,
+        "media_position": "top",
+        "section_height": "half",
+        "content_position": "center",
+        "content_alignment": "end",
+        "image": "shopify://shop_images/Blogs-02_1.png",
+        "video_external": "",
+        "show_controls_on_video": false,
+        "aspect_ratio": "8/1",
+        "section_height_mobile": "half",
+        "content_position_mobile": "center",
+        "content_alignment_mobile": "center",
+        "video_external_mobile": "",
+        "show_controls_on_video_mobile": false,
+        "aspect_ratio_mobile": "auto",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-6",
+        "color_scheme_for_content": "scheme-6",
+        "spacing_inner": "2",
+        "spacing_top": "0",
+        "spacing_bottom": "2"
+      }
+    },
+    "main": {
+      "type": "main-blog",
+      "disabled": true,
+      "settings": {
+        "enable_filtering_by_tags": false,
+        "articles_per_page": 3,
+        "pagination_style": "load_more",
+        "enable_infinity_scroll": false,
+        "show_excerpt": false,
+        "show_date": true,
+        "show_author": true,
+        "content_alignment": "text-start",
+        "card_media_aspect_ratio": "3/4",
+        "section_width": "max-w-narrow",
+        "color_scheme": "",
+        "spacing_grid": "2",
+        "spacing_top": "6",
+        "spacing_bottom": "2"
+      }
+    },
+    "blog_main1_DbqKEf": {
+      "type": "blog-main1",
+      "name": "Blog Cards",
+      "settings": {
+        "blog": "news",
+        "max_articles": 50,
+        "heading": "",
+        "subheading": "Your destination for evidence-based wellness, curated by experts for the life you deserve.",
+        "show_excerpt": true,
+        "show_meta": true,
+        "show_date": false,
+        "show_author": false,
+        "button_label": "Read more"
+      }
+    }
+  },
+  "order": [
+    "hero_banner_hPbyqp",
+    "coming_soon_WHibEp",
+    "ingrediant_hero_section_AiknYr",
+    "banner",
+    "main",
+    "blog_main1_DbqKEf"
+  ]
+}

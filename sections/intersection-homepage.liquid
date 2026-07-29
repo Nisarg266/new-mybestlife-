@@ -1,0 +1,346 @@
+<div class="fuel-slider-inside-uniq">
+  <div class="fuel-slides-wrapper">
+    {% for block in section.blocks %}
+      <style>
+        #intersection-slide--{{ block.id }}{
+          background-image: url('{{ block.settings.background_image_desktop | img_url: 'master' }}');
+          aspect-ratio: {{ block.settings.background_image_desktop.width }}/{{ block.settings.background_image_desktop.height }};
+          {% if block.settings.background_image_mobile != blank %}
+            @media (max-width: 767px){
+              background-image: url('{{ block.settings.background_image_mobile | img_url: 'master' }}');
+              aspect-ratio: {{ block.settings.background_image_mobile.width }}/{{ block.settings.background_image_mobile.height }};
+            }
+          {% endif %}
+        }
+
+
+      </style>
+      <div
+  id="intersection-slide--{{ block.id }}"
+  class="fuel-slide-uniq"
+  {% if block.settings.button_link != blank %}
+    onclick="window.location.href='{{ block.settings.button_link }}'"
+    style="cursor: pointer;"
+  {% endif %}
+>
+        <div class="fuel-slide-content-uniq">
+          <h2>{{ block.settings.main_heading }}</h2>
+          <p>{{ block.settings.subheading }}</p>
+          {% if block.settings.button_link != blank %}
+            <a href="{{ block.settings.button_link }}">{{ block.settings.button_text }}</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Dot Pagination -->
+  <div class="slider-dots"></div>
+</div>
+
+{% style %}
+.fuel-slider-inside-uniq {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.fuel-slides-wrapper {
+  display: flex;
+  transition: transform 0.6s ease;
+  width: 100%;
+}
+
+.fuel-slide-uniq {
+  min-width: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 80px 30px;
+}
+
+.fuel-slide-content-uniq {
+  max-width: 900px;
+  padding-left: 170px;
+  color: #000;
+}
+
+.fuel-slide-content-uniq h2 {
+  font-size: 70px !important;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.fuel-slide-content-uniq p {
+  font-size: 32px !important;
+  margin-bottom: 30px;
+  line-height: normal;
+}
+
+.fuel-slide-uniq {
+  position: relative; /* needed for absolute positioning of the button */
+}
+
+.fuel-slide-content-uniq a {
+  position: absolute;
+  top: 200px;
+  left: 100px;
+  background: #000;
+  color: #b4975a;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.fuel-slide-content-uniq a:hover {
+  background: #b4975a;
+  color: #2a2a2a;
+  border: 1px solid black;
+}
+
+/* Dots */
+.slider-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+
+.slider-dots button {
+  width: 12px;
+  height: 12px;
+  background: #ccc;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s;
+}
+
+.slider-dots button.active {
+  background: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .fuel-slide-uniq {
+    padding: 40px 20px;
+    /* min-height: 700px; */
+    align-items: baseline;
+  }
+
+  .fuel-slide-content-uniq {
+    padding-left: 0;
+  }
+
+  .fuel-slide-content-uniq h2 {
+    font-size: 31px !important;
+  }
+
+  .fuel-slide-content-uniq p {
+    margin-bottom: 40px !important;
+    font-size: 15px !important;
+  }
+}
+
+/* For 1300px+ */
+@media screen and (min-width: 1300px) {
+  .fuel-slide-uniq {
+    min-height: 500px;
+    padding: 40px 30px;
+    max-width: 1400px;
+  }
+
+  .fuel-slide-content-uniq {
+    padding-left: 100px;
+    padding-right: 250px;
+  }
+
+  .fuel-slide-content-uniq h2 {
+    font-size: 45px !important;
+  }
+
+  .fuel-slide-content-uniq p {
+    font-size: 25px !important;
+  }
+}
+
+/* For 1500px+ */
+@media screen and (min-width: 1500px) {
+  .fuel-slide-uniq {
+    min-height: 600px;
+    padding: 60px 50px;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .fuel-slide-content-uniq {
+    padding-left: 80px;
+    padding-right: 300px;
+  }
+
+  .fuel-slide-content-uniq h2 {
+    font-size: 50px !important;
+  }
+
+  .fuel-slide-content-uniq p {
+    font-size: 31px !important;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .fuel-slide-uniq {
+    min-height: 700px;
+    padding: 60px 30px;
+  }
+
+  .fuel-slide-content-uniq {
+    padding-left: 80px;
+    padding-right: 0px;
+  }
+
+  .fuel-slide-content-uniq h2 {
+    font-size: 70px !important;
+  }
+
+  .fuel-slide-content-uniq p {
+    font-size: 31px !important;
+  }
+}
+{% endstyle %}
+
+{% javascript %}
+document.addEventListener("DOMContentLoaded", function () {
+  const sliderWrapper = document.querySelector('.fuel-slides-wrapper');
+  const slides = document.querySelectorAll('.fuel-slide-uniq');
+  const dotsContainer = document.querySelector('.slider-dots');
+
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  // Create dots dynamically
+  slides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    if (index === 0) dot.classList.add("active");
+    dot.addEventListener("click", () => {
+      currentIndex = index;
+      updateSliderPosition();
+      updateDots();
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll("button");
+
+  function updateSliderPosition() {
+    sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  function updateDots() {
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[currentIndex].classList.add("active");
+  }
+
+  function goToNext() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSliderPosition();
+    updateDots();
+  }
+
+  function goToPrev() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSliderPosition();
+    updateDots();
+  }
+
+  // Auto-slide every 6 seconds
+  let autoSlide = setInterval(goToNext, 6000);
+
+  // --- TOUCH SWIPE HANDLING ---
+  let startX = 0;
+  let endX = 0;
+
+  sliderWrapper.addEventListener("touchstart", (e) => {
+    clearInterval(autoSlide); // stop auto while swiping
+    startX = e.touches[0].clientX;
+  });
+
+  sliderWrapper.addEventListener("touchmove", (e) => {
+    endX = e.touches[0].clientX;
+  });
+
+  sliderWrapper.addEventListener("touchend", () => {
+    let diff = startX - endX;
+    if (Math.abs(diff) > 50) { 
+      if (diff > 0) {
+        goToNext(); // swipe left → next
+      } else {
+        goToPrev(); // swipe right → prev
+      }
+    }
+    autoSlide = setInterval(goToNext, 6000); // restart auto
+  });
+});
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Fuel From Inside Slider",
+  "tag": "section",
+  "class": "fuel-slider-inside-uniq",
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "background_image_desktop",
+          "label": "Background Image (Desktop)"
+        },
+        {
+          "type": "image_picker",
+          "id": "background_image_mobile",
+          "label": "Background Image (Mobile)"
+        },
+        {
+          "type": "text",
+          "id": "main_heading",
+          "label": "Main Heading",
+          "default": "Fuel the best version of you."
+        },
+        {
+          "type": "textarea",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Powerhouse ingredients. Real results."
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Learn More"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fuel From Inside Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

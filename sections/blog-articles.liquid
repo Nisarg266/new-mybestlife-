@@ -1,0 +1,251 @@
+{% stylesheet %}
+.blog-article-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  justify-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .blog-article-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.blog-card {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.blog-card__image-wrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.blog-card__image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4/3;
+}
+
+.read-more-button {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: white;
+  color: #2A2A2A;
+  font-weight: 400;
+  padding: 10px 20px;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.read-more-button:hover {
+  background: #f4f4f4;
+}
+
+.blog-card__content {
+  margin-top: 12px;
+  text-align: left;
+}
+
+.blog-card__title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.blog-card__excerpt {
+  font-size: 14px;
+  color: #777;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.section-header h2 {
+  font-size: 46px;
+  font-weight: 800;
+  letter-spacing:1px;
+  color: #2A2A2A;
+  margin: 0;
+}
+
+.view-all-button {
+  border: 1px solid white;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+  background-color:  #a5854d;
+  transition: all 0.3s ease;
+}
+
+.view-all-button:hover {
+  background-color: white;
+  border: 1px solid #a5854d;
+  color: #a5854d;
+}
+{% endstylesheet %}
+
+<div class="section-blog-wrapper" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background-color: {{ section.settings.background_color }};">
+  <div class="container {{ section.settings.section_width }}">
+
+    <div class="section-header">
+      {% if section.settings.heading != blank %}
+        <h2 class="{{ section.settings.heading_size }}">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.button_label and section.settings.button_link %}
+        <a href="{{ section.settings.button_link }}" class="view-all-button">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    {% assign blog = section.settings.blog %}
+    {% if blog.articles_count > 0 %}
+      <div class="blog-article-grid">
+        {% for article in blog.articles limit: 3 %}
+          <div class="blog-card">
+            <div class="blog-card__image-wrapper">
+              {% if article.image %}
+                <img src="{{ article.image | img_url: '720x' }}" alt="{{ article.title }}">
+              {% endif %}
+              {% if section.settings.show_read_more %}
+                <a href="{{ article.url }}" class="read-more-button">Read more →</a>
+              {% endif %}
+            </div>
+            <div class="blog-card__content">
+              <h3 class="blog-card__title">{{ article.title }}</h3>
+              {% if section.settings.show_excerpt %}
+                <p class="blog-card__excerpt">{{ article.excerpt | default: article.content | strip_html | truncate: 100 }}</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Static Blog Grid",
+  "tag": "section",
+  "class": "section-blog-articles",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured <em>Articles</em>"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "h6", "label": "XS" },
+        { "value": "h5", "label": "S" },
+        { "value": "h4", "label": "M" },
+        { "value": "h3", "label": "L" },
+        { "value": "h2", "label": "XL" }
+      ],
+      "default": "h3"
+    },
+    {
+  "type": "range",
+  "id": "padding_top",
+  "label": "Padding Top",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "default": 30
+},
+{
+  "type": "range",
+  "id": "padding_bottom",
+  "label": "Padding Bottom",
+  "min": 0,
+  "max": 100,
+  "step": 1,
+  "default": 30
+},
+{
+  "type": "color",
+  "id": "background_color",
+  "label": "Background Color",
+  "default": "#f8f8f8"
+},
+
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Select Blog"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_excerpt",
+      "default": true,
+      "label": "Show Excerpt"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_read_more",
+      "default": true,
+      "label": "Show 'Read More'"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Bottom Button Label",
+      "default": "Find Out More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Bottom Button Link"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Section Width",
+      "default": "max-w-page",
+      "options": [
+        { "value": "max-w-page", "label": "Page Width" },
+        { "value": "max-w-fluid", "label": "Full Width" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Static Blog Grid"
+    }
+  ]
+}
+{% endschema %}

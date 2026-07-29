@@ -1,0 +1,22 @@
+{%- liquid
+  assign loc = section.location
+
+  if loc == 'header'
+    assign load_index = 1
+  elsif loc == 'template'
+    assign load_index = section_index | default: section.index | default: 3
+  else
+    assign load_index = section_index | default: 3
+  endif
+-%}
+
+{%- if css -%}
+  {%- if load_index > 2 -%}
+    <link rel='stylesheet' href='{{ css | asset_url }}' media='print' onload="this.media='all'">
+    <noscript>
+      {{ css | asset_url | stylesheet_tag }}
+    </noscript>
+  {%- else -%}
+    {{ css | asset_url | stylesheet_tag }}
+  {%- endif -%}
+{%- endif -%}

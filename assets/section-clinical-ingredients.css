@@ -1,0 +1,85 @@
+
+.clinical-ingredients {
+  background: #f2f4f5;
+   max-width: 1200px !important; /* Set a maximum width for the section */
+  margin: auto !important; /* Center the section horizontally */
+  padding: 2rem; /* Add some padding for spacing */
+}
+.section__heading {
+  margin-bottom: 20px;
+}
+.ingredients__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+
+.ingredient-item {
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  
+ 
+}
+
+.ingredient-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.ingredient-item img {
+  max-width: 40%;
+  height: auto;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+}
+
+.ingredient-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.ingredient-description {
+  font-size: 1rem;
+  color: #333333;
+}
+
+.slider-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .ingredients__grid {
+    grid-template-columns: 100%;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    display: flex;
+  }
+
+  .ingredient-item {
+    width: 100%;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  .slider-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  /* .slider-nav button {
+    background: none;
+    border: 1px solid #2A2A2A;
+    padding: 0.5rem 1rem;
+    cursor: pointer; */
+  }
+}

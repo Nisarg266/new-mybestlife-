@@ -1,0 +1,117 @@
+{% schema %}
+{
+  "name": "Custom Hero Banner",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "hero_height",
+      "label": "Section Height (vh)",
+      "min": 50,
+      "max": 100,
+      "step": 10,
+      "default": 100
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#2A2A2A"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_video",
+      "label": "Use video instead of image",
+      "default": false
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video URL (.mp4)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome to Our Store"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Check out our latest products"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Hero Banner"
+    }
+  ]
+}
+{% endschema %}
+
+{%- assign s5_cfg = section.settings -%}
+{%- assign s5_show_video = false -%}
+{%- if s5_cfg.use_video and s5_cfg.video_url != blank -%}{%- assign s5_show_video = true -%}{%- endif -%}
+{%- assign s5_show_image = false -%}
+{%- if s5_show_video != true and s5_cfg.image != blank -%}{%- assign s5_show_image = true -%}{%- endif -%}
+{%- assign s5_has_btn = false -%}
+{%- if s5_cfg.button_text != blank and s5_cfg.button_link != blank -%}{%- assign s5_has_btn = true -%}{%- endif -%}
+
+<section
+  class="custom-hero-section"
+  style="
+    height: {{ s5_cfg.hero_height | append: 'vh' }};
+    background-color: {{ s5_cfg.bg_color }};
+    position: relative;
+    overflow: hidden;
+  "
+>
+  {%- if s5_show_video -%}
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0;"
+    >
+      <source src="{{ s5_cfg.video_url }}" type="video/mp4">
+    </video>
+  {%- elsif s5_show_image -%}
+    <img
+      src="{{ s5_cfg.image | image_url: width: 2000 }}"
+      alt="Hero background"
+      style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 0;"
+    />
+  {%- endif -%}
+
+  <div class="custom-hero-content" style="position: relative; z-index: 1; text-align: center; color: white; padding: 2rem;">
+    {%- unless s5_cfg.heading == blank -%}
+      <h1>{{ s5_cfg.heading }}</h1>
+    {%- endunless -%}
+    {%- unless s5_cfg.subheading == blank -%}
+      <p>{{ s5_cfg.subheading }}</p>
+    {%- endunless -%}
+    {%- if s5_has_btn -%}
+      <a href="{{ s5_cfg.button_link }}" class="button" style="margin-top: 1rem; display: inline-block; background: white; color: #2a2a2a; padding: 0.75rem 1.5rem; border-radius: 4px;">
+        {{ s5_cfg.button_text }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>

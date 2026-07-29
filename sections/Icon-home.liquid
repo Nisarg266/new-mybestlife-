@@ -1,0 +1,172 @@
+{% schema %}
+{
+  "name": "Icon Row Section",
+  "tag": "section",
+  "class": "icon-row-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f4f0ec"
+    },
+    {
+      "type": "color",
+      "id": "circle_background_color",
+      "label": "Circle Background Color",
+      "default": "#b4975a"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon Circle Size (px)",
+      "min": 40,
+      "max": 150,
+      "step": 2,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "gap_between_icons",
+      "label": "Gap Between Icons (px)",
+      "min": 10,
+      "max": 100,
+      "step": 2,
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_block",
+      "name": "Icon + Label",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "label_text",
+          "label": "Label",
+          "default": "Your Label"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Icon Row",
+      "category": "Custom",
+      "blocks": [
+        { "type": "icon_block" },
+        { "type": "icon_block" },
+        { "type": "icon_block" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+<div class="icon-row-outer" style="background-color: {{ section.settings.background_color }};">
+  <div class="icon-row-container">
+    <div class="icon-row-track">
+
+<!-- 4x Duplicated Sets -->
+{% for b9_repeat in (1..7) %}
+  {% for b9_icon in section.blocks %}
+    <div class="icon-item">
+      <div class="icon-circle" style="
+        {% comment %} width: {{ section.settings.icon_size }}px;
+        height: {{ section.settings.icon_size }}px; {% endcomment %}
+        background-color: {{ section.settings.circle_background_color }};
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 10px auto;">
+        {% if b9_icon.settings.icon_image %}
+          <img src="{{ b9_icon.settings.icon_image | image_url: width: 100 }}" alt="icon" style="max-width: 80%; max-height: 80%; object-fit: contain;">
+        {% endif %}
+      </div>
+      <div class="icon-label">{{ b9_icon.settings.label_text }}</div>
+    </div>
+  {% endfor %}
+{% endfor %}
+
+
+      <!-- Duplicate Set (Mobile Only) -->
+
+
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.icon-circle img {
+  max-width: 60%;
+  max-height: 60%;
+  object-fit: contain;
+}
+
+.icon-circle {
+  width: {{ section.settings.icon_size }}px;
+  height: {{ section.settings.icon_size }}px;
+  background-color: {{ section.settings.circle_background_color }};
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 10px auto;
+}
+
+.icon-item {
+  text-align: center;
+  max-width: 150px;
+  flex: 0 0 auto;
+}
+
+.icon-row-track {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 150px;
+  width: max-content;
+  animation: scrollIcons 30s linear infinite;
+}
+@media (max-width: 768px) {
+.icon-row-track {
+  gap: 95px;
+
+}
+}
+
+.icon-row-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.icon-row-outer {
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.icon-label {
+  font-size: 15px;
+  line-height: 1.2;
+  text-wrap: balance;
+  font-weight: 500;
+  color: #2a2a2a;
+}
+
+@keyframes scrollIcons {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+{% endstylesheet %}

@@ -1,0 +1,122 @@
+{% schema %}
+{
+  "name": "Fuel From Inside",
+  "tag": "section",
+  "class": "fuel-from-inside",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_image_desktop",
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image_mobile",
+      "label": "Background Image (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "FUEL THE BEST VERSION OF YOU–FROM THE INSIDE OUT."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Powerhouse ingredients. Real Results. Wellness that works– for the life you’re building."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Experience it now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ]
+}
+{% endschema %}
+
+{%- assign s6_cfg = section.settings -%}
+{%- assign s6_bg_desktop = s6_cfg.background_image_desktop -%}
+{%- assign s6_bg_mobile = s6_cfg.background_image_mobile -%}
+{%- assign s6_has_link = false -%}
+{%- if s6_cfg.button_link != blank -%}{%- assign s6_has_link = true -%}{%- endif -%}
+
+{% style %}
+.fuel-from-inside-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 80px 30px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #000;
+  min-height: 500px;
+}
+
+.fuel-from-inside-content {
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.8); /* optional for readability on mobile */
+  padding: 20px;
+}
+
+.fuel-from-inside-content h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.fuel-from-inside-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.fuel-from-inside-content a {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.fuel-from-inside-content a:hover {
+  background: #333;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .fuel-from-inside-wrapper {
+    padding: 60px 20px;
+    justify-content: center;
+    text-align: center;
+    background-image: url('{{ s6_bg_mobile | img_url: "master" }}') !important;
+  }
+
+  .fuel-from-inside-content {
+    background: rgba(255, 255, 255, 0.85); /* Optional overlay */
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+{% endstyle %}
+
+<div
+  class="fuel-from-inside-wrapper"
+  style="background-image: url('{{ s6_bg_desktop | img_url: "master" }}');"
+>
+  <div class="fuel-from-inside-content">
+    <h2>{{ s6_cfg.main_heading }}</h2>
+    <p>{{ s6_cfg.subheading }}</p>
+    {%- if s6_has_link -%}
+      <a href="{{ s6_cfg.button_link }}">{{ s6_cfg.button_text }}</a>
+    {%- endif -%}
+  </div>
+</div>

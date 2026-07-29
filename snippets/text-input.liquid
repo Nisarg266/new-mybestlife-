@@ -1,0 +1,59 @@
+{%- comment -%}
+  Text input field renderer.
+  params: id, label, hide_label, type, name, placeholder, value,
+          required, min, max, readonly, attr, message, has_error,
+          checked, class
+{%- endcomment -%}
+
+{%- liquid
+  assign field_class = class | default: false
+  assign field_id = id | default: false
+  assign field_label = label | default: false
+  assign label_hidden = hide_label | default: false
+  assign field_type = type | default: 'text'
+  assign field_name = name | default: false
+  assign field_placeholder = placeholder | default: false
+  assign field_value = value | default: false
+  assign field_required = required | default: false
+  assign field_min = min | default: false
+  assign field_max = max | default: false
+  assign field_readonly = readonly | default: false
+  assign field_attr = attr | default: false
+  assign field_message = message | default: false
+  assign field_has_error = has_error | default: false
+  assign field_checked = checked | default: false
+-%}
+
+<div class="field{% if field_has_error %} has-error{% endif %}{% if field_class %} {{- field_class -}}{% endif %}" data-input-wrapper>
+  {%- if field_label and field_id -%}
+    <label for="{{- field_id -}}" class="field__label{% if label_hidden %} visually-hidden{% endif %}">{{- field_label -}}</label>
+  {%- endif -%}
+  <input
+    type="{{- field_type -}}"
+    {%- if field_id %} id="{{- field_id -}}"{% endif -%}
+    {%- if field_name %} name="{{- field_name -}}"{% endif -%}
+    {%- if field_placeholder %} placeholder="{{- field_placeholder -}}"{% endif -%}
+    {%- if field_value %} value="{{- field_value -}}"{% endif -%}
+    {%- if field_required %} required{% endif -%}
+    {%- if field_readonly %} readonly{% endif -%}
+    {%- if field_min %} min="{{- field_min -}}"{% endif -%}
+    {%- if field_max %} max="{{- field_max -}}"{% endif -%}
+    {%- if field_required and field_type == 'password' %} minlength="5"{% endif -%}
+    {%- if field_required and field_type == 'email' %} pattern="^([a-zA-Z0-9_\-\+\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,9})$"{% endif -%}
+    {%- if field_attr %} {{ field_attr }}{% endif -%}
+    {%- if field_checked %} checked{% endif -%}
+    class="field__input{{ input_class }}"
+  />
+
+  <span
+    class="field__message{% unless field_message %} hidden{% endunless %}"
+    data-message
+    {% if field_message and field_has_error == false %}
+      tabindex="-1"
+      autofocus
+    {% endif %}
+  >{%- if field_message -%}{{- field_message -}}{%- endif -%}</span>
+
+  {%- if field_message -%}
+  {%- endif -%}
+</div>

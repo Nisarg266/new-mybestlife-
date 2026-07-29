@@ -1,0 +1,100 @@
+{%- comment -%}
+  Product feed slider (card-product-slider element).
+  params: section, section_classes, element, attr, products_array, url, section_name, section_blocks
+{%- endcomment -%}
+
+{%- liquid
+  assign pf_element = element | default: 'card-product-slider'
+  assign pf_products = products_array | default: nil
+  assign pf_attr = attr | default: ''
+  assign pf_url = url | default: nil
+  assign pf_limit = section.settings.max_products | default: 50
+-%}
+
+{%- if pf_products != nil or pf_url -%}
+  {%- style -%}
+    #shopify-section-{{ section.id }} > div {
+      padding-block-start: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_top }});
+      padding-block-end: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_bottom }});
+    }
+    .product-feed.section { padding: 0; }
+  {%- endstyle -%}
+
+  {{- 'component-card-product-slider.css' | asset_url | stylesheet_tag -}}
+  {{- 'component-card-product.css' | asset_url | stylesheet_tag -}}
+  <script src="{{- 'card-product-slider.js' | asset_url -}}" defer="defer"></script>
+
+  {%- if pf_element == 'recently-viewed-products' -%}
+    <script src="{{- 'recently-viewed-products.js' | asset_url -}}" defer="defer"></script>
+  {%- endif -%}
+
+  {%- assign pf_extra_classes = '' -%}
+  {%- if pf_url and recommendations.performed and recommendations.products_count > 0 -%}
+    {%- assign pf_products = recommendations.products -%}
+    {%- assign pf_extra_classes = pf_extra_classes | append: ' hidden' -%}
+  {%- endif -%}
+
+  {%- assign pf_btn = blank -%}
+  {%- if section.settings.button_label != blank -%}
+    {%- capture pf_btn -%}
+      {%- render 'button', type: 'link', class: 'button custom_class', button_style: section.settings.button_style, value: section.settings.button_label, href: section.settings.button_link -%}
+    {%- endcapture -%}
+  {%- endif -%}
+
+  <div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="section product-feed overflow-hidden js-animation-fade-in {{ section.settings.layout }} {{ pf_extra_classes | strip }}" data-section-id="{{- section.id -}}">
+    <div class="container {{ section.settings.section_width }}">
+      {%- if section.settings.heading != blank or pf_btn != blank -%}
+        <div class="section__head">
+          <div class="section__head-title">
+            {%- if section.settings.subheading != blank -%}<span class="h6 rte">{{- section.settings.subheading -}}</span>{%- endif -%}
+            {%- if section.settings.heading != blank -%}<h2 class="section__heading {{ section.settings.heading_size }}">{{- section.settings.heading -}}</h2>{%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      <div class="section__body">
+        {%- capture pf_swiper_opts -%}
+          {
+            "spaceBetweenDesktop": {{ settings.spacing_desktop | times: 10 | round: 0 }},
+            "spaceBetweenMobile": {{ settings.spacing_mobile | times: 10 | round: 0 }},
+            "slidesPerViewMobile": 1.3,
+            {% if section.settings.show_navigation_arrows %}"navigation": { "prevEl": ".swiper-button--prev-{{ section.id }}", "nextEl": ".swiper-button--next-{{ section.id }}" }{% endif %}
+            {% if section.settings.slider_autoplay > 0 %}{% if section.settings.show_navigation_arrows %},{% endif %}"autoplay": { "delay": {{ section.settings.slider_autoplay | times: 1000 }} }{% endif %}
+          }
+        {%- endcapture -%}
+
+        <{{ pf_element }} data-init-quick-cart class="swiper card-product-slider {% if section.settings.enable_slideshow_overflow %}overflow-unset{% endif %}" data-section-id="{{- section.id -}}" data-swiper-options='{{ pf_swiper_opts | strip_newlines | replace: " ", "" }}' {% if pf_url %}data-url="{{- pf_url -}}"{% endif %} {{ pf_attr }}>
+          <div class="swiper-wrapper card-product-slider__wrapper">
+            {%- if pf_products -%}
+              {%- unless section.settings.show_unavailable_products -%}
+                {%- assign pf_products = pf_products | where: 'available' -%}
+              {%- endunless -%}
+              {%- for product in pf_products limit: pf_limit -%}
+                <div class="swiper-slide card-product-slider__slide">{% render 'card-product', product_ref: product, section_id: section.id, image_per_view: 4 %}</div>
+              {%- endfor -%}
+            {%- endif -%}
+          </div>
+        </{{ pf_element }}>
+      </div>
+
+      <div class="section__foot">
+        <div class="section__head--buttons">
+          {{ pf_btn | replace_first: 'custom_class' }}
+          {% if section.settings.show_navigation_arrows %}
+            {%- if section.settings.layout == 'layout-2' -%}
+              {%- assign pf_arrow = 'theme-arrow' -%}
+            {%- else -%}
+              {%- assign pf_arrow = 'theme-chevron' -%}
+            {%- endif -%}
+            <div class="swiper-buttons small-hide card-slider__buttons no-js-hidden">
+              <button class="swiper-button swiper-button--prev-{{ section.id }}" aria-label="{{- 'theme.actions.previous' | t -}}">{%- render 'icon', icon_name: pf_arrow -%}</button>
+              <button class="swiper-button swiper-button--next-{{ section.id }}" aria-label="{{- 'theme.actions.next' | t -}}">{%- render 'icon', icon_name: pf_arrow -%}</button>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%- endif -%}

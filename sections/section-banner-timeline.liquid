@@ -1,0 +1,269 @@
+{% if section.settings.banner_image %}
+  {{ 'banner-timeline-overlay.css' | asset_url | stylesheet_tag }}
+
+  {%- style -%}
+    #shopify-section-{{ section.id }} > div {
+      padding-block-start: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_top }});
+      padding-block-end: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_bottom }});
+    }
+  {%- endstyle -%}
+  <section class="timeline-banner-section {{ section.settings.color_scheme }}">
+    <div class="banner-bg" style="background-image: url({{ section.settings.banner_image | img_url: '1600x' }});">
+      <div 
+  class="overlay" 
+  style="background-color: #b4975a; opacity:0.8;">
+</div>
+      <div class="content">
+        <h2 class="main-heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+        
+        <p class="subtitle">{{ section.settings.subtitle }}</p>
+
+        <div class="inner-layout">
+          <div class="inner-image">
+            <img src="{{ section.settings.left_image | img_url: '600x' }}" alt="Banner Side Image">
+          </div>
+  <div class="timeline-box">
+ 
+  {% for block in section.blocks %}
+    <div class="timeline-step">
+       <div class="timeline-line"></div> <!-- This is the vertical line -->
+      <div class="timeline-dot"> </div>
+      <div class="timeline-step-content">
+        <h5>{{ block.settings.step_title }}</h5>
+        <p>{{ block.settings.step_description }}</p>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const steps = document.querySelectorAll(".timeline-step");
+  const timelineBox = document.querySelector(".timeline-box");
+  const timelineBoxTop = timelineBox.offsetTop;
+
+  function handleScroll() {
+    const windowHeight = window.innerHeight;
+    let activeCount = 0;
+
+    steps.forEach((step) => {
+      const rect = step.getBoundingClientRect();
+      const isInView = rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.2;
+
+      if (isInView) {
+        step.classList.add("active");
+      } else {
+        step.classList.remove("active");
+      }
+    });
+
+    // Count how many steps are active
+    activeCount = document.querySelectorAll(".timeline-step.active").length;
+
+    // Set line height based on number of active steps
+    const line = timelineBox;
+    const totalSteps = steps.length;
+    const lastActive = steps[activeCount - 1];
+
+    if (lastActive) {
+      const fillHeight = lastActive.offsetTop + lastActive.offsetHeight / 2;
+      line.style.setProperty('--line-fill-height', `${fillHeight}px`);
+    } else {
+      line.style.setProperty('--line-fill-height', `0px`);
+    }
+  }
+
+  // Apply custom property to pseudo-element
+  const style = document.createElement('style');
+  style.innerHTML = `
+    .timeline-box::before {
+      height: var(--line-fill-height);
+    }
+  `;
+  document.head.appendChild(style);
+
+  window.addEventListener("scroll", handleScroll);
+  handleScroll();
+});
+
+
+
+
+</script>
+{% style %}
+
+.subtitle {
+  font-size: 23px !important;
+  color: #2a2a2a !important;
+}
+@media (max-width: 767px) {
+.subtitle {
+  font-size: 18px !important;
+  color: #2a2a2a !important;
+}
+
+
+}
+.timeline-step p {
+  font-weight: 500 !important;
+}
+.timeline-step.active h5,
+.timeline-step.active p {
+  color: #2a2a2a !important;
+}
+{% endstyle %}
+
+
+
+{% schema %}
+{
+  "name": "Banner With Timeline",
+  "tag": "section",
+  "class": "timeline-banner-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Background Image"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Our Journey So Far"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Timeline of Success"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "h6", "label": "XS" },
+        { "value": "h5", "label": "S" },
+        { "value": "h4", "label": "M" },
+        { "value": "h3", "label": "L" },
+        { "value": "h2", "label": "XL" }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Side Image on Banner"
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "t:sections.global.spacing.spacing_top.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "No"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "t:sections.global.spacing.spacing_bottom.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "No"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+  "type": "color",
+  "id": "overlay_color",
+  "label": "Overlay Color",
+  "default": "#2A2A2A"
+},
+{
+  "type": "range",
+  "id": "overlay_opacity",
+  "label": "Overlay Opacity (0 = transparent, 1 = solid)",
+  "min": 0,
+  "max": 1,
+  "step": 0.1,
+  "default": 0.6
+}
+    
+  ],
+  "blocks": [
+    {
+      "type": "timeline_step",
+      "name": "Timeline Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_title",
+          "label": "Step Title",
+          "default": "Step One"
+        },
+        {
+          "type": "textarea",
+          "id": "step_description",
+          "label": "Step Description",
+          "default": "This is the description for the first step of the timeline."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner With Timeline",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

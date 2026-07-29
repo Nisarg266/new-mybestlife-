@@ -1,0 +1,93 @@
+{% schema %}
+{
+  "name": "Heading with Subheading",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "This is the main heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "This is the subheading text"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heading + Subheading",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+.custom-heading {
+    margin-bottom:10px;
+  color: #b4975a;
+  text-transform: uppercase;
+  font-size: clamp(28px, 5vw, 50px) !important;
+  text-align: center;
+}
+
+.custom-subheading {
+    margin: 0 auto !important;
+    max-width: 700px;
+    line-height: 1.4;
+  font-size: 18px !important;
+  color:#666 !important;
+  text-align: center;
+  margin: 0;
+  opacity: 0.8;
+}
+</style>
+
+{%- assign s2_cfg = section.settings -%}
+{%- assign s2_has_heading = false -%}
+{%- if s2_cfg.heading != blank -%}{%- assign s2_has_heading = true -%}{%- endif -%}
+{%- assign s2_has_sub = false -%}
+{%- if s2_cfg.subheading != blank -%}{%- assign s2_has_sub = true -%}{%- endif -%}
+
+<section
+  style="
+    background-color: {{ s2_cfg.bg_color }};
+    padding-top: {{ s2_cfg.padding_top }}px;
+    padding-bottom: {{ s2_cfg.padding_bottom }}px;
+  "
+>
+  <div class="custom-heading-wrapper">
+    {%- if s2_has_heading -%}
+      <h2 class="custom-heading">{{ s2_cfg.heading }}</h2>
+    {%- endif -%}
+    {%- if s2_has_sub -%}
+      <p class="custom-subheading">{{ s2_cfg.subheading }}</p>
+    {%- endif -%}
+  </div>
+</section>

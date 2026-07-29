@@ -1,0 +1,670 @@
+{%- comment -%}
+  Main product info-blocks renderer.
+  Iterates over section.blocks and renders each block type (title, price,
+  description, variant picker, buy buttons, tabs, content grid, app blocks, etc).
+{%- endcomment -%}
+
+{%- liquid
+  assign ib_form_id = 'product-form-' | append: section.id
+  assign ib_variant = product.selected_or_first_available_variant
+-%}
+
+<script src="{{ 'product-variants.js' | asset_url }}" defer="defer"></script>
+
+<section id="ProductInfo-{{ section.id }}" class="product__content product__content--{{ section.settings.grid_content_alignment }}">
+  {% assign ib_grid_blocks = section.blocks | where: 'type', 'content_grid' %}
+
+  {%- for ib_block in section.blocks -%}
+    {%- assign ib_spacing = ib_block.settings.spacing_bottom | default: '1' %}
+    {%- assign ib_cls = 'product__block product__block--gap-' | append: ib_spacing -%}
+
+    {%- case ib_block.type -%}
+      {%- when 'divider' -%}
+        {%- assign ib_cls = 'product__divider' | append: ' ' | append: ib_cls -%}
+        <hr class="{{ ib_cls }}" {{ ib_block.shopify_attributes }}>
+
+      {%- when 'title' -%}
+        {% if ib_block.settings.image != blank %}
+          <div class="{{ ib_cls }}" {{ ib_block.shopify_attributes }}>
+            <img style="width: {{ ib_block.settings.image_size }}px;" class="main-title-image" src="{{ ib_block.settings.image | img_url: 'master' }}" alt="{{ product.title | escape }}" />
+          </div>
+        {% else %}
+          {%- assign ib_cls = 'product__title' | append: ' ' | append: ib_cls -%}
+          <h1 class="{{ ib_cls }}" {{ ib_block.shopify_attributes }}>{{- product.title | escape -}}</h1>
+        {% endif %}
+
+      {%- when 'badge' -%}
+        {%- assign ib_cls = 'product__badges' | append: ' ' | append: ib_cls -%}
+        <div class="{{ ib_cls }}" {{ ib_block.shopify_attributes }}>
+          {% render 'product-badges', product: product, block: ib_block %}
+        </div>
+
+      {%- when 'rating' -%}
+        {%- assign ib_cls = 'product__rating' | append: ' ' | append: ib_cls -%}
+        <div class="{{ ib_cls }}" {{ ib_block.shopify_attributes }}>
+          {%- if product.metafields.reviews.rating.value != blank or ib_block.settings.rating != 0 -%}
+            {% liquid
+              assign ib_r_val = product.metafields.reviews.rating.value.rating | default: product.metafields.theme.rating.value.rating | default: ib_block.settings.rating | times: 1
+              assign ib_r_cnt = product.metafields.reviews.rating_count.value | default: product.metafields.theme.rating_count.value | default: 1 | times: 1
+              assign ib_r_max = product.metafields.reviews.rating.value.scale_max | default: 5 | times: 1
+              assign ib_full = ib_r_val | floor
+              assign ib_half = ib_r_val | minus: ib_full | ceil
+              assign ib_empty = ib_r_max | minus: ib_full | minus: ib_half
+            %}
+            {%- for ib_i in (1..ib_full) -%}{%- render 'icon', icon_name: 'theme-star-filled' -%}{%- endfor -%}
+            {%- for ib_i in (1..ib_half) -%}{%- render 'icon', icon_name: 'theme-star-half' -%}{%- endfor -%}
+            {%- for ib_i in (1..ib_empty) -%}{%- render 'icon', icon_name: 'theme-star' -%}{%- endfor -%}
+            <p class="rating-count"><span aria-hidden="true">({{ ib_r_cnt }})</span></p>
+          {%- endif -%}
+        </div>
+
+      {% when 'product-reviews' %}
+        {% render 'product-reviews', block: ib_block %}
+
+      {% when 'upsell-products' %}
+        {% render 'upsell-products', block: ib_block %}
+
+      {% when 'accordians' %}
+        {% render 'Accordian', block: ib_block %}
+
+      {% when 'Trust-icons' %}
+        {% render 'sales-points', block: ib_block %}
+
+      {% when 'INVENTORY' %}
+        {% render 'stock', block: ib_block %}
+
+      {% when 'info_card' %}
+        <div class="info-card" {{ ib_block.shopify_attributes }}>
+          <div class="info-line">
+            {% if ib_block.settings.icon1 %}<img class="info-icon" src="{{ ib_block.settings.icon1 | img_url: 'master' }}" alt="Icon 1">{% endif %}
+            <p>{{ ib_block.settings.line1 }}</p>
+          </div>
+          <div class="info-line">
+            {% if ib_block.settings.icon2 %}<img class="info-icon" src="{{ ib_block.settings.icon2 | img_url: 'master' }}" alt="Icon 2">{% endif %}
+            <p>{{ ib_block.settings.line2 }}</p>
+          </div>
+          <div class="info-line">
+            {% if ib_block.settings.icon3 %}<img class="info-icon" src="{{ ib_block.settings.icon3 | img_url: 'master' }}" alt="Icon 3">{% endif %}
+            <p>{{ ib_block.settings.line3 }}</p>
+          </div>
+        </div>
+
+      {% when 'glow_points' %}
+        <div class="glow-card section-{{ ib_block.id }}-margin" {{ ib_block.shopify_attributes }}>
+          <div class="glow-columns">
+            <div class="glow-col">
+              <div class="glow-line">{% if ib_block.settings.icon1 %}<img src="{{ ib_block.settings.icon1 | image_url: width: 100 }}" alt="Icon 1" class="glow-icon">{% endif %}<p>{{ ib_block.settings.line1 }}</p></div>
+              <div class="glow-line">{% if ib_block.settings.icon2 %}<img src="{{ ib_block.settings.icon2 | image_url: width: 100 }}" alt="Icon 2" class="glow-icon">{% endif %}<p>{{ ib_block.settings.line2 }}</p></div>
+            </div>
+            <div class="glow-col">
+              <div class="glow-line">{% if ib_block.settings.icon3 %}<img src="{{ ib_block.settings.icon3 | image_url: width: 100 }}" alt="Icon 3" class="glow-icon">{% endif %}<p>{{ ib_block.settings.line3 }}</p></div>
+              <div class="glow-line">{% if ib_block.settings.icon4 %}<img src="{{ ib_block.settings.icon4 | image_url: width: 100 }}" alt="Icon 4" class="glow-icon">{% endif %}<p>{{ ib_block.settings.line4 }}</p></div>
+            </div>
+          </div>
+        </div>
+
+      {% when 'glow_text_block' %}
+        <div class="glow-card-simple" {{ ib_block.shopify_attributes }}>
+          <div class="glow-text-pair">
+            <p class="glow-text-large">{{ ib_block.settings.large_text }}</p>
+            <p class="glow-text-small">{{ ib_block.settings.subtitlenew }}</p>
+          </div>
+        </div>
+
+      {% when 'four_icons_notify' %}
+        <button id="notify-btn-{{ ib_block.id }}" type="button" class="notify-btn" style="background-color: {{ ib_block.settings.button_bg_color }}; color: {{ ib_block.settings.button_text_color }};">{{ ib_block.settings.button_text }}</button>
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var btn = document.getElementById('notify-btn-{{ ib_block.id }}');
+            if (!btn) return;
+            btn.addEventListener('click', function() {
+              try {
+                var form = document.getElementById('{{ ib_form_id }}');
+                var variantInput = form && form.querySelector('input[name="id"]');
+                var variantId = variantInput ? variantInput.value : '{{ product.selected_or_first_available_variant.id }}';
+                var quantityInput = form && form.querySelector('input[name="quantity"]');
+                var quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+                if (form) {
+                  form.dispatchEvent(new Event('submit', { bubbles: true }));
+                } else {
+                  fetch('/cart/add.js', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({ id: variantId, quantity: quantity })
+                  }).then(function(response) {
+                    if (response.ok) {
+                      var cartDrawer = document.querySelector('cart-drawer');
+                      var cartNotification = document.querySelector('cart-notification');
+                      if (cartDrawer) { cartDrawer.open(); }
+                      else if (cartNotification) { cartNotification.show(); }
+                      else {
+                        var cartCount = document.querySelector('.cart-count-bubble');
+                        if (cartCount) {
+                          var currentCount = parseInt(cartCount.textContent) || 0;
+                          cartCount.textContent = currentCount + quantity;
+                        }
+                        alert('Added to cart!');
+                      }
+                    } else {
+                      throw new Error('Failed to add to cart');
+                    }
+                  }).catch(function(error) {
+                    console.error('Error adding to cart:', error);
+                    alert('Error adding to cart. Please try again.');
+                  });
+                }
+              } catch (e) {
+                console.error('Error:', e);
+                alert('Error adding to cart. Please try again.');
+              }
+            });
+          });
+        </script>
+        <noscript>
+          <a href="/checkout" class="notify-btn" style="background-color: {{ ib_block.settings.button_bg_color }}; color: {{ ib_block.settings.button_text_color }};">{{ ib_block.settings.button_text }}</a>
+        </noscript>
+
+      {%- when 'text' -%}
+        {%- if is_gift_card -%}{%- continue -%}{%- endif -%}
+        {%- assign ib_cls = 'product__text' | append: ' ' | append: ib_cls -%}
+        <div class="{{ ib_cls }} product__text--{{- ib_block.settings.link_to_resource }} {% unless ib_block.settings.link_to_resource == 'none' %}product__text--link{% else %}product__text--body{% if ib_block.settings.heading_secondary != blank %}-animated{% endif %}{% endunless %}{% if ib_block.settings.text_before_link and ib_block.settings.link_to_resource != 'none' %} product__text--before-link{% endif %} caption caption--small" {{ ib_block.shopify_attributes }}>
+          {% capture ib_metafield_var %}
+            {% if ib_block.settings.metafield_for_product_variant != blank %}
+              {%- liquid
+                assign ib_mf_ns = ib_block.settings.metafield_for_product_variant | split: '.' | first
+                assign ib_mf_key = ib_block.settings.metafield_for_product_variant | split: '.' | last
+                assign ib_mf_obj = ib_variant.metafields[ib_mf_ns][ib_mf_key]
+                assign ib_prod_mf = product.metafields[ib_mf_ns][ib_mf_key]
+              -%}
+              {% if ib_mf_obj.value != blank %}
+                <div class="product__metafield_for_variant-block" data-block-id="{{ ib_block.id }}">{{ ib_variant.metafields[ib_mf_ns][ib_mf_key].value | newline_to_br }}</div>
+                <script id="product__metafield_for_variant-block--{{ ib_block.id }}" type="application/json">
+                  {
+                  {% for ib_var in product.variants %}
+                    "{{ ib_var.id }}": "{{ ib_var.metafields[ib_mf_ns][ib_mf_key] | newline_to_br | replace: '<br />', '\n' | strip_newlines }}" {% unless forloop.last %},{% endunless %}
+                  {% endfor %}
+                  }
+                </script>
+              {% elsif ib_prod_mf.value != blank %}
+                <div class="product__metafield_block" data-block-id="{{ ib_block.id }}">
+                  {% if ib_prod_mf.type == 'rich_text_field' %}{{ ib_prod_mf | metafield_tag }}{% else %}{{ ib_prod_mf.value }}{% endif %}
+                </div>
+              {% endif %}
+            {% endif %}
+          {% endcapture %}
+
+          {%- liquid
+            if ib_block.settings.link_to_resource == 'type'
+              if product.type != blank
+                if ib_block.settings.text_before_link
+                  echo ib_block.settings.heading | append: ': '
+                endif
+                echo product.type | link_to_type: class: 'button button--text'
+              endif
+            elsif ib_block.settings.link_to_resource == 'vendor'
+              if ib_block.settings.text_before_link
+                echo ib_block.settings.heading | append: ': '
+              endif
+              echo product.vendor | link_to_vendor: class: 'button button--text'
+            else
+              if ib_block.settings.heading_secondary != blank
+                echo '<div class="product__text--body-wrapper">'
+                echo '<div class="product__text--body">'
+              endif
+              if ib_block.settings.icon != blank
+                render 'icon', icon_name: ib_block.settings.icon
+              endif
+              if ib_block.settings.heading != blank or ib_block.settings.metafield_for_product_variant != blank
+                echo '<div class="product__text--content">'
+                echo ib_metafield_var
+                if ib_block.settings.show_block_content
+                  echo ib_block.settings.heading
+                endif
+                echo '</div>'
+              endif
+              if ib_block.settings.heading_secondary != blank
+                echo '</div>'
+                echo '<div class="product__text--body">'
+                if ib_block.settings.icon != blank
+                  render 'icon', icon_name: ib_block.settings.icon
+                endif
+                if ib_block.settings.heading_secondary != blank
+                  echo '<div class="product__text--content">'
+                  echo ib_block.settings.heading_secondary
+                  echo '</div>'
+                endif
+                echo '</div>'
+                echo '</div>'
+              endif
+            endif
+          -%}
+        </div>
+
+      {%- when 'price' -%}
+        {%- liquid
+          unless is_gift_card
+            assign ib_variant = product.selected_or_first_available_variant
+            assign ib_alloc = ib_variant.selected_selling_plan_allocation
+            if ib_alloc == null and ib_variant.requires_selling_plan
+              assign ib_alloc = ib_variant.selling_plan_allocations | first
+            endif
+          endunless
+        -%}
+        {%- assign ib_cls = 'product__price' | append: ' ' | append: ib_cls -%}
+        <div id="price-{{- section.id -}}" role="status" {{ ib_block.shopify_attributes }} class="{{ ib_cls }}">
+          {%- unless is_gift_card -%}
+            {%- render 'price', product: product, use_variant: true -%}
+            {% if ib_block.settings.show_price_custom_info != blank or ib_block.settings.show_price_tax_info or ib_block.settings.show_price_shipping_info -%}
+              <span class="product__price--info">
+                {% liquid
+                  assign ib_tax_txt = ''
+                  if cart.taxes_included and ib_block.settings.show_price_tax_info
+                    assign ib_tax_txt = 'product.taxes_included' | t | append: ' '
+                  endif
+                  if shop.shipping_policy.body != blank and ib_block.settings.show_price_shipping_info
+                    assign ib_ship_txt = 'product.shipping_policy_html' | t: link: shop.shipping_policy.url
+                    assign ib_tax_txt = ib_tax_txt | append: ib_ship_txt
+                  endif
+                  if ib_block.settings.show_price_custom_info != blank
+                    assign ib_tax_txt = ib_tax_txt | append: '' | append: ib_block.settings.show_price_custom_info
+                  endif
+                %}
+                {{- ib_tax_txt -}}
+              </span>
+              <div class="tooltip hidden">
+                <div class="tooltip__text">{{- ib_tax_txt -}}</div>
+                <div class="tooltip__trigger">{% render 'icon', icon_name: 'theme-info-circle' %}</div>
+              </div>
+              <script type="text/javascript">
+                document.addEventListener('DOMContentLoaded', checkWidthsAndUpdateTooltip);
+                window.addEventListener('resize', checkWidthsAndUpdateTooltip);
+                function checkWidthsAndUpdateTooltip () {
+                  const priceInfo = document.querySelector('.product__content .product__price--info');
+                  const priceInfoTooltip = document.querySelector('.product__content .tooltip');
+                  priceInfo.style.width = '';
+                  priceInfoTooltip.classList.add('hidden');
+                  const productContentWidth = document.querySelector('.product__content').offsetWidth;
+                  const priceContainerWidth = document.querySelector('.product__content .product__price > .price').offsetWidth;
+                  const infoWidth = productContentWidth - priceContainerWidth - 36;
+                  const priceInfoWidth = document.querySelector('.product__price--info').offsetWidth;
+                  if (infoWidth > priceInfoWidth) { return; }
+                  priceInfo.style.width = infoWidth + 'px';
+                  priceInfoTooltip.classList.remove('hidden');
+                }
+              </script>
+            {%- endif -%}
+          {%- else -%}
+            {%- render 'price', product: product, use_variant: true -%}
+          {%- endunless -%}
+
+          <div class="product__installments visually-hidden">
+            {%- form 'product', product, id: product_form_installments_id, class: 'installment' -%}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+              {{- form | payment_terms -}}
+            {%- endform -%}
+          </div>
+        </div>
+
+      {%- when 'description' -%}
+        {% capture ib_desc_mf %}
+          {% if ib_block.settings.metafield_for_product_variant != blank %}
+            {%- liquid
+              assign ib_mf_ns = ib_block.settings.metafield_for_product_variant | split: '.' | first
+              assign ib_mf_key = ib_block.settings.metafield_for_product_variant | split: '.' | last
+              assign ib_mf_obj = ib_variant.metafields[ib_mf_ns][ib_mf_key]
+            -%}
+            {% if ib_mf_obj.value != blank %}
+              <div class="product__metafield_for_variant-block" data-block-id="{{ ib_block.id }}">{{ ib_variant.metafields[ib_mf_ns][ib_mf_key].value | newline_to_br }}</div>
+              <script id="product__metafield_for_variant-block--{{ ib_block.id }}" type="application/json">
+                {
+                {% for ib_var in product.variants %}
+                  "{{ ib_var.id }}": "{{ ib_var.metafields[ib_mf_ns][ib_mf_key] | newline_to_br | replace: '<br />', '\n' | strip_newlines }}" {% unless forloop.last %},{% endunless %}
+                {% endfor %}
+                }
+              </script>
+            {% endif %}
+          {% endif %}
+        {% endcapture %}
+
+        {%- assign ib_cls = 'product__description' | append: ' ' | append: ib_cls -%}
+        {%- liquid
+          assign ib_desc = ''
+          assign ib_show = false
+          if ib_desc_mf != blank
+            assign ib_desc = ib_desc | append: ib_desc_mf
+          endif
+          if ib_block.settings.show_block_content and ib_desc_mf != blank
+            assign ib_show = true
+          elsif ib_desc_mf == blank
+            assign ib_show = true
+          endif
+          if ib_show
+            assign ib_desc = ib_desc | append: product.description
+          endif
+        -%}
+        <div class="{{ ib_cls }}" {{ ib_block.shopify_attributes }}>
+          {% if ib_block.settings.behaviour == 'plain' %}
+            {%- if ib_desc != blank -%}
+              <div class="rte">{%- render 'text-truncator', text: ib_desc, max_lines: ib_block.settings.text_truncate -%}</div>
+            {%- endif -%}
+          {% elsif ib_block.settings.behaviour == 'row' %}
+            {{- 'section-accordions.css' | asset_url | stylesheet_tag -}}
+            <accordion-default class="accordion product__accordion" data-hide-multiple>
+              <details class="accordion__section" id="Details-{{- ib_block.id -}}" {{- ib_block.shopify_attributes -}}>
+                <summary class="accordion__button h5 js-btn" id="Details-Summary-{{- ib_block.id -}}">
+                  <span>
+                    {% liquid
+                      assign ib_ico_alt = ib_block.settings.heading
+                      if ib_block.settings.custom_icon
+                        echo ib_block.settings.custom_icon | image_url: width: 24 | image_tag: alt: ib_ico_alt
+                      elsif ib_block.settings.icon != blank
+                        render 'icon', icon_name: ib_block.settings.icon
+                      endif
+                    %}
+                    {% if ib_block.settings.heading != blank %}<span>{{- ib_block.settings.heading -}}</span>{% else %}<span>{{ 'product.description' | t }}</span>{% endif %}
+                  </span>
+                  <div class="accordion__icon">{%- render 'icon', icon_name: 'theme-minus' -%}{%- render 'icon', icon_name: 'theme-minus' -%}</div>
+                </summary>
+                <div class="accordion__body" id="Details-Content-{{- ib_block.id -}}">
+                  <div class="accordion__body-inner">{%- if ib_desc != blank -%}<div class="rte">{{- ib_desc -}}</div>{%- endif -%}</div>
+                </div>
+              </details>
+            </accordion-default>
+          {% endif %}
+        </div>
+
+      {%- when 'sku' -%}
+        {%- assign ib_fa_var = product.selected_or_first_available_variant -%}
+        {%- if ib_fa_var.sku != blank -%}
+          {%- assign ib_cls = 'product__sku' | append: ' ' | append: ib_cls -%}
+          <div class="{{ ib_cls }}" {{ ib_block.shopify_attributes }} id="Sku-{{ section.id }}" role="status"><span>{{- ib_fa_var.sku | prepend: '#' -}}</span></div>
+        {%- endif -%}
+
+      {%- when 'preorder' -%}
+        {%- if product.metafields.theme.preorder.value -%}
+          {%- assign ib_cls = 'product__preorder' | append: ' ' | append: ib_cls -%}
+          <div class="{{ ib_cls }}" {{ ib_block.shopify_attributes }} role="status">
+            <span class="product__preorder-dot">&nbsp;</span>
+            <span>{{- 'product.preorder_info' | t -}}</span>
+          </div>
+        {%- endif -%}
+
+      {%- when 'custom_liquid' -%}
+        {%- if is_gift_card -%}{%- continue -%}{%- endif -%}
+        {{- ib_block.settings.custom_liquid -}}
+
+      {%- when 'variant_picker' -%}
+        {%- assign ib_cls = 'product__variant-picker' | append: ' ' | append: ib_cls -%}
+        <div class="{{ ib_cls }}" {{ ib_block.shopify_attributes }}>
+          {%- render 'product-groups', product: product, on: 'page' -%}
+          {% render 'main-product__variant-picker', product: product, block: ib_block, product_form_id: ib_form_id %}
+        </div>
+
+      {%- when 'purchase_options' -%}
+        {%- render 'main-product__purchase-options', product: product, section: section, block: ib_block, product_form_id: ib_form_id, product_block_class: ib_cls -%}
+
+      {%- when 'buy_buttons' -%}
+        {%- assign ib_cls = 'product__buy-buttons' | append: ' ' | append: ib_cls -%}
+        <div class="{{ ib_cls }}" {{ ib_block.shopify_attributes }}>
+          {%- render 'main-product__buy-buttons', block: ib_block, product: product, product_form_id: ib_form_id, section_id: section.id, show_pickup_availability: false -%}
+        </div>
+
+      {%- when 'inventory_notice' -%}
+        {%- if is_gift_card -%}{%- continue -%}{%- endif -%}
+        {%- assign ib_variant = product.selected_or_first_available_variant -%}
+        {%- assign ib_cls = 'product__inventory-notice' | append: ' ' | append: ib_cls -%}
+        <div class="{{ ib_cls }} product__text product__text--body caption {% unless ib_variant.inventory_quantity <= ib_block.settings.inventory_threshold and ib_variant.available and ib_variant.inventory_management == 'shopify' %}hidden{% endunless %}" id="Inventory-{{ section.id }}" role="status" data-inventory-notice data-inventory-quantity="{{ ib_variant.inventory_quantity }}" data-inventory-threshold="{{ ib_block.settings.inventory_threshold }}" {{ ib_block.shopify_attributes }}>
+          {%- if product.metafields.theme.preorder.value -%}
+            {% assign ib_pre_date = product.metafields.theme.preorder_shipping_date.value | date: '%b %d, %Y' %}
+            <div class="product__preorder-notice">
+              <span class="product__preorder-dot">&nbsp;</span>
+              <span>{{- 'product.preorder_notice' | t: date: ib_pre_date -}}</span>
+            </div>
+          {%- else -%}
+            {%- render 'icon', icon_name: 'theme-timer' -%}
+            {%- if ib_block.settings.notice_just_text -%}{{- 'product.inventory_low_stock' | t -}}{%- else -%}{{- 'product.inventory_low_stock_show_count' | t: quantity: ib_variant.inventory_quantity -}}{%- endif -%}
+          {%- endif -%}
+        </div>
+        {%- if product.metafields.theme.preorder.value -%}
+          <div class="{{ ib_cls }} product__preorder-warning">{{ 'product.preorder_warning_html' | t }}</div>
+        {%- endif -%}
+
+      {%- when 'pickup-availability' -%}
+        {%- liquid
+          if is_gift_card
+            continue
+          endif
+        -%}
+        {%- assign ib_pickups = product.selected_or_first_available_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+        {% if product.selected_or_first_available_variant.available and ib_pickups.size > 0 %}
+          {%- assign ib_cls = 'product__pickup-availabilities' | append: ' ' | append: ib_cls -%}
+          <div class="{{ ib_cls }}" {{ ib_block.shopify_attributes }}>
+            {{- 'component-pickup-availability.css' | asset_url | stylesheet_tag -}}
+            <pickup-availability class="no-js-hidden" available data-root-url="{{ routes.root_url }}" data-variant-id="{{ product.selected_or_first_available_variant.id }}" data-has-only-default-variant="{{ product.has_only_default_variant }}">
+              <template>
+                <pickup-availability-preview class="pickup-availability-preview">
+                  <div class="pickup-availability-info">
+                    <p class="pickup-availability-info__title">{{- 'product.pickup_unavailable' | t -}}</p>
+                    <span class="ink link--hover-none">{{- 'product.pickup_refresh_availability' | t -}}</span>
+                  </div>
+                </pickup-availability-preview>
+              </template>
+            </pickup-availability>
+            <script src="{{- 'pickup-availability.js' | asset_url -}}" defer></script>
+          </div>
+        {% endif %}
+
+      {%- when 'complementary_products' -%}
+        {%- assign ib_cls = 'product__complementaries' | append: ' ' | append: ib_cls -%}
+        <div class="{{ ib_cls }}" {{ ib_block.shopify_attributes }}>
+          {%- render 'product-recommendations', area: 'product', title: ib_block.settings.heading, icon: ib_block.settings.icon, limit: ib_block.settings.limit -%}
+        </div>
+
+      {%- when 'content_block' -%}
+        {{- 'section-accordions.css' | asset_url | stylesheet_tag -}}
+        {%- assign ib_cls = 'product__accordion' | append: ' ' | append: ib_cls -%}
+        <accordion-default class="accordion {{ ib_cls }}" data-hide-multiple>
+          <details class="accordion__section" id="Details-{{- ib_block.id -}}" {{- ib_block.shopify_attributes -}}>
+            <summary class="accordion__button h5 js-btn" id="Details-Summary-{{- ib_block.id -}}">
+              <span>
+                {% if ib_block.settings.custom_icon != blank %}
+                  {{ ib_block.settings.custom_icon | image_url: width: 24 | image_tag: alt: ib_block.settings.custom_icon.alt }}
+                {% elsif ib_block.settings.custom_icon == blank and ib_block.settings.icon != blank %}
+                  {% render 'icon', icon_name: ib_block.settings.icon %}
+                {% endif %}
+                {% unless ib_block.type == 'description' %}{{- ib_block.settings.heading | escape -}}{% else %}{% if ib_block.settings.heading != blank %}<span>{{- ib_block.settings.heading -}}</span>{% else %}<span>{{ 'product.description' | t }}</span>{% endif %}{% endunless %}
+              </span>
+              <div class="accordion__icon">{%- render 'icon', icon_name: 'theme-minus' -%}{%- render 'icon', icon_name: 'theme-minus' -%}</div>
+            </summary>
+            <div class="accordion__body" id="Details-Content-{{- ib_block.id -}}">
+              <div class="accordion__body-inner">
+                {% capture ib_cb_mf %}
+                  {% if ib_block.settings.metafield_for_product_variant != blank %}
+                    {%- liquid
+                      assign ib_mf_ns = ib_block.settings.metafield_for_product_variant | split: '.' | first
+                      assign ib_mf_key = ib_block.settings.metafield_for_product_variant | split: '.' | last
+                      assign ib_mf_obj = ib_variant.metafields[ib_mf_ns][ib_mf_key]
+                    -%}
+                    {% if ib_mf_obj.value != blank %}
+                      <div class="product__metafield_for_variant-block" data-block-id="{{ ib_block.id }}">{{ ib_variant.metafields[ib_mf_ns][ib_mf_key].value | newline_to_br }}</div>
+                      <script id="product__metafield_for_variant-block--{{ ib_block.id }}" type="application/json">
+                        {
+                        {% for ib_var in product.variants %}
+                          "{{ ib_var.id }}": "{{ ib_var.metafields[ib_mf_ns][ib_mf_key] | newline_to_br | replace: '<br />', '\n' | strip_newlines }}" {% unless forloop.last %},{% endunless %}
+                        {% endfor %}
+                        }
+                      </script>
+                    {% endif %}
+                  {% endif %}
+                {% endcapture %}
+                {%- liquid
+                  assign ib_show = false
+                  if ib_cb_mf != blank
+                    echo ib_cb_mf
+                  endif
+                  if ib_block.settings.show_block_content and ib_cb_mf != blank
+                    assign ib_show = true
+                  elsif ib_cb_mf == blank
+                    assign ib_show = true
+                  endif
+                  if ib_show
+                    unless ib_block.type == 'description'
+                      if ib_block.settings.page != blank
+                        echo ib_block.settings.page.content
+                      elsif ib_block.settings.page == blank and ib_block.settings.row_content != blank
+                        echo ib_block.settings.row_content
+                      endif
+                    else
+                      echo product.description
+                    endunless
+                  endif
+                -%}
+              </div>
+            </div>
+          </details>
+        </accordion-default>
+
+      {%- when 'content_tabs' -%}
+        <script src="{{- 'main-product__tabs.js' | asset_url -}}" defer="defer"></script>
+        {% liquid
+          assign ib_tabs_align = section.settings.grid_content_alignment
+          if ib_tabs_align == 'start'
+            assign ib_tabs_justify = 'flex-start'
+          elsif ib_tabs_align == 'center'
+            assign ib_tabs_justify = 'center'
+          elsif ib_tabs_align == 'end'
+            assign ib_tabs_justify = 'flex-end'
+          endif
+          assign ib_tabs_text_align = ib_tabs_align
+        %}
+        {% style %}
+          #product__tabs-wrapper--{{ ib_block.id }} .product__tabs { justify-content: {{ ib_tabs_justify }}; }
+          #product__tabs-wrapper--{{ ib_block.id }} .product__tab-content { text-align: {{ ib_tabs_text_align }}; }
+        {% endstyle %}
+        {%- liquid
+          assign ib_tabs_count = 0
+          assign ib_tabs_start = 1
+          if ib_block.settings.heading_01 != blank
+            assign ib_tabs_count = ib_tabs_count | plus: 1
+          endif
+          if ib_block.settings.heading_02 != blank
+            assign ib_tabs_count = ib_tabs_count | plus: 1
+          endif
+          if ib_block.settings.heading_03 != blank
+            assign ib_tabs_count = ib_tabs_count | plus: 1
+          endif
+          if ib_block.settings.display_description == 'end'
+            assign ib_tabs_count = ib_tabs_count | plus: 1
+          elsif ib_block.settings.display_description == 'start'
+            assign ib_tabs_start = 0
+          endif
+          assign ib_active_tab = ib_block.settings.active_tab
+        -%}
+        {%- assign ib_cls = 'product__tabs-wrapper' | append: ' ' | append: ib_cls -%}
+        <product-tabs class="{{ ib_cls }}" id="product__tabs-wrapper--{{- ib_block.id -}}" {{ ib_block.shopify_attributes }}>
+          <div class="product__tabs">
+            {%- for ib_ti in (ib_tabs_start..ib_tabs_count) -%}
+              {%- liquid
+                assign ib_ti_str = '' | append: ib_ti
+                assign ib_is_active = false
+                if ib_active_tab == ib_ti_str
+                  assign ib_is_active = true
+                elsif ib_active_tab == 'description' and ib_ti == 0
+                  assign ib_is_active = true
+                elsif ib_active_tab == 'description' and ib_ti == 4
+                  assign ib_is_active = true
+                endif
+                if ib_active_tab == '0'
+                  assign ib_is_active = false
+                endif
+              -%}
+              {% if ib_ti == 0 and ib_block.settings.display_description == 'start' %}
+                {%- render 'main-product__tab-item', type: 'trigger', index: ib_ti, heading: ib_block.settings.heading_description, icon: ib_block.settings.icon_description, custom_icon: ib_block.settings.custom_icon_description, is_description: true, is_active: ib_is_active, block: ib_block -%}
+              {% elsif ib_ti == 1 %}
+                {%- render 'main-product__tab-item', type: 'trigger', index: ib_ti, heading: ib_block.settings.heading_01, icon: ib_block.settings.icon_01, custom_icon: ib_block.settings.custom_icon_01, is_description: false, is_active: ib_is_active, block: ib_block -%}
+              {% elsif ib_ti == 2 %}
+                {%- render 'main-product__tab-item', type: 'trigger', index: ib_ti, heading: ib_block.settings.heading_02, icon: ib_block.settings.icon_02, custom_icon: ib_block.settings.custom_icon_02, is_description: false, is_active: ib_is_active, block: ib_block -%}
+              {% elsif ib_ti == 3 %}
+                {%- render 'main-product__tab-item', type: 'trigger', index: ib_ti, heading: ib_block.settings.heading_03, icon: ib_block.settings.icon_03, custom_icon: ib_block.settings.custom_icon_03, is_description: false, is_active: ib_is_active, block: ib_block -%}
+              {% elsif ib_ti == 4 and ib_block.settings.display_description == 'end' %}
+                {%- render 'main-product__tab-item', type: 'trigger', index: ib_ti, heading: ib_block.settings.heading_description, icon: ib_block.settings.icon_description, custom_icon: ib_block.settings.custom_icon_description, is_description: true, is_active: ib_is_active, block: ib_block -%}
+              {% endif %}
+            {%- endfor -%}
+          </div>
+          {%- for ib_ti in (ib_tabs_start..ib_tabs_count) -%}
+            {% if ib_ti == 0 and ib_block.settings.display_description == 'start' %}
+              {%- render 'main-product__tab-item', type: 'content', index: ib_ti, is_description: true, block: ib_block -%}
+            {% elsif ib_ti == 1 %}
+              {%- render 'main-product__tab-item', type: 'content', index: ib_ti, content: ib_block.settings.content_01, page: ib_block.settings.page_01, is_description: false, block: ib_block -%}
+            {% elsif ib_ti == 2 %}
+              {%- render 'main-product__tab-item', type: 'content', index: ib_ti, content: ib_block.settings.content_02, page: ib_block.settings.page_02, is_description: false, block: ib_block -%}
+            {% elsif ib_ti == 3 %}
+              {%- render 'main-product__tab-item', type: 'content', index: ib_ti, content: ib_block.settings.content_03, page: ib_block.settings.page_03, is_description: false, block: ib_block -%}
+            {% elsif ib_ti == 4 and ib_block.settings.display_description == 'end' %}
+              {%- render 'main-product__tab-item', type: 'content', index: ib_ti, is_description: true, block: ib_block -%}
+            {% endif %}
+          {%- endfor -%}
+        </product-tabs>
+
+      {%- when 'content_grid' -%}
+        {% assign ib_grid_first = ib_grid_blocks | first %}
+        {% if ib_block.id == ib_grid_first.id %}
+          {%- assign ib_cls = 'product__content-grid' | append: ' ' | append: ib_cls -%}
+          <div class="{{ ib_cls }}{% if ib_grid_blocks.size == 1 %} product__content-grid--single{% endif %}" {{ ib_block.shopify_attributes }}>
+            {% for ib_item in ib_grid_blocks %}
+              <div class="product__content-grid-item icon {% if ib_grid_blocks.size > 1 %} small-hide{% endif %}">
+                {%- liquid
+                  assign ib_ico_alt = ib_item.settings.icon_alt | default: ib_item.settings.heading
+                  if ib_item.settings.custom_icon
+                    echo ib_item.settings.custom_icon | image_url: width: 24 | image_tag: alt: ib_ico_alt
+                  elsif ib_item.settings.icon != blank
+                    render 'icon', icon_name: ib_item.settings.icon
+                  endif
+                -%}
+                {% if ib_item.settings.heading != blank %}<span>{{- ib_item.settings.heading -}}</span>{% endif %}
+              </div>
+            {% endfor %}
+            {% if ib_grid_blocks.size > 1 %}
+              <div class="swiper swiper__content-grid small-up-hide">
+                <div class="swiper-wrapper">
+                  {% for ib_item in ib_grid_blocks %}
+                    <div class="swiper-slide icon">
+                      {%- liquid
+                        assign ib_ico_alt = ib_item.settings.icon_alt | default: ib_item.settings.heading
+                        if ib_item.settings.custom_icon
+                          echo ib_item.settings.custom_icon | image_url: width: 24 | image_tag: alt: ib_ico_alt
+                        elsif ib_item.settings.icon != blank
+                          render 'icon', icon_name: ib_item.settings.icon
+                        endif
+                      -%}
+                      {% if ib_item.settings.heading != blank %}<span>{{- ib_item.settings.heading -}}</span>{% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", () => {
+                  function initSwiper() {
+                    const sliderContentGrid = document.querySelector(".swiper__content-grid");
+                    if (window.innerWidth < 750 && sliderContentGrid) {
+                      const swiperContentGrid = new Swiper(sliderContentGrid, {
+                        slidesPerView: 1,
+                        spaceBetween: 16,
+                        autoplay: { delay: 3000 },
+                        loop: true
+                      });
+                    }
+                  }
+                  initSwiper();
+                  window.addEventListener("resize", initSwiper);
+                });
+              </script>
+            {% endif %}
+          </div>
+        {% endif %}
+
+      {%- else -%}
+        <div class="product__app-block" {{ ib_block.shopify_attributes }}>{%- render ib_block -%}</div>
+    {%- endcase -%}
+  {%- endfor -%}
+</section>

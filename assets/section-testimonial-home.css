@@ -1,0 +1,352 @@
+.testimonial-section {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.testimonial-section * {
+  box-sizing: inherit;
+}
+
+.testimonial-section .overlay {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  height: 100%;
+  padding: 80px 20px;
+  box-sizing: border-box;
+}
+
+.testimonial-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.testimonial-header h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.testimonial-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.testimonial-cards {
+  width: 100%;
+
+  padding-bottom: 40px;
+}
+
+.swiper-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.home-testimonial-wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.testimonial-card {
+  background-color: white;
+  border-radius: 50px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.testimonial-card h4 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.testimonial-card p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.reviewer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.reviewer-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.reviewer-img img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.reviewer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewer-name {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.stars {
+  color: #ffd700;
+  font-size: 1.5rem;
+}
+
+.reviewer-right .verified-badge {
+  background-color: #a5854d;
+  color: white;
+  padding: 5px 10px;
+  font-size: 1rem;
+  border-radius: 15px;
+  font-weight: 600;
+}
+
+.review-button {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.review-button .btn {
+  background-color: #a5854d;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.review-button .btn:hover {
+  background-color: #8a6b3e;
+}
+
+/* Change active dot color */
+.swiper-pagination-bullet-active {
+  background-color: #a5854d !important;
+  opacity: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+  .testimonial-card {
+    padding: 20px;
+    border-radius: 30px;
+  }
+
+  .testimonial-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .testimonial-header p {
+    font-size: 1rem;
+  }
+
+  .reviewer-img img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .verified-badge {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+
+  .testimonial-header {
+    text-align: left;
+    padding: 0 20px;
+  }
+
+  .swiper-container {
+    padding: 0 10px;
+  }
+
+  .home-testimonial-wrapper {
+    gap: 20px;
+  }
+
+  .testimonial-card {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .testimonial-card {
+    padding: 25px;
+    max-width: 90%;
+    flex: 0 0 90%;
+  }
+
+  .testimonial-header h2 {
+    font-size: 2.2rem;
+  }
+
+  .testimonial-header p {
+    font-size: 1.1rem;
+  }
+
+  .reviewer-img img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .verified-badge {
+    font-size: 0.7rem;
+  }
+
+  .home-testimonial-wrapper {
+    gap: 25px;
+  }
+}
+
+@media (min-width: 992px) {
+  .testimonial-card {
+    padding: 35px;
+    max-width: 400px;
+    flex: 0 0 400px;
+  }
+
+  .testimonial-header h2 {
+    font-size: 2.5rem;
+  }
+
+  .testimonial-header p {
+    font-size: 1.2rem;
+  }
+
+  .home-testimonial-wrapper {
+    justify-content: center;
+  }
+}
+@media (min-width: 1400px) {
+  .testimonial-header h2 {
+    font-size: 3rem;
+  }
+
+  .testimonial-header p {
+    font-size: 1.4rem;
+  }
+
+  .testimonial-card {
+    max-width: 500px;
+    flex: 0 0 500px;
+    padding: 40px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .testimonial-header h2 {
+    font-size: 3.5rem;
+  }
+
+  .testimonial-header p {
+    font-size: 1.6rem;
+  }
+
+  .testimonial-card {
+    max-width: 550px;
+    flex: 0 0 550px;
+    padding: 50px;
+  }
+}
+.swiper-container {
+  overflow-x: auto; /* Enables horizontal scrolling */
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  scroll-snap-type: x mandatory;
+  display: flex;
+}
+
+.home-testimonial-wrapper {
+  flex-wrap: nowrap; /* Prevent wrapping */
+  min-width: max-content; /* Allow cards to overflow horizontally */
+  gap: 30px;
+}
+
+.testimonial-card {
+  scroll-snap-align: start;
+  flex: 0 0 auto; /* Prevent shrinking and wrapping */
+}
+.swiper-container::-webkit-scrollbar {
+  display: none;
+}
+.swiper-container {
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.testimonial-card {
+  scroll-snap-align: center; /* optional improvement for UX */
+}
+.testimonial-card {
+  height: auto;
+}
+.swiper-container {
+  scroll-behavior: smooth;
+}
+.testimonial-card {
+  flex: 0 0 clamp(280px, 80vw, 400px);
+  max-width: clamp(280px, 80vw, 400px);
+  scroll-snap-align: center;
+  height: auto;
+}
+@media (max-width: 576px) {
+  .testimonial-card {
+    width: 100px !important;
+    flex: 0 0 100% !important;
+  }
+}
+/* Default layout: Center cards on large screens */
+.swiper-container {
+  overflow: hidden;
+  width: 100%;
+}
+
+.home-testimonial-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow wrapping */
+  gap: 30px;
+}
+
+/* On mobile, use horizontal scrolling */
+@media (max-width: 576px) {
+  .swiper-container {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+  }
+
+  .home-testimonial-wrapper {
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+
+  .testimonial-card {
+    scroll-snap-align: center;
+    flex: 0 0 80%;
+    max-width: 80%;
+  }
+
+  .swiper-container::-webkit-scrollbar {
+    display: none;
+  }
+}

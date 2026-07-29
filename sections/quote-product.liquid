@@ -1,0 +1,155 @@
+{% schema %}
+{
+  "name": "Quote with Background",
+  "settings": [
+    { "type": "image_picker", "id": "bg_image_desktop", "label": "Desktop Background Image" },
+    { "type": "image_picker", "id": "bg_image_mobile", "label": "Mobile Background Image (optional)" },
+    { "type": "image_picker", "id": "founder_image_mobile", "label": "Founder Image (Mobile)" },
+
+    { "type": "text", "id": "quote_text", "label": "Quote Text", "default": "NutraDew™ is a hydration game-changer!" },
+    { "type": "text", "id": "author", "label": "Author Name", "default": "Dr. M Shrinivasan, Dermatologist" },
+
+    { "type": "text", "id": "button_text", "label": "Button Text", "default": "Buy now" },
+    { "type": "url", "id": "button_link", "label": "Button Link" },
+
+    { "type": "color", "id": "text_color", "label": "Text Color", "default": "#000000" },
+    { "type": "color", "id": "button_bg", "label": "Button Background Color", "default": "#000000" },
+    { "type": "color", "id": "button_text_color", "label": "Button Text Color (also used as mobile gold bg)", "default": "#d1a85c" }
+  ],
+  "presets": [
+    { "name": "Quote with Background", "category": "Custom" }
+  ]
+}
+{% endschema %}
+
+{%- assign s13_cfg = section.settings -%}
+{%- assign s13_link = s13_cfg.button_link -%}
+{%- assign s13_has_link = false -%}
+{%- if s13_link != blank -%}{%- assign s13_has_link = true -%}{%- endif -%}
+{%- assign s13_founder = s13_cfg.founder_image_mobile -%}
+
+<style>
+/* Base */
+.quote-section {
+  --gold: {{ s13_cfg.button_text_color }};
+  color: {{ s13_cfg.text_color }};
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 500px;
+}
+.quote-section.is-clickable { cursor: pointer; }
+
+/* Founder top (mobile only) */
+.founder-top-mobile { display: none; }
+
+/* Desktop tweaks */
+@media (min-width: 769px) {
+  .quote-section__content { display: none !important; } /* keep your desktop behavior */
+}
+
+/* Wider desktop height option */
+@media (min-width: 1200px) {
+  section.quote-section { height: 600px; min-height: auto; }
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+  /* Top block: big founder image, no radius */
+  .founder-top-mobile {
+    display: block;
+    margin: 0 0 0px 0; /* tiny gap before the bottom section */
+  }
+  .founder-top-mobile img {
+    margin-top:20px;
+    display: block;
+    width: 100%;
+    height: 380px;           /* big + consistent; tweak if you want taller */
+    object-fit: contain;       /* fills width, crops nicely */
+    border-radius: 0;        /* no radius */
+  }
+
+  /* Bottom block: background image + content */
+  .quote-section {
+    margin: 0;
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+    justify-content: center;
+    min-height: 350px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .quote-section__text {
+    font-size: 21px;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .quote-section__author {
+    font-size: 18px;
+    margin-bottom: 14px;
+    opacity: .9;
+  }
+
+  .quote-section__button {
+    display: inline-block;
+    padding: 6px 18px;
+    font-size: 18px !important;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 500 !important;
+    text-decoration: none;
+  }
+}
+</style>
+
+<!-- MOBILE TOP: founder image (hidden on desktop) -->
+{%- if s13_founder != blank -%}
+  <div class="founder-top-mobile">
+    <img
+      src="{{ s13_founder | img_url: 'master' }}"
+      alt="Founder"
+      loading="lazy"
+    >
+  </div>
+{%- endif -%}
+
+<!-- BOTTOM: background image section with content -->
+<section
+  class="quote-section {% if s13_has_link %}is-clickable{% endif %}"
+  style="background-image: url({{ s13_cfg.bg_image_desktop | img_url: 'master' }});"
+  {% if s13_has_link %}
+    onclick="if(window.innerWidth>=769) window.location.href='{{ s13_link }}'"
+  {% endif %}
+  data-mobile-bg="{{ s13_cfg.bg_image_mobile | img_url: 'master' }}"
+>
+  <div class="quote-section__content">
+    <div class="quote-section__text">{{ s13_cfg.quote_text }}</div>
+    <div class="quote-section__author">- {{ s13_cfg.author }}</div>
+
+    {%- if s13_has_link -%}
+      <a href="{{ s13_link }}"
+         class="quote-section__button"
+         style="background: {{ s13_cfg.button_bg }}; color: {{ s13_cfg.button_text_color }};">
+        {{ s13_cfg.button_text }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Swap in the mobile bg image for the bottom section on small screens
+  const el = document.querySelector(".quote-section");
+  const mobileBg = el?.getAttribute("data-mobile-bg");
+  if (window.innerWidth <= 768 && mobileBg) {
+    el.style.backgroundImage = `url(${mobileBg})`;
+  }
+});
+</script>

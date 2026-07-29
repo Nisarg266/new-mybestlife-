@@ -1,0 +1,56 @@
+{%- comment -%}
+  Social sharing buttons (share to Twitter, Pinterest, LinkedIn, Facebook).
+  params: class
+{%- endcomment -%}
+
+{%- liquid
+  assign share_list = blank
+  assign share_class = class | default: false
+
+  assign share_list = share_list | append: ',Twitter'
+  assign share_list = share_list | append: ',Pinterest'
+  assign share_list = share_list | append: ',LinkedIn'
+  if settings.share_instagram and settings.social_instagram_link != blank
+    assign share_list = share_list | append: ',Instagram'
+  endif
+  assign share_list = share_list | append: ',Facebook'
+-%}
+
+{%- if share_list != blank -%}
+  {%- assign share_platforms = share_list | remove_first: ',' | split: ',' -%}
+  {%- assign share_class = share_class | default: '' -%}
+
+  <ul class="social-sharing list-unstyled{% if share_class %} {{ share_class }}{% endif %}">
+    {%- assign share_title = page_title | default: shop.name -%}
+    {%- assign share_url = canonical_url | default: shop.url -%}
+
+    {%- for platform in share_platforms -%}
+      {%- assign platform_key = platform | downcase -%}
+      {%- assign platform_icon = 'brand-' | append: platform_key -%}
+      {%- assign aria_lbl = 'theme.actions.share_on' | t: name: platform -%}
+
+      {%- capture share_href -%}
+        {%- case platform_key -%}
+          {%- when 'twitter' -%}
+            //twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ share_url }}
+          {%- when 'pinterest' -%}
+            //pinterest.com/pin/create/button/?url={{ share_url }}&amp;media=https:{{ page_image | image_url: width: 1024, height: 1024 }}&amp;description={{ share_title | url_param_escape }}
+          {%- when 'linkedin' -%}
+            //www.linkedin.com/shareArticle?mini=true&url={{ share_url }}
+          {%- when 'facebook' -%}
+            //www.facebook.com/sharer.php?u={{ share_url }}
+        {%- endcase -%}
+      {%- endcapture -%}
+
+      {%- assign share_href = share_href | strip -%}
+
+      {%- if share_href != '' -%}
+        <li class="social-sharing__item">
+          <a target="_blank" href="{{- share_href -}}" class="social-sharing__link" aria-label="{{- aria_lbl -}}">
+            {%- render 'icon', icon_name: platform_icon -%}
+          </a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- endif -%}

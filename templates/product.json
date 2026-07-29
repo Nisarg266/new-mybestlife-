@@ -1,0 +1,1802 @@
+{
+    "sections":  {
+                     "coming_soon_VryByh":  {
+                                                "type":  "coming-soon",
+                                                "name":  "Hero Banner",
+                                                "settings":  {
+                                                                 "button_link":  "#cart123",
+                                                                 "logo_margin_top":  0,
+                                                                 "logo_margin_bottom":  0,
+                                                                 "subheading":  "",
+                                                                 "subheading_size":  20,
+                                                                 "subheading_color":  "#2a2a2a",
+                                                                 "subheading_margin_top":  10,
+                                                                 "subheading_margin_bottom":  10,
+                                                                 "subheading_padding_left":  200,
+                                                                 "subheading_padding_right":  200,
+                                                                 "heading":  "",
+                                                                 "heading_size":  48,
+                                                                 "heading_color":  "#ffffff",
+                                                                 "heading_margin_top":  10,
+                                                                 "heading_margin_bottom":  10,
+                                                                 "background_color":  "#2a2a2a",
+                                                                 "background_image":  "shopify://shop_images/Shop_All_Melt_n_Glow_Web_Banner_1.jpg",
+                                                                 "mobile_background_image":  "shopify://shop_images/Shop_All_Melt_n_Glow_Mobile_Banner_MnG_1.jpg",
+                                                                 "text_alignment":  "center",
+                                                                 "padding_top":  40,
+                                                                 "padding_bottom":  100,
+                                                                 "logo_width":  200,
+                                                                 "section_height":  "85vh"
+                                                             }
+                                            },
+                     "main":  {
+                                  "type":  "main-product",
+                                  "blocks":  {
+                                                 "goback_zMzywG":  {
+                                                                       "type":  "goback",
+                                                                       "settings":  {
+                                                                                        "goback_style":  "filled",
+                                                                                        "goback_label":  "",
+                                                                                        "display_goback_mobile":  "on-media",
+                                                                                        "show_on":  "desktop"
+                                                                                    }
+                                                                   },
+                                                 "breadcrumbs_JRrp9d":  {
+                                                                            "type":  "breadcrumbs",
+                                                                            "settings":  {
+
+                                                                                         }
+                                                                        },
+                                                 "text_w7iGN6":  {
+                                                                     "type":  "text",
+                                                                     "disabled":  true,
+                                                                     "settings":  {
+                                                                                      "spacing_bottom":  "4",
+                                                                                      "heading":  "",
+                                                                                      "icon":  "theme-check",
+                                                                                      "link_to_resource":  "none",
+                                                                                      "text_before_link":  false,
+                                                                                      "heading_secondary":  "",
+                                                                                      "metafield_for_product_variant":  "",
+                                                                                      "show_block_content":  true
+                                                                                  }
+                                                                 },
+                                                 "badge_dC66pN":  {
+                                                                      "type":  "badge",
+                                                                      "disabled":  true,
+                                                                      "settings":  {
+                                                                                       "spacing_bottom":  "1",
+                                                                                       "show_badges":  true,
+                                                                                       "show_badges_discount":  true,
+                                                                                       "show_badges_sold":  true
+                                                                                   }
+                                                                  },
+                                                 "glow_text_block_paa34p":  {
+                                                                                "type":  "glow_text_block",
+                                                                                "settings":  {
+                                                                                                 "large_text":  "",
+                                                                                                 "subtitlenew":  "Reveal your skin’s natural radiance with clinically proven, toxin-free brightening solutions | Dermatologist - Validated"
+                                                                                             }
+                                                                            },
+                                                 "1e0c79e9-7de0-4eee-b9c5-f27132635fb8":  {
+                                                                                              "type":  "title",
+                                                                                              "settings":  {
+                                                                                                               "spacing_bottom":  "0",
+                                                                                                               "image":  "shopify://shop_images/Screenshot_2025-06-26_094723.png",
+                                                                                                               "image_size":  280
+                                                                                                           }
+                                                                                          },
+                                                 "glow_text_block_NARcKD":  {
+                                                                                "type":  "glow_text_block",
+                                                                                "settings":  {
+                                                                                                 "large_text":  "",
+                                                                                                 "subtitlenew":  "Melt-in-the-mouth formulation. No water needed. Juicy watermelon flavor."
+                                                                                             }
+                                                                            },
+                                                 "glow_text_block_qGWkBk":  {
+                                                                                "type":  "glow_text_block",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "large_text":  "",
+                                                                                                 "subtitlenew":  ""
+                                                                                             }
+                                                                            },
+                                                 "product_reviews_B48Kek":  {
+                                                                                "type":  "product-reviews",
+                                                                                "settings":  {
+                                                                                                 "review_count_text":  "5.0 (120 REVIEWS)",
+                                                                                                 "star_icon":  "shopify://shop_images/bf91cb1647999382b5d5984c0bed30d2f8a22aab.png",
+                                                                                                 "top_margin":  0,
+                                                                                                 "bottom_margin":  0
+                                                                                             }
+                                                                            },
+                                                 "glow_points_EiJKjE":  {
+                                                                            "type":  "glow_points",
+                                                                            "settings":  {
+                                                                                             "line1":  "Visibly reduces pigmentation and dark spots",
+                                                                                             "icon1":  "shopify://shop_images/1_f39c1ab6-6e5c-4805-905c-8bfbdeb08ab8.png",
+                                                                                             "line2":  "Fades acne scars and blemishes for clearer skin",
+                                                                                             "icon2":  "shopify://shop_images/Melt_N_GO_icon_93489456-2bc4-4a1f-a222-6ffc0ff562bd.png",
+                                                                                             "line3":  "Shields skin from UV rays, blue light and pollution",
+                                                                                             "icon3":  "shopify://shop_images/3_8e3f9287-078e-4f35-8232-7c55d71f0aab.png",
+                                                                                             "line4":  "Boosts natural radiance from within",
+                                                                                             "icon4":  "shopify://shop_images/4_e19169aa-3b1a-4bc8-9a06-afa309f26248.png",
+                                                                                             "top_margin":  28,
+                                                                                             "bottom_margin":  12
+                                                                                         }
+                                                                        },
+                                                 "glow_text_block_CAwc6q":  {
+                                                                                "type":  "glow_text_block",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "large_text":  "MRP. 2399.00",
+                                                                                                 "subtitlenew":  ""
+                                                                                             }
+                                                                            },
+                                                 "8effeb43-55b7-4ec4-ab9b-68bcd89b865b":  {
+                                                                                              "type":  "price",
+                                                                                              "settings":  {
+                                                                                                               "spacing_bottom":  "1",
+                                                                                                               "show_price_tax_info":  false,
+                                                                                                               "show_price_shipping_info":  false,
+                                                                                                               "show_price_custom_info":  ""
+                                                                                                           }
+                                                                                          },
+                                                 "pack_contain_metafield":  {
+                                                                                "type":  "text",
+                                                                                "settings":  {
+                                                                                                 "spacing_bottom":  "1",
+                                                                                                 "heading":  "",
+                                                                                                 "icon":  "",
+                                                                                                 "link_to_resource":  "none",
+                                                                                                 "text_before_link":  false,
+                                                                                                 "heading_secondary":  "",
+                                                                                                 "metafield_for_product_variant":  "custom.pack_contain",
+                                                                                                 "show_block_content":  true
+                                                                                             }
+                                                                            },
+                                                 "sku_HNK7Ka":  {
+                                                                    "type":  "sku",
+                                                                    "settings":  {
+                                                                                     "spacing_bottom":  "1"
+                                                                                 }
+                                                                },
+                                                 "divider_HGwyhB":  {
+                                                                        "type":  "divider",
+                                                                        "disabled":  true,
+                                                                        "settings":  {
+                                                                                         "spacing_bottom":  "3"
+                                                                                     }
+                                                                    },
+                                                 "description_qA3HqH":  {
+                                                                            "type":  "description",
+                                                                            "disabled":  true,
+                                                                            "settings":  {
+                                                                                             "spacing_bottom":  "2",
+                                                                                             "behaviour":  "plain",
+                                                                                             "heading":  "",
+                                                                                             "text_truncate":  3,
+                                                                                             "icon":  "theme-info",
+                                                                                             "metafield_for_product_variant":  "",
+                                                                                             "show_block_content":  true
+                                                                                         }
+                                                                        },
+                                                 "inventory_mfhqJL":  {
+                                                                          "type":  "INVENTORY",
+                                                                          "disabled":  true,
+                                                                          "settings":  {
+                                                                                           "stock_threshold":  21,
+                                                                                           "stock_message":  "🔴 Only 9 left in stock – Order soon!",
+                                                                                           "padding_top":  0,
+                                                                                           "padding_bottom":  20
+                                                                                       }
+                                                                      },
+                                                 "8604a6ff-ad0b-44dd-8068-1de4e062f8e8":  {
+                                                                                              "type":  "buy_buttons",
+                                                                                              "settings":  {
+                                                                                                               "spacing_bottom":  "3",
+                                                                                                               "show_quantity":  false,
+                                                                                                               "layout":  "inline",
+                                                                                                               "show_dynamic_checkout":  false,
+                                                                                                               "show_gift_card_recipient":  false
+                                                                                                           }
+                                                                                          },
+                                                 "four_icons_notify_gGxNyB":  {
+                                                                                  "type":  "four_icons_notify",
+                                                                                  "settings":  {
+                                                                                                   "text1":  "",
+                                                                                                   "text2":  "",
+                                                                                                   "text3":  "",
+                                                                                                   "text4":  "",
+                                                                                                   "button_text":  "Add To Cart",
+                                                                                                   "button_text_color":  "#b4975a",
+                                                                                                   "button_bg_color":  "#2a2a2a",
+                                                                                                   "notify_link":  "#cart123"
+                                                                                               }
+                                                                              },
+                                                 "upsell_products_p6EDhW":  {
+                                                                                "type":  "upsell-products",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "title":  "Complete the Look:",
+                                                                                                 "collection":  [
+                                                                                                                    "melt-n-glo",
+                                                                                                                    "mind360"
+                                                                                                                ],
+                                                                                                 "top_margin":  12,
+                                                                                                 "bottom_margin":  12
+                                                                                             }
+                                                                            },
+                                                 "accordians_VxL6Jk":  {
+                                                                           "type":  "accordians",
+                                                                           "disabled":  true,
+                                                                           "settings":  {
+                                                                                            "product_description_title":  "Descriptions",
+                                                                                            "ingredients_title":  "Ingredients",
+                                                                                            "usage_title":  "Your Daily Dose of Glow — From Within\nMelt n GloTM is your path to brighter, more even-toned skin.\n\nPowered by advanced ingredients like Glutathione (OpitacTM), Liposomal Vitamin C, Lutein + Zeaxanthin (Lutemax Skinglo), and Pomegranate extract (GrantriaTM), it helps:\n\n•\tEnhances your natural glow\n•\tReduce pigmentation and dark spots\n•\tProtects against environmental stressors\n\nAchieve a luminous, youthful look with a formula designed to transform your skincare journey from the inside out.",
+                                                                                            "top_margin":  0,
+                                                                                            "bottom_margin":  12
+                                                                                        }
+                                                                       },
+                                                 "accordians_T4DaRd":  {
+                                                                           "type":  "accordians",
+                                                                           "disabled":  true,
+                                                                           "settings":  {
+                                                                                            "product_description_title":  "How To Use",
+                                                                                            "ingredients_title":  "Ingredients",
+                                                                                            "usage_title":  "1. Place one sachet directly in your mouth.\n\n2. Hold for 90 seconds, then swallow.\n\n3. For best results, stay hydrated and maintain a balanced diet.\n\n4. Use consistently for 8–12 weeks for a brighter, even complexion.",
+                                                                                            "top_margin":  0,
+                                                                                            "bottom_margin":  12
+                                                                                        }
+                                                                       },
+                                                 "trust_icons_pHiV7d":  {
+                                                                            "type":  "Trust-icons",
+                                                                            "disabled":  true,
+                                                                            "settings":  {
+                                                                                             "icon_1":  "shopify://shop_images/Frame_3.png",
+                                                                                             "text_1":  "Ordered",
+                                                                                             "date_1":  "Jan 25 - Jan 27",
+                                                                                             "icon_2":  "shopify://shop_images/Frame_2.png",
+                                                                                             "text_2":  "Order Ready",
+                                                                                             "date_2":  "Jan 25 - Jan 27",
+                                                                                             "icon_3":  "shopify://shop_images/Frame_1.png",
+                                                                                             "text_3":  "Delivered",
+                                                                                             "date_3":  "Jan 25 - Jan 27",
+                                                                                             "arrow":  "shopify://shop_images/Arrow_GPS.png",
+                                                                                             "top_margin":  18,
+                                                                                             "bottom_margin":  12
+                                                                                         }
+                                                                        },
+                                                 "info_card_JHkftW":  {
+                                                                          "type":  "info_card",
+                                                                          "disabled":  true,
+                                                                          "settings":  {
+                                                                                           "line1":  "Only clinically proven ceramides supported by a skin hydration study",
+                                                                                           "icon1":  "shopify://shop_images/Layer_1.png",
+                                                                                           "line2":  "26 people added to cart in the last 24 hours",
+                                                                                           "icon2":  "shopify://shop_images/Layer_1_1.png",
+                                                                                           "line3":  "Over 10,000+ tablets sold",
+                                                                                           "icon3":  "shopify://shop_images/Layer_1_2.png"
+                                                                                       }
+                                                                      },
+                                                 "e6d841d6-2f71-40b3-956a-912df13f9f6e":  {
+                                                                                              "type":  "inventory_notice",
+                                                                                              "disabled":  true,
+                                                                                              "settings":  {
+                                                                                                               "spacing_bottom":  "1",
+                                                                                                               "inventory_threshold":  15,
+                                                                                                               "notice_just_text":  false
+                                                                                                           }
+                                                                                          },
+                                                 "7be6b89c-da83-4ff2-9b85-44fb28cbfa27":  {
+                                                                                              "type":  "pickup-availability",
+                                                                                              "disabled":  true,
+                                                                                              "settings":  {
+                                                                                                               "spacing_bottom":  "2"
+                                                                                                           }
+                                                                                          },
+                                                 "b2dabe12-2158-4ba6-bc54-9baae453acf5":  {
+                                                                                              "type":  "text",
+                                                                                              "disabled":  true,
+                                                                                              "settings":  {
+                                                                                                               "spacing_bottom":  "1",
+                                                                                                               "heading":  "Free delivery and shipping",
+                                                                                                               "icon":  "theme-check",
+                                                                                                               "link_to_resource":  "none",
+                                                                                                               "text_before_link":  false,
+                                                                                                               "heading_secondary":  "",
+                                                                                                               "metafield_for_product_variant":  "",
+                                                                                                               "show_block_content":  true
+                                                                                                           }
+                                                                                          },
+                                                 "1ad0121e-439d-45c0-b45d-4f080836ade5":  {
+                                                                                              "type":  "text",
+                                                                                              "disabled":  true,
+                                                                                              "settings":  {
+                                                                                                               "spacing_bottom":  "1",
+                                                                                                               "heading":  "Secure online payment",
+                                                                                                               "icon":  "theme-check",
+                                                                                                               "link_to_resource":  "none",
+                                                                                                               "text_before_link":  false,
+                                                                                                               "heading_secondary":  "",
+                                                                                                               "metafield_for_product_variant":  "",
+                                                                                                               "show_block_content":  true
+                                                                                                           }
+                                                                                          },
+                                                 "divider_XYwkEk":  {
+                                                                        "type":  "divider",
+                                                                        "disabled":  true,
+                                                                        "settings":  {
+                                                                                         "spacing_bottom":  "1"
+                                                                                     }
+                                                                    },
+                                                 "content_grid_W3Mqy6":  {
+                                                                             "type":  "content_grid",
+                                                                             "disabled":  true,
+                                                                             "settings":  {
+                                                                                              "heading":  "Fast global shipping",
+                                                                                              "icon":  "theme-box"
+                                                                                          }
+                                                                         },
+                                                 "content_grid_iCJFCN":  {
+                                                                             "type":  "content_grid",
+                                                                             "disabled":  true,
+                                                                             "settings":  {
+                                                                                              "heading":  "Free returns",
+                                                                                              "icon":  "theme-return"
+                                                                                          }
+                                                                         },
+                                                 "content_block_Dqjdp6":  {
+                                                                              "type":  "content_block",
+                                                                              "disabled":  true,
+                                                                              "settings":  {
+                                                                                               "spacing_bottom":  "1",
+                                                                                               "heading":  "Description",
+                                                                                               "row_content":  "{{ product.description }}",
+                                                                                               "icon":  "",
+                                                                                               "page":  "",
+                                                                                               "metafield_for_product_variant":  "",
+                                                                                               "show_block_content":  true
+                                                                                           }
+                                                                          },
+                                                 "content_block_9npUdB":  {
+                                                                              "type":  "content_block",
+                                                                              "disabled":  true,
+                                                                              "settings":  {
+                                                                                               "spacing_bottom":  "1",
+                                                                                               "heading":  "Additional Information",
+                                                                                               "row_content":  "",
+                                                                                               "icon":  "",
+                                                                                               "page":  "",
+                                                                                               "metafield_for_product_variant":  "",
+                                                                                               "show_block_content":  true
+                                                                                           }
+                                                                          },
+                                                 "content_block_8VJWfN":  {
+                                                                              "type":  "content_block",
+                                                                              "disabled":  true,
+                                                                              "settings":  {
+                                                                                               "spacing_bottom":  "1",
+                                                                                               "heading":  "How To Use",
+                                                                                               "row_content":  "",
+                                                                                               "icon":  "",
+                                                                                               "page":  "",
+                                                                                               "metafield_for_product_variant":  "",
+                                                                                               "show_block_content":  true
+                                                                                           }
+                                                                          },
+                                                 "content_block_HrW6Cp":  {
+                                                                              "type":  "content_block",
+                                                                              "disabled":  true,
+                                                                              "settings":  {
+                                                                                               "spacing_bottom":  "1",
+                                                                                               "heading":  "Supplement Facts",
+                                                                                               "row_content":  "",
+                                                                                               "icon":  "",
+                                                                                               "page":  "",
+                                                                                               "metafield_for_product_variant":  "",
+                                                                                               "show_block_content":  true
+                                                                                           }
+                                                                          },
+                                                 "complementary_products_h7nWQd":  {
+                                                                                       "type":  "complementary_products",
+                                                                                       "disabled":  true,
+                                                                                       "settings":  {
+                                                                                                        "spacing_bottom":  "2",
+                                                                                                        "heading":  "You may also like",
+                                                                                                        "icon":  "theme-box",
+                                                                                                        "limit":  4
+                                                                                                    }
+                                                                                   }
+                                             },
+                                  "block_order":  [
+                                                      "goback_zMzywG",
+                                                      "breadcrumbs_JRrp9d",
+                                                      "text_w7iGN6",
+                                                      "badge_dC66pN",
+                                                      "glow_text_block_paa34p",
+                                                      "1e0c79e9-7de0-4eee-b9c5-f27132635fb8",
+                                                      "glow_text_block_NARcKD",
+                                                      "glow_text_block_qGWkBk",
+                                                      "product_reviews_B48Kek",
+                                                      "glow_points_EiJKjE",
+                                                      "glow_text_block_CAwc6q",
+                                                      "8effeb43-55b7-4ec4-ab9b-68bcd89b865b",
+                                                      "pack_contain_metafield",
+                                                      "sku_HNK7Ka",
+                                                      "divider_HGwyhB",
+                                                      "description_qA3HqH",
+                                                      "inventory_mfhqJL",
+                                                      "8604a6ff-ad0b-44dd-8068-1de4e062f8e8",
+                                                      "four_icons_notify_gGxNyB",
+                                                      "upsell_products_p6EDhW",
+                                                      "accordians_VxL6Jk",
+                                                      "accordians_T4DaRd",
+                                                      "trust_icons_pHiV7d",
+                                                      "info_card_JHkftW",
+                                                      "e6d841d6-2f71-40b3-956a-912df13f9f6e",
+                                                      "7be6b89c-da83-4ff2-9b85-44fb28cbfa27",
+                                                      "b2dabe12-2158-4ba6-bc54-9baae453acf5",
+                                                      "1ad0121e-439d-45c0-b45d-4f080836ade5",
+                                                      "divider_XYwkEk",
+                                                      "content_grid_W3Mqy6",
+                                                      "content_grid_iCJFCN",
+                                                      "content_block_Dqjdp6",
+                                                      "content_block_9npUdB",
+                                                      "content_block_8VJWfN",
+                                                      "content_block_HrW6Cp",
+                                                      "complementary_products_h7nWQd"
+                                                  ],
+                                  "custom_css":  [
+                                                     ".accordion__button {background: #e9e9e9; border-radius: 10px; padding: 5px 0px; padding-left: 10px;}",
+                                                     ".product__accordion {padding-block: 0;}",
+                                                     ".product-form__buttons .product-form__submit {background: #2a2a2a; color: #f8f8f8; text-transform: uppercase;}",
+                                                     ".color-scheme-1.gradient {padding-bottom: 0px;}"
+                                                 ],
+                                  "settings":  {
+                                                   "product_media_layout":  "product__media-layout--full",
+                                                   "product_media_layout_mobile":  "product__media-layout--full--sm",
+                                                   "product_media_aspect_ratio":  "1/1",
+                                                   "product_media_object_fit":  "contain",
+                                                   "product_slider_auto_height":  false,
+                                                   "media_transparent_background":  true,
+                                                   "display_media_zoom":  "click",
+                                                   "product_media_with_thumbs":  "only_desktop",
+                                                   "product_media_thumbs_ratio":  "1/1",
+                                                   "product_media_thumbs_object_fit":  "cover",
+                                                   "gallery_arrows_show_on":  "both",
+                                                   "display_media_gallery_pagination":  "none",
+                                                   "media_gallery_info":  "",
+                                                   "metafield_as_seen_on":  "",
+                                                   "color_scheme_gallery":  "scheme-1",
+                                                   "enable_sticky_info":  false,
+                                                   "enable_actions_bar":  false,
+                                                   "media_grid_size":  "medium",
+                                                   "media_grid_position":  "start",
+                                                   "grid_gap":  "1",
+                                                   "spacing_grid":  1.6,
+                                                   "grid_content_alignment":  "start",
+                                                   "section_width":  "max-w-fluid",
+                                                   "color_scheme":  "",
+                                                   "spacing_top":  "2",
+                                                   "spacing_bottom":  "2"
+                                               }
+                              },
+                     "product_accordion_pby3MJ":  {
+                                                      "type":  "product-accordion",
+                                                      "name":  "Product Accordion",
+                                                      "settings":  {
+                                                                       "heading_font_size":  32,
+                                                                       "delivery_info":  "Delivered in 5-7 working days. Free shipping available."
+                                                                   }
+                                                  },
+                     "marquee_ctygfz":  {
+                                            "type":  "marquee",
+                                            "blocks":  {
+                                                           "review_e6NjHK":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/Group1.svg",
+                                                                                                  "feature_description_text":  "Soy-free"
+                                                                                              }
+                                                                             },
+                                                           "review_PYXpjL":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/Dairy_Free.svg",
+                                                                                                  "feature_description_text":  "Lactose-free"
+                                                                                              }
+                                                                             },
+                                                           "review_XtJXnm":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/no-gluten_14848075.svg",
+                                                                                                  "feature_description_text":  "Gluten-Free"
+                                                                                              }
+                                                                             },
+                                                           "review_UY6J8H":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/No_Artificial_Sweeteners.svg",
+                                                                                                  "feature_description_text":  "No Artificial Sweetener"
+                                                                                              }
+                                                                             },
+                                                           "review_Hp8BMm":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/Group5.svg",
+                                                                                                  "feature_description_text":  "No Added Preservatives"
+                                                                                              }
+                                                                             },
+                                                           "review_fDbm9i":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/free_15413948_1.svg",
+                                                                                                  "feature_description_text":  "GMO-free"
+                                                                                              }
+                                                                             },
+                                                           "review_CPLt8w":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/plant-based_3638017.svg",
+                                                                                                  "feature_description_text":  "Vegan friendly"
+                                                                                              }
+                                                                             }
+                                                       },
+                                            "block_order":  [
+                                                                "review_e6NjHK",
+                                                                "review_PYXpjL",
+                                                                "review_XtJXnm",
+                                                                "review_UY6J8H",
+                                                                "review_Hp8BMm",
+                                                                "review_fDbm9i",
+                                                                "review_CPLt8w"
+                                                            ],
+                                            "disabled":  true,
+                                            "name":  "Brand Info",
+                                            "settings":  {
+                                                             "custom_class":  "mybestlife",
+                                                             "subheading":  "",
+                                                             "heading":  "",
+                                                             "padding_top":  80,
+                                                             "padding_bottom":  80,
+                                                             "padding_top_mobile":  52,
+                                                             "padding_bottom_mobile":  52,
+                                                             "bg_color":  "#ffffff",
+                                                             "autoplay":  false,
+                                                             "delay":  10,
+                                                             "speed":  800,
+                                                             "pagination":  true,
+                                                             "showslider_mobile":  true,
+                                                             "slides_per_view_mobile":  2.2,
+                                                             "slides_per_view_desktop":  4
+                                                         }
+                                        },
+                     "marquees_R3AKf9":  {
+                                             "type":  "marquees",
+                                             "blocks":  {
+                                                            "item_aFJp67":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-05.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_wnhWyh":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-06.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_Ujz9iA":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-08.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_dmfdP4":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-10.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_8C6ebc":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-02.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_LGQHwM":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-07.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_Xx8Gw6":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-04_2.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_bE78x3":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-11.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_yAHLAg":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-03.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_6NURN8":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-08.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_FnWmC7":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/Untitled-1-12.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_b93zcJ":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-09.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_QGdRfH":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-05.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_XBgEFU":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-06.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_LACnbf":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-03.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_QzNMfW":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-13.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            }
+                                                        },
+                                             "block_order":  [
+                                                                 "item_aFJp67",
+                                                                 "item_wnhWyh",
+                                                                 "item_Ujz9iA",
+                                                                 "item_dmfdP4",
+                                                                 "item_8C6ebc",
+                                                                 "item_LGQHwM",
+                                                                 "item_Xx8Gw6",
+                                                                 "item_bE78x3",
+                                                                 "item_yAHLAg",
+                                                                 "item_6NURN8",
+                                                                 "item_FnWmC7",
+                                                                 "item_b93zcJ",
+                                                                 "item_QGdRfH",
+                                                                 "item_XBgEFU",
+                                                                 "item_LACnbf",
+                                                                 "item_QzNMfW"
+                                                             ],
+                                             "name":  "t:sections.marquees.name",
+                                             "settings":  {
+                                                              "enable_animation":  true,
+                                                              "marquee_duration_rate":  2,
+                                                              "marquee_font_size":  8,
+                                                              "marquee_items_spacing":  2,
+                                                              "color_scheme":  "scheme-49f23032-2a41-4ae8-b39d-db22aeb39437",
+                                                              "padding_top":  30,
+                                                              "padding_bottom":  30
+                                                          }
+                                         },
+                     "marquees_y8yP4J":  {
+                                             "type":  "marquees",
+                                             "blocks":  {
+                                                            "item_H8eNaE":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-14.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_jeJQK8":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-08.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_7hBAkV":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/Untitled-1-12.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_G8mWe7":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-09.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_NwH9K8":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-05.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_RMntap":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-06.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_THUTDF":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-03.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_ym3R4n":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-07.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            }
+                                                        },
+                                             "block_order":  [
+                                                                 "item_H8eNaE",
+                                                                 "item_jeJQK8",
+                                                                 "item_7hBAkV",
+                                                                 "item_G8mWe7",
+                                                                 "item_NwH9K8",
+                                                                 "item_RMntap",
+                                                                 "item_THUTDF",
+                                                                 "item_ym3R4n"
+                                                             ],
+                                             "disabled":  true,
+                                             "name":  "t:sections.marquees.name",
+                                             "settings":  {
+                                                              "enable_animation":  true,
+                                                              "marquee_duration_rate":  2,
+                                                              "marquee_font_size":  8,
+                                                              "marquee_items_spacing":  2,
+                                                              "color_scheme":  "scheme-49f23032-2a41-4ae8-b39d-db22aeb39437",
+                                                              "padding_top":  30,
+                                                              "padding_bottom":  30
+                                                          }
+                                         },
+                     "ingredients_VW7tmT":  {
+                                                "type":  "ingredients",
+                                                "blocks":  {
+                                                               "ingredient_WDzjY8":  {
+                                                                                         "type":  "ingredient",
+                                                                                         "settings":  {
+                                                                                                          "heading":  "Supercharged Brightening with OPITAC™ Glutathione",
+                                                                                                          "text":  "Harnesses a master antioxidant to neutralize free radicals, inhibit melanin production, and even skin tone from within",
+                                                                                                          "button_text":  "Read More",
+                                                                                                          "button_link":  "shopify://pages/ingredients",
+                                                                                                          "image":  "shopify://shop_images/Shop_All_Melt_n_Glow_2.jpg",
+                                                                                                          "block_padding_left":  0,
+                                                                                                          "block_padding_right":  0
+                                                                                                      }
+                                                                                     },
+                                                               "ingredient_M88LFM":  {
+                                                                                         "type":  "ingredient",
+                                                                                         "settings":  {
+                                                                                                          "heading":  "Blue-Light \u0026 Pollution Shield with Lutemax Skinglo",
+                                                                                                          "text":  "Clinically studied marigold-derived extract containing lutein and zeaxanthin. Filters harmful blue-light and neutralizes free radicals to preserve your natural glow.",
+                                                                                                          "button_text":  "Read More",
+                                                                                                          "button_link":  "shopify://pages/lutemax-skinglo",
+                                                                                                          "image":  "shopify://shop_images/Shop_All_Melt_n_Glow_1.jpg",
+                                                                                                          "block_padding_left":  0,
+                                                                                                          "block_padding_right":  0
+                                                                                                      }
+                                                                                     }
+                                                           },
+                                                "block_order":  [
+                                                                    "ingredient_WDzjY8",
+                                                                    "ingredient_M88LFM"
+                                                                ],
+                                                "custom_css":  [
+                                                                   ".section__heading {text-align: center;}"
+                                                               ],
+                                                "settings":  {
+                                                                 "heading_line1":  "Premium Ingredients",
+                                                                 "heading_line2":  "",
+                                                                 "background_color":  "#f5f2ec",
+                                                                 "spacing_top":  "2",
+                                                                 "spacing_bottom":  "2",
+                                                                 "top_padding":  60,
+                                                                 "bottom_padding":  30,
+                                                                 "left_padding":  20,
+                                                                 "right_padding":  20,
+                                                                 "pagination":  true,
+                                                                 "showslider_mobile":  true,
+                                                                 "slides_per_view_mobile":  1
+                                                             }
+                                            },
+                     "how_to_use_nutradew_k3mxFW":  {
+                                                        "type":  "how-to-use-nutradew",
+                                                        "blocks":  {
+                                                                       "step_JahCPq":  {
+                                                                                           "type":  "step",
+                                                                                           "settings":  {
+                                                                                                            "step_number":  "01",
+                                                                                                            "step_desc":  "Contents from one sachet to be placed in your mouth directly – no water needed. Let it melt in your mouth for 90 seconds, then swallow.",
+                                                                                                            "color":  "green",
+                                                                                                            "step_icon":  "shopify://shop_images/5_7188fd28-42b1-402d-8e70-bb512080d120.png"
+                                                                                                        }
+                                                                                       },
+                                                                       "step_Et8DTF":  {
+                                                                                           "type":  "step",
+                                                                                           "settings":  {
+                                                                                                            "step_number":  "02",
+                                                                                                            "step_desc":  "Stay hydrated and follow a balanced diet for enhanced skin nourishment.",
+                                                                                                            "color":  "red",
+                                                                                                            "step_icon":  "shopify://shop_images/6_9dec8880-6dd2-41c3-a48b-b7323ab2946c.png"
+                                                                                                        }
+                                                                                       },
+                                                                       "step_T6dy9c":  {
+                                                                                           "type":  "step",
+                                                                                           "settings":  {
+                                                                                                            "step_number":  "03",
+                                                                                                            "step_desc":  "Maintain regular intake for at least 8–12 weeks for a visibly brighter, even complexion.",
+                                                                                                            "color":  "blue",
+                                                                                                            "step_icon":  "shopify://shop_images/7_c1e2c0af-7130-49b0-a8e2-27ec1a0c79d4.png"
+                                                                                                        }
+                                                                                       }
+                                                                   },
+                                                        "block_order":  [
+                                                                            "step_JahCPq",
+                                                                            "step_Et8DTF",
+                                                                            "step_T6dy9c"
+                                                                        ],
+                                                        "custom_css":  [
+
+                                                                       ],
+                                                        "settings":  {
+                                                                         "background_color":  "#ffffff",
+                                                                         "heading":  "How to Use \u003cspan class=\"mobile-break\"\u003e\u003c/span\u003e Melt ‘N’ Glo™ \u003cspan class=\"mobile-break\"\u003e\u003c/span\u003e for Best Results",
+                                                                         "heading_size":  "h3",
+                                                                         "right_video_url":  "https://cdn.shopify.com/videos/c/o/v/891047ada0ab41b0a0bb2b5c37f45779.mp4",
+                                                                         "autoplay_video":  true,
+                                                                         "spacing_top":  "2",
+                                                                         "spacing_bottom":  "2",
+                                                                         "top_padding":  60,
+                                                                         "bottom_padding":  60,
+                                                                         "left_padding":  80,
+                                                                         "right_padding":  80
+                                                                     }
+                                                    },
+                     "how_magic_mRDdDi":  {
+                                              "type":  "how-magic",
+                                              "blocks":  {
+                                                             "step_YBEKCw":  {
+                                                                                 "type":  "step",
+                                                                                 "settings":  {
+                                                                                                  "step_number":  "",
+                                                                                                  "step_desc":  "Inhibits melanin for a clearer complexion.",
+                                                                                                  "color":  "green",
+                                                                                                  "step_icon":  "shopify://shop_images/12_4351b396-9101-4f6d-a3b0-ac438a0e3f6e.png"
+                                                                                              }
+                                                                             },
+                                                             "step_9VDCrd":  {
+                                                                                 "type":  "step",
+                                                                                 "settings":  {
+                                                                                                  "step_number":  "",
+                                                                                                  "step_desc":  "Backed by antioxidants and liposomal Vitamin C to fuel collagen and improve moisture retention for plumper, smoother-looking skin.",
+                                                                                                  "color":  "green",
+                                                                                                  "step_icon":  "shopify://shop_images/10_8cc5affe-ba43-4bdb-9c5f-0c9e508ff409.png"
+                                                                                              }
+                                                                             },
+                                                             "step_4mmDAw":  {
+                                                                                 "type":  "step",
+                                                                                 "settings":  {
+                                                                                                  "step_number":  "",
+                                                                                                  "step_desc":  "Filters blue-light and neutralizes pollution-induced free radicals.",
+                                                                                                  "color":  "green",
+                                                                                                  "step_icon":  "shopify://shop_images/7_d1c3b531-2e5a-4974-b113-570d146f18c3.png"
+                                                                                              }
+                                                                             }
+                                                         },
+                                              "block_order":  [
+                                                                  "step_YBEKCw",
+                                                                  "step_9VDCrd",
+                                                                  "step_4mmDAw"
+                                                              ],
+                                              "name":  "How to Use (Image Left)",
+                                              "settings":  {
+                                                               "background_color":  "#ffffff",
+                                                               "heading":  "HOW MELT ‘N’ GLO™ WORKS ITS MAGIC",
+                                                               "heading_size":  "h3",
+                                                               "left_video_url":  "https://cdn.shopify.com/videos/c/o/v/a872e721962a493cb4628a2c0bb208d6.mp4",
+                                                               "autoplay_video":  true,
+                                                               "top_padding":  60,
+                                                               "bottom_padding":  60,
+                                                               "left_padding":  80,
+                                                               "right_padding":  80
+                                                           }
+                                          },
+                     "table_ui_kCTGWf":  {
+                                             "type":  "table-ui",
+                                             "name":  "Table Comparison",
+                                             "settings":  {
+                                                              "section_heading":  "Melt ‘N’ Glo™ vs. Other Skin Brightening Supplements",
+                                                              "left_header":  "Melt ‘n’ Glo™ Advantage",
+                                                              "column1_bg":  "#ecbdb4",
+                                                              "column1_color":  "#2a2a2a",
+                                                              "right_header":  "Typical Brightening Supplements",
+                                                              "column2_bg":  "#f9d7b5",
+                                                              "column2_color":  "#2a2a2a",
+                                                              "left_image":  "shopify://shop_images/Shop_All_Melt_n_Glow_MNG_vs_Others_1.jpg",
+                                                              "left_row1":  "Convenient mouth-melting powder – no water required",
+                                                              "right_row1":  "Effervescent tablets that must be dissolved in water",
+                                                              "left_row2":  "Better absorption of glutathione via oro-buccal mucosa",
+                                                              "right_row2":  "Poor glutathione absorption through the gut",
+                                                              "left_row3":  "OPITAC™ Glutathione – premium grade from Japan",
+                                                              "right_row3":  "Generic glutathione of varying quality",
+                                                              "left_row4":  "Liposomal Vitamin C for up to 2x absorption",
+                                                              "right_row4":  "Non-Liposomal formats with low bioavailability",
+                                                              "left_row5":  "Lutemax Skinglo (Lutein + Zeaxanthin) for blue light protection",
+                                                              "right_row5":  "No blue-light defense ingredients",
+                                                              "left_row6":  "Full ingredient transparency – no hidden blends",
+                                                              "right_row6":  "Use proprietary blends, hiding exact ingredient amounts",
+                                                              "padding_top":  60,
+                                                              "padding_bottom":  60
+                                                          }
+                                         },
+                     "whydermi_cdVGMr":  {
+                                             "type":  "whydermi",
+                                             "blocks":  {
+                                                            "unique_lifestyle_card_WTbT6X":  {
+                                                                                                 "type":  "unique_lifestyle_card",
+                                                                                                 "settings":  {
+                                                                                                                  "image":  "shopify://shop_images/Shop_All_Melt_n_Glow_Image_1.jpg",
+                                                                                                                  "title":  "OPITAC™ Glutathione + NAC",
+                                                                                                                  "subtitle":  "help reduce melanin for a more even skin tone"
+                                                                                                              }
+                                                                                             },
+                                                            "unique_lifestyle_card_MGxCEy":  {
+                                                                                                 "type":  "unique_lifestyle_card",
+                                                                                                 "settings":  {
+                                                                                                                  "image":  "shopify://shop_images/Shop_All_Melt_n_Glow_Image_2.jpg",
+                                                                                                                  "title":  "Liposomal Vitamin C",
+                                                                                                                  "subtitle":  "supports collagen production and helps protect your skin from sundamage."
+                                                                                                              }
+                                                                                             },
+                                                            "unique_lifestyle_card_8wChdx":  {
+                                                                                                 "type":  "unique_lifestyle_card",
+                                                                                                 "settings":  {
+                                                                                                                  "image":  "shopify://shop_images/Shop_All_Melt_n_Glow_Image_3.jpg",
+                                                                                                                  "title":  "Lutemax Skinglo",
+                                                                                                                  "subtitle":  "helps block blue light and fights harmful environmental stressors"
+                                                                                                              }
+                                                                                             }
+                                                        },
+                                             "block_order":  [
+                                                                 "unique_lifestyle_card_WTbT6X",
+                                                                 "unique_lifestyle_card_MGxCEy",
+                                                                 "unique_lifestyle_card_8wChdx"
+                                                             ],
+                                             "name":  "Unique Modern Lifestyle",
+                                             "settings":  {
+                                                              "heading":  "WHY DERMATOLOGISTS LOVE MELT ‘n’ GLO™",
+                                                              "background_color":  "#ffffff",
+                                                              "color_scheme":  "",
+                                                              "spacing_top":  "0",
+                                                              "spacing_bottom":  "0",
+                                                              "top_padding":  60,
+                                                              "bottom_padding":  60,
+                                                              "left_padding":  80,
+                                                              "right_padding":  80,
+                                                              "pagination":  true,
+                                                              "showslider_mobile":  true,
+                                                              "slides_per_view_mobile":  2.2
+                                                          }
+                                         },
+                     "quote_product_bfPKmt":  {
+                                                  "type":  "quote-product",
+                                                  "name":  "Quote with Background",
+                                                  "settings":  {
+                                                                   "bg_image_desktop":  "shopify://shop_images/Shop_All_Melt_n_Glow_Dermatologist_1.png",
+                                                                   "bg_image_mobile":  "shopify://shop_images/Group_1484581510.png",
+                                                                   "founder_image_mobile":  "shopify://shop_images/Shop_All_Melt_n_Glow_Image_4.png",
+                                                                   "quote_text":  "Glow-boosting Melt ‘n’ Glo™ works where topicals fall short.",
+                                                                   "author":  "Dr. Anika Sharma, Dermatologist",
+                                                                   "button_text":  "Buy now",
+                                                                   "button_link":  "#cart123",
+                                                                   "text_color":  "#000000",
+                                                                   "button_bg":  "#000000",
+                                                                   "button_text_color":  "#d1a85c"
+                                                               }
+                                              },
+                     "before_after_123_eWEBGf":  {
+                                                     "type":  "before-after-123",
+                                                     "name":  "Skin Comparison Slider",
+                                                     "settings":  {
+                                                                      "heading":  "IS YOUR SKIN BEGGING FOR MELT ‘N’ GLO™ ?",
+                                                                      "icon1":  "shopify://shop_images/Shop_All_Melt_n_Glow_1_-02.png",
+                                                                      "icon1_text":  "Struggling with dark spots or uneven patches?",
+                                                                      "icon2":  "shopify://shop_images/Shop_All_Melt_n_Glow_1_-03.png",
+                                                                      "icon2_text":  "Worried UV rays, pollution, and blue-light from screens are aging you fast?",
+                                                                      "icon3":  "shopify://shop_images/Shop_All_Melt_n_Glow_1_-04.png",
+                                                                      "icon3_text":  "Struggling with fine lines, dehydrated and textured skin that won’t bounce back?",
+                                                                      "icon_text":  "Premium Quality",
+                                                                      "subheading":  "If you answered “Yes” to any of the above, your skin\nNEEDS Melt ‘n’ Glo™!",
+                                                                      "button_label":  "Buy now",
+                                                                      "button_link":  "#cart123",
+                                                                      "before_image":  "shopify://shop_images/Shop_All_Melt_n_Glow_Image_6.jpg",
+                                                                      "after_image":  "shopify://shop_images/Shop_All_Melt_n_Glow_Image_6b.jpg",
+                                                                      "aspect_ratio":  "3/4"
+                                                                  }
+                                                 },
+                     "comparison_chart_custom_WCgLQp":  {
+                                                            "type":  "comparison-chart-custom",
+                                                            "blocks":  {
+                                                                           "features_picdDi":  {
+                                                                                                   "type":  "features",
+                                                                                                   "settings":  {
+                                                                                                                    "feature_0":  "Convenience",
+                                                                                                                    "feature_1":  "Cost",
+                                                                                                                    "feature_2":  "Safety \u0026 Side Effects",
+                                                                                                                    "feature_3":  "Mechanism \u0026 Coverage",
+                                                                                                                    "feature_4":  "Long-Term Maintenance",
+                                                                                                                    "feature_5":  "Label Transparency"
+                                                                                                                }
+                                                                                               },
+                                                                           "product_M9VBby":  {
+                                                                                                  "type":  "product",
+                                                                                                  "settings":  {
+                                                                                                                   "product_image":  "shopify://shop_images/Melt_N_Glow.png",
+                                                                                                                   "product_heading":  "",
+                                                                                                                   "feature_0":  "yes",
+                                                                                                                   "feature_1":  "yes",
+                                                                                                                   "feature_2":  "yes",
+                                                                                                                   "feature_3":  "yes",
+                                                                                                                   "feature_4":  "yes",
+                                                                                                                   "feature_5":  "yes"
+                                                                                                               }
+                                                                                              },
+                                                                           "product_VVU7h3":  {
+                                                                                                  "type":  "product",
+                                                                                                  "settings":  {
+                                                                                                                   "product_image":  "shopify://shop_images/Firefly_two_bowls_of_face_pack_thick_wet_paste_one_mud_brown_other_olive_green_with_appli_59421_copy.png",
+                                                                                                                   "product_heading":  "In-Clinic Peels \u0026 Lasers",
+                                                                                                                   "feature_0":  "no",
+                                                                                                                   "feature_1":  "no",
+                                                                                                                   "feature_2":  "no",
+                                                                                                                   "feature_3":  "weak",
+                                                                                                                   "feature_4":  "no",
+                                                                                                                   "feature_5":  "no"
+                                                                                                               }
+                                                                                              },
+                                                                           "product_hbfNeP":  {
+                                                                                                  "type":  "product",
+                                                                                                  "settings":  {
+                                                                                                                   "product_image":  "shopify://shop_images/coronavirus-arrangement-with-vaccine-bottle-syringe_copy.png",
+                                                                                                                   "product_heading":  "Glutathione Injections",
+                                                                                                                   "feature_0":  "no",
+                                                                                                                   "feature_1":  "no",
+                                                                                                                   "feature_2":  "no",
+                                                                                                                   "feature_3":  "weak",
+                                                                                                                   "feature_4":  "no",
+                                                                                                                   "feature_5":  "no"
+                                                                                                               }
+                                                                                              },
+                                                                           "product_6nMeCE":  {
+                                                                                                  "type":  "product",
+                                                                                                  "settings":  {
+                                                                                                                   "product_image":  "shopify://shop_images/406490321_fe783bbe-a2ac-4782-beb1-3f9ca58c97b6_copy.png",
+                                                                                                                   "product_heading":  "DIY Home Remedies",
+                                                                                                                   "feature_0":  "weak",
+                                                                                                                   "feature_1":  "weak",
+                                                                                                                   "feature_2":  "no",
+                                                                                                                   "feature_3":  "no",
+                                                                                                                   "feature_4":  "no",
+                                                                                                                   "feature_5":  "no"
+                                                                                                               }
+                                                                                              }
+                                                                       },
+                                                            "block_order":  [
+                                                                                "features_picdDi",
+                                                                                "product_M9VBby",
+                                                                                "product_VVU7h3",
+                                                                                "product_hbfNeP",
+                                                                                "product_6nMeCE"
+                                                                            ],
+                                                            "name":  "Comparison Chart",
+                                                            "settings":  {
+                                                                             "heading":  "Melt ‘N’ Glo™ vs  Other Skin Brightening Interventions",
+                                                                             "table_heading":  "",
+                                                                             "bg_color":  "#f5f2ec",
+                                                                             "border_color":  "#b4975a",
+                                                                             "font_color":  "#2a2a2a",
+                                                                             "font_size":  13,
+                                                                             "padding_top":  60,
+                                                                             "padding_bottom":  60,
+                                                                             "padding_top_mobile":  60,
+                                                                             "padding_bottom_mobile":  60
+                                                                         }
+                                                        },
+                     "after_before_KLkVWA":  {
+                                                 "type":  "after-before",
+                                                 "blocks":  {
+                                                                "heading_XQMybi":  {
+                                                                                       "type":  "heading",
+                                                                                       "settings":  {
+                                                                                                        "title":  "Attention-grabbing headline",
+                                                                                                        "block_heading_color":  "#b4975a",
+                                                                                                        "block_heading_size":  "46",
+                                                                                                        "enable_custom_font":  false,
+                                                                                                        "custom_font":  "abel_n4",
+                                                                                                        "heading_level":  "h2"
+                                                                                                    }
+                                                                                   }
+                                                            },
+                                                 "block_order":  [
+                                                                     "heading_XQMybi"
+                                                                 ],
+                                                 "disabled":  true,
+                                                 "settings":  {
+                                                                  "left_caption":  "",
+                                                                  "right_caption":  "",
+                                                                  "image_position":  "right",
+                                                                  "text_alignment":  "left",
+                                                                  "text_size":  100,
+                                                                  "text_width":  50,
+                                                                  "text_color":  "#121212",
+                                                                  "text_background_color":  "",
+                                                                  "border_color":  "#ffffff",
+                                                                  "drag_color":  "#ffffff",
+                                                                  "handle_color":  "#121212",
+                                                                  "caption_text":  "#ffffff",
+                                                                  "caption_background":  "#121212",
+                                                                  "background_color":  "",
+                                                                  "show_background_image":  false,
+                                                                  "animation":  "none",
+                                                                  "base_width":  90,
+                                                                  "max_width":  "",
+                                                                  "inner_padding":  60,
+                                                                  "outer_margin":  0,
+                                                                  "custom_css":  "",
+                                                                  "mobile_custom_css":  "",
+                                                                  "anchor_id":  "",
+                                                                  "override_theme_font":  false,
+                                                                  "heading_font":  "serif",
+                                                                  "main_font":  "system_ui_n4"
+                                                              }
+                                             },
+                     "marquees_GVbzw6":  {
+                                             "type":  "marquees",
+                                             "blocks":  {
+                                                            "item_gXhQTE":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Layer_1_c365c72c-1017-49bd-a992-60a9c6c7e10a.png",
+                                                                                                 "title":  "No Added Sugar",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_X9Hnct":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/gmo_free.svg",
+                                                                                                 "title":  "GMO Free",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_mdGmC8":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/third_party_lab_tested.svg",
+                                                                                                 "title":  "Third - party lab tested",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_JgzG7f":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "title":  "Clinically proven ingredients",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            }
+                                                        },
+                                             "block_order":  [
+                                                                 "item_gXhQTE",
+                                                                 "item_X9Hnct",
+                                                                 "item_mdGmC8",
+                                                                 "item_JgzG7f"
+                                                             ],
+                                             "disabled":  true,
+                                             "settings":  {
+                                                              "enable_animation":  true,
+                                                              "marquee_duration_rate":  5,
+                                                              "marquee_font_size":  2,
+                                                              "marquee_items_spacing":  4.8,
+                                                              "color_scheme":  "",
+                                                              "padding_top":  30,
+                                                              "padding_bottom":  30
+                                                          }
+                                         },
+                     "complete_the_set_LAN4cq":  {
+                                                     "type":  "complete-the-set",
+                                                     "blocks":  {
+                                                                    "collapsible_UeyH3r":  {
+                                                                                               "type":  "collapsible",
+                                                                                               "settings":  {
+                                                                                                                "block_type":  "collapsible",
+                                                                                                                "heading":  "Description",
+                                                                                                                "link":  "",
+                                                                                                                "content":  "\u003cp\u003e[description]\u003c/p\u003e",
+                                                                                                                "page":  ""
+                                                                                                            }
+                                                                                           },
+                                                                    "collapsible_A663MD":  {
+                                                                                               "type":  "collapsible",
+                                                                                               "settings":  {
+                                                                                                                "block_type":  "drawer",
+                                                                                                                "heading":  "Delivery \u0026 Returns",
+                                                                                                                "link":  "",
+                                                                                                                "content":  "\u003cp\u003eShipping and returns can be inserted here.\u003c/p\u003e",
+                                                                                                                "page":  ""
+                                                                                                            }
+                                                                                           },
+                                                                    "collapsible_qFP38k":  {
+                                                                                               "type":  "collapsible",
+                                                                                               "settings":  {
+                                                                                                                "block_type":  "drawer",
+                                                                                                                "heading":  "Contact us",
+                                                                                                                "link":  "",
+                                                                                                                "content":  "\u003cp\u003eContact information can be entered here.\u003c/p\u003e",
+                                                                                                                "page":  ""
+                                                                                                            }
+                                                                                           }
+                                                                },
+                                                     "block_order":  [
+                                                                         "collapsible_UeyH3r",
+                                                                         "collapsible_A663MD",
+                                                                         "collapsible_qFP38k"
+                                                                     ],
+                                                     "disabled":  true,
+                                                     "settings":  {
+                                                                      "heading":  "Complete the \u003cem\u003eset\u003c/em\u003e",
+                                                                      "content_heading":  "Similar items",
+                                                                      "heading_size":  "h3",
+                                                                      "content_type":  "products",
+                                                                      "featured_image_aspect_ratio":  "4/3",
+                                                                      "open_first_collapsible":  true,
+                                                                      "flip_desktop":  true,
+                                                                      "flip_mobile":  true,
+                                                                      "section_width":  "max-w-page",
+                                                                      "color_scheme":  "",
+                                                                      "spacing_top":  "2",
+                                                                      "spacing_bottom":  "2"
+                                                                  }
+                                                 },
+                     "section_modern_lifestyle_MrE3Ly":  {
+                                                             "type":  "section-modern-lifestyle",
+                                                             "blocks":  {
+                                                                            "lifestyle_card_RHziBd":  {
+                                                                                                          "type":  "lifestyle_card",
+                                                                                                          "settings":  {
+                                                                                                                           "image":  "shopify://shop_images/young-woman-with-brunette-hair-shows-before-after-results-successful-acne-treatment-spots-scars-have-been-removed-through-application-prescribed-topical-creams.jpg",
+                                                                                                                           "title":  "Reduction in Dark Spots \u003cbr\u003e and Uneven Tone in 8-12 weeks"
+                                                                                                                       }
+                                                                                                      },
+                                                                            "lifestyle_card_mFrtGb":  {
+                                                                                                          "type":  "lifestyle_card",
+                                                                                                          "settings":  {
+                                                                                                                           "image":  "shopify://shop_images/Shop_All_Melt_n_Glow_Image_8_2e06fdcf-8529-42fd-b1e6-7f658b050cae.jpg",
+                                                                                                                           "title":  "Shields against blue light and UV rays"
+                                                                                                                       }
+                                                                                                      },
+                                                                            "lifestyle_card_3YNH9w":  {
+                                                                                                          "type":  "lifestyle_card",
+                                                                                                          "settings":  {
+                                                                                                                           "image":  "shopify://shop_images/Shop_All_Melt_n_Glow_Image_9_57f03088-b26c-4d94-831a-ee9a388fe1d2.jpg",
+                                                                                                                           "title":  "Firmer, More Hydrated Skin"
+                                                                                                                       }
+                                                                                                      }
+                                                                        },
+                                                             "block_order":  [
+                                                                                 "lifestyle_card_RHziBd",
+                                                                                 "lifestyle_card_mFrtGb",
+                                                                                 "lifestyle_card_3YNH9w"
+                                                                             ],
+                                                             "settings":  {
+                                                                              "heading":  "Real Benefits.\u003cspan class=\"mobile-break\"\u003e\u003c/span\u003e  Real Results.",
+                                                                              "background_color":  "#f5f2ec",
+                                                                              "color_scheme":  "",
+                                                                              "spacing_top":  "2",
+                                                                              "spacing_bottom":  "4",
+                                                                              "top_padding":  60,
+                                                                              "bottom_padding":  60,
+                                                                              "left_padding":  20,
+                                                                              "right_padding":  20,
+                                                                              "pagination":  true,
+                                                                              "showslider_mobile":  true,
+                                                                              "slides_per_view_mobile":  1
+                                                                          }
+                                                         },
+                     "section_dual_highlight_k3PwJa":  {
+                                                           "type":  "section-dual-highlight",
+                                                           "blocks":  {
+                                                                          "card_MPkQza":  {
+                                                                                              "type":  "card",
+                                                                                              "settings":  {
+                                                                                                               "title":  "Supercharged with Omegia®",
+                                                                                                               "description":  "Omegia® fuels collagen synthesis with Omega-7. Reduces inflammation, fights aging.",
+                                                                                                               "image":  "shopify://shop_images/073_My_Best_Life_Brand_Mark.png",
+                                                                                                               "link_text":  "Read More",
+                                                                                                               "link_url":  "shopify://products/nutradew",
+                                                                                                               "card_bg_color":  "#ffffff",
+                                                                                                               "card_text_color":  "#2a2a2a",
+                                                                                                               "button_color":  "#b6985a"
+                                                                                                           }
+                                                                                          },
+                                                                          "card_rgqBJ6":  {
+                                                                                              "type":  "card",
+                                                                                              "settings":  {
+                                                                                                               "title":  "Powerful Barrier with Ceramosides™",
+                                                                                                               "description":  "Ceramosides™ restores skin’s natural shield. Boosts skin hydration by 21%, elasticity by 26% in just weeks.",
+                                                                                                               "image":  "shopify://shop_images/073_My_Best_Life_Brand_Mark.png",
+                                                                                                               "link_text":  "Read More",
+                                                                                                               "link_url":  "shopify://products/nutradew",
+                                                                                                               "card_bg_color":  "#ffffff",
+                                                                                                               "card_text_color":  "#2a2a2a",
+                                                                                                               "button_color":  "#b6985a"
+                                                                                                           }
+                                                                                          }
+                                                                      },
+                                                           "block_order":  [
+                                                                               "card_MPkQza",
+                                                                               "card_rgqBJ6"
+                                                                           ],
+                                                           "disabled":  true,
+                                                           "settings":  {
+                                                                            "background_color":  "#f4f4f4",
+                                                                            "text_color":  "#2a2a2a"
+                                                                        }
+                                                       },
+                     "faq_nutradrew_jXHrUe":  {
+                                                  "type":  "faq-nutradrew",
+                                                  "blocks":  {
+                                                                 "faq_MTreHF":  {
+                                                                                    "type":  "faq",
+                                                                                    "settings":  {
+                                                                                                     "question":  "What is Melt ‘n’ Glo™ and how does it work?",
+                                                                                                     "answer":  "Melt ‘n’ Glo™ is a clinically backed oral skin brightening supplement designed to reduce pigmentation, fade dark spots, and enhance overall skin radiance. It works from within using potent antioxidants like Glutathione, Vitamin C, and Lutein + Zeaxanthin to combat oxidative stress and environmental damage."
+                                                                                                 }
+                                                                                },
+                                                                 "faq_YDGrCk":  {
+                                                                                    "type":  "faq",
+                                                                                    "settings":  {
+                                                                                                     "question":  "How long before I see visible results?",
+                                                                                                     "answer":  "Most users begin to notice improved skin tone, reduced pigmentation, and a brighter glow within 8–12 weeks of consistent daily use."
+                                                                                                 }
+                                                                                },
+                                                                 "faq_dP3KKg":  {
+                                                                                    "type":  "faq",
+                                                                                    "settings":  {
+                                                                                                     "question":  "Who can use Melt ‘n’ Glo™?",
+                                                                                                     "answer":  "Melt ‘n’ Glo™ is suitable for adults (20+), both men and women, especially those dealing with uneven skin tone, dark spots, sun damage, or dull skin."
+                                                                                                 }
+                                                                                },
+                                                                 "faq_WayP3N":  {
+                                                                                    "type":  "faq",
+                                                                                    "settings":  {
+                                                                                                     "question":  "Is Melt ‘n’ Glo™ safe to use?",
+                                                                                                     "answer":  "Yes, it’s made from clinically studied ingredients, third-party lab tested, and free from lactose, soy, gluten, artificial sweeteners, and added preservatives. It’s also FSSAI approved."
+                                                                                                 }
+                                                                                },
+                                                                 "faq_YK3KAa":  {
+                                                                                    "type":  "faq",
+                                                                                    "settings":  {
+                                                                                                     "question":  "What makes Melt ‘n’ Glo™ different from topical creams?",
+                                                                                                     "answer":  "Unlike creams that work only on the surface, Melt ‘n’ Glo™ works at the cellular level to even skin tone, reduces blemishes, enhances radiance delivering more holistic and lasting results."
+                                                                                                 }
+                                                                                },
+                                                                 "faq_akBnDk":  {
+                                                                                    "type":  "faq",
+                                                                                    "settings":  {
+                                                                                                     "question":  "How should I take Melt ‘n’ Glo™?",
+                                                                                                     "answer":  "Simply place one sachet’s content directly in your mouth and let it dissolve for 90 seconds before swallowing—no water required."
+                                                                                                 }
+                                                                                },
+                                                                 "faq_9FE4rp":  {
+                                                                                    "type":  "faq",
+                                                                                    "settings":  {
+                                                                                                     "question":  "Can I take Melt ‘n’ Glo™ with other skincare products or supplements?",
+                                                                                                     "answer":  "Yes, Melt ‘n’ Glo™ can be safely used alongside your existing skincare routine and supplements. However, consult your physician if you\u0027re on medication or have any health conditions."
+                                                                                                 }
+                                                                                },
+                                                                 "faq_fggtHE":  {
+                                                                                    "type":  "faq",
+                                                                                    "settings":  {
+                                                                                                     "question":  "Does it have any side effects?",
+                                                                                                     "answer":  "Melt ‘n’ Glo™ is generally well-tolerated. However, if you\u0027re pregnant, breastfeeding, or under medical treatment, please consult your doctor before use."
+                                                                                                 }
+                                                                                },
+                                                                 "faq_LDFj8b":  {
+                                                                                    "type":  "faq",
+                                                                                    "settings":  {
+                                                                                                     "question":  "What if I miss a dose?",
+                                                                                                     "answer":  "It’s okay to miss a dose occasionally, but for optimal results, consistent daily use is recommended for at least 8–12 weeks."
+                                                                                                 }
+                                                                                }
+                                                             },
+                                                  "block_order":  [
+                                                                      "faq_MTreHF",
+                                                                      "faq_YDGrCk",
+                                                                      "faq_dP3KKg",
+                                                                      "faq_WayP3N",
+                                                                      "faq_YK3KAa",
+                                                                      "faq_akBnDk",
+                                                                      "faq_9FE4rp",
+                                                                      "faq_fggtHE",
+                                                                      "faq_LDFj8b"
+                                                                  ],
+                                                  "settings":  {
+                                                                   "bg_color":  "#ffffff",
+                                                                   "heading":  "Frequently asked questions",
+                                                                   "heading_color":  "#111111",
+                                                                   "subheading":  "",
+                                                                   "subheading_color":  "#666666",
+                                                                   "contact_note":  "Scan QR code to download  brochure",
+                                                                   "contact_note_color":  "#2a2a2a",
+                                                                   "contact_link":  "",
+                                                                   "button_label":  "",
+                                                                   "button_bg_color":  "#111111",
+                                                                   "button_text_color":  "#ffffff",
+                                                                   "qr_image":  "shopify://shop_images/Shop_All_Melt_n_Glow_FAQs.jpg",
+                                                                   "qr_bg_color":  "#ffffff",
+                                                                   "faq_bg_color":  "#ffffff",
+                                                                   "faq_text_color":  "#333333",
+                                                                   "answer_text_color":  "#555555",
+                                                                   "icon_color":  "#333333",
+                                                                   "padding_top":  60,
+                                                                   "padding_bottom":  60,
+                                                                   "padding_top_mobile":  40,
+                                                                   "padding_bottom_mobile":  0
+                                                               }
+                                              },
+                     "pdp_accordian_Rhg4j3":  {
+                                                  "type":  "pdp-accordian",
+                                                  "blocks":  {
+                                                                 "accordion_item_XTkxDh":  {
+                                                                                               "type":  "accordion_item",
+                                                                                               "settings":  {
+                                                                                                                "use_metafield":  false,
+                                                                                                                "metafield_key":  "",
+                                                                                                                "question":  "OPITAC™ (L-Glutathione)",
+                                                                                                                "answer":  "\u003cp\u003e\u003cstrong\u003eWhy It Works\u003c/strong\u003e\u003cbr/\u003eGlutathione lightens skin by inhibiting melanin production via tyrosinase suppression, shifting melanin type, reducing oxidative stress, and enhancing antioxidant recycling; orobuccal absorption improves its bioavailability.\u003c/p\u003e",
+                                                                                                                "answer2":  "\u003cp\u003e\u003cstrong\u003eProven By Science\u003c/strong\u003e\u003cbr/\u003e· Reduces UV spots and skin melanin index, brightening skin tone.\u003c/p\u003e\u003cp\u003e· Decreases wrinkles and improves skin elasticity. \u003c/p\u003e\u003cp\u003e\u003ca href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC5413479/\" target=\"_blank\"\u003eWeschawalit S, et al, \u003cem\u003eClin\u003cbr/\u003eCosmet Investig Dermatol\u003c/em\u003e, 2017\u003c/a\u003e\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://pubmed.ncbi.nlm.nih.gov/30895708/\" target=\"_blank\"\u003eDilokthornsakul W, et al, \u003cem\u003eJ Cosmet\u003cbr/\u003eDermatol\u003c/em\u003e, 2019\u003c/a\u003e\u003c/p\u003e"
+                                                                                                            }
+                                                                                           },
+                                                                 "accordion_item_Ffe99t":  {
+                                                                                               "type":  "accordion_item",
+                                                                                               "settings":  {
+                                                                                                                "use_metafield":  false,
+                                                                                                                "metafield_key":  "",
+                                                                                                                "question":  "Grantria™ (Pomegranate Extract)",
+                                                                                                                "answer":  "\u003cp\u003e\u003cstrong\u003eWhy It Works\u003c/strong\u003e\u003cbr/\u003ePomegranate Extract supports skin health by reducing oxidative stress (ellagic acid), inhibiting melanin production and inflammation (punicalagins), and enhancing hydration and regeneration (punicic acid); it also boosts collagen synthesis and inhibits MMP-1 (metalloproteinase-1) to reduce wrinkles.\u003c/p\u003e",
+                                                                                                                "answer2":  "\u003cp\u003e\u003cstrong\u003eProven By Science\u003c/strong\u003e\u003cbr/\u003e· Reduces crow’s feet wrinkles by 48%, offering strong anti-aging benefits.\u003c/p\u003e\u003cp\u003e· Improves hydration and skin elasticity by boosting collagen production.\u003c/p\u003e\u003cp\u003e· Enhances skin radiance by 42%, promoting a healthy, luminous glow.\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC11733350/\" target=\"_blank\"\u003eKrishnakumar A, et al, \u003cem\u003eAm J\u003cbr/\u003e  Transl Res\u003c/em\u003e, 2024\u003c/a\u003e\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://www.jstage.jst.go.jp/article/jnsv/52/5/52_5_383/_pdf/-char/en\" target=\"_blank\"\u003eKasai K, et al, \u003cem\u003eJ Nutr Sci\u003cbr/\u003e  Vitaminol (Tokyo)\u003c/em\u003e, 2006\u003c/a\u003e\u003c/p\u003e\u003cp\u003e \u003c/p\u003e"
+                                                                                                            }
+                                                                                           },
+                                                                 "accordion_item_9Be4bb":  {
+                                                                                               "type":  "accordion_item",
+                                                                                               "settings":  {
+                                                                                                                "use_metafield":  false,
+                                                                                                                "metafield_key":  "",
+                                                                                                                "question":  "N-Acetyl-L-Cysteine (NAC)",
+                                                                                                                "answer":  "\u003cp\u003e\u003cstrong\u003eWhy It Works\u003c/strong\u003e\u003cbr/\u003eNAC helps the skin by boosting antioxidants, calming inflammation,\u003cbr/\u003espeeding up wound healing, and fighting harmful bacteria, keeping the skin healthy and protected.\u003c/p\u003e",
+                                                                                                                "answer2":  "\u003cp\u003e\u003cstrong\u003eProven By Science\u003c/strong\u003e\u003cbr/\u003e· Improves skin hydration by strengthening the skin barrier.\u003c/p\u003e\u003cp\u003e· Protects against UV-induced pigmentation and damage.\u003c/p\u003e\u003cp\u003e· Promotes faster wound healing.\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC10376274/\" target=\"_blank\"\u003eSahasrabudhe SA, et al, \u003cem\u003eAntioxidants\u003cbr/\u003e(Basel)\u003c/em\u003e, 2023\u003c/a\u003e\u003c/p\u003e"
+                                                                                                            }
+                                                                                           },
+                                                                 "accordion_item_Xz6E9C":  {
+                                                                                               "type":  "accordion_item",
+                                                                                               "settings":  {
+                                                                                                                "use_metafield":  false,
+                                                                                                                "metafield_key":  "",
+                                                                                                                "question":  "Liposomal Vitamin C",
+                                                                                                                "answer":  "\u003cp\u003e\u003cstrong\u003eWhy It Works\u003c/strong\u003e\u003cbr/\u003eVitamin C boosts collagen production, protects against oxidative and UV damage, reduces pigmentation by inhibiting melanin, and strengthens the skin barrier for better hydration and firmness.\u003c/p\u003e",
+                                                                                                                "answer2":  "\u003cp\u003e\u003cstrong\u003eProven By Science\u003c/strong\u003e\u003cbr/\u003e· Photoprotection.\u003c/p\u003e\u003cp\u003e· Reduces hyperpigmentation and brightens skin tone.\u003c/p\u003e\u003cp\u003e· Reduces wrinkles for anti-aging\u003cbr/\u003ebenefits.\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC5579659/\" target=\"_blank\"\u003ePullar JM, et al, \u003cem\u003eNutrients\u003c/em\u003e, 2017\u003c/a\u003e\u003c/p\u003e"
+                                                                                                            }
+                                                                                           },
+                                                                 "accordion_item_EdmXGn":  {
+                                                                                               "type":  "accordion_item",
+                                                                                               "settings":  {
+                                                                                                                "use_metafield":  false,
+                                                                                                                "metafield_key":  "",
+                                                                                                                "question":  "Lutemax Skinglo (Lutein 10 mg + Zeaxanthin 2 mg)",
+                                                                                                                "answer":  "\u003cp\u003e\u003cstrong\u003eWhy It Works\u003c/strong\u003e\u003cbr/\u003eLutein and zeaxanthin protect skin by filtering blue light, reducing oxidative stress and inflammation, enhancing hydration by supporting hyaluronan synthesis, and boosting photoprotection against UV damage.\u003c/p\u003e",
+                                                                                                                "answer2":  "\u003cp\u003e\u003cstrong\u003eProven By Science\u003c/strong\u003e\u003cbr/\u003e· Improved overall skin tone and\u003cbr/\u003ebrightness.\u003c/p\u003e\u003cp\u003e· Enhanced skin photoprotection\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC5063591/\" target=\"_blank\"\u003eJuturu V, et al, \u003cem\u003eClin Cosmet Investig\u003cbr/\u003eDermatol\u003c/em\u003e, 2016\u003c/a\u003e\u003c/p\u003e"
+                                                                                                            }
+                                                                                           },
+                                                                 "accordion_item_bfDFaV":  {
+                                                                                               "type":  "accordion_item",
+                                                                                               "settings":  {
+                                                                                                                "use_metafield":  false,
+                                                                                                                "metafield_key":  "",
+                                                                                                                "question":  "Vitamin E (Tocotrienol)",
+                                                                                                                "answer":  "\u003cp\u003e\u003cstrong\u003eWhy It Works\u003c/strong\u003e\u003cbr/\u003eVitamin E helps keep your skin younger and brighter by fighting damage from the sun and pollution, reducing dark spots, improving skin firmness, and calming redness.\u003c/p\u003e",
+                                                                                                                "answer2":  "\u003cp\u003e\u003cstrong\u003eProven By Science\u003c/strong\u003e\u003cbr/\u003e· Boosts UV protection \u003c/p\u003e\u003cp\u003e· Reduces melanin, evens out skin tone.\u003c/p\u003e\u003cp\u003e· Prevent wrinkles with strong antioxidant effects\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://pmc.ncbi.nlm.nih.gov/articles/PMC9588953/#abstract1\" target=\"_blank\"\u003eGhazali NI, et al, \u003cem\u003eFront\u003cbr/\u003ePharmacol\u003c/em\u003e, 2022\u003c/a\u003e\u003c/p\u003e"
+                                                                                                            }
+                                                                                           },
+                                                                 "accordion_item_e349pF":  {
+                                                                                               "type":  "accordion_item",
+                                                                                               "settings":  {
+                                                                                                                "use_metafield":  false,
+                                                                                                                "metafield_key":  "",
+                                                                                                                "question":  "Vitamin A (Retinyl Palmitate)",
+                                                                                                                "answer":  "\u003cp\u003e\u003cstrong\u003eWhy It Works\u003c/strong\u003e\u003cbr/\u003eRetinoids, vitamin A derivatives, boost skin health by promoting cell renewal and collagen production, reducing wrinkles, strengthening the skin barrier, and providing antioxidant protection.\u003c/p\u003e",
+                                                                                                                "answer2":  "\u003cp\u003e\u003cstrong\u003eProven By Science\u003c/strong\u003e\u003cbr/\u003e· Protects skin from UV damage and pigmentation \u003c/p\u003e\u003cp\u003e· Maintains skin elasticity and reduces wrinkles.\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://aacrjournals.org/clincancerres/article/10/6/1875/185481/Safety-and-Efficacy-of-Dose-Intensive-Oral-Vitamin\" target=\"_blank\"\u003eAlberts D, et al, \u003cem\u003eClin\u003cbr/\u003eCancer Res\u003c/em\u003e, 2004\u003c/a\u003e\u003cbr/\u003e\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://pubmed.ncbi.nlm.nih.gov/17168870/\" target=\"_blank\"\u003eSorg O, et al, \u003cem\u003eJ Cosmet Dermatol\u003c/em\u003e,\u003cbr/\u003e2005\u003c/a\u003e\u003c/p\u003e"
+                                                                                                            }
+                                                                                           },
+                                                                 "accordion_item_dFnn6E":  {
+                                                                                               "type":  "accordion_item",
+                                                                                               "settings":  {
+                                                                                                                "use_metafield":  false,
+                                                                                                                "metafield_key":  "",
+                                                                                                                "question":  "Vitamin B3 (Niacinamide)",
+                                                                                                                "answer":  "\u003cp\u003e\u003cstrong\u003eWhy It Works\u003c/strong\u003e\u003cbr/\u003eVitamin B3 (Niacinamide) boosts DNA repair, strengthens skin barrier, reduces pigmentation, and fights inflammation -improving hydration, skin tone, and protection from UV damage.\u003c/p\u003e",
+                                                                                                                "answer2":  "\u003cp\u003e\u003cstrong\u003eProven By Science\u003c/strong\u003e\u003cbr/\u003eAnti-melanogenic properties: skin lightening effects and reduction of hyperpigmentation. \u003cbr/\u003e\u003c/p\u003e\u003cp\u003ePhotoprotection: protect the skin against UV pigmentation/damage \u003c/p\u003e\u003cp\u003e\u003ca href=\"https://ijdvl.com/nicotinamide-mechanism-of-action-and-indications-in-dermatology/\" target=\"_blank\"\u003e\u003cem\u003eBains P, et al, Indian J Dermatol Venereol Leprol\u003c/em\u003e, 2018\u003c/a\u003e\u003c/p\u003e"
+                                                                                                            }
+                                                                                           },
+                                                                 "accordion_item_48iVjf":  {
+                                                                                               "type":  "accordion_item",
+                                                                                               "settings":  {
+                                                                                                                "use_metafield":  false,
+                                                                                                                "metafield_key":  "",
+                                                                                                                "question":  "Zinc (as Zinc Bisglycinate)",
+                                                                                                                "answer":  "\u003cp\u003e\u003cstrong\u003eWhy It Works\u003c/strong\u003e\u003cbr/\u003eZinc helps protect your skin from sun and pollution damage by fighting harmful free radicals and supports faster wound healing and stronger immunity.\u003c/p\u003e",
+                                                                                                                "answer2":  "\u003cp\u003e\u003cstrong\u003eProven By Science\u003c/strong\u003e\u003cbr/\u003ePhotoprotection: protect the skin against UV pigmentation/ damage. \u003c/p\u003e\u003cp\u003e\u003ca href=\"http://www.bbcosme.com.tw/images/pdf/Zinc_IntJournal%20of%20Dermatology.pdf\" target=\"_blank\"\u003e Rostan EF, et al, \u003cem\u003eInt J Dermatol\u003c/em\u003e, 2002\u003c/a\u003e\u003c/p\u003e"
+                                                                                                            }
+                                                                                           },
+                                                                 "accordion_item_pNKgCP":  {
+                                                                                               "type":  "accordion_item",
+                                                                                               "settings":  {
+                                                                                                                "use_metafield":  false,
+                                                                                                                "metafield_key":  "",
+                                                                                                                "question":  "Selenium (as Selenomethionine)",
+                                                                                                                "answer":  "\u003cp\u003e\u003cstrong\u003eWhy It Works\u003c/strong\u003e\u003cbr/\u003eSelenium boosts antioxidant enzymes to protect skin from UV damage, reduces oxidative stress to prevent aging signs like wrinkles, and supports immune responses to promote skin healing.\u003c/p\u003e",
+                                                                                                                "answer2":  "\u003cp\u003e\u003cstrong\u003eProven By Science\u003c/strong\u003e\u003cbr/\u003ePhotoprotection: protect the skin against UV pigmentation/ damage. \u003cbr/\u003e\u003c/p\u003e\u003cp\u003eSkin Anti-aging: reduces wrinkles and loss of skin elasticity. \u003c/p\u003e\u003cp\u003e\u003ca href=\"https://sci-hub.ru/10.1159/000064534\" target=\"_blank\"\u003eGreul AK, et al, \u003cem\u003eSkin Pharmacol Appl Skin Physiol\u003c/em\u003e, 2002\u003c/a\u003e\u003c/p\u003e\u003cp\u003e\u003ca href=\"https://www.pharmanord.com/media/Com_pharmanord/A-7175.pdf\" target=\"_blank\"\u003eSegger D, et al, \u003cem\u003eJ Dermatolog Treat\u003c/em\u003e, 2004\u003c/a\u003e\u003c/p\u003e"
+                                                                                                            }
+                                                                                           }
+                                                             },
+                                                  "block_order":  [
+                                                                      "accordion_item_XTkxDh",
+                                                                      "accordion_item_Ffe99t",
+                                                                      "accordion_item_9Be4bb",
+                                                                      "accordion_item_Xz6E9C",
+                                                                      "accordion_item_EdmXGn",
+                                                                      "accordion_item_bfDFaV",
+                                                                      "accordion_item_e349pF",
+                                                                      "accordion_item_dFnn6E",
+                                                                      "accordion_item_48iVjf",
+                                                                      "accordion_item_pNKgCP"
+                                                                  ],
+                                                  "name":  "Ingredient Accordion",
+                                                  "settings":  {
+                                                                   "heading":  "The Science Behind \u003cspan class=\"mobile-break\"\u003e\u003c/span\u003e  Melt ‘n’ Glo™  ",
+                                                                   "custom_class":  "",
+                                                                   "accordion_link_color":  "#0e76ff",
+                                                                   "padding_top":  60,
+                                                                   "padding_bottom":  60,
+                                                                   "padding_top_mobile":  0,
+                                                                   "padding_bottom_mobile":  0
+                                                               }
+                                              },
+                     "recommeded_GLgdXF":  {
+                                               "type":  "recommeded",
+                                               "name":  "Recommended products",
+                                               "settings":  {
+                                                                "product_a":  "nutradew",
+                                                                "product_b":  "melt-n-glo",
+                                                                "heading":  "You may also like",
+                                                                "show_vendor":  false,
+                                                                "show_price":  true,
+                                                                "show_compare_at":  true,
+                                                                "show_quick_add":  true,
+                                                                "price_prefix":  "RS.",
+                                                                "add_to_cart_label":  "Available Soon",
+                                                                "sold_out_label":  "Sold out"
+                                                            }
+                                           },
+                     "our_reels_rdUemq":  {
+                                              "type":  "our-reels",
+                                              "blocks":  {
+                                                             "video_9jzzE4":  {
+                                                                                  "type":  "video",
+                                                                                  "settings":  {
+                                                                                                   "video_url":  "https://cdn.shopify.com/videos/c/o/v/1f9c9bd992884142a7e0aa6d05c9555f.mp4",
+                                                                                                   "instagram_link":  "https://cdn.shopify.com/videos/c/o/v/1f9c9bd992884142a7e0aa6d05c9555f.mp4"
+                                                                                               }
+                                                                              },
+                                                             "video_yPBnBH":  {
+                                                                                  "type":  "video",
+                                                                                  "settings":  {
+                                                                                                   "video_url":  "https://cdn.shopify.com/videos/c/o/v/c0c20e40984845e3a96759a2aef10a30.mp4",
+                                                                                                   "instagram_link":  "https://cdn.shopify.com/videos/c/o/v/c0c20e40984845e3a96759a2aef10a30.mp4"
+                                                                                               }
+                                                                              },
+                                                             "video_fU6iLL":  {
+                                                                                  "type":  "video",
+                                                                                  "settings":  {
+                                                                                                   "video_url":  "https://cdn.shopify.com/videos/c/o/v/b0a986edb4334e1b95a4c4928520b51f.mp4",
+                                                                                                   "instagram_link":  "https://cdn.shopify.com/videos/c/o/v/b0a986edb4334e1b95a4c4928520b51f.mp4"
+                                                                                               }
+                                                                              },
+                                                             "video_LwYcAC":  {
+                                                                                  "type":  "video",
+                                                                                  "settings":  {
+                                                                                                   "video_url":  "https://cdn.shopify.com/videos/c/o/v/50eefae72836488583e9b6e81ca7de01.mp4",
+                                                                                                   "instagram_link":  "https://cdn.shopify.com/videos/c/o/v/50eefae72836488583e9b6e81ca7de01.mp4"
+                                                                                               }
+                                                                              },
+                                                             "video_YbB3MF":  {
+                                                                                  "type":  "video",
+                                                                                  "settings":  {
+                                                                                                   "video_url":  "https://cdn.shopify.com/videos/c/o/v/53becdab0dd44c499e9f933393066a18.mp4",
+                                                                                                   "instagram_link":  "https://cdn.shopify.com/videos/c/o/v/53becdab0dd44c499e9f933393066a18.mp4"
+                                                                                               }
+                                                                              }
+                                                         },
+                                              "block_order":  [
+                                                                  "video_9jzzE4",
+                                                                  "video_yPBnBH",
+                                                                  "video_fU6iLL",
+                                                                  "video_LwYcAC",
+                                                                  "video_YbB3MF"
+                                                              ],
+                                              "name":  "Our Reels",
+                                              "settings":  {
+                                                               "bg_color":  "#ffffff",
+                                                               "heading":  "Discover What Living Your Best Life Truly Feels Like",
+                                                               "heading_font_size":  46,
+                                                               "subheading":  "",
+                                                               "subheading_font_size":  30,
+                                                               "padding_top":  60,
+                                                               "padding_bottom":  60,
+                                                               "autoplay":  true,
+                                                               "controls":  false,
+                                                               "muted":  true
+                                                           }
+                                          },
+                     "find_us_on_ij8c4F":  {
+                                               "type":  "find-us-on",
+                                               "disabled":  true,
+                                               "name":  "Find Us On",
+                                               "settings":  {
+                                                                "bg_color":  "#f5f2ec",
+                                                                "padding_top":  40,
+                                                                "padding_bottom":  0,
+                                                                "logo_width":  150,
+                                                                "logo_gap":  60,
+                                                                "logo_1":  "shopify://shop_images/Amazon_logo_svg.png",
+                                                                "logo_2":  "shopify://shop_images/flipkart-logo-png-transparent.png",
+                                                                "logo_height":  150
+                                                            }
+                                           }
+                 },
+    "order":  [
+                  "coming_soon_VryByh",
+                  "main",
+                  "product_accordion_pby3MJ",
+                  "marquee_ctygfz",
+                  "marquees_R3AKf9",
+                  "marquees_y8yP4J",
+                  "ingredients_VW7tmT",
+                  "how_to_use_nutradew_k3mxFW",
+                  "how_magic_mRDdDi",
+                  "table_ui_kCTGWf",
+                  "whydermi_cdVGMr",
+                  "quote_product_bfPKmt",
+                  "before_after_123_eWEBGf",
+                  "comparison_chart_custom_WCgLQp",
+                  "after_before_KLkVWA",
+                  "marquees_GVbzw6",
+                  "complete_the_set_LAN4cq",
+                  "section_modern_lifestyle_MrE3Ly",
+                  "section_dual_highlight_k3PwJa",
+                  "faq_nutradrew_jXHrUe",
+                  "pdp_accordian_Rhg4j3",
+                  "recommeded_GLgdXF",
+                  "our_reels_rdUemq",
+                  "find_us_on_ij8c4F"
+              ]
+}

@@ -1,0 +1,33 @@
+{%- comment -%}
+  Search result card (article/page/product).
+  params: result, class, color_scheme
+{%- endcomment -%}
+
+<div class="color-{{ color_scheme }} gradient">
+  <div class="card-result {{ class }}">
+    <a href="{{- result.url -}}">
+      {%- if result.image -%}
+        <div class="media media--overlay card-result__media">
+          {%- render 'image', image: result.image, image_url_width: 550, alt: result.image.alt | escape -%}
+        </div>
+      {%- endif -%}
+      <div class="card-result__content{% if result.image %} color-text-inverse{% endif %}">
+        {%- liquid
+          case result.object_type
+            when 'article'
+              assign type_label = 'search.object_type.article' | t
+            when 'page'
+              assign type_label = 'search.object_type.page' | t
+            when 'product'
+              assign type_label = 'search.object_type.product' | t
+            else
+              assign type_label = 'search.object_type.query' | t
+          endcase
+        -%}
+        <p class="text-navigation-button">{{- type_label -}}</p>
+        <h3 class="card-result__title">{{- result.title | escape -}}</h3>
+        <span class="link card-result__link">{{- 'search.view_type' | t: type: type_label -}}</span>
+      </div>
+    </a>
+  </div>
+</div>

@@ -1,0 +1,143 @@
+{%- comment -%}
+  Product variant option (radio button with optional swatch/image/thumbnail).
+  params: id, type, name, value, option, class, form_id, checked, disabled,
+          swatch_value, shape, where, block, product, additional_props,
+          visually_hidden, tabindex, label_unavailable
+{%- endcomment -%}
+
+{%- liquid
+  assign opt_swatch = swatch_value | default: value.swatch
+
+  if where == 'facet'
+    assign opt_swatch_shape = 'square'
+  else
+    assign opt_swatch_shape = shape | default: settings.swatches_shape
+  endif
+
+  assign opt_label_hidden = label_hidden | default: false
+  if opt_swatch
+    assign opt_label_hidden = true
+  endif
+
+  assign opt_render = true
+  if value.variant == null and option.position != 1
+    assign opt_render = false
+  endif
+  assign opt_render = true
+
+  # Determine if variant images should be shown
+  if where == 'main-product'
+    assign opt_thumb_opts = block.settings.variant_options_with_thumbnails | split: ','
+  else
+    assign opt_thumb_opts = settings.variant_options_with_thumbnails | split: ','
+  endif
+
+  assign opt_show_image = false
+  for thumb_opt in opt_thumb_opts
+    assign thumb_handle = thumb_opt | handleize
+    assign opt_handle = option.name | handleize
+    if thumb_handle == opt_handle
+      assign opt_show_image = true
+      break
+    else
+      assign opt_show_image = false
+    endif
+  endfor
+
+  # Get variant image
+  if opt_show_image
+    assign opt_img = 'product-placeholder'
+    if option.position == 1
+      for var in product.variants
+        for var_opt in var.options
+          if var_opt == value and var.featured_image
+            assign opt_img = var.featured_image
+            break
+          endif
+        endfor
+      endfor
+    else
+      if value.variant.featured_image
+        assign opt_img = value.variant.featured_image
+      endif
+    endif
+  else
+    assign opt_img = false
+  endif
+
+  # Custom thumbnails from metaobject
+  assign opt_custom_thumbs = settings.variant_options_use_custom_thumbnails | split: ','
+  assign opt_meta_vals = shop.metaobjects[settings.metaobject_for_product_options_type_values]
+  if opt_custom_thumbs contains option.name
+    for mt_val in opt_meta_vals.values
+      assign mt_name = mt_val.name | strip | downcase
+      assign val_lower = value | downcase
+      if val_lower contains mt_name
+        assign opt_img = mt_val.image
+        break
+      endif
+    endfor
+  endif
+
+  if opt_show_image
+    if option.position == 1
+      if opt_img == blank
+        assign opt_img = 'product-placeholder'
+      endif
+    else
+      if opt_img == blank or value.variant.featured_image == blank
+        assign opt_img = 'product-placeholder'
+      endif
+    endif
+  endif
+
+  assign opt_label_class = label_class | default: ''
+  if opt_img == blank
+    assign opt_input_class = class | append: ' variant-option-radio-input'
+    assign opt_label_hidden = false
+    if settings.input_border_radius != '0'
+      assign opt_label_class = 'product-option__label--rounded'
+    endif
+  else
+    assign opt_input_class = class
+    assign opt_label_hidden = true
+  endif
+
+  if opt_swatch
+    assign opt_label_hidden = true
+  endif
+-%}
+
+{% if opt_render %}
+  <input id="{{ id }}" type="{{ type | default: 'radio' }}" name="{{ name }}"
+    class="product-option__input {{ opt_input_class }}{% if visually_hidden %} visually-hidden{% endif %}{% if disabled %} disabled{% endif %}"
+    {%- if value != blank %} value="{{ value | escape }}"{% endif -%}
+    {%- if form_id %} form="{{- form_id -}}"{% endif -%}
+    aria-label="{{ value | escape }}"
+    {{ additional_props }}
+    data-variant-quantity="{{ value.variant.inventory_quantity }}"
+    {%- if checked %} checked{% endif -%}
+    {%- if disabled %} disabled{% endif -%}
+  >
+
+  <label for="{{ id }}" title="{{ value | escape }}"
+    class="product-option__label {{ opt_label_class }} product-option__label--{% if opt_img %}square{% else %}{{ opt_swatch_shape }}{% endif %}{% if opt_img %} product-option__label--image{% endif %}{% if opt_img %} product-swatch__inner-border--{{ settings.swatches_inner_border_color }}{% endif %}"
+    {%- if tabindex %} tabindex={{- tabindex -}}{% endif -%}
+  >
+    {% if opt_img %}
+      {% if opt_img != 'product-placeholder' %}
+        {% render 'image', image: opt_img, width: '128', loading: 'eager' %}
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    {% endif %}
+
+    {% if opt_swatch %}
+      {% render 'swatch', swatch: opt_swatch, shape: block.settings.swatch_shape, variant_img: opt_img, where: where %}
+    {% endif %}
+
+    <span class="{% if opt_label_hidden %}visually-hidden{% endif %}">{{ value }}</span>
+
+    {% if label_unavailable %}{{ label_unavailable }}{% endif %}
+  </label>
+{% endif %}

@@ -1,0 +1,805 @@
+﻿{% comment %}
+  Blog Post Template Section
+{% endcomment %}
+
+<style>
+.blog-post-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+.blog-featured-image img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+/* Desktop and Mobile Image Switching */
+.blog-featured-image .desktop-image {
+  display: block;
+}
+
+.blog-featured-image .mobile-image {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .blog-featured-image .desktop-image {
+    display: none;
+  }
+  
+  .blog-featured-image .mobile-image {
+    display: block;
+  }
+}
+.blog-layout {
+    max-width:1300px;
+    margin:0 auto;
+        padding: 0px 20px;
+        padding-bottom:40px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0px 15px;
+    padding-bottom: 30px;
+  }
+  
+  .blog-sidebar {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .leave-comment .name-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .leave-comment .name-row input {
+    width: 100%;
+  }
+  
+  .newsletter form {
+    flex-direction: column;
+  }
+  
+  .newsletter input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .newsletter button {
+    width: 100%;
+    margin: 0;
+    padding: 15px 25px;
+  }
+  
+  .share-post .icons a {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .writer-block {
+    flex-wrap: wrap;
+    text-align: center;
+  }
+  
+  .writer-block img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .related-card-content h4 {
+    font-size: 16px;
+  }
+  
+  .leave-comment input,
+  .leave-comment textarea {
+    padding: 15px;
+    font-size: 16px;
+  }
+  
+  .leave-comment button,
+  .newsletter button {
+    font-size: 18px !important;
+  }
+}
+.writer-block {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+.writer-block img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.writer-info p {
+  margin: 0;
+  font-size: 14px;
+}
+.writer-info strong {
+  color: #000;
+}
+.share-post, .leave-comment, .newsletter {
+  margin-top: 30px;
+}
+.leave-comment p {
+    margin-top:0px;
+    margin-bottom:15px;
+
+}
+.share-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+.share-icons a svg {
+  width: 22px;
+  height: 22px;
+  fill: #000;
+  transition: 0.2s ease;
+}
+.share-icons a:hover svg {
+  fill: #b68d3d;
+}
+.leave-comment input, 
+.leave-comment textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+ border: 2px solid black;
+  border-radius: 6px;
+}
+.leave-comment .name-row {
+  display: flex;
+  gap: 15px;
+}
+.leave-comment .name-row input {
+  flex: 1;
+}
+.leave-comment button,
+.newsletter button {
+  background: #b68d3d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.related-articles h3 {
+  margin-bottom: 15px;
+}
+.related-card {
+  
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.related-card img {
+  width: 100%;
+  height: auto;
+}
+.related-card-content {
+}
+.related-card-content h4 {
+  font-size: 18px;
+    line-height: 1.2;
+  margin: 0 0 8px;
+}
+.related-card-content p {
+  font-size: 14px !important;
+  color: #666;
+  margin: 0 0 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* exactly 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.related-card-content a {
+  display: inline-block;
+  background: #b4975a;
+  color: #2a2a2a;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 23px !important;
+  font-weight: 500 !important;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.related-card-content a:hover {
+  background: #2a2a2a;
+  color: #b4975a;
+}
+
+.share-post {
+  margin-top: 30px;
+}
+.share-post h3 {
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+.share-post .icons {
+  display: flex;
+  gap: 12px;
+}
+.share-post .icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f2f2f2;
+  color: #000;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.share-post .icons a:hover {
+  background: #000;
+  color: #fff;
+}
+.newsletter h3{
+margin-bottom:15px;
+}
+
+.leave-comment h3,
+.newsletter h3 {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.leave-comment p,
+.newsletter p {
+  margin-top:0px;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.leave-comment input,
+.leave-comment textarea,
+.newsletter input {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 6px;
+    font-size: 18px !important;
+}
+
+.leave-comment .name-row {
+  display: flex;
+  gap: 20px;
+}
+
+.leave-comment .name-row input {
+  flex: 1;
+}
+
+.leave-comment button,
+.newsletter button {
+  font-size: 23px !important;
+  background: #b4975a;
+  color: #2a2a2a;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-weight: 500 !important;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.leave-comment button:hover,
+.newsletter button:hover {
+  background: #000;
+  color: #b4975a;
+}
+
+.newsletter form {
+  display: flex;
+  gap: 15px;
+}
+
+.newsletter input {
+  flex: 1;
+}
+.newsletter h3 {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.newsletter p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.newsletter form {
+  display: flex;
+  border: 2px solid #000;
+  border-radius: 6px;
+  overflow: hidden; /* keeps button inside */
+}
+
+.newsletter input {
+  flex: 1;
+  padding: 17px 15px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.newsletter button {
+  margin: 7px;
+  background: #b4975a;
+  color: #2a2a2a;
+  font-weight: 500 !important;
+  font-size: 23px !important;
+  border: none;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newsletter button:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Table of Contents Styles */
+.article-toc {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  position: sticky;
+  top: 20px;
+}
+
+.article-toc h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #000;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.toc-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.toc-list li:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  background: #b68d3d;
+  border-radius: 50%;
+}
+
+.toc-list li.active:before {
+  background: #000;
+  width: 10px;
+  height: 10px;
+  top: 5px;
+}
+
+.toc-list a {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.toc-list a:hover {
+  color: #b68d3d;
+}
+
+.toc-list li.active a {
+  color: #000;
+  font-weight: 600;
+}
+
+/* Vertical line connecting dots */
+.toc-list:before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #ddd;
+}
+
+.toc-list {
+  position: relative;
+}
+
+@media (max-width: 768px) {
+
+  .leave-comment button, .newsletter button{
+    font-size: 18px !important;
+  padding: 5px 15px;
+  font-weight: 500 !important;
+  
+  }
+.newsletter button {
+margin: 0px;
+
+}
+  .article-toc {
+    position: static;
+    margin-bottom: 20px;
+  }
+}
+.blog-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.blog-author .author-img {
+  margin-bottom:20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.blog-author .author-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.blog-author .author-details p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.author-details strong{
+font-weight:bold !important;
+color:#2a2a2a !important;
+}
+.blog-content h2{
+font-size:32px !important;
+}
+</style>
+
+<div class="blog-post-container">
+
+  <!-- Featured Image -->
+  <div class="blog-featured-image">
+    {% if article.image %}
+      {% assign mobile_image = article.metafields.custom.mobile_featured_image.value %}
+      {% if mobile_image %}
+        <!-- Desktop Image -->
+        <img class="desktop-image" src="{{ article.image | img_url: '1500x' }}" alt="{{ article.title }}">
+        <!-- Mobile Image -->
+        <img class="mobile-image" src="{{ mobile_image | img_url: '800x' }}" alt="{{ article.title }} - Mobile">
+      {% else %}
+        <!-- Default image for both desktop and mobile -->
+        <img src="{{ article.image | img_url: '1500x' }}" alt="{{ article.title }}">
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <div class="blog-layout">
+
+    <!-- Left Column 70% -->
+    <div class="blog-main">
+      
+    <div class="blog-author">
+  {% if article.metafields.custom.author_image %}
+    <img class="author-img" 
+         src="{{ article.metafields.custom.author_image | image_url: width: 100, height: 100, crop: 'center' }}" 
+         alt="{{ article.author }}">
+  {% elsif article.user.image %}
+    <img class="author-img" 
+         src="{{ article.user.image | img_url: '100x100' }}" 
+         alt="{{ article.author }}">
+  {% endif %}
+
+  <div class="author-details">
+    <p>Writer:<strong> {{ article.metafields.custom.authorname }} </strong></p>
+    <p>Updated On:<strong> {{ article.updated_at | date: "%d/%m/%Y" }}</strong></p>
+  </div>
+</div>
+      <!-- Blog Content -->
+      <div class="blog-content">
+        {{ article.content }}
+      </div>
+
+<div class="share-post">  
+    <h3>Share this Post</h3>
+
+  <div class="icons">
+    <!-- Copy Link -->
+    <a href="javascript:void(0)" onclick="navigator.clipboard.writeText(window.location.href)" title="Copy Link">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="20" height="20">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 010 5.656l-3 3a4 4 0 01-5.656-5.656l1.415-1.415m6.828-1.415a4 4 0 015.656 0l1.415 1.415a4 4 0 01-5.656 5.656l-3 3"/>
+      </svg>
+    </a>
+
+    <!-- Facebook -->
+    {% if section.settings.facebook_link != blank %}
+      <a href="{{ section.settings.facebook_link }}" target="_blank" title="Facebook">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M22 12a10 10 0 10-11.5 9.95v-7.05H8v-2.9h2.5V9.5c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.2c-1.2 0-1.6.8-1.6 1.6v1.9H16.5l-.5 2.9h-2.3v7.05A10 10 0 0022 12z"/>
+        </svg>
+      </a>
+    {% endif %}
+
+    <!-- Twitter/X -->
+    {% if section.settings.twitter_link != blank %}
+      <a href="{{ section.settings.twitter_link }}" target="_blank" title="Twitter">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
+          <path d="M18.244 2.25h3.308l-7.227 8.26L22 21.75h-6.828l-5.364-7.036-6.14 7.036H.36l7.73-8.846L0 2.25h7.078l4.83 6.348 6.336-6.348z"/>
+        </svg>
+      </a>
+    {% endif %}
+
+    <!-- LinkedIn -->
+    {% if section.settings.linkedin_link != blank %}
+      <a href="{{ section.settings.linkedin_link }}" target="_blank" title="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
+          <path d="M4.98 3.5a2.5 2.5 0 11-.001 5.001A2.5 2.5 0 014.98 3.5zM3 9h4v12H3V9zm7 0h3.6v1.7h.05c.5-.9 1.7-1.8 3.45-1.8 3.7 0 4.9 2.4 4.9 5.6V21H18v-5.1c0-1.2 0-2.9-1.8-2.9-1.8 0-2.1 1.3-2.1 2.8V21H10V9z"/>
+        </svg>
+      </a>
+    {% endif %}
+
+    <!-- WhatsApp -->
+    {% if section.settings.whatsapp_link != blank %}
+      <a href="{{ section.settings.whatsapp_link }}" target="_blank" title="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
+          <path d="M20.52 3.48A11.82 11.82 0 0012.01 0C5.38 0 .02 5.35.02 11.97c0 2.11.55 4.15 1.6 5.95L0 24l6.24-1.6a12 12 0 005.76 1.47h.01c6.63 0 12-5.37 12-12 0-3.19-1.24-6.18-3.48-8.39zM12.01 22c-1.8 0-3.56-.48-5.1-1.38l-.36-.21-3.7.95.99-3.61-.24-.37a9.96 9.96 0 01-1.53-5.41c0-5.52 4.49-10.01 10.01-10.01 2.68 0 5.2 1.05 7.1 2.95a9.93 9.93 0 012.94 7.07c0 5.52-4.49 10.01-10.01 10.01zm5.5-7.54c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.66.15s-.76.97-.93 1.17-.34.22-.64.07c-.3-.15-1.26-.47-2.4-1.5-.89-.79-1.5-1.76-1.68-2.06-.18-.3-.02-.46.13-.61.13-.13.3-.34.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.66-1.59-.91-2.18-.24-.58-.49-.5-.66-.51-.17-.01-.37-.01-.56-.01s-.52.07-.79.37c-.27.3-1.04 1.02-1.04 2.48s1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.1 4.48.71.31 1.26.5 1.69.64.71.23 1.35.2 1.86.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.18-1.42-.07-.12-.27-.2-.57-.35z"/>
+        </svg>
+      </a>
+    {% endif %}
+
+    <!-- Email -->
+    {% if section.settings.email_link != blank %}
+      <a href="mailto:{{ section.settings.email_link }}" title="Email">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
+          <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+        </svg>
+      </a>
+    {% endif %}
+
+    <!-- Pinterest -->
+    {% if section.settings.pinterest_link != blank %}
+      <a href="{{ section.settings.pinterest_link }}" target="_blank" title="Pinterest">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="20" viewBox="0 0 24 24">
+          <path d="M12 0C5.37 0 0 5.37 0 12a12 12 0 008.19 11.44c-.11-.97-.21-2.45.05-3.5.23-.97 1.5-6.2 1.5-6.2s-.38-.77-.38-1.91c0-1.8 1.05-3.15 2.36-3.15 1.12 0 1.66.84 1.66 1.84 0 1.12-.71 2.8-1.07 4.36-.3 1.27.64 2.3 1.89 2.3 2.27 0 3.8-2.9 3.8-6.34 0-2.61-1.76-4.57-4.97-4.57-3.63 0-5.9 2.7-5.9 5.7 0 1.04.4 2.16.9 2.77.1.12.12.23.09.36-.1.4-.3 1.27-.34 1.45-.05.2-.18.25-.42.15-1.55-.65-2.51-2.7-2.51-4.36 0-3.54 2.57-6.8 7.4-6.8 3.88 0 6.9 2.77 6.9 6.46 0 3.86-2.43 6.98-5.8 6.98-1.13 0-2.2-.59-2.56-1.28l-.7 2.67c-.25.97-.94 2.18-1.4 2.92A12 12 0 1012 0z"/>
+        </svg>
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+
+     <!-- Leave a Comment -->
+<div class="leave-comment">
+  <h3>Leave a Comment</h3>
+  <p>We would love to hear from you!</p>
+  {% form 'new_comment', article %}
+    {{ form.errors | default_errors }}
+    <div class="name-row">
+      <input type="text" name="comment[author]" placeholder="Name" required>
+      <input type="email" name="comment[email]" placeholder="Email" required>
+    </div>
+    <textarea rows="5" name="comment[body]" placeholder="Message" required style="font-family: 'Fira Sans';
+    text-decoration: none;"></textarea>
+    <button type="submit">Submit</button>
+  {% endform %}
+</div>
+
+<!-- Newsletter -->
+<!-- Newsletter -->
+<div class="newsletter">
+  <h3>Sign up for new blogs and newsletters</h3>
+  <p>Enter your email for exclusive offers, company news, more about our science, and more.</p>
+  <form method="post" action="/contact#contact_form" accept-charset="UTF-8">
+    <input type="hidden" name="form_type" value="customer">
+    <input type="hidden" name="utf8" value="âœ“">
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <input type="email" name="contact[email]" placeholder="Email" required>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+    </div>
+
+    <!-- Right Column 30% -->
+    <div class="blog-sidebar">
+      <!-- Table of Contents / Timeline -->
+      <div class="article-toc" id="article-toc">
+        <h3>Table of Contents</h3>
+        <ul class="toc-list">
+          <!-- Will be populated by JavaScript -->
+        </ul>
+      </div>
+      
+     <div class="related-articles">
+  <h3>Related Articles</h3>
+  {% for related_article in blog.articles limit: 3 %}
+    {% if related_article.id != article.id %}
+      <div class="related-card">
+        
+        {% if related_article.metafields.custom.grid_image != blank %}
+          <img 
+            src="{{ related_article.metafields.custom.grid_image | image_url: width: 400 }}" 
+            alt="{{ related_article.metafields.custom.grid_image.alt | default: related_article.title | escape }}"
+            loading="lazy"
+          >
+        {% elsif related_article.image %}
+          <img 
+            src="{{ related_article.image | image_url: width: 400 }}" 
+            alt="{{ related_article.image.alt | default: related_article.title | escape }}"
+            loading="lazy"
+          >
+        {% endif %}
+
+        <div class="related-card-content">
+          <h4>{{ related_article.title }}</h4>
+          <p>
+            {% if related_article.excerpt != blank %}
+              {{ related_article.excerpt | strip_html | truncate: 100 }}
+            {% else %}
+              {{ related_article.content | strip_html | truncate: 100 }}
+            {% endif %}
+          </p>
+          <a href="{{ related_article.url }}">Read more</a>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Generate Table of Contents from H2 elements
+  const articleContent = document.querySelector('.blog-content');
+  const tocList = document.querySelector('.toc-list');
+  const tocContainer = document.querySelector('.article-toc');
+  
+  if (articleContent && tocList) {
+    const headings = articleContent.querySelectorAll('h2');
+    
+    if (headings.length > 0) {
+      // Generate TOC items
+      headings.forEach((heading, index) => {
+        // Create unique ID for heading if it doesn't have one
+        if (!heading.id) {
+          heading.id = 'heading-' + index;
+        }
+        
+        // Create TOC item
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = '#' + heading.id;
+        link.textContent = heading.textContent;
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        
+        li.appendChild(link);
+        tocList.appendChild(li);
+      });
+      
+      // Highlight active section on scroll
+      function highlightActiveSection() {
+        const scrollPosition = window.scrollY + 100;
+        let activeIndex = -1;
+        
+        headings.forEach((heading, index) => {
+          const headingTop = heading.offsetTop;
+          if (scrollPosition >= headingTop) {
+            activeIndex = index;
+          }
+        });
+        
+        // Update active class
+        const tocItems = tocList.querySelectorAll('li');
+        tocItems.forEach((item, index) => {
+          if (index === activeIndex) {
+            item.classList.add('active');
+          } else {
+            item.classList.remove('active');
+          }
+        });
+      }
+      
+      // Add scroll event listener
+      window.addEventListener('scroll', highlightActiveSection);
+      highlightActiveSection(); // Initial highlight
+    } else {
+      // Hide TOC if no H2 headings found
+      tocContainer.style.display = 'none';
+    }
+  }
+});
+(function() {
+    const mql = window.matchMedia('(max-width: 768px)');
+    const toc = document.getElementById('article-toc');
+    const main = document.querySelector('.blog-main');
+    const sidebar = document.querySelector('.blog-sidebar');
+
+    if (!toc || !main || !sidebar) return;
+
+    function moveTOC(e) {
+      if (e.matches) {
+        // Mobile: TOC before main content
+        if (toc.parentElement !== main.parentElement) {
+          main.parentElement.insertBefore(toc, main);
+        }
+      } else {
+        // Desktop: TOC back to sidebar (on top)
+        if (toc.parentElement !== sidebar) {
+          sidebar.insertBefore(toc, sidebar.firstChild);
+        }
+      }
+    }
+
+    // Initial run + listen for changes
+    moveTOC(mql);
+    mql.addEventListener ? mql.addEventListener('change', moveTOC)
+                         : mql.addListener(moveTOC); // older browsers
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Blog Share Section",
+  "settings": [
+    {
+      "type": "url",
+      "id": "facebook_link",
+      "label": "Facebook Link"},
+    {
+      "type": "url",
+      "id": "twitter_link",
+      "label": "Twitter/X Link"},
+    {
+      "type": "url",
+      "id": "pinterest_link",
+      "label": "Pinterest Link"},
+    {
+      "type": "url",
+      "id": "email_link",
+      "label": "Email Link"},
+    {
+      "type": "url",
+      "id": "linkedin_link",
+      "label": "LinkedIn Link"},
+    {
+      "type": "url",
+      "id": "whatsapp_link",
+      "label": "WhatsApp Link"}
+  ]
+}
+{% endschema %}

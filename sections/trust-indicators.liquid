@@ -1,0 +1,196 @@
+<div class="icon-card-wrapper">
+  <div class="icon-card">
+    <!-- Grid for Desktop -->
+    <div class="icon-card__grid desktop-only">
+      {% for block in section.blocks %}
+        <div class="icon-card__item">
+          {% if block.settings.icon_image != blank %}
+            <img src="{{ block.settings.icon_image | image_url: width: 60 }}" alt="{{ block.settings.title }}" class="icon-card__icon" />
+          {% endif %}
+          <h3 class="icon-card__title">{{ block.settings.title }}</h3>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Auto-scrolling Slider for Mobile (replaces Swiper) -->
+    <div class="icon-slider mobile-only">
+      <div class="icon-slider-track">
+        {% for repeat in (1..2) %}
+          {% for block in section.blocks %}
+            <div class="icon-card__item">
+              {% if block.settings.icon_image != blank %}
+                <img src="{{ block.settings.icon_image | image_url: width: 60 }}" alt="{{ block.settings.title }}" class="icon-card__icon" />
+              {% endif %}
+              <h3 class="icon-card__title">{{ block.settings.title }}</h3>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.section-icon-grid-card .icon-card__icon {
+  width: {{ section.settings.icon_size }}px;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .section-icon-grid-card .icon-card__icon {
+    width: calc({{ section.settings.icon_size }}px * 0.75);
+  }
+}
+
+.section-icon-grid-card .icon-card__title {
+  font-size: {{ section.settings.title_font_size }}px;
+}
+
+@media (max-width: 767px) {
+  .section-icon-grid-card .icon-card__title {
+    font-size: calc({{ section.settings.title_font_size }}px * 0.75);
+  }
+}
+
+.icon-card-wrapper {
+  background: linear-gradient(to bottom, #fff 50%, #2A2A2A 50%);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  max-width: 1000px;
+  width: 100%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.icon-card__grid {
+  display: flex ;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: nowrap; /* Ensures all items stay in one line */
+}
+
+.icon-card__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-card__icon {
+  margin-bottom: 12px;
+}
+
+.icon-card__title {
+  color: #222;
+  margin: 0;
+}
+
+.desktop-only {
+  display: none;
+}
+
+.mobile-only {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .desktop-only {
+    display: flex;
+  }
+  .mobile-only {
+    display: none;
+  }
+;
+}
+
+/* Auto-scroll slider styles */
+.icon-slider {
+  overflow: hidden;
+  position: relative;
+}
+
+.icon-slider-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scrollIcons 30s linear infinite;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@keyframes scrollIcons {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Icon Grid Card",
+  "tag": "section",
+  "class": "section-icon-grid-card",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon Size (px)",
+      "min": 24,
+      "max": 100,
+      "step": 4,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Title Font Size (px)",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "default": 18
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon + Title",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Sample Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon Grid Card",
+      "blocks": [
+        { "type": "icon", "settings": { "title": "Backed by Science" } },
+        { "type": "icon", "settings": { "title": "Authentic sourcing" } },
+        { "type": "icon", "settings": { "title": "Dermatologist-approved" } },
+        { "type": "icon", "settings": { "title": "1M+ Happy Customers" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

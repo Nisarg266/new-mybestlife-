@@ -1,0 +1,564 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+>
+<script
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+  defer
+></script>
+
+<style>
+  .gt-testimonial-top-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* padding: 15px 20px; */
+  
+    border-radius: 10px;
+  }
+  p.testimonial-date {
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 1);
+      font-family: "Fira Sans", "Inter", sans-serif;
+  }
+  .gt-testimonial-user {
+    display: flex;
+    align-items: center;
+      font-family: "Fira Sans", "Inter", sans-serif;
+  }
+  p.testimonial-text {
+      color: rgba(0, 0, 0, 0.4);
+      font-size: 18px;
+      font-weight: 300;
+      font-family: "Fira Sans", "Inter", sans-serif;
+  }
+    .testimonial-name {
+      font-weight: 400;
+      color: white !important;
+      background: rgba(180, 151, 90, 1);
+      text-transform: uppercase;
+      padding: 2px 16px;
+      border-radius: 30px;
+        font-family: "Fira Sans", "Inter", sans-serif;
+  }
+  .gt-user-image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 12px;
+  }
+
+  .gt-user-info {
+    display: flex;
+    flex-direction: column;
+      font-family: "Fira Sans", "Inter", sans-serif;
+  }
+  .gt-user-name {
+      font-weight: 400;
+      font-size: 18px;
+      color: #2A2A2A;
+      font-family: "Fira Sans", "Inter", sans-serif;
+  }
+  .gt-user-position {
+      font-size: 16px;
+      color: rgba(0, 0, 0, 1);
+      font-weight: 400;
+      font-family: "Fira Sans", "Inter", sans-serif;
+  }
+  .gt-testimonial-stars {
+    display: flex;
+    align-items: center;
+      font-family: "Fira Sans", "Inter", sans-serif;
+  }
+
+  .gt-stars-image {
+    height: 25px;
+    object-fit: contain;
+  }
+      @media screen and (max-width:768px){
+      .page-container-{{ section.id }}{
+
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+        
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Testimonial Slider",
+  "settings": [
+     {
+            "type": "text",
+            "id": "section_id",
+            "label": "Section ID"
+
+        },{
+  "type": "color",
+  "id": "background_color",
+  "label": "Section Background Color",
+  "default": "#ffffff"
+},
+
+    {
+        "type": "text",
+      "id": "heading",
+         "default": "See What Our Customers Are Saying",
+      "label": "Heading"
+    },
+
+
+        {
+            "type": "richtext",
+            "id": "short_description",
+            "label": "Text"
+        },
+
+      {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    },
+     {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Flex Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Flex End"
+        }
+      ],
+      "default": "center"
+    },
+        {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "delay",
+      "label": "Delay",
+      "default": 10
+    },
+    {
+      "type": "checkbox",
+      "id": "pagination",
+      "label": "Pagination",
+      "default": true
+    },
+       {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom mobile",
+        "default": 0
+      },
+     {
+      "type": "range",
+      "id": "slides_per_view_mobile",
+      "label": "Slides per view (Mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 0.1,
+      "default": 1.1
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_desktop",
+      "label": "Slides per view (Desktop)",
+      "min": 1,
+      "max": 5,
+      "step": 0.1,
+      "default": 2.1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+  "type": "image_picker",
+  "id": "user_image",
+  "label": "User Image"
+},
+{
+  "type": "text",
+  "id": "name-person",
+  "label": "Name"
+},
+{
+  "type": "text",
+  "id": "position",
+  "label": "Position"
+},
+{
+  "type": "image_picker",
+  "id": "stars_image",
+  "label": "Star Rating Image"
+},
+        {
+          "type": "text",
+          "id": "head_text",
+          "label": "Review Text",
+          "default": "Lorem ipsum"
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review Text",
+          "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Name Surname"
+        },
+          {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "12 july"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonial Slider",
+      "category": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+{% style %}
+.page-container-{{ section.id }} {
+  padding-top: {{ section.settings.padding_top_mobile | default: 0 }}px;
+  padding-bottom: {{ section.settings.padding_bottom_mobile | default: 0 }}px;
+}
+.section--title-wrapper{
+  padding-inline: clamp(16px, 4vw, 24px);
+  line-height: 1.2;
+  text-wrap: balance;
+}
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.top_padding | default: 0 }}px;
+    padding-bottom: {{ section.settings.bottom_padding | default: 0 }}px;
+  }
+  .section--title-wrapper{
+    padding-inline: clamp(16px, 11vw, 150px);
+  }
+}
+{% endstyle %}
+<section class="section--testimonials" style="    background-color: {{ section.settings.background_color }};">
+  <div
+    class="page-container-{{ section.id }} section-{{ section.id }}-padding "
+    style="display: flex; justify-content: {{ section.settings.alignment }};"
+  >
+    <div class="section--inner-content container">
+      <div class="section--header-wrapper is--flex-center">
+        <div class="section--title-wrapper" animate-slide-up>
+          <div class="section--title-block {{ section.settings.text-color }}">
+            <h2 class="is--flex-start">{{ section.settings.heading }}</h2>
+          </div>
+          <div class="spacer--xsmall"></div>
+          <div class="section--description-block {{ section.settings.text-color }}">
+            {{ section.settings.short_description }}
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer--large"></div>
+
+      <div class="testimonial-slider swiper overflow-visible">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <div class="testimonial-card">
+                <div class="testimonial-card-inner">
+                  <div class="gt-testimonial-top-box">
+                    <div class="gt-testimonial-user">
+                      {% comment %} <img
+                        src="{{ block.settings.user_image | img_url: '80x80' }}"
+                        alt="{{ block.settings.name }}"
+                        class="gt-user-image"
+                      > {% endcomment %}
+                      <div class="gt-user-info">
+                        <div class="gt-user-name">{{ block.settings['name-person'] }}</div>
+                        <div class="gt-user-position">{{ block.settings.position }}</div>
+                      </div>
+                    </div>
+
+                    <div class="gt-testimonial-stars">
+                      <img
+                        src="{{ block.settings.stars_image | img_url: 'master' }}"
+                        alt="Star Rating"
+                        class="gt-stars-image"
+                      >
+                    </div>
+                  </div>
+                  <div class="gt-testimonial-content">
+                    <h5 class="testimonial-text-head">{{ block.settings.head_text }}</h5>
+
+                    <p class="testimonial-text">{{ block.settings.review_text }}</p>
+                  </div>
+                  <div class="testimonial-bottom-box">
+                    <p class="testimonial-name">{{ block.settings.name }}</p>
+                    <p class="testimonial-date">{{ block.settings.date }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="ma-swiper-pagination-{{ section.id }}"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    .section--testimonials {
+      overflow: hidden;
+    }
+    .section--testimonials {
+      background-color: #F5F2EC;
+    }
+.testimonial-card {
+  background: #F8F8F8;
+  border-radius: 24px;
+  height: 100%;
+  text-align: left;
+  min-height: 200px;
+  padding: 40px;
+  border: 1px solid hsla(0, 0%, 0%, 0.16);
+  max-width: 720px;
+  box-sizing: border-box;
+}
+.swiper-slide {
+  width: auto !important;
+  flex-shrink: 0;
+}
+  .gt-testimonial-content {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+  }
+  .gt-testimonial-content{
+      color: #0E0E0E;
+      border-top: 1px solid #DCDCDC;
+      display: flex;
+      align-items: start;
+      justify-content: center;
+      padding-top: 25px;
+      margin-top: 25px;
+  }
+    .is--flex-start {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+        font-size: 46px;
+  font-weight: 800;
+  letter-spacing:1px;
+      color:#2A2A2A;
+  }
+  .is--flex-center {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+  }
+    .testimonial-card-inner {
+      padding-bottom: 80px;
+    }
+    .testimonial-top-box {
+      padding: 28px 28px 0 28px;
+    }
+   .testimonial-bottom-box {
+      position: absolute;
+      bottom: 28px;
+      right: 28px;
+      left: 28px;
+      width: auto;
+      /* padding-top: 24px; */
+      border-top: 1px solid #DCDCDC;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+    .testimonial-slider {
+      overflow: visible;
+    }
+    .overflow-visible {
+      overflow: visible!important;
+  }
+    .testimonial-slider .swiper-wrapper {
+      overflow: visible ;
+      -webkit-transition-timing-function:linear!important;
+      transition-timing-function:linear!important;
+    }
+    .testimonial-slider .swiper-wrapper .swiper-slide {
+      height: auto;
+    }
+    .section--description-block p {
+      margin-top: 5px;
+      font-weight: 400 !important ;
+      font-size: 30px !important;
+      text-align: center;
+  }
+
+  .section--title-block h2 {
+      font-size: 46px;
+  font-weight: 800;
+  letter-spacing:1px;
+      text-align: center;
+      text-transform: uppercase;
+        color: #b4975a;
+  }
+    .ma-swiper-pagination-{{ section.id }} {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+  }
+    .ma-customer-info-column-item img {
+        width: 100%;
+      height: 100%;
+        object-fit: cover;
+    }
+    .ma-customer-info-column .ma-swiper-pagination-{{ section.id }} {
+    bottom: 0;
+    margin-top: 45px;
+    text-align: center;
+  }
+
+  .ma-swiper-pagination-{{ section.id }} .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    opacity: 1;
+    margin: 0 5px;
+    border-radius: 50%;
+  }
+
+  .ma-swiper-pagination-{{ section.id }} .swiper-pagination-bullet-active {
+    background: #2A2A2A;
+  }
+    @media screen and (max-width: 768px){
+      .section--testimonials{
+       padding-bottom:20px; 
+      }
+   .testimonial-card {
+      min-width: 343px;
+      padding: 20px;
+      max-width: calc(100dvw - 20px);
+      margin-inline: auto;
+  }
+      .section--description-block p {
+      font-weight: 400;
+      font-size: 18px !important;
+      text-align: center;
+  }
+
+  .section--title-block h2 {
+          font-weight: 400;
+      font-size: 30px;
+      text-align: center;
+  }
+
+
+    }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.testimonial-slider', {
+      loop: true,
+      slidesPerView: 'auto',
+      spaceBetween: 30,
+      speed: 5000, // controls how fast it scrolls (higher = slower)
+
+      autoplay: {
+        delay: 1, // start next frame immediately
+        disableOnInteraction: false,
+      },
+
+      freeMode: true,
+      freeModeMomentum: false, // make it continuous
+
+      pagination: {
+        el: '.ma-swiper-pagination-{{ section.id }}',
+        clickable: true,
+      },
+
+      breakpoints: {
+        768: {
+          slidesPerView: 'auto',
+          spaceBetween: 30
+        }
+      }
+    });
+  });
+</script>

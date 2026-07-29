@@ -1,0 +1,8 @@
+{%- if product.available -%}
+  <div class="stock-alert" style="padding: {{ block.settings.padding_top }}px 0 {{ block.settings.padding_bottom }}px 0; display: flex; align-items: center; gap: 10px;">
+    {%- if block.settings.stock_icon_image != blank -%}
+      <img src="{{ block.settings.stock_icon_image | img_url: '40x' }}" alt="Stock Icon" style="width: 20px; height: 20px;">
+    {%- endif -%}
+    <span>{{ block.settings.stock_message }}</span>
+  </div>
+{%- endif -%}

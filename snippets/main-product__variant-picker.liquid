@@ -1,0 +1,64 @@
+{%- comment -%}
+  Main product variant picker (buttons / swatch / dropdown).
+  params: product, block, product_form_id
+{%- endcomment -%}
+
+{%- unless product.has_only_default_variant -%}
+  <product-variant-selects id="product-variant-selects-{{ section.id }}" data-section="{{ section.id }}" {{ block.shopify_attributes }}>
+    {%- for mp_opt in product.options_with_values -%}
+      {%- liquid
+        assign mp_ptype = block.settings.picker_type
+        assign mp_has_swatch = false
+        for mp_ov in mp_opt.values
+          if mp_ov.swatch
+            assign mp_has_swatch = true
+          endif
+        endfor
+        if mp_has_swatch == false and mp_ptype == 'swatch'
+          assign mp_ptype = 'button'
+        endif
+      -%}
+
+      {% capture mp_size_guide %}
+        {%- if mp_opt.name == block.settings.sizes_option and block.settings.size_guide_page != blank -%}
+          <menu-drawer class="product__size-guide section__drawer">
+            <details id="Size-Guide-drawer" class="drawer__container">
+              <summary class="drawer__button section__drawer-button"><button class="button button--text">{{- 'product.size_guide' | t -}}</button></summary>
+              <div class="drawer__content js-drawer" id="Size-Guide-menu-drawer" tabindex="-1">
+                <button class="drawer__button-close button-reset no-js-hidden js-btn-close-drawer" aria-label="{{- 'theme.actions.close' | t -}}" aria-controls="Size-Guide-menu-drawer" aria-expanded="false">{%- render 'icon', icon_name: 'theme-close' -%}</button>
+                <div class="drawer__row drawer__row--gutter-sm"><h2 class="drawer__title heading-static">{{- block.settings.size_guide_page.title -}}</h2><div class="rte">{{- block.settings.size_guide_page.content -}}</div></div>
+              </div>
+            </details>
+          </menu-drawer>
+        {%- endif -%}
+      {% endcapture %}
+
+      {%- if mp_ptype == 'swatch' or mp_ptype == 'button' -%}
+        <fieldset class="js product__variant-options product-form__input product-form__input--button">
+          <legend class="form__label">{{ mp_opt.name }}<span data-selected-value>{{- mp_opt.selected_value -}}</span>{%- if mp_size_guide -%}{{- mp_size_guide -}}{%- endif -%}</legend>
+          {%- render 'main-product__variant-options', product: product, option: mp_opt, block: block, picker_type: mp_ptype -%}
+        </fieldset>
+      {%- else -%}
+        {%- assign mp_sel_opts = '' -%}
+        {%- capture mp_sel_opt_html -%}{% render 'main-product__variant-options', product: product, option: mp_opt, block: block, picker_type: mp_ptype %}{%- endcapture -%}
+        {%- assign mp_sel_opts = mp_sel_opts | append: mp_sel_opt_html -%}
+
+        <div class="product-form__input product-form__input--dropdown">
+          <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">{{ mp_opt.name }}</label>
+          <div class="select">
+            {%- if mp_ptype == 'swatch_dropdown' -%}<span data-selected-value class="dropdown-swatch">{% render 'swatch', swatch: mp_opt.selected_value.swatch, shape: block.settings.swatch_shape %}</span>{%- endif -%}
+            {%- liquid
+              assign mp_sel_id = 'Option-' | append: section.id | append: '-' | append: forloop.index0
+              assign mp_name = 'options' | append: '_' | append: section.id | append: '[' | append: mp_opt.name | append: ']'
+              render 'select-input', id: mp_sel_id, name: mp_name, options: mp_sel_opts, class: 'product-selector__dropdown', swatch_value: mp_opt.selected_value.swatch, shape: block.settings.swatch_shape
+            -%}
+            {{- mp_size_guide -}}
+          </div>
+        </div>
+      {% endif %}
+    {%- endfor -%}
+
+    <script type="application/json" data-all-variants>{{ product.variants | json }}</script>
+    <script type="application/json" data-selected-variant>{{ product.selected_or_first_available_variant | json }}</script>
+  </product-variant-selects>
+{%- endunless -%}

@@ -1,0 +1,464 @@
+﻿<div class="ingredient-certification-section container">
+  <div class="ingredient-certification-section-inner">
+    <div class="cert-heading">
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="swiper cert-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide" data-index="{{ forloop.index0 }}" data-cert="{{ block.settings.cert_id }}">
+            <div class="cert-slide-content">
+              <div class="cert-meta">
+                <div class="cert-meta-headings">
+                  <h4>{{ block.settings.name }}</h4>
+                  <p>{{ block.settings.details }}</p>
+                </div>
+                              <div class="cert-nav">
+                  <button class="ma-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17" fill="none">
+                      <path d="M19 8.5L0.999999 8.5M0.999999 8.5L8.5 16M0.999999 8.5L8.5 1" stroke="#2F2F2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <button class="ma-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17" fill="none">
+                      <path d="M19 8.5L0.999999 8.5M0.999999 8.5L8.5 16M0.999999 8.5L8.5 1" stroke="#2F2F2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </div>
+
+  <div class="cert-icons">
+    {% for block in section.blocks %}
+      <div
+        class="cert-icon  cert-icon-{{ block.settings.cert_id | downcase | replace: ' ', '-' }}"
+        data-index="{{ forloop.index0 }}"
+        data-cert="{{ block.settings.cert_id | downcase | replace: ' ', '-' }}"
+      >
+        {% if block.settings.icon1 != blank %}
+          <div class="cert-award">
+            <img src="{{ block.settings.icon1 | img_url: 'master' }}" alt="{{ block.settings.label1 }}">
+            <span>{{ block.settings.label1 }}</span>
+          </div>
+        {% endif %}
+
+        {% if block.settings.icon2 != blank %}
+          <div class="cert-award">
+            <img src="{{ block.settings.icon2 | img_url: 'master' }}" alt="{{ block.settings.label2 }}">
+            <span>{{ block.settings.label2 }}</span>
+          </div>
+        {% endif %}
+
+        {% if block.settings.icon3 != blank %}
+          <div class="cert-award">
+            <img src="{{ block.settings.icon3 | img_url: 'master' }}" alt="{{ block.settings.label3 }}">
+            <span>{{ block.settings.label3 }}</span>
+          </div>
+        {% endif %}
+
+        {% if block.settings.icon4 != blank %}
+          <div class="cert-award">
+            <img src="{{ block.settings.icon4 | img_url: 'master' }}" alt="{{ block.settings.label4 }}">
+            <span>{{ block.settings.label4 }}</span>
+          </div>
+        {% endif %}
+
+        {% if block.settings.icon5 != blank %}
+          <div class="cert-award">
+            <img src="{{ block.settings.icon5 | img_url: 'master' }}" alt="{{ block.settings.label5 }}">
+            <span>{{ block.settings.label5 }}</span>
+          </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+
+                      .ingredient-certification-section {
+                            padding-top: {{ section.settings.padding_top }}px;
+                            padding-bottom: {{ section.settings.padding_bottom }}px;
+                        background: #fff;
+                      }
+                      .cert-heading {
+                      width: 50%
+                      }
+                        .cert-swiper {
+                      width: 50%
+                      }
+                        .ingredient-certification-section-inner {
+                          display: flex;
+                          justify-content: center;
+                          gap: 40px;
+                      }
+                      .cert-slide-content {
+                          display: flex;
+                          gap: 18px;
+                          width: 100%;
+
+                      }
+            .cert-meta {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                align-items: center;
+                justify-content: space-between;
+            }
+                  .cert-nav {
+                      text-align: end;
+                      margin-top: 20px;
+                  }
+                        .cert-heading p {
+                          font-family: "Fira Sans";
+                          font-weight: 400;
+                          font-size: 20px;
+                          line-height: 30px;
+                      }
+            .cert-meta-headings p {
+          font-family: "Fira Sans";
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 140%;
+          /* text-align: center; */
+      }
+                        .cert-heading  h2 {
+                          font-family: "Fira Sans";
+                          font-weight: 600;
+                          font-size: 45px;
+                          line-height: 62px;
+                          letter-spacing: 2px;
+                      }
+                      .cert-slide-content-img {
+                          background: rgba(244, 218, 213, 1);
+                          border-radius: 10px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: center;
+
+                          width: 250px;
+                      }
+
+                   .cert-meta h4{ font-family: "Fira Sans";
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 100%;
+      letter-spacing: 1px;
+      }
+                      .cert-nav {
+                        text-align: end;
+                        margin-top: 20px;
+                      }
+                      .ma-prev, .ma-next {
+                        background: rgba(241, 206, 199, 1);
+                        border: none;
+                        padding: 15px;
+                        margin: 0 5px;
+                        font-size: 16px;
+                        cursor: pointer;
+                        border-radius: 100px;
+                      }
+                        button.ma-next {
+                          transform: rotate(180deg);
+                      }
+                        .swiper-button:disabled, .swiper-button-disabled {
+                          opacity: .5;
+                          pointer-events: none;
+                          background: none !important;
+                          border: 1px solid #ccc !important;
+                      }
+                      .cert-icons {
+                        margin-top: 60px;
+                        display: flex;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        gap: 20px;
+                      }
+                      .cert-icon {
+                        display: none;
+                        flex-wrap: wrap;
+                        gap: 20px;
+                        justify-content: center;
+                        animation: fadeIn 0.4s ease-in-out;
+                        width: 100%;
+                      }
+                      .cert-icon.active {
+                        display: flex;
+                      }
+                        .cert-icon {
+                        display: none;
+                      }
+                      .cert-icon.active {
+                        display: flex; /* or grid/block */
+                        gap: 20px;
+                        justify-content: center;
+                        animation: fadeIn 0.3s ease-in-out;
+                      }
+                      .cert-award span{
+                          font-family: "Fira Sans";
+                      font-weight: 500;
+                      font-size: 30px;
+                      line-height: 100%;
+                      letter-spacing: 2px;
+                      text-align: center;
+
+                      }
+                      .cert-award {
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          justify-content: center;
+                          gap: 10px;
+                        width: 200px;
+                      }
+                    .cert-award img {
+            width: 80px;
+            height: 60px;
+            object-fit: contain;
+        }
+                      @keyframes fadeIn {
+                        from { opacity: 0; }
+                        to   { opacity: 1; }
+                      }
+
+                        @media screen and (max-width:768px){
+                      .ingredient-certification-section {
+                                padding-top: {{ section.settings.padding_top_mobile }}px;
+                              padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+                      }
+                           .ingredient-certification-section-inner {
+                          flex-direction: column;
+                      }
+                          .cert-heading {
+                      width: 100%
+                      }
+                        .cert-swiper {
+                      width: 100%
+                      }
+                          .cert-heading  h2 {
+                        font-size: 26px;
+                        line-height: 40px;
+                            text-align: center;
+                    }
+                          .cert-award{
+                            width: 70px;
+                          }
+                          .cert-award span{
+                                font-size: 16px;
+                          }
+                          .cert-meta-headings {
+              text-align: center;
+          }
+                          .cert-slide-content-img {
+              background: rgba(244, 218, 213, 1);
+              border-radius: 10px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              width: 50%;
+          }
+                          .cert-slide-content {
+        display: flex;
+        gap: 18px;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+  .cert-meta h4 {
+      font-size: 20px;
+  }
+
+                        }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.cert-swiper', {
+      navigation: {
+        nextEl: '.ma-next',
+        prevEl: '.ma-prev'
+      },
+      on: {
+        init: updateCertIcons,
+        slideChange: updateCertIcons
+      }
+    });
+
+function updateCertIcons() {
+  const icons = document.querySelectorAll('.cert-icon');
+  icons.forEach(icon => icon.classList.remove('active'));
+
+  const swiperInstance = document.querySelector('.cert-swiper')?.swiper;
+  if (!swiperInstance) return;
+
+  const activeSlide = swiperInstance.slides[swiperInstance.activeIndex];
+  if (!activeSlide) return;
+
+  let cert = activeSlide.dataset.cert || '';
+  cert = cert.trim().toLowerCase().replace(/\s+/g, '-'); 
+
+  const activeIcon = document.querySelector(`.cert-icon-${cert}`);
+  if (activeIcon) {
+    activeIcon.classList.add('active');
+  } else {
+    console.warn(`No icon found for .cert-icon-${cert}`);
+  }
+}
+
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Ingredient Certifications",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "NutraDewâ„¢ Certifications"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "default": "Trusted ingredients backed by certifications"
+    },
+          {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom mobile",
+        "default": 0
+      }],
+  "blocks": [
+    {
+      "type": "cert_slide",
+      "name": "Certification Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "cert_id",
+          "label": "Unique ID (e.g. omega, zinc)",
+          "default": "omega"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Title",
+          "default": "OmegaiaÂ®"
+        },
+        {
+          "type": "textarea",
+          "id": "details",
+          "label": "Description",
+          "default": "Scientifically supported ingredient..."
+        },
+        {
+          "type": "image_picker",
+          "id": "icon1",
+          "label": "Award Icon 1"
+        },
+        {
+          "type": "text",
+          "id": "label1",
+          "label": "Label 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon2",
+          "label": "Award Icon 2"
+        },
+        {
+          "type": "text",
+          "id": "label2",
+          "label": "Label 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon3",
+          "label": "Award Icon 3"
+        },
+        {
+          "type": "text",
+          "id": "label3",
+          "label": "Label 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon4",
+          "label": "Award Icon 4"
+        },
+        {
+          "type": "text",
+          "id": "label4",
+          "label": "Label 4"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon5",
+          "label": "Award Icon 5"
+        },
+        {
+          "type": "text",
+          "id": "label5",
+          "label": "Label 5"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredient Certifications"}
+  ]
+}
+{% endschema %}

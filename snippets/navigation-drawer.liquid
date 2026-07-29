@@ -1,0 +1,162 @@
+{%- comment -%}
+  Mobile navigation drawer with mega-menu cards.
+  params: section, menu, submenu, append_id
+{%- endcomment -%}
+
+{% style %}
+  .menu-text-list { list-style: none; margin: 0; padding: 0; }
+  .menu-text-list-item { border-top: 1px solid #eee; padding: 14px 0; }
+  .menu-text-list-item:last-child { border-bottom: 1px solid #eee; }
+  .menu-text-link { text-decoration: none; font-size: 16px; color: #111; display: block; }
+  .mobile-submenu-cards { padding: 8px; }
+  .mobile-submenu-title { font-size: 16px; color: #111; display: block; margin-bottom: 10px; padding-left: 2px; }
+  .menu-cards-row { display: flex; gap: 20px; overflow-x: auto; padding-top: 12px; }
+  .menu-card { flex: 0 0 auto; width: 80px; text-align: center; }
+  .menu-card-media { position: relative; display: inline-block; overflow: visible; }
+  .menu-card-image img { width: 150px; height: 80px; object-fit: cover; border-radius: 12px; display: block; }
+  .menu-card-image { position: relative; border-radius: 12px; overflow: hidden; }
+  .menu-card-title { font-size: 13px; color: #111; font-weight: 500; line-height: normal; margin-bottom: 10px; }
+  .menu-card-badge { position: absolute; top: -12px; left: 0; padding: 3px 5px; background: #b4975a; color: #111; font-size: 7px; font-weight: 600; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); z-index: 2; }
+{% endstyle %}
+
+<header-drawer class="drawer drawer--start header__drawer{% unless section.settings.layout == 'header--nav-drawer' %} mobile-drawer large-up-hide{% endunless %}">
+  <details id="Navigation-drawer-{{- append_id -}}" class="drawer__container">
+    <summary class="drawer__button" id="Navigation-drawer-button-{{- append_id -}}" aria-label="{{- 'theme.actions.open_menu' | t -}}">
+      {%- render 'icon', icon_name: 'theme-menu' -%}
+      {%- render 'icon', icon_name: 'theme-close-small' -%}
+      <noscript>{%- render 'icon', icon_name: 'theme-arrow' -%}</noscript>
+    </summary>
+
+    <div class="drawer__content drawer__content--nav js-drawer color-{{ section.settings.color_scheme_for_drawer }} gradient" id="Navigation-menu-drawer-{{- append_id -}}" tabindex="-1">
+      <button class="drawer__button-close header-drawer__button-close button-reset small-hide medium-hide no-js-hidden js-btn-close-drawer" aria-label="{{- 'theme.actions.close' | t -}}">{%- render 'icon', icon_name: 'theme-arrow' -%}</button>
+
+      <nav class="slide-out-menu">
+        <div class="menu-panels">
+          <div class="primary-menu-panel">
+            {% for nd_link in menu.links %}
+              {% assign nd_handle = nd_link.title | handleize %}
+              {% assign nd_card_count = 0 %}
+              {% for nd_block in section.blocks %}
+                {% assign nd_bh = nd_block.settings.menu_link_title | handleize %}
+                {% if nd_bh == nd_handle %}{% assign nd_card_count = nd_card_count | plus: 1 %}{% endif %}
+              {% endfor %}
+              {% if nd_card_count > 0 %}
+                <div class="mobile-submenu-cards">
+                  <h4 class="mobile-submenu-title">{{ nd_link.title }}</h4>
+                  <div class="menu-cards-row">
+                    {% assign nd_shown = 0 %}
+                    {% for nd_block in section.blocks %}
+                      {% assign nd_bh = nd_block.settings.menu_link_title | handleize %}
+                      {% if nd_bh == nd_handle and nd_shown < 4 %}
+                        <div class="menu-card">
+                          <a href="{{ nd_block.settings.link }}" class="menu-card-link">
+                            {% if nd_block.settings.image != blank %}
+                              <div class="menu-card-media">
+                                <div class="menu-card-image">{%- render 'image', image: nd_block.settings.image, alt: nd_block.settings.title -%}</div>
+                                {% if nd_block.settings.button_type == 'coming' %}<span class="menu-card-badge">Coming Soon</span>{% endif %}
+                              </div>
+                            {% endif %}
+                            <div class="menu-card-title">{{ nd_block.settings.title }}</div>
+                          </a>
+                        </div>
+                        {% assign nd_shown = nd_shown | plus: 1 %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+            <ul>
+              {% for nd_link in menu.links %}
+                {%- liquid
+                  assign nd_handle = nd_link.title | handleize
+                  assign nd_cards = 0
+                  assign nd_items = 0
+                  for nd_block in section.blocks
+                    assign nd_bh = nd_block.settings.menu_link_title | handleize
+                    if nd_handle != nd_bh
+                      continue
+                    endif
+                    if nd_block.settings.title != blank or nd_block.settings.subtitle != blank or nd_block.settings.image != blank
+                      assign nd_cards = nd_cards | plus: 1
+                    endif
+                  endfor
+                  assign nd_items = nd_items | plus: nd_link.links.size | plus: nd_cards
+                -%}
+                <li>
+                  {%- if nd_items > 0 -%}
+                  {%- else -%}
+                    <a href="{{ nd_link.url }}" class="h4" {% if nd_link.current %}aria-current="page"{% endif %}>{{ nd_link.title | escape }}</a>
+                  {%- endif -%}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          {% for nd_link in menu.links %}
+            {%- liquid
+              assign nd_handle = nd_link.title | handleize
+              assign nd_cards = 0
+              assign nd_items = 0
+              for nd_block in section.blocks
+                assign nd_bh = nd_block.settings.menu_link_title | handleize
+                if nd_handle != nd_bh
+                  continue
+                endif
+                if nd_block.settings.title != blank or nd_block.settings.subtitle != blank or nd_block.settings.image != blank
+                  assign nd_cards = nd_cards | plus: 1
+                endif
+              endfor
+              assign nd_items = nd_items | plus: nd_link.links.size | plus: nd_cards
+            -%}
+            {% if nd_items == 0 %}{% continue %}{% endif %}
+            <div class="menu-panel" data-menu="{{ nd_handle }}">
+              <button type="button" class="menu-link menu-header">{% render 'icon', icon_name: 'theme-chevron', class: 'icon icon--rotate-180' %}{{ nd_link.title }}</button>
+              <ul class="menu-text-list">
+                {% assign nd_shown = 0 %}
+                {% for nd_block in section.blocks %}
+                  {% assign nd_bh = nd_block.settings.menu_link_title | handleize %}
+                  {% if nd_bh == nd_handle and nd_shown < 4 %}
+                    {% if nd_block.settings.title != blank %}
+                      <li class="menu-text-list-item"><a href="{{ nd_block.settings.link }}" class="menu-text-link" style="padding-top:0px; padding-bottom:0px">{{ nd_block.settings.title }}</a></li>
+                      {% assign nd_shown = nd_shown | plus: 1 %}
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </div>
+      </nav>
+
+      {%- if submenu != blank -%}
+        <div class="drawer__row">
+          <nav class="drawer__subnav">
+            <ul class="list-unstyled">
+              {%- for nd_sub in submenu.links -%}
+                <li class="drawer__subnav-item"><a href="{{- nd_sub.url -}}" class="drawer__subnav-link h6{% if nd_sub.current %} is-current{% endif %}" {% if nd_sub.current %}aria-current="page"{% endif %}>{{- nd_sub.title | escape -}}</a></li>
+              {%- endfor -%}
+            </ul>
+          </nav>
+        </div>
+      {%- endif -%}
+
+      <div class="drawer__row drawer__row--bottom">
+        <nav class="drawer__subs">
+          <ul class="drawer__subs-items list-unstyled">
+            <li class="drawer__subs-item">
+              <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="drawer__subs-link" title="{%- if customer -%}{{ 'customer.account.label' | t }}{%- else -%}{{ 'theme.actions.log_in' | t }}{%- endif -%}">{{- 'customer.account.label' | t -}}</a>
+            </li>
+            {%- if section.settings.country_drawer_navigation_menu -%}
+              <li class="drawer__subs-item">
+                <menu-drawer class="drawer">{%- render 'country-drawer', button_class: ' drawer__subs-link', section: section, append_id: 'header-drawer-' | append: section.id -%}</menu-drawer>
+              </li>
+            {%- endif -%}
+          </ul>
+        </nav>
+        <div class="drawer__social"><ul class="drawer__social-list list-unstyled">{% render 'social-media', item_tag: 'li', in_new_tab: true, item_icon: true %}</ul></div>
+      </div>
+    </div>
+  </details>
+</header-drawer>

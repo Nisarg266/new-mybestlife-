@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "breadcrumbs": true,
+        "show_page_title": true,
+        "page_title_alignment": "text-center",
+        "info_title": "",
+        "info_content": "",
+        "section_width": "max-w-narrower",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "certificate_3dLtGj": {
+      "type": "certificate",
+      "blocks": {
+        "certificate_GVXK3R": {
+          "type": "certificate",
+          "settings": {
+            "image": "shopify://shop_images/FSSAI_license_11225998000037_CoreRasa_Nutrition_Pvt_Ltd-1.png",
+            "title": "FSSAI",
+            "link": "",
+            "new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "certificate_GVXK3R"
+      ],
+      "name": "Certificates Grid",
+      "settings": {
+        "heading": "My Best Life™ Nutrition Certificates",
+        "bg": "#ffffff",
+        "text": "#111111",
+        "card_bg": "#f7f7f7",
+        "title_bg": "#c7d9e9",
+        "title_color": "#19324d",
+        "max_width": 1200,
+        "gap": 16,
+        "radius": 14,
+        "columns_desktop": 4,
+        "columns_laptop": 3,
+        "columns_tablet": 2,
+        "ratio": "0.75"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "certificate_3dLtGj"
+  ]
+}

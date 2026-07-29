@@ -1,0 +1,200 @@
+{% comment %}
+  Section: Certificates Grid
+  Features:
+  - Unlimited certificate blocks (image + title + optional link)
+  - Section heading
+  - Responsive grid (4/3/2/1 columns), tap-to-open links
+  - Nice hover, lazy-loaded images, accessible markup
+{% endcomment %}
+
+<section id="certificates-{{ section.id }}" class="certificates-section" style="--cert-gap: {{ section.settings.gap | default: 16 }}px;">
+  <div class="certificates-container">
+    {% if section.settings.heading != blank %}
+      <h2 class="certificates-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="certificates-grid">
+      {% for block in section.blocks %}
+        {% assign title = block.settings.title | default: 'Certificate' %}
+        {% assign href  = block.settings.link %}
+     <div class="certificate-card" {{ block.shopify_attributes }}>
+  {% if href != blank %}
+    <a class="certificate-link" href="{{ href }}" {% if block.settings.new_tab %}target="_blank" rel="noopener noreferrer"{% endif %} aria-label="{{ title }}">
+  {% else %}
+    <div class="certificate-link" aria-label="{{ title }}">
+  {% endif %}
+
+    <div class="certificate-media" style="--ratio: {{ section.settings.ratio | default: '0.75' }}">
+      {% if block.settings.image != blank %}
+        {{ block.settings.image | image_url: width: 1000 | image_tag:
+          alt: title,
+          loading: 'lazy',
+          sizes: '(max-width: 600px) 80vw, (max-width: 990px) 33vw, 250px',
+          widths: '300,450,600,800,1000'
+        }}
+      {% else %}
+        <div class="certificate-placeholder" role="img" aria-label="Image placeholder"></div>
+      {% endif %}
+    </div>
+
+    {% if title != blank %}
+      <div class="certificate-title">{{ title }}</div>
+    {% endif %}
+
+  {% if href != blank %}</a>{% else %}</div>{% endif %}
+</div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    .certificates-section {
+      padding: clamp(24px, 5vw, 56px) 0;
+      background: {{ section.settings.bg | default: 'transparent' }};
+      color: {{ section.settings.text | default: 'inherit' }};
+    }
+    .certificates-container {
+      max-width: {{ section.settings.max_width | default: 1200 }}px;
+      margin: 0 auto;
+      padding: 0 clamp(12px, 3vw, 24px);
+    }
+    .certificates-heading {
+      text-align: center;
+      margin: 0 0 clamp(20px, 3vw, 28px);
+      font-size: clamp(28px, 3.5vw, 50px)!important;
+          text-transform: uppercase;
+    color: #b4975a;
+      line-height: 1.2;
+    }
+
+    .certificates-grid {
+      display: grid;
+      gap: var(--cert-gap);
+      grid-template-columns: repeat( {{ section.settings.columns_desktop | default: 4 }}, minmax(0, 1fr) );
+    }
+    @media (max-width: 1200px) {
+      .certificates-grid { grid-template-columns: repeat( {{ section.settings.columns_laptop | default: 3 }}, minmax(0, 1fr) ); }
+    }
+    @media (max-width: 990px) {
+      .certificates-grid { grid-template-columns: repeat( {{ section.settings.columns_tablet | default: 2 }}, minmax(0, 1fr) ); }
+    }
+    @media (max-width: 600px) {
+      .certificates-grid { grid-template-columns: 1fr; }
+    }
+
+   .certificate-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: {{ section.settings.radius | default: 14 }}px;
+  box-shadow: 0 1px 0 rgba(0,0,0,.04);
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease;
+  background: {{ section.settings.card_bg | default: '#fff' }};
+}
+
+    .certificate-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+
+    .certificate-link {  gap: 10px; text-decoration: none; color: inherit; height: 100%; }
+    .certificate-media {
+      position: relative;
+      isolation: isolate;
+      /* Portrait-friendly ratio (height/width). 0.75 = 3:4 */
+      aspect-ratio: calc(1 / var(--ratio));
+      background: #fff;
+      display: grid;
+      place-items: center;
+    }
+    .certificate-media {
+  flex-grow: 1;
+  aspect-ratio: calc(1 / var(--ratio));
+  background: #fff;
+  display: grid;
+  place-items: center;
+}
+
+    .certificate-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .certificate-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #e9ecef, #f8f9fa);
+    }
+.certificate-title {
+  margin-top: auto;
+  border-radius: 0;
+  padding: 12px 20px;
+  background: {{ section.settings.title_bg | default: '#e3ebf3' }};
+  color: {{ section.settings.title_color | default: '#19324d' }};
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  letter-spacing: .2px;
+}
+    .certificate-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+  </style>
+</section>
+
+{% schema %}
+{
+  "name": "Certificates Grid",
+  "tag": "section",
+  "class": "section-certificates",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Section heading", "default": "Wellbeing Nutrition Certificates" },
+    { "type": "color", "id": "bg", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "text", "label": "Base text color", "default": "#111111" },
+    { "type": "color", "id": "card_bg", "label": "Card background", "default": "#f7f7f7" },
+    { "type": "color", "id": "title_bg", "label": "Title strip background", "default": "#c7d9e9" },
+    { "type": "color", "id": "title_color", "label": "Title text color", "default": "#19324d" },
+
+    { "type": "range", "id": "max_width", "label": "Content max width (px)", "min": 800, "max": 1600, "step": 10, "default": 1200 },
+    { "type": "range", "id": "gap", "label": "Grid gap (px)", "min": 8, "max": 48, "step": 1, "default": 16 },
+    { "type": "range", "id": "radius", "label": "Card corner radius (px)", "min": 0, "max": 32, "step": 1, "default": 14 },
+
+    { "type": "range", "id": "columns_desktop", "label": "Columns (desktop ≥ 1200px)", "min": 1, "max": 6, "step": 1, "default": 4 },
+    { "type": "range", "id": "columns_laptop",  "label": "Columns (laptop < 1200px)", "min": 1, "max": 5, "step": 1, "default": 3 },
+    { "type": "range", "id": "columns_tablet",  "label": "Columns (tablet < 990px)",  "min": 1, "max": 4, "step": 1, "default": 2 },
+
+    {
+      "type": "select",
+      "id": "ratio",
+      "label": "Image height/width ratio",
+      "default": "0.75",
+      "options": [
+        { "value": "0.6", "label": "Taller (3:5)" },
+        { "value": "0.75", "label": "Standard (3:4)" },
+        { "value": "1", "label": "Square (1:1)" }
+      ],
+      "info": "Certificates are usually portrait; 0.75 fits well."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "certificate",
+      "name": "Certificate",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Certificate image" },
+        { "type": "textarea", "id": "title", "label": "Title", "default": "HACCP" },
+        { "type": "url", "id": "link", "label": "Optional link (view/download)" },
+        { "type": "checkbox", "id": "new_tab", "label": "Open link in new tab", "default": true }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    { "name": "Certificates Grid", "category": "Image" }
+  ]
+}
+{% endschema %}

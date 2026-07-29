@@ -1,0 +1,394 @@
+﻿<style>
+.product-comparison-table-wrapper {
+  padding:60px 80px !important;
+  background-color: {{ section.settings.bg_color }};
+  
+}
+
+.product-comparison-table-wrapper .center-container {
+  max-width: 1500px;  /* content width */
+  margin: 0 auto;     /* center horizontally */
+  text-align: center; /* center heading text */
+}
+.product-comparison-table {
+    width: auto;
+    margin: 0 auto; /* Centers the table horizontally */
+    color: {{ section.settings.font_color }};
+    font-size: {{ section.settings.font_size }}px;
+    padding-left: 20px;
+    text-align: center; /* Centers text inside cells */
+        max-width: max-content;
+}
+
+.product-comparison-table th,
+.product-comparison-table td {
+    text-align: center; /* Centers text horizontally */
+    vertical-align: middle; /* Centers text vertically */
+}
+
+        .product-comparison-table .cell {
+        display: table-cell;
+        border-bottom: 1px solid {{ section.settings.border_color }} !important;
+        border-right: 1px solid {{ section.settings.border_color }};
+        padding: 12px;
+        text-align: center;
+        width: 271px;
+        vertical-align: middle;
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 100%;
+        letter-spacing:1px;
+          height: 80px;
+        vertical-align: middle;
+        }
+/* Remove right border from the last column in every row */
+.product-comparison-table .row > .cell:last-child {
+  border-right: none;
+}
+        
+        .product-comparison-table .row {
+        display: table-row;
+        width: 100%;
+
+        }
+        img.pdp-icon {
+        padding: 8px;
+        display: inline-block;
+        }
+        .icon-yes {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+     .icon-yes svg{
+          background: rgba(176, 239, 143, 1);
+        border-radius: 100px;
+    }
+        .product-comparison-table .product-col img {
+        height: 202px;
+        width: 150px;
+        object-fit: cover;
+        }
+
+
+        img.pdp-comparison {
+        object-fit: cover;
+        height: 170px;
+        }
+
+        .row- .cell:nth-child(2){
+        background: #F1CEC7;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom: 1px solid #ffffff;
+        }
+
+        .row-0 .cell:nth-child(2){
+        background: #F1CEC7;
+        border-bottom: 1px solid #ffffff;
+        }
+        .row-1 .cell:nth-child(2){
+        background: #F1CEC7;
+        border-bottom: 1px solid #ffffff;
+        }
+        .row-2 .cell:nth-child(2){
+        background: #F1CEC7;
+        border-bottom: 1px solid #ffffff;
+        }
+        .row-3 .cell:nth-child(2){
+        background: #F1CEC7;
+        border-bottom: 1px solid #ffffff;
+        }
+        .row-4 .cell:nth-child(2){
+        background: #F1CEC7;
+        border-bottom: 1px solid #ffffff;
+        }
+        .row-5 .cell:nth-child(2){
+        background: #F1CEC7;
+        border-bottom: 1px solid #ffffff;
+        }
+        .row-0 .cell:nth-child(1){
+        text-align: start;
+        }
+        .row-1 .cell:nth-child(1){
+        text-align: start;
+        }
+        .row-2 .cell:nth-child(1){
+        text-align: start;
+        }
+        .row-3 .cell:nth-child(1){
+        text-align: start;
+
+        }
+        .row-4 .cell:nth-child(1){
+        text-align: start;
+
+        }
+        .row-5 .cell:nth-child(1){
+        text-align: start;
+
+        }
+    .row-image .cell:nth-child(2){
+          background: #F1CEC7;
+      border-bottom: 1px solid #ffffff;
+
+  }
+  
+  .product-comparison-table .cell:nth-child(3) img:has(~ .product-heading) {
+    scale: 0.8;
+}
+    .icon-no {
+      width: 30px;
+      height: 30px;
+    
+      border-radius: 50%;
+      text-align: center;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+@media screen and (max-width: 768px) {
+  .product-comparison-table-wrapper {
+  padding:20px 20px !important;
+ 
+  
+}
+  /* Only scroll the table */
+  .table-scroll-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .product-comparison-table {
+    display: table;
+    min-width: 650px; /* increase width for mobile scroll */
+    margin-left: 0;
+  }
+
+  .product-comparison-table .cell {
+    font-size: 14px;
+    text-align: center;
+    padding: 8px;
+    height: 56px;
+    min-width: 120px; /* each column wider */
+  }
+
+  img.pdp-comparison {
+    object-fit: cover;
+    height: 96px;
+  }
+
+  img.pdp-icon {
+    padding: 4px;
+    display: inline-block;
+    width: 30px;
+  }
+}
+
+.product-heading {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: {{ section.settings.font_color }};
+}
+
+</style>
+{% schema %}
+{
+  "name": "Product Comparison Table",
+  "settings": [
+       {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Main Title",
+      "default": "Real Science. Real Hydration"
+    },
+    { "type": "text", "id": "table_heading", "label": "Table Heading", "default": "Product Comparison" },
+    { "type": "color", "id": "bg_color", "label": "Background Color", "default": "#ffffff" },
+    { "type": "color", "id": "border_color", "label": "Border Color", "default": "#dddddd" },
+    { "type": "color", "id": "font_color", "label": "Font Color", "default": "#2A2A2A" },
+    { "type": "range", "id": "font_size", "label": "Font Size", "min": 12, "max": 30, "step": 1, "default": 16 },
+          {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom mobile",
+        "default": 0
+      }],
+  "blocks": [
+
+    {
+      "type": "features",
+      "name": "Feature Headings",
+      "settings": [
+        { "type": "text", "id": "feature_0", "label": "Feature 1", "default": "Deep Hydration" },
+        { "type": "text", "id": "feature_1", "label": "Feature 2", "default": "Clinical Proof" },
+        { "type": "text", "id": "feature_2", "label": "Feature 3", "default": "No Additives" },
+        { "type": "text", "id": "feature_3", "label": "Feature 4", "default": "Anti-Aging" },
+        { "type": "text", "id": "feature_4", "label": "Feature 5", "default": "Anti-Aging" },
+        { "type": "text", "id": "feature_5", "label": "Feature 6", "default": "Anti-Aging" }]
+    },
+ {
+  "type": "product",
+  "name": "Product Column",
+  "settings": [
+    { "type": "image_picker", "id": "product_image", "label": "Product Image" },
+    { "type": "text", "id": "product_heading", "label": "Product Heading", "default": "Product Name" },
+
+    { "type": "select", "id": "feature_0", "label": "Feature 1", "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" },
+        { "value": "weak", "label": "Weak" }
+    ]},
+    { "type": "select", "id": "feature_1", "label": "Feature 2", "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" },
+        { "value": "weak", "label": "Weak" }
+    ]},
+    { "type": "select", "id": "feature_2", "label": "Feature 3", "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" },
+        { "value": "weak", "label": "Weak" }
+    ]},
+    { "type": "select", "id": "feature_3", "label": "Feature 4", "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" },
+        { "value": "weak", "label": "Weak" }
+    ]},
+    { "type": "select", "id": "feature_4", "label": "Feature 5", "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" },
+        { "value": "weak", "label": "Weak" }
+    ]},
+    { "type": "select", "id": "feature_5", "label": "Feature 6", "options": [
+      { "value": "yes", "label": "Yes" },
+      { "value": "no", "label": "No" },
+        { "value": "weak", "label": "Weak" }
+    ]}
+  ]
+}
+
+  ],
+  "max_blocks": 7,
+  "presets": [
+    {
+      "name": "Product Comparison Table",
+      "blocks": [
+        { "type": "features" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<div class="product-comparison-table-wrapper">
+  <div class="center-container">
+
+    {% if section.settings.heading != blank %}
+      <h2 style="text-align:center ; padding-bottom:40px !important;" class="heading123">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <!-- NEW scroll container -->
+    <div class="table-scroll-container">
+      <div class="product-comparison-table">
+        <!-- Product Image Row -->
+        <div class="row row-image">
+          <div class="cell">{{ section.settings.table_heading }}</div>
+          {% for block in section.blocks %}
+            {% if block.type == 'product' %}
+              <div class="cell">
+                {% if block.settings.product_image %}
+                  <img
+                    class="pdp-comparison"
+                    src="{{ block.settings.product_image | img_url: 'master' }}"
+                    alt="Product Image"
+                  >
+                {% endif %}
+
+                {% if block.settings.product_heading != blank %}
+  <div class="product-heading" style="margin-top:8px; font-size:16px; font-weight:600;">
+    {{ block.settings.product_heading }}
+  </div>
+{% endif %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <!-- Feature Comparison Rows -->
+        {% assign features = section.blocks | where: 'type', 'features' | first %}
+        {% if features %}
+          {% for i in (0..5) %}
+            {% assign key = 'feature_' | append: i %}
+            {% if features.settings[key] != blank %}
+              <div class="row row-{{ i }}">
+                <div class="cell">{{ features.settings[key] }}</div>
+
+                {% for block in section.blocks %}
+                  {% if block.type == 'product' %}
+                    <div class="cell">
+                      {% assign feature_value = block.settings[key] %}
+                      {% if feature_value == 'yes' %}
+                        <div class="cell-row-{{ i }}-col-{{ forloop.index0 }} circle-icon icon-yes">
+                          <img src="https://cdn.shopify.com/s/files/1/0921/7074/8188/files/1.svg?v=1754925346" alt="Yes icon" width="30" height="30" loading="lazy">
+                        </div>
+                      {% elsif feature_value == 'no' %}
+                        <div class="cell-row-{{ i }}-col-{{ forloop.index0 }} circle-icon icon-no">
+                          <img src="https://cdn.shopify.com/s/files/1/0921/7074/8188/files/2.svg?v=1754925347" alt="No icon" width="19" height="20" loading="lazy">
+                        </div>
+                      {% else %}
+                        <div class="cell-row-{{ i }}-col-{{ forloop.index0 }} circle-icon icon-weak">
+                          <img src="https://cdn.shopify.com/s/files/1/0921/7074/8188/files/3.svg?v=1754925346" alt="Weak icon" width="30" height="30" loading="lazy">
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+    <!-- END scroll container -->
+
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<style>
+  .review-count { font-weight: 500; font-size: 16px; line-height: 100%; padding-left: 7px; }
+  .star-rating img { width: 21px; height: 20px; }
+  .star { font-size: 18px; color: #EBB305; margin-right: 2px; position: relative; }
+  .star-rating { display: flex; align-items: center; gap: 5px; justify-content: start; }
+</style>
+
+{%- style -%}
+  .section-{{ block.id }}-margin {
+    margin-top: {{ block.settings.top_margin | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ block.settings.bottom_margin | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ block.id }}-margin {
+      margin-top: {{ block.settings.top_margin }}px;
+      margin-bottom: {{ block.settings.bottom_margin }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="star-rating section-{{ block.id }}-margin">
+  {% for i in (1..5) %}
+    {% if block.settings.star_icon %}
+      <img src="{{ block.settings.star_icon | img_url: 'master' }}" alt="Star" class="star-icon" />
+    {% else %}
+      <span class="star">★</span>
+    {% endif %}
+  {% endfor %}
+  <span class="review-count">{{ block.settings.review_count_text }}</span>
+</div>

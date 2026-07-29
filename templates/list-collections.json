@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "page_banner_gViVwa": {
+      "type": "page-banner",
+      "settings": {
+        "enable_transparent_header": true,
+        "heading": "",
+        "heading_size": "h3",
+        "text": "",
+        "show_default_description": true,
+        "show_on_description": "desktop",
+        "content_position": "center",
+        "content_alignment": "center",
+        "media_position": "background",
+        "page_menu": "",
+        "enable_breadcrumbs": true,
+        "section_height": "50svh",
+        "video_external": "",
+        "show_controls_on_video": false,
+        "section_height_mobile": "50svh",
+        "video_external_mobile": "",
+        "show_controls_on_video_mobile": false,
+        "section_width": "max-w-narrow",
+        "color_scheme": "scheme-6",
+        "color_scheme_for_media": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "main": {
+      "type": "main-list-collections",
+      "settings": {
+        "collections_to_show": "all",
+        "card_title_style": "card-single-text",
+        "collection_product_count": "show",
+        "collections_per_page": 12,
+        "pagination_style": "default",
+        "enable_infinity_scroll": false,
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "90f0172d-db82-4963-95c4-6a1724783cd8": {
+      "type": "trust-indicators",
+      "blocks": {
+        "template--16809880650043__90f0172d-db82-4963-95c4-6a1724783cd8-16677286337545964d-0": {
+          "type": "icon",
+          "settings": {
+            "title": "Fast Global Shipping"
+          }
+        },
+        "template--16809880650043__90f0172d-db82-4963-95c4-6a1724783cd8-16677286337545964d-1": {
+          "type": "icon",
+          "settings": {
+            "title": "Free Returns"
+          }
+        },
+        "template--16809880650043__90f0172d-db82-4963-95c4-6a1724783cd8-16677286337545964d-2": {
+          "type": "icon",
+          "settings": {
+            "title": "100% secure payment"
+          }
+        }
+      },
+      "block_order": [
+        "template--16809880650043__90f0172d-db82-4963-95c4-6a1724783cd8-16677286337545964d-0",
+        "template--16809880650043__90f0172d-db82-4963-95c4-6a1724783cd8-16677286337545964d-1",
+        "template--16809880650043__90f0172d-db82-4963-95c4-6a1724783cd8-16677286337545964d-2"
+      ],
+      "settings": {
+        "icon_size": 48,
+        "title_font_size": 18
+      }
+    }
+  },
+  "order": [
+    "page_banner_gViVwa",
+    "main",
+    "90f0172d-db82-4963-95c4-6a1724783cd8"
+  ]
+}

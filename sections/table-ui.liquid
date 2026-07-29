@@ -1,0 +1,245 @@
+{% stylesheet %}
+.why-choose {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding:60px 80px;
+  box-sizing: content-box;
+}
+
+.why-choose h2 {
+  text-align: center;
+  font-size: clamp(28px, 5vw, 50px) !important;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #b4975a;
+  text-transform: uppercase;
+}
+
+/* Table container for mobile scroll */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+table.compare-table {
+  border-radius: 30px;
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 700px; /* Helps for scroll on mobile */
+}
+
+.abc1 {
+  font-size: 18px !important;
+  text-align: left;
+}
+
+.abc2 {
+  font-size: 18px !important;
+  text-align: right;
+}
+
+table.compare-table {
+  border-collapse: collapse;
+}
+
+table.compare-table td,
+table.compare-table th {
+  border: 1px solid #b4975a; /* Inner borders */
+  padding: 15px;
+  vertical-align: middle;
+  line-height: 1.2;
+}
+
+@media (min-width: 767px){
+  tr:has(.no-border) > td:not(.no-border) {
+    min-width: 420px;
+  }
+}
+
+@media (max-width: 767px){
+  tr:has(.no-border) > td {
+    min-width: 350px;
+  }
+}
+
+
+table.compare-table tr:first-child th {
+  border-top: none; /* Remove top border */
+}
+
+table.compare-table tr:last-child td:first-child {
+  border-bottom: 20px solid pink;
+}
+
+/* Right bottom cell border in grey */
+table.compare-table tr:last-child td:last-child {
+  border-bottom: 20px solid grey;
+}
+table.compare-table tr td:first-child,
+table.compare-table tr th:first-child {
+  border-left: none; /* Remove left border */
+}
+
+table.compare-table tr td:last-child,
+table.compare-table tr th:last-child {
+  border-right: none; /* Remove right border */
+}
+
+table.compare-table th {
+  font-weight: bold;
+  font-size: 30px !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #000;
+}
+
+/* Remove border between middle images */
+table.compare-table td.no-border {
+  border-left: none;
+  border-right: none;
+  padding: 0 !important;
+}
+
+.compare-table td.no-border img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  padding: 0 !important;
+  max-height: calc(50px * 3.2);
+
+}
+
+/* Header styling */
+.left-header {
+  background-color: #eebdb6;
+  border-top-left-radius: 10px;
+}
+.right-header {
+  background-color: #bfb4ab;
+  border-top-right-radius: 10px;
+}
+
+/* Ensure images in rowspan match height */
+.compare-table tr td.no-border {
+  height: 100%;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .why-choose{
+        padding: 20px 20px;
+  }
+  .abc1, .abc2 {
+    font-size: 16px !important;
+  }
+    /* Target td and th elements within your table */
+  .table-wrapper table.compare-table td,
+  .table-wrapper table.compare-table th {
+    padding: 10px; /* Adjust this value as needed */
+    /* You might also want to adjust font-size or line-height for better readability */
+    /* font-size: 14px; */
+    /* line-height: 1.4; */
+  }
+  /* Ensure the table and wrapper don't have fixed heights on mobile */
+  .table-wrapper,
+  .table-wrapper table.compare-table {
+    height: auto !important; /* Use !important if necessary to override existing fixed heights */
+    max-height: none !important; /* Ensure no max-height is limiting the size */
+  }
+}
+{% endstylesheet %}
+
+<div class="why-choose" style=" ">
+  <h2>{{ section.settings.section_heading }}</h2>
+  <div class="table-wrapper">
+    <table class="compare-table">
+      <tr>
+        <th colspan="2" class="left-header abc1">{{ section.settings.left_header }}</th>
+        <th colspan="2" class="right-header abc2">{{ section.settings.right_header}}</th>
+      </tr>
+{% if section.settings.left_row1 != blank or section.settings.right_row1 != blank %}
+<tr>
+  <td colspan="2" class="abc1">{{ section.settings.left_row1 }}</td>
+  <td colspan="2" class="abc2">{{ section.settings.right_row1 }}</td>
+</tr>
+{% endif %}
+
+{% if section.settings.left_row2 != blank or section.settings.right_row2 != blank %}
+<tr>
+  <td class="abc1">{{ section.settings.left_row2 }}</td>
+  <td rowspan="3" colspan="2" class="no-border">
+    {% if section.settings.left_image %}
+      <img src="{{ section.settings.left_image | image_url }}" alt="">
+    {% endif %}
+  </td>
+  <td class="abc2">{{ section.settings.right_row2 }}</td>
+</tr>
+{% endif %}
+
+{% if section.settings.left_row3 != blank or section.settings.right_row3 != blank %}
+<tr>
+  <td class="abc1">{{ section.settings.left_row3 }}</td>
+  <td class="abc2">{{ section.settings.right_row3 }}</td>
+</tr>
+{% endif %}
+
+{% if section.settings.left_row4 != blank or section.settings.right_row4 != blank %}
+<tr>
+  <td class="abc1">{{ section.settings.left_row4 }}</td>
+  <td class="abc2">{{ section.settings.right_row4 }}</td>
+</tr>
+{% endif %}
+
+{% if section.settings.left_row5 != blank or section.settings.right_row5 != blank %}
+<tr>
+  <td colspan="2" class="abc1">{{ section.settings.left_row5 }}</td>
+  <td colspan="2" class="abc2">{{ section.settings.right_row5 }}</td>
+</tr>
+{% endif %}
+
+{% if section.settings.left_row6 != blank or section.settings.right_row6 != blank %}
+<tr>
+  <td colspan="2" class="abc1">{{ section.settings.left_row6 }}</td>
+  <td colspan="2" class="abc2">{{ section.settings.right_row6 }}</td>
+</tr>
+{% endif %}
+    </table>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "settings": [
+    { "type": "text", "id": "section_heading", "label": "Section Heading", "default": "Why Choose Us" },
+    { "type": "text", "id": "left_header", "label": "Left Column Heading", "default": "NutraDew™ Advantage" },
+    { "type": "color", "id": "column1_bg", "label": "Left Column Header Background", "default": "#eec2be" },
+    { "type": "color", "id": "column1_color", "label": "Left Column Header Text Color", "default": "#000000" },
+    { "type": "text", "id": "right_header", "label": "Right Column Heading", "default": "Other Skin Supplements" },
+    { "type": "color", "id": "column2_bg", "label": "Right Column Header Background", "default": "#b4aba0" },
+    { "type": "color", "id": "column2_color", "label": "Right Column Header Text Color", "default": "#000000" },
+    { "type": "image_picker", "id": "left_image", "label": "Left Column Image" },
+    { "type": "image_picker", "id": "right_image", "label": "Right Column Image" },
+    { "type": "text", "id": "left_row1", "label": "Left Row 1 Text", "default": "Ceramosides™ boosts skin hydration by 21%" },
+    { "type": "text", "id": "right_row1", "label": "Right Row 1 Text", "default": "Vague claims, no clinical proof" },
+    { "type": "text", "id": "left_row2", "label": "Left Row 2 Text", "default": "Hyaluronic Acid hydrates skin deeply" },
+    { "type": "text", "id": "right_row2", "label": "Right Row 2 Text", "default": "Low-absorption collagen hyped" },
+    { "type": "text", "id": "left_row3", "label": "Left Row 3 Text", "default": "Omegia® promotes collagen production" },
+    { "type": "text", "id": "right_row3", "label": "Right Row 3 Text", "default": "Sugar, additives harm skin" },
+    { "type": "text", "id": "left_row4", "label": "Left Row 4 Text", "default": "ALA stimulates collagen synthesis, improves skin firmness" },
+    { "type": "text", "id": "right_row4", "label": "Right Row 4 Text", "default": "Lack ceramides, contains generic vitamins" },
+    { "type": "text", "id": "left_row5", "label": "Left Row 5 Text", "default": "No sugar, Label Transparency" },
+    { "type": "text", "id": "right_row5", "label": "Right Row 5 Text", "default": "Hidden allergens, unlisted fillers" },
+     { "type": "text", "id": "left_row6", "label": "Left Row 6 Text", "default": "No sugar, Label Transparency" },
+    { "type": "text", "id": "right_row6", "label": "Right Row 6 Text", "default": "Hidden allergens, unlisted fillers" },
+    { "type": "range", "id": "padding_top", "label": "Padding Top", "default": 50, "min": 0, "max": 200, "step": 5 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding Bottom", "default": 50, "min": 0, "max": 200, "step": 5 }
+  ],
+  "presets": [
+    { "name": "Why Choose Us", "category": "Custom" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,147 @@
+{%- comment -%}
+  Upsell / "Complete the look" products block.
+  params: block (settings: title, top_margin, bottom_margin)
+{%- endcomment -%}
+
+<style>
+  .upsell-products > h5 { font-size: 24px; margin-bottom: 15px; }
+  .upsell-products wi-quickadd { width: 100%; height: auto; position: static; display: block; opacity: 1; visibility: visible; padding: 0; background: whitesmoke; border-radius: 40px; }
+  .upsell-products wi-quickadd h5 { width: 100%; margin: 0; margin-bottom: 10px; font-size: 22px; color: #2A2A2A; font-weight: 600; }
+  p.upsell-dsc p { font-size: 15px; font-weight: 400; }
+  .WI_completeTheLook_in { width: 100%; height: auto; position: relative; }
+  .WI_completeLook_product { display: flex; align-items: center; gap: 15px; padding: 12px 16px; background: #F9EAE7; border-radius: 8px; width: 100%; }
+  .WI_completeLook_product img { flex-shrink: 0; width: 150px; height: auto; border-radius: 6px; }
+  .WI_completeLook_submit { border-radius: 50px; background: #ecbdb4; border: none; outline: none; font-size: 26px; color: #2f2f2f; font-weight: 600; letter-spacing: 1px; padding: 7px; text-transform: capitalize; cursor: pointer; border-radius: 50px; width: 100%; border: none; }
+  .WI_completeLook_product_info { width: 100%; display: flex; flex-direction: column; justify-content: space-between; height: 100%; padding-block: 5px; padding-inline: 5px; }
+  .WI_completeLook_product_info form select { width: 100%; background-color: rgba(255, 255, 255, 0); border: 1px solid #212121; }
+  .WI_completeLook_product_left { width: 100%; display: flex; gap: 10px; justify-content: space-between; }
+  .WI_completeLook_product_left a { text-decoration: none; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; }
+  .WI_completeLook_product_info form { display: flex; justify-content: flex-start; align-items: center; flex-wrap: wrap; }
+  .icon--root { position: relative; display: inline-block; }
+  .WI_completeLook_product_info select { -webkit-appearance: none; -moz-appearance: none; appearance: none; background-color: #fff; background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCXdpZHRoPSI3LjdweCIgaGVpZ2h0PSI0LjNweCIgdmlld0JveD0iMCAwIDcuNyA0LjMiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDcuNyA0LjMiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggZmlsbD0iIzk5OTk5OSIgZD0iTTcuMSwwLjFDNi43LDAuNSwzLjksMy4yLDMuOSwzLjJTMSwwLjUsMC42LDAuMUwwLDAuNywwLDAuN2wzLjksMy42bDMuOC0zLjZDNy43LDAuNyw3LjUtMC4zLDcuMSwwLjF6Ii8+DQo8L3N2Zz4NCg==); background-position: right 10px center; background-repeat: no-repeat; border-radius: 2px; color: #2a2a2a; cursor: pointer; font-size: 14px; width: 50%; padding: 11px 10px; text-indent: 0.01px; text-overflow: ""; outline-offset: none; outline: none; box-shadow: none; }
+  .WI_completeLook_product_left .price .money { display: block; white-space: nowrap; }
+  .upsell-products .loading-overlay__spinner .path { stroke: "#fff"; }
+  span.Ma-span { white-space: nowrap; font-size: 18px; font-weight: 600; color: rgba(47, 47, 47, 1); letter-spacing: 0px; line-height: 30px; }
+  .WI_completeLook_options-container { display: flex; width: 90%; justify-content: space-around; align-items: center; justify-content: start; gap: 30px; }
+  button#quickATC { display: flex; align-items: center; justify-content: center; }
+  .WI_completeLook_product_left .price { white-space: nowrap; }
+  .loading-overlay__spinner svg { width: 30px; height: 30px; }
+  @media screen and (max-width: 768px) {
+    .WI_completeLook_product { grid-template-columns: 20% 78%; }
+    .WI_completeLook_product_info .WI_quickAdd_atc:disabled { background-color: #2A2A2A; color: #fff; }
+    .WI_completeLook_product_info .WI_quickAdd_atc:disabled::after { content: none; }
+    .upsell-products wi-quickadd h5 { font-size: 12px; }
+    .WI_completeLook_submit { margin-top: 10px; }
+    span.Ma-span { font-size: 14px; }
+  }
+</style>
+
+<div class="upsell-products section-{{ block.id }}-margin">
+  <h5>{{ block.settings.title }}</h5>
+  <div class="WI_completeTheLook_slider">
+    {% for up_product in product.metafields['shopify--discovery--product_recommendation'].complementary_products.value %}
+      <wi-quickadd>
+        <div class="WI_completeLook_product">
+          <a href="{{ up_product.url }}">
+            <div class="WI_completeLook_product_img">
+              {% if up_product.featured_image %}
+                <img src="{{ up_product.featured_image | img_url: '500x' }}" alt="{{ up_product.title }}" loading="lazy">
+              {% else %}
+                <img src="{{ up_product.images[0] | img_url: '500x' }}" alt="{{ up_product.title }}" loading="lazy">
+              {% endif %}
+            </div>
+          </a>
+          <div class="WI_completeLook_product_info">
+            <div class="WI_completeLook_product_left">
+              <a href="{{ up_product.url }}">
+                <h5 class="upsell-tit">{{ up_product.title }}</h5>
+                <p class="upsell-dsc">{{ up_product.description }}</p>
+              </a>
+            </div>
+            <div class="WI_completeLook_options-container">
+              <button class="WI_quickAdd_atc svg WI_completeLook_submit" id="quickATC" type="submit" data-variantid="{{ up_product.selected_or_first_available_variant.id }}" {% unless up_product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+                <span class="Ma-span">{% if up_product.selected_or_first_available_variant.available %}Buy Now{% else %}Sold Out{% endif %}</span>
+                <div class="loading-overlay__spinner hidden">
+                  <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                    <circle fill="none" stroke="#2A2A2A" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </wi-quickadd>
+    {% endfor %}
+  </div>
+</div>
+
+{%- style -%}
+  .section-{{ block.id }}-margin {
+    margin-top: {{ block.settings.top_margin | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ block.settings.bottom_margin | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ block.id }}-margin {
+      margin-top: {{ block.settings.top_margin }}px;
+      margin-bottom: {{ block.settings.bottom_margin }}px;
+    }
+  }
+{%- endstyle -%}
+
+<script>
+  function refreshedCartDrawer() {
+    fetch('/?sections=cart-drawer,cart-icon-bubble')
+      .then(res => res.json())
+      .then(data => {
+        const parsedHTML = new DOMParser().parseFromString(data['cart-drawer'], 'text/html');
+        const drawerInner = parsedHTML.querySelector('.drawer__inner');
+        const isEmpty = drawerInner?.classList.contains('is-empty');
+        const parsedState = { sections: { 'cart-drawer': data['cart-drawer'], 'cart-icon-bubble': data['cart-icon-bubble'] }, id: null };
+        const cartDrawer = document.querySelector('cart-drawer');
+        if (cartDrawer && !isEmpty) { cartDrawer.classList.remove('is-empty'); cartDrawer.renderContents(parsedState); }
+        const bubbleTarget = document.querySelector('#cart-counter');
+        if (bubbleTarget) {
+          const newHTML = new DOMParser().parseFromString(data['cart-icon-bubble'], 'text/html');
+          const newBubble = newHTML.querySelector('#cart-counter');
+          if (newBubble) bubbleTarget.innerHTML = newBubble.innerHTML;
+        }
+      });
+  }
+
+  class WIquickAdd extends HTMLElement {
+    constructor() { super(); }
+    connectedCallback() { this.handleQuickAdd(); }
+    handleQuickAdd() {
+      const btns = this.querySelectorAll('.WI_quickAdd_atc');
+      btns.forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const loadingBlock = document.querySelector('.WI_loadingCartItemBlock');
+          const emptyCart = document.querySelector('.WI_cartDrawerin_cart_empty');
+          if (loadingBlock) loadingBlock.style.display = "block";
+          if (emptyCart) emptyCart.style.display = "none";
+          document.dispatchEvent(new CustomEvent("opencart", { bubbles: true }));
+
+          const spinner = btn.querySelector('.loading-overlay__spinner');
+          const textSpan = btn.querySelector('.Ma-span');
+          if (spinner) spinner.classList.remove('hidden');
+          if (textSpan) textSpan.classList.add('hidden');
+
+          const variantId = btn.getAttribute('data-variantid');
+          if (!variantId) return;
+
+          await fetch('/cart/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items: [{ id: variantId, quantity: 1 }] })
+          });
+
+          if (spinner) spinner.classList.add('hidden');
+          if (textSpan) textSpan.classList.remove('hidden');
+          refreshedCartDrawer();
+        });
+      });
+    }
+  }
+  customElements.define("wi-quickadd", WIquickAdd);
+</script>

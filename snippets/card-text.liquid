@@ -1,0 +1,51 @@
+{%- comment -%}
+  Text card block for grid layouts.
+  params: class, text, heading_size, button_label, button_link, button_style,
+          card_image, card_width, column_count, column_count_mobile,
+          column_factor, row_factor, content_position, content_alignment,
+          content_position_mobile, content_alignment_mobile, link_type, block_id
+{%- endcomment -%}
+
+{%- liquid
+  assign ct_heading = heading_size | default: 'h3'
+  assign ct_btn_variant = button_style | default: 'button--outlined'
+  assign ct_image = card_image | default: false
+  assign ct_btn_label = button_label | default: false
+  assign ct_btn_link = button_link | default: false
+
+  assign ct_cols = column_count | times: 1 | default: 4
+  assign ct_cols_mobile = column_count_mobile | times: 1 | default: 2
+  assign ct_col_factor = column_factor | times: 1 | default: 1
+  assign ct_col_factor_mobile = ct_col_factor
+
+  if ct_col_factor > ct_cols
+    assign ct_col_factor = ct_cols
+  endif
+  if ct_col_factor_mobile > ct_cols_mobile
+    assign ct_col_factor_mobile = ct_cols_mobile
+  endif
+-%}
+
+{% style %}
+  .block-{{ block_id }} { grid-column: span {{ ct_col_factor_mobile }}; grid-row: span {{ row_factor }}; height: 100%; }
+  @media screen and (min-width: 750px) {
+    .block-{{ block_id }} { grid-column: span {{ ct_col_factor }}; grid-row: span {{ row_factor }}; }
+  }
+{% endstyle %}
+
+{%- if text or ct_btn_label -%}
+  <div class="block-{{ block_id }}">
+    <div class="card-text {{ class }}">
+      {%- if ct_image -%}
+        <div class="media">{%- render 'image', image: ct_image, alt: text | escape -%}</div>
+      {%- endif -%}
+      <div class="card-text__content justify-{{ content_position }} align-{{ content_alignment }} text-{{ content_alignment }} justify-{{ content_position_mobile }}--mobile align-{{ content_alignment_mobile }}--mobile text-{{ content_alignment_mobile }}--mobile">
+        {%- if text -%}<div class="card-text__title">{{- text -}}</div>{%- endif -%}
+        {%- if ct_btn_label -%}
+          <div class="card-text__button">{%- render 'button', type: 'link', class: 'button', button_style: ct_btn_variant, value: ct_btn_label, href: ct_btn_link -%}</div>
+        {%- endif -%}
+      </div>
+      {% if link_type == 'card' %}<a href="{{ ct_btn_link }}" class="card-text__link">&nbsp;</a>{% endif %}
+    </div>
+  </div>
+{%- endif -%}

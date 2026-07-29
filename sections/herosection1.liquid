@@ -1,0 +1,259 @@
+{% schema %}
+{
+  "name": "my herosection",
+  "tag": "section",
+  "class": "my-best-life-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Main Image"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHAT SETS MY BEST LIFE™ APART"
+    },
+    {
+      "type": "text",
+      "id": "point_1",
+      "label": "Point 1",
+      "default": "Science-Backed. Results-Driven"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_1",
+      "label": "Icon 1"
+    },
+    {
+      "type": "text",
+      "id": "point_2",
+      "label": "Point 2",
+      "default": "Innovative Formulations"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_2",
+      "label": "Icon 2"
+    },
+    {
+      "type": "text",
+      "id": "point_3",
+      "label": "Point 3",
+      "default": "Segment-Specific Focus"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_3",
+      "label": "Icon 3"
+    },
+    {
+      "type": "text",
+      "id": "point_4",
+      "label": "Point 4",
+      "default": "Modern Science Meets Traditional Wisdom"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_4",
+      "label": "Icon 4"
+    },
+    {
+      "type": "text",
+      "id": "point_5",
+      "label": "Point 5",
+      "default": "Clean, Transparent, and Ethical"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_5",
+      "label": "Icon 5"
+    },
+    {
+      "type": "text",
+      "id": "point_6",
+      "label": "Point 6",
+      "default": "Doctor and Expert Friendly"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_6",
+      "label": "Icon 6"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text",
+      "default": "Experience it now"
+    }
+  ]
+}
+{% endschema %}
+<div class="main-r-r">
+<div class="my-best-life-wrapper">
+  <div class="my-best-life-left">
+    <h2 class="my-best-life-heading">{{ section.settings.heading }}</h2>
+    <ul class="my-best-life-points">
+      {% for i in (1..6) %}
+        <li>
+          {% assign icon = 'icon_' | append: i %}
+          {% assign point = 'point_' | append: i %}
+          {% if section.settings[icon] %}
+            <img src="{{ section.settings[icon] | image_url: width: 120 }}" alt="icon for {{ section.settings[point] }}"/>
+          {% endif %}
+          <span>{{ section.settings[point] }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+    {% if section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="my-best-life-btn">{{ section.settings.button_label }}</a>
+    {% endif %}
+  </div>
+  <div class="my-best-life-right">
+    {% if section.settings.product_image %}
+      <img src="{{ section.settings.product_image | img_url: 'master' }}" alt="Main Image" />
+    {% endif %}
+  </div>
+</div>
+</div>
+<style>
+
+.main-r-r{
+    background: #f9f6f1;
+      margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+.my-best-life-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--max-width);
+}
+.my-best-life-left {
+      margin-top: 50px;
+    margin-bottom: 50px;
+  flex: 1 1 auto;
+  padding-left: 160px;
+
+}
+
+
+.my-best-life-heading {
+  color: #b4975a;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.my-best-life-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px;
+}
+
+.my-best-life-points li {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 0;
+  font-size: 25px !important;
+  font-weight: 400;
+  border-bottom: 1px solid #b4975a;
+}
+
+.my-best-life-points li img {
+  width: 44px;
+  height:44px;
+  object-fit: contain;
+}
+
+.my-best-life-btn {
+  display: inline-block;
+  background-color: #1e1e1e;
+  color: #b4975a;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 4px;
+   font-size: 30px !important;
+    font-weight: 600 !important;
+  transition: background-color 0.3s ease;
+}
+
+.my-best-life-btn:hover {
+    background: #b4975a;
+  color: #2a2a2a;
+  border: 1px solid black;
+}
+
+
+
+
+.my-best-life-right {
+  flex: 0 0 40%;
+  max-width: 40%;
+  display: flex;
+  align-items: flex-end; /* push image to bottom */
+}
+
+.my-best-life-right img {
+     padding-top: 100px;
+    max-width: 100%;
+    width: 600px;
+    height: 774px;/* let it resize naturally */
+}
+
+
+@media (max-width: 768px) {
+  .my-best-life-left{
+      margin-top: 0px;
+  }
+  .my-best-life-btn {
+  display: inline-block;
+  background-color: #1e1e1e;
+  color: #b4975a;
+  text-decoration: none;
+  padding: 8px 20px;
+  border-radius: 4px;
+   font-size: 23px !important;
+    font-weight: 500 !important;
+  transition: background-color 0.3s ease;
+}
+  .my-best-life-wrapper {
+    flex-direction: column;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+.my-best-life-left {
+  padding-left: 0px;
+}
+  .my-best-life-left,
+  .my-best-life-right {
+    max-width: 100%;
+  }
+
+  .my-best-life-points li {
+    font-size:18px !important;
+    justify-content: left;
+    text-align: left;
+  }
+  .my-best-life-right img {
+     padding-top: 0px;
+    max-width: 100%;
+    width: 600px;
+        height:auto;}
+
+}
+</style>

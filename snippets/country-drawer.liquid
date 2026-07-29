@@ -1,0 +1,26 @@
+{%- comment -%}
+  Country/currency/language drawer (currently disabled — body is commented out).
+  params: section, button_class, button_prepend_text, append_id
+{%- endcomment -%}
+
+{%- liquid
+  capture cd_btn_text
+    case settings.country_drawer_display_option
+      when 'country-name--iso-code--currency-symbol'
+        echo localization.country.name | append: ' | ' | append: localization.country.currency.iso_code | append: ' | ' | append: localization.country.currency.symbol
+      when 'country-name--iso-code'
+        echo localization.country.name | append: ' | ' | append: localization.country.currency.iso_code
+      when 'country-name'
+        echo localization.country.name
+      when 'iso-code--currency-symbol'
+        echo localization.country.currency.iso_code | append: ' | ' | append: localization.country.currency.symbol
+      else
+        echo localization.country.currency.iso_code
+    endcase
+  endcapture
+
+  if button_prepend_text
+    assign cd_btn_text = cd_btn_text | prepend: ' ' | prepend: button_prepend_text
+  endif
+-%}
+{%- comment -%} Country drawer is disabled in the original theme {%- endcomment -%}

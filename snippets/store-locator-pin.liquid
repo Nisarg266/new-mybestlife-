@@ -1,0 +1,79 @@
+{%- comment -%}
+  Store locator pin card.
+  params: block, card_layout, search, hide_images, marker_index
+{%- endcomment -%}
+
+{%- liquid
+  assign sl_layout = card_layout | default: 'default'
+  assign sl_link = block.settings.store_pin_link
+  assign sl_lat = block.settings.store_latitude | times: 1
+  assign sl_lng = block.settings.store_longitude | times: 1
+  assign sl_dir = 'https://www.google.com/maps/dir/?api=1&destination=' | append: sl_lat | append: ',' | append: sl_lng
+  unless sl_link != blank
+    assign sl_link = sl_dir
+  endunless
+  assign sl_img = false
+  if block.settings.store_image
+    assign sl_img = block.settings.store_image
+  endif
+-%}
+
+{%- capture sl_card_body -%}
+  <div class="store-locator-card__content color-{{ block.settings.color_scheme }} gradient">
+    {%- if block.settings.store_title != blank -%}<div class="h3">{{- block.settings.store_title -}}</div>{%- endif -%}
+    {%- if block.settings.store_address != blank -%}
+      <div class="store-locator-card__text-content">{% render 'icon', icon_name: 'theme-paper-plane', class: 'icon' %}<span class="store-locator-card__paragraph store-locator-card__address">{{ block.settings.store_address }}</span></div>
+    {%- endif -%}
+    {%- if block.settings.store_tel != blank -%}
+      <div class="store-locator-card__text-content">{% render 'icon', icon_name: 'theme-phone', class: 'icon' %}<span class="store-locator-card__paragraph store-locator-card__phone">{{ block.settings.store_tel }}</span></div>
+    {%- endif -%}
+    {%- if block.settings.store_opening_hours != blank -%}<div class="store-locator-card__opening-hour">{{- block.settings.store_opening_hours -}}</div>{%- endif -%}
+    {%- if block.settings.store_pin != blank or block.settings.store_tel != blank -%}
+      <div class="store-locator-card__actions">
+        {%- if block.settings.store_pin != blank -%}
+          {%- render 'button', value: block.settings.store_pin, type: 'link', href: sl_link, target:'_blank', class: 'button button-with-icon--size-small button-with-icon--outlined button-with-icon--tertiary button--uppercase store-locator-button-link store-locator-card__button', button_style: block.settings.button_style -%}
+        {%- endif -%}
+        {%- if block.settings.store_tel != blank and block.settings.store_tel_button != blank -%}
+          {%- assign tel_href = 'tel:' | append: block.settings.store_tel -%}
+          {%- render 'button', value: block.settings.store_tel_button, type: 'link', href: tel_href, class: 'button button-with-icon--size-small button-with-icon--outlined button-with-icon--tertiary button--uppercase store-locator-button-link store-locator-card__button store-locator-card__button-tel', button_style: block.settings.button_style -%}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    <span class="store-locator-card__coordinate-title">{{ block.settings.store_title }}</span>
+    <span class="store-locator-card__longitude">{{ block.settings.store_longitude }}</span>
+    <span class="store-locator-card__latitude">{{ block.settings.store_latitude }}</span>
+  </div>
+{%- endcapture -%}
+
+{%- capture sl_see_more -%}
+  <div class="store-locator-card store-locator-card--{{ section.settings.card_background_style }} store-locator-card__see-more{% if search %} store-locator-card__search{% endif %}{% if section.settings.layout == 'map' %} swiper-slide{% endif %}">
+    <div class="store-locator-card__content color-{{ block.settings.color_scheme }} gradient">
+      {%- if block.settings.card_title -%}<div class="store-locator-card__title">{{- block.settings.card_title -}}</div>{%- endif -%}
+      {%- if search -%}
+        <div class="store-locator__search-controls">
+          {%- capture sl_search_attr -%}autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"{%- endcapture -%}
+          {%- render 'text-input', id: 'search-store-locator', label: 'sections.store_locator.search' | t, type: 'search', name: 'search', placeholder: 'sections.store_locator.search_placeholder' | t, hide_label: true, class: 'store-locator__search', attr: sl_search_attr -%}
+          <button type="submit" class="store-locator__search-button search__button search__button--submit button-reset js-btn-submit">{{ 'sections.store_locator.search' | t }}</button>
+        </div>
+      {%- else -%}
+        {%- if block.settings.button_label and block.settings.button_link -%}
+          <a href="{{- block.settings.button_link -}}" class="button {{ block.settings.button_style -}}">{{- block.settings.button_label -}}</a>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  </div>
+{%- endcapture -%}
+
+{%- if block.type == 'pin' -%}
+  <div class="store-locator-card store-locator-card--{{ section.settings.card_background_style }}{% unless hide_images %}{% if sl_img %} store-locator-card__with-image{% if sl_layout == 'image-overlay' %}--overlay{% endif %}{% endif %}{% else %} store-locator-card__without-image{% endunless %}{% if section.settings.layout == 'map' %} swiper-slide{% endif %}" data-marker-index="{{ marker_index }}">
+    {%- if search -%}<div class="store-locator-card__cross">{%- render 'icon', icon_name: 'theme-close' -%}</div>{%- endif -%}
+    {%- if sl_img -%}
+      <div class="store-locator-card__image">{%- render 'image', image: block.settings.store_image, alt: block.settings.store_image.alt | escape -%}</div>
+      {{- sl_card_body -}}
+    {%- else -%}
+      {{- sl_card_body -}}
+    {%- endif -%}
+  </div>
+{%- elsif block.type == 'see-more' -%}
+  {{ sl_see_more }}
+{%- endif -%}

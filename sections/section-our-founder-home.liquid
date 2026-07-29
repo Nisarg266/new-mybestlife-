@@ -1,0 +1,460 @@
+{% schema %}
+{
+  "name": "Founder Split Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "founder_image",
+      "label": "Founder Image"
+    },{
+  "type": "image_picker",
+  "id": "founder_image_mobile",
+  "label": "Founder Image (Mobile)"
+},
+
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image"
+    },
+    {
+  "type": "image_picker",
+  "id": "mobile_background_image",
+  "label": "Mobile Background Image"
+},
+
+    {
+      "type": "range",
+      "id": "quote_padding_top",
+      "label": "Quote Section Top Padding (px)",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 50
+    },
+    {
+      "type": "text",
+      "id": "main_heading",
+      "label": "Main Heading",
+      "default": "MEET THE VISIONARY BEHIND MY BEST LIFE™"
+    },
+    {
+      "type": "text",
+      "id": "left_box_title",
+      "label": "Left Box Title",
+      "default": "A Doctor with a Passion for Wellness"
+    },
+    {
+      "type": "textarea",
+      "id": "left_box_text",
+      "label": "Left Box Text",
+      "default": "Dr. Vikram Shetty blends medical insight with a deep commitment to preventive health. With years of experience across healthcare, nutraceuticals, and pharmaceuticals, he’s on a mission to create science-backed, clean-label products that deliver real, measurable results—without compromise."
+    },
+    {
+      "type": "text",
+      "id": "right_box_title",
+      "label": "Right Box Title",
+      "default": "Committed to Transparency"
+    },
+    {
+      "type": "textarea",
+      "id": "right_box_text",
+      "label": "Right Box Text",
+      "default": "Honesty is at our core. We use only proven ingredients and share every detail willingly. Every product is crafted with integrity, ensuring you get exactly what we promise — real, effective wellness solutions."
+    },
+    {
+      "type": "textarea",
+      "id": "quote_text",
+      "label": "Quote",
+      "default": "True wellness isn’t a luxury; it’s a lifestyle choice. And I’m here to make that choice accessible for everyone."
+    },
+    {
+      "type": "text",
+      "id": "quote_author",
+      "label": "Quote Author",
+      "default": "- Dr. Vikram Shetty"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Label",
+      "default": "Discover our story"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Founder Split Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+.founder-section {
+  background: #ffffff;
+  {% if section.settings.background_image %}
+    background-image: url({{ section.settings.background_image | image_url: width: 2000 }});
+    background-size:  100% 100%;;
+    background-repeat: repeat-x;
+    background-position: center;
+  {% endif %}
+      margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+}
+
+.founder-grid {
+  display: flex;
+  flex-wrap: wrap;
+ max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 60px 20px;
+  padding-bottom:0px;
+}
+
+.founder-left {
+  flex: 0 0 35%;
+  padding: 20px;
+  padding-bottom:0px;
+  height:auto;
+   position: relative; 
+}
+.founder-left img {
+  position: absolute; /* Fixes the image to the bottom */
+  bottom: 0; /* Align the image to the bottom */
+  left: 0; /* Align the image to the left */
+  width: 100%; /* or a fixed width like 400px */
+  height: 100%; /* Adjust based on the image size you want */
+  object-fit: contain;
+    object-position: bottom;
+  border-radius: 8px;
+  display: block;
+  margin-left: auto;
+}
+
+.founder-right {
+  flex: 0 0 65%;
+  padding: 0 80px 80px 80px;
+}
+
+.founder-heading {
+  font-size: 60px !important;
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  color: #b4975a;
+  }
+
+.founder-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+
+
+.founder-box-title {
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 30px !important;
+  color: #2a2a2a;
+}
+
+.founder-box-text {
+ 
+  color: #666;
+}
+
+.founder-quote-section {
+  padding: {{ section.settings.quote_padding_top | default: 50 }}px 20px 50px;
+  text-align: left;
+}
+
+.founder-quote {
+  font-style: bold;
+  font-size: 30px !important;
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 600 !important;
+  line-height: 43px;
+}
+
+.founder-quote-author {
+  font-size: 30px !important;
+  font-weight: 600 !important;
+  margin-top: 20px;
+  margin-left: 0; /* Reset margin to align with the quote */
+  text-align: left; /* Ensure the author is aligned with the quote */
+}
+
+.founder-btn {
+  margin-top: 30px;
+  display: inline-block;
+  background: #000;
+  color: #b4975a;
+  padding: 12px 28px;
+  margin-right:7vw;
+  text-decoration: none;
+    border-radius: 4px;
+
+  font-size: 30px !important;
+  font-weight: 500 !important;
+  transition: 0.3s ease;
+    float: right; /* <-- aligns the button to the right */
+
+}
+
+.founder-btn:hover {
+  background: #b4975a;
+  color: #2a2a2a;
+  border: 1px solid black;
+}
+/* Tablet Optimization */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .founder-grid {
+    padding: 40px 10px 0px;
+  }
+  .founder-right {
+    padding: 0 20px 30px 20px;
+  } 
+  .founder-heading {
+    font-size: 32px !important;
+  }
+  .founder-box-title {
+    font-size: 17px;
+    line-height: 24px !important;
+  }
+  .founder-box-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .founder-quote {
+    font-size: 18px !important;
+    line-height: 26px;
+  }
+  .founder-quote-author {
+    font-size: 18px !important;
+  }
+  .founder-btn {
+    font-size: 18px !important;
+    padding: 10px 20px;
+    margin-right: 0;
+  }
+}
+
+/* Default: show desktop, hide mobile */
+.desktop-only-founder {
+  display: flow-root !important;
+}
+.mobile-only-founder {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .founder-quote-author {
+  margin-left: 0px;
+
+  }
+  /* Hide desktop section, show mobile */
+  .desktop-only-founder {
+    display: none  !important;
+  }
+  .mobile-only-founder {
+    display: block;
+  }
+
+  .founder-mobile-top {
+    display: flex;
+    padding: 0 15px;
+    gap: 5px;
+  }
+
+
+
+  .mobile-image img {
+    width: 100%;
+    border-radius: 8px;
+ object-fit: fill;
+        height: 100%;
+  }
+
+
+
+  .founder-heading {
+    margin-bottom: 0px;
+    padding: 20px;
+    padding-top: 30px;
+    font-size: 28px !important;
+    text-align:center;
+  }
+
+  .founder-box-title {
+    font-size: 21px;
+    margin-bottom: 8px;
+    line-height: 1.5 !important;
+  }
+.founder-btn {
+
+  margin-right:0vw;
+
+}
+
+  .founder-box-text {
+    font-size: 18px;
+    line-height: 1.5 !important;
+  }
+
+  .mobile-quote {
+    padding: 30px 20px;
+    text-align: center;
+    background-color: #e1d2ba;
+  }
+
+  .founder-quote {
+    font-size: 20px !important;
+    line-height: 28px !important;
+    font-weight: 600 !important;
+  }
+.founder-quote-section{
+  padding:100px 10px;
+  text-align: center;
+
+}
+  .founder-quote-author {
+  text-align:center;
+    font-size: 18px !important;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+
+  .founder-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: #000;
+    color: #b4975a;
+    padding: 8px 20px;
+    font-size: 23px !important;
+    font-weight: 500 !important;
+      border-radius: 4px;
+
+    text-decoration: none;
+    float:none
+  }
+  .mobile-content {
+  
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.founder-box {
+  padding: 12px;
+  border-radius: 8px;
+  /* text-align: center; */
+}
+
+.founder-box-title {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.founder-box-text {
+  font-size: 18px;
+  line-height: 1.4;
+}
+}
+
+{% endstyle %}
+
+<!-- DESKTOP VERSION ONLY (unchanged layout) -->
+<div class="desktop-only-founder">
+  <section class="founder-section">
+    <div class="founder-grid">
+      <div class="founder-left">
+        {% if section.settings.founder_image %}
+          <img src="{{ section.settings.founder_image | image_url: width: 700 }}" alt="Founder">
+        {% endif %}
+      </div>
+      <div class="founder-right">
+        <h2 class="founder-heading">{{ section.settings.main_heading }}</h2>
+        <div class="founder-info-grid">
+          <div class="founder-box">
+            <div class="founder-box-title">{{ section.settings.left_box_title }}</div>
+            <div class="founder-box-text">{{ section.settings.left_box_text }}</div>
+          </div>
+          <div class="founder-box">
+            <div class="founder-box-title">{{ section.settings.right_box_title }}</div>
+            <div class="founder-box-text">{{ section.settings.right_box_text }}</div>
+          </div>
+        </div>
+        <div class="founder-quote-section">
+          <h3 class="founder-quote">{{ section.settings.quote_text }}</h3>
+          <h3 class="founder-quote-author">{{ section.settings.quote_author }}</h3>
+          {% if section.settings.button_text and section.settings.button_link %}
+            <a href="{{ section.settings.button_link }}" class="founder-btn">
+              {{ section.settings.button_text }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+ <!-- MOBILE VERSION ONLY -->
+<div class="mobile-only-founder">
+  <section class="founder-mobile-section" style="background-color:#FEF6E5">
+    
+    <!-- Heading -->
+    <h2 class="founder-heading">{{ section.settings.main_heading }}</h2>
+
+    <!-- Founder Image -->
+<!-- Founder Image (mobile) -->
+<div class="mobile-image">
+  {% if section.settings.founder_image_mobile %}
+    <img src="{{ section.settings.founder_image_mobile | image_url: width: 1000 }}" alt="Founder" style="width:100%; height:auto;">
+  {% elsif section.settings.founder_image %}
+    <img src="{{ section.settings.founder_image | image_url: width: 1000 }}" alt="Founder" style="width:100%; height:auto;">
+  {% endif %}
+</div>
+
+
+    <!-- Two Column Content -->
+    <div class="mobile-content">
+      <div class="founder-box">
+        <div class="founder-box-title">{{ section.settings.left_box_title }}</div>
+        <div class="founder-box-text">{{ section.settings.left_box_text }}</div>
+      </div>
+      <div class="founder-box">
+        <div class="founder-box-title">{{ section.settings.right_box_title }}</div>
+        <div class="founder-box-text">{{ section.settings.right_box_text }}</div>
+      </div>
+    </div>
+
+    <!-- Quote Section (unchanged) -->
+    <div class="founder-quote-section"
+         style="
+           {% if section.settings.mobile_background_image %}
+             background-image: url({{ section.settings.mobile_background_image | image_url: width: 1000 }});
+             background-size: cover;
+             background-repeat: no-repeat;
+             background-position: center;
+           {% endif %}
+         ">
+      <h3 class="founder-quote">{{ section.settings.quote_text }}</h3>
+      <h3 class="founder-quote-author">{{ section.settings.quote_author }}</h3>
+      {% if section.settings.button_text and section.settings.button_link %}
+        <a href="{{ section.settings.button_link }}" class="founder-btn">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </section>
+</div>

@@ -1,0 +1,372 @@
+﻿<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+>
+<script
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"
+  defer
+></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.ma-customer-info-column-{{ section.id }}');
+  
+  if (container) {
+    container.classList.add('swiper');
+    const wrapper = container.querySelector('.customer-info-wrapper');
+    if (wrapper) {
+      wrapper.classList.add('swiper-wrapper');
+      wrapper.querySelectorAll('.customer-info-slide').forEach(slide => {
+        slide.classList.add('swiper-slide');
+      });
+
+      new Swiper('.ma-customer-info-column-{{ section.id }}', {
+        slidesPerView: {{ section.settings.slides_per_view_mobile }},
+        spaceBetween: 0,
+        loop: true,
+        speed: {{ section.settings.speed }},
+        allowTouchMove: true,
+        autoplay: {
+          delay: 0,
+          disableOnInteraction: false
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: {{ section.settings.slides_per_view_desktop }},
+            spaceBetween: 0,
+            allowTouchMove: false
+          }
+        }
+      });
+    }
+  }
+});
+</script>
+
+<style>
+  .custom-container{
+        width: 100%;
+    overflow: hidden;
+  }
+  .ma-customer-info-row-{{ section.id }} {
+      width: 100%;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      background: {{ section.settings.bg_color }};
+  }
+  .ma-customer-info-inner-row .heading {
+      font-size: 45px;
+      text-align: center;
+              line-height: 43.2px;
+        margin: 0;
+      font-family: "Fira Sans", "Inter", sans-serif;
+    
+      margin-bottom: 40px;
+  }
+  .customer-info-wrapper {
+    display: flex;
+            gap: 0 !important;
+      justify-content: start;
+    font-family: "Fira Sans", "Inter", sans-serif;
+    
+}
+  .ma-customer-info-inner-row .subheading{
+    font-size: 16px;
+          font-weight: 400;
+      color: #ff6e15;
+    font-family: "Fira Sans", "Inter", sans-serif;
+    
+    margin: 0;
+    text-align: center;
+  }
+
+  .ma-customer-info-column-item {
+      overflow: hidden;
+      display: flex !important;
+      width: 250px
+  }
+.ma-swiper-pagination-{{ section.id }} {
+  display: none !important;
+}
+.customer-info-slide {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: auto !important;
+  flex-shrink: 0;
+}
+}
+  .ma-customer-info-column-item img {
+      width: 100%;
+    height: 100%;
+      object-fit: cover;
+  }
+  .ma-customer-info-column .ma-swiper-pagination-{{ section.id }} {
+  bottom: 0;
+  margin-top: 45px;
+  text-align: center;
+}
+
+.ma-swiper-pagination-{{ section.id }} .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  opacity: 1;
+  margin: 0 5px;
+  border-radius: 50%;
+}
+
+.ma-swiper-pagination-{{ section.id }} .swiper-pagination-bullet-active {
+  background: #2A2A2A;
+}
+
+  @media screen and (max-width:768px){
+    .ma-customer-info-row-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    .ma-customer-info-inner-row .heading {
+        font-size: 30px;
+        line-height: 30.2px;
+    }
+    .ma-customer-info-column-item {
+      width: 100%;
+      
+    }
+  }
+  @media (max-width:600px){
+    .ma-customer-info-column-item {
+        height: 100%;
+    }
+  }
+
+  .Nutritions-sweetners .ma-customer-info-column-item {
+    overflow: hidden;
+    display: flex !important;
+    width: 80px;
+}
+  .Nutritions-sweetners  .customer-info-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 0 !important;
+    min-width: 150px;
+}
+    .Nutritions-sweetners .customer-info-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+          .Nutritions-sweetners .dr-swiper-slide-desc {
+      text-align: center;
+    font-family: "Fira Sans", "Inter", sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+    line-height: 24px;
+}
+   .mybestlife .ma-customer-info-column-item {
+    overflow: hidden;
+    display: flex !important;
+    width: 80px;
+}
+ .mybestlife  .customer-info-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 0 !important;
+    min-width: 150px;
+}
+ .mybestlife .customer-info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+        .mybestlife .dr-swiper-slide-desc {
+      text-align: center;
+    font-family: "Fira Sans", "Inter", sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+    line-height: 24px;
+}
+</style>
+<div class="ma-customer-info-row-{{ section.id }} section-{{ section.id }}-padding {% if section.settings.custom_class %}{{ section.settings.custom_class }}{% endif %}">
+  <div class="custom-container container">
+    <div class="ma-customer-info-inner-row">
+      {% if section.settings.heading != blank %}
+        <div class="Ma-heading-info page-width">
+          <h3 class="subheading">{{ section.settings.subheading }}</h3>
+          <h2 class="heading">{{ section.settings.heading }}</h2>
+        </div>
+      {% endif %}
+      {% if section.blocks.size > 0 %}
+        <div class="overflow-visible">
+          <div class="ma-customer-info-column-{{ section.id }} overflow-visible">
+            <div class="customer-info-wrapper">
+              {% for block in section.blocks %}
+                <div class="customer-info-slide">
+                  <div class="ma-customer-info-column-item">
+                    <img src="{{ block.settings.image | img_url: 'master' }}">
+                  </div>
+                   <div class="dr-swiper-slide-desc">
+              {{ block.settings.feature_description_text }}
+            </div>
+                </div>
+              {% endfor %}
+            </div>
+
+            <div class="ma-swiper-pagination-{{ section.id }}"></div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% schema %}
+{
+  "name": "Brand Info",
+  "settings": [
+        {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Section Class (Optional)"
+    },
+      {
+        "type": "text",
+        "id": "subheading",
+        "label": "Subheading"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom mobile",
+        "default": 0
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#2A2A2A"
+      },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "number",
+      "id": "delay",
+      "label": "Delay",
+      "default": 10
+    },
+    {
+  "type": "range",
+  "id": "speed",
+  "label": "Slider Speed (ms)",
+  "min": 100,
+  "max": 5000,
+  "step": 100,
+  "default": 800
+},
+
+    {
+      "type": "checkbox",
+      "id": "pagination",
+      "label": "Pagination",
+      "default": true
+    },
+    {
+  "type": "checkbox",
+  "id": "showslider_mobile",
+  "label": "Enable Slider on Mobile",
+  "default": true
+},
+     {
+      "type": "range",
+      "id": "slides_per_view_mobile",
+      "label": "Slides Per View (Mobile)",
+      "min": 1,
+      "max": 5,
+      "step": 0.1,
+      "default": 2.2
+    },
+    {
+      "type": "range",
+      "id": "slides_per_view_desktop",
+      "label": "Slides Per View (Desktop)",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    }
+
+  ],
+  "blocks":[
+    {
+    "type": "image-badge",
+    "name" : "Image",
+    "settings" : [
+        {
+          "id" : "image",
+          "type" : "image_picker",
+          "label" : "Image"
+        },
+        {
+        "type": "text",
+        "id": "feature_description_text",
+        "label": "Desc"
+      }]
+    }
+  ],
+  "presets" : [
+      {
+        "name" : "Brand Info"
+      }
+  ]
+}
+{% endschema %}

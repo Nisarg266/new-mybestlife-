@@ -1,0 +1,75 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{%- assign b11_availabilities = product_variant.store_availabilities | where: 'pick_up_enabled', true -%}
+
+{%- unless b11_availabilities.size == 0 -%}
+  <pickup-availability-preview class="pickup-availability-preview">
+    {%- assign b11_nearest = b11_availabilities.first -%}
+
+    {%- if b11_nearest.available -%}
+      <p class="pickup-availability__info-title">
+        {{- 'product.pickup_available_at_html' | t: location_name: b11_nearest.location.name -}}
+      </p>
+      <p class="pickup-availability__info-meta">
+        {{- b11_nearest.pick_up_time -}}
+      </p>
+    {%- else -%}
+      <p class="pickup-availability__info-title">
+        {{- 'product.pickup_unavailable_at_html' | t: location_name: b11_nearest.location.name -}}
+      </p>
+    {%- endif -%}
+    <menu-drawer class="pickup-availability__drawer drawer">
+      <details id="Pickup-Availability-drawer" class="drawer__container">
+        <summary class="drawer__button section__drawer-button">
+          <button type="button" class="button button--text button--uppercase">
+            {%- if b11_availabilities.size == 1 -%}
+              {{- 'product.pickup_view_store_info' | t -}}
+            {%- else -%}
+              {{- 'product.pickup_check_other_stores' | t -}}
+            {%- endif -%}
+          </button>
+        </summary>
+
+        <div class="drawer__content js-drawer" id="Pickup-Availability-menu-drawer" tabindex="-1">
+          <button
+            class="drawer__button-close button-reset no-js-hidden js-btn-close-drawer"
+            aria-label="{{- 'theme.actions.close' | t -}}"
+            aria-controls="Pickup-Availability-menu-drawer"
+            aria-expanded="false"
+          >
+            {%- render 'icon', icon_name: 'theme-close' -%}
+          </button>
+          <div class="drawer__row drawer__row--gutter-sm">
+            <h2 class="drawer__title heading-static">
+              {{ 'product.pickup_availability' | t }}
+            </h2>
+            <ul class="pickup-availability-stores list-unstyled" role="list">
+              {%- for b11_store in product_variant.store_availabilities -%}
+                <li class="pickup-availability-store">
+                  <p class="pickup-availability-store__title">
+                    {{- b11_store.location.name | escape -}}
+                  </p>
+                  <p class="pickup-availability-store__preview">
+                    {%- if b11_store.available -%}
+                      {% render 'icon', icon_name: 'theme-check' %}
+                      {{ 'product.pickup_available' | t }}, {{ b11_store.pick_up_time | downcase }}
+                    {%- else -%}
+                      {% render 'icon', icon_name: 'theme-close' %}
+                      {{ 'product.pickup_unavailable' | t }}, {{ b11_store.pick_up_time | downcase }}
+                    {%- endif -%}
+                  </p>
+                  {%- assign b11_store_address = b11_store.location.address -%}
+                  <address class="pickup-availability-address">
+                    {{- b11_store_address | format_address -}}
+                    {%- unless b11_store_address.phone.size == 0 -%}
+                      <p>{{- b11_store_address.phone -}}</p>
+                    {%- endunless -%}
+                  </address>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        </div>
+      </details>
+    </menu-drawer>
+  </pickup-availability-preview>
+{%- endunless -%}

@@ -1,0 +1,63 @@
+{%- comment -%}
+  Product recommendations carousel (complementary products).
+  params: product_id, icon, title, limit, area, class, section
+{%- endcomment -%}
+
+{%- liquid
+  assign rec_pid = product_id | default: product.id
+  assign rec_icon = icon | default: 'theme-package'
+  assign rec_title = title | default: settings.cart_upsell_title | default: ''
+  assign rec_limit = limit | default: 8
+-%}
+
+{{- 'component-product-recommendations.css' | asset_url | stylesheet_tag -}}
+<script src="{{ 'product-recommendations.js' | asset_url }}" defer="defer"></script>
+
+<product-recommendations
+  class="product-recommendations hidden {{ class }} color-{{ settings.color_scheme_for_upsell }}"
+  data-url="{{- routes.product_recommendations_url -}}?section_id={{- section.id -}}&product_id={{- rec_pid -}}&limit={{- rec_limit -}}&intent=complementary"
+  data-recommendation-area="{{- area -}}"
+>
+  {%- if rec_title != blank -%}
+    <h5 class="product-recommendations__title{% if template.name == 'cart' %} heading-static{% endif %}">
+      {%- if icon -%}{% render 'icon', icon_name: rec_icon %}{%- endif -%}
+      {{- rec_title | escape -}}
+    </h5>
+  {%- endif -%}
+
+  <div class="swiper product-recommendations__body">
+    <div class="product-recommendations__items swiper-wrapper" data-recommendations>
+      {%- if recommendations.performed and recommendations.products_count > 0 -%}
+        {%- for rec in recommendations.products limit: rec_limit -%}
+          <a href="{{- rec.url -}}" class="product-recommendations__item swiper-slide">
+            {%- if rec.featured_image -%}
+              <div class="media product-recommendations__item-media">{%- render 'image', image: rec.featured_image, alt: rec.featured_image.alt | escape -%}</div>
+            {%- endif -%}
+            <div class="product-recommendations__item-details">
+              <div>
+                <h6 class="product-recommendations__item-title">{{- rec.title | escape -}}</h6>
+                <p class="product-recommendations__item-price">
+                  {%- if rec.compare_at_price_min > rec.price_min -%}
+                    <span class="visually-hidden">{{- 'product.price_regular' | t -}}</span>
+                    <del>{{- rec.compare_at_price_min | money -}}</del>
+                    <span class="visually-hidden">{{- 'product.price_sale' | t -}}</span>
+                    <ins>{{- rec.price_min | money -}}</ins>
+                  {%- else -%}
+                    <span class="visually-hidden">{{- 'product.price_regular' | t -}}</span>
+                    {{- rec.price_min | money -}}
+                  {%- endif -%}
+                </p>
+              </div>
+              {%- if settings.product_card_enable_quick_add_to_cart_button -%}
+                <button type="button" class="quick-cart-drawer__trigger quick-cart-drawer__trigger--recommendations button button--text" aria-expanded="false" onclick="preventDefault(event)" aria-controls="quick-cart-drawer" data-product-url="{{- rec.handle | prepend: '/products/' -}}">
+                  {{- 'cart.quick_add' | t -}}
+                  <div class="quick-cart-drawer__trigger--loading">{%- render 'loading-spinner' -%}</div>
+                </button>
+              {%- endif -%}
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</product-recommendations>

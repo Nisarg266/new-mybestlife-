@@ -1,0 +1,268 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "trust_indicators_DXmKCE": {
+      "type": "trust-indicators",
+      "blocks": {
+        "icon_PhDpEr": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Frame_6dc83631-0f5d-4fe6-acda-b1c58db26ad5.svg",
+            "title": "Trust by Expert"
+          }
+        },
+        "icon_jfDPaa": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Vector.svg",
+            "title": "Scientifically Backed"
+          }
+        },
+        "icon_LztwEd": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Layer_2_00000054950677197682628850000010310040982474886296.svg",
+            "title": "No Shortcuts, Ever"
+          }
+        },
+        "icon_6jBcaV": {
+          "type": "icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/Frame_1.svg",
+            "title": "Reliable Shipping"
+          }
+        }
+      },
+      "block_order": [
+        "icon_PhDpEr",
+        "icon_jfDPaa",
+        "icon_LztwEd",
+        "icon_6jBcaV"
+      ],
+      "disabled": true,
+      "settings": {
+        "icon_size": 32,
+        "title_font_size": 16
+      }
+    },
+    "footer_xjQ6Rm": {
+      "type": "footer",
+      "blocks": {
+        "brand_M9BKRn": {
+          "type": "brand",
+          "settings": {
+            "column_factor": 1,
+            "row_factor": 1,
+            "logo": "shopify://shop_images/073_My_Best_Life_Logo_White_and_goldsfs.png",
+            "logo_svg_code": "",
+            "logo_width": 239,
+            "logo_width_mobile": 150,
+            "text": "<p>Your Body Knows. We Listen.</p>",
+            "content_position_vertical": "start",
+            "content_alignment": "start",
+            "content_alignment_for_mobile": "center",
+            "facebook_icon": "shopify://shop_images/icons8-facebook-50.png",
+            "facebook_url": "https://www.facebook.com/mybestlife.nutri",
+            "instagram_icon": "shopify://shop_images/Instagram_white.svg_1.webp",
+            "instagram_url": "https://www.instagram.com/mybestlife.nutri?igsh=bmtxYW9vejN1NGgy",
+            "youtube_icon": "shopify://shop_images/4f3d7020be00a78d46b4398307d3f238.png",
+            "youtube_url": "https://www.linkedin.com/company/my-best-life-nutri"
+          }
+        },
+        "link_list_G348RN": {
+          "type": "link_list",
+          "settings": {
+            "column_factor": 1,
+            "row_factor": 1,
+            "menu_layout": "vertical",
+            "menu": "",
+            "title": "",
+            "title_url": "",
+            "menu_link_opacity": 100,
+            "show_first_menu_on_mobile": false,
+            "hide_on_mobile": true
+          }
+        },
+        "link_list_VQar7M": {
+          "type": "link_list",
+          "settings": {
+            "column_factor": 1,
+            "row_factor": 1,
+            "menu_layout": "vertical",
+            "menu": "health-interests",
+            "title": "",
+            "title_url": "",
+            "menu_link_opacity": 100,
+            "show_first_menu_on_mobile": true,
+            "hide_on_mobile": false
+          }
+        },
+        "link_list_yykxXc": {
+          "type": "link_list",
+          "settings": {
+            "column_factor": 1,
+            "row_factor": 1,
+            "menu_layout": "vertical",
+            "menu": "about-us",
+            "title": "",
+            "title_url": "",
+            "menu_link_opacity": 100,
+            "show_first_menu_on_mobile": true,
+            "hide_on_mobile": false
+          }
+        },
+        "link_list_pmQdVJ": {
+          "type": "link_list",
+          "settings": {
+            "column_factor": 1,
+            "row_factor": 1,
+            "menu_layout": "vertical",
+            "menu": "ingredients",
+            "title": "",
+            "title_url": "",
+            "menu_link_opacity": 100,
+            "show_first_menu_on_mobile": true,
+            "hide_on_mobile": false
+          }
+        },
+        "link_list_fpjyWg": {
+          "type": "link_list",
+          "settings": {
+            "column_factor": 1,
+            "row_factor": 1,
+            "menu_layout": "vertical",
+            "menu": "quick-links",
+            "title": "",
+            "title_url": "",
+            "menu_link_opacity": 100,
+            "show_first_menu_on_mobile": true,
+            "hide_on_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "brand_M9BKRn",
+        "link_list_G348RN",
+        "link_list_VQar7M",
+        "link_list_yykxXc",
+        "link_list_pmQdVJ",
+        "link_list_fpjyWg"
+      ],
+      "settings": {
+        "spacing_grid": "1",
+        "show_border_top": false,
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-6",
+        "spacing_top": "2",
+        "spacing_bottom": "1"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "newsletter_wT8pfn": {
+          "type": "newsletter",
+          "settings": {
+            "column_factor": 6,
+            "row_factor": 1,
+            "heading": "Newsletter",
+            "text": "<p><strong>Subscribe now and unlock 20% off your first purchase!</strong></p>",
+            "content_position_vertical": "start",
+            "content_alignment": "start",
+            "content_alignment_for_mobile": "center"
+          }
+        },
+        "social_media_himLpi": {
+          "type": "social_media",
+          "settings": {
+            "column_factor": 3,
+            "row_factor": 1,
+            "icons": false,
+            "social_links_in_new_tab": true,
+            "heading": "",
+            "content_position_vertical": "center",
+            "content_alignment": "end",
+            "content_alignment_for_mobile": "center",
+            "facebook_url": "",
+            "instagram_url": "",
+            "youtube_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "newsletter_wT8pfn",
+        "social_media_himLpi"
+      ],
+      "custom_css": [
+        ".section-footer .grid {row-gap: 0px;}"
+      ],
+      "settings": {
+        "spacing_grid": "2",
+        "show_border_top": true,
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-6",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "footer_JadcgE": {
+      "type": "footer",
+      "blocks": {
+        "richtext_GWFib7": {
+          "type": "richtext",
+          "settings": {
+            "column_factor": 2,
+            "row_factor": 1,
+            "heading": "",
+            "text": "<p>Copyright © [year]. All rights reserved. Mindfully Crafted by Scraft</p>",
+            "content_position_vertical": "center",
+            "content_alignment": "start",
+            "content_alignment_for_mobile": "center"
+          }
+        },
+        "payment_icons_g4NcKc": {
+          "type": "payment_icons",
+          "settings": {
+            "column_factor": 2,
+            "row_factor": 1,
+            "custom_payment_types": "master,visa,american_express,apple_pay,shopify_pay,diners_club,discover,google_pay",
+            "payment_icons_color": false,
+            "content_position_vertical": "center",
+            "content_alignment": "center",
+            "content_alignment_for_mobile": "center"
+          }
+        },
+        "follow_on_shop_KpEWtJ": {
+          "type": "follow_on_shop",
+          "settings": {
+            "column_factor": 2,
+            "row_factor": 1,
+            "content_position_vertical": "center",
+            "content_alignment": "end",
+            "content_alignment_for_mobile": "center"
+          }
+        }
+      },
+      "block_order": [
+        "richtext_GWFib7",
+        "payment_icons_g4NcKc",
+        "follow_on_shop_KpEWtJ"
+      ],
+      "settings": {
+        "spacing_grid": "1",
+        "show_border_top": true,
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-6",
+        "spacing_top": "1",
+        "spacing_bottom": "1"
+      }
+    }
+  },
+  "order": [
+    "trust_indicators_DXmKCE",
+    "footer_xjQ6Rm",
+    "footer",
+    "footer_JadcgE"
+  ]
+}

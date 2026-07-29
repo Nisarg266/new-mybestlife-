@@ -1,0 +1,271 @@
+{% comment %}
+  Horizontal Before & After Compare Slider Section (Converted from vertical)
+{% endcomment %}
+
+<style>
+  .ba-vert-section {
+    padding: 60px 20px;
+  }
+
+  .ba-vert-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+    text-align: center;
+  }
+
+  .ba-vert-heading {
+    font-size: clamp(26px, 5vw, 50px) !important;
+    text-transform: uppercase;
+    color: #b4975a !important;
+    margin-bottom: 0.8rem;
+  }
+
+  .ba-vert-subheading {
+    line-height: 1.4;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;
+    font-size: clamp(16px, 2vw, 23px) !important;
+    color: #2a2a2a;
+    margin-bottom: 2.4rem;
+  }
+.ba-vert-slider { max-width: 500px; margin: 0 auto; position: relative; overflow: hidden; aspect-ratio: {{ section.settings.aspect_ratio }}; border-radius: 0.8rem; --pos: 50%; --transition-speed: 0.25s; } 
+.ba-vert-slider { position: relative; width: 100%; height: {{ section.settings.height }}px; /* or your desired height */ background: {{ section.settings.bg_color }}; /* warm background */ overflow: hidden; }
+
+  .ba-vert-slider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+    transition: none;
+  }
+
+  .ba-vert-before {
+    z-index: 1;
+  }
+
+  .ba-vert-after {
+    z-index: 2;
+    clip-path: polygon(0 0, var(--pos) 0, var(--pos) 100%, 0 100%);
+  }
+
+  /* Vertical handle line */
+  .ba-vert-handle {
+    position: absolute;
+    top: 0;
+    left: var(--pos);
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: white;
+    z-index: 3;
+  }
+
+  /* Circle in middle of handle */
+  .ba-vert-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    transition: transform 0.2s ease;
+  }
+  .ba-vert-circle:active {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  .ba-vert-circle svg {
+    width: 18px;
+    height: 18px;
+    fill: black;
+  }
+
+  /* Range input for dragging */
+  input[type="range"].ba-vert-range {
+    position: absolute;
+    inset: 0;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    z-index: 4;
+  }
+  input[type="range"].ba-vert-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    cursor: pointer;
+  }
+  input[type="range"].ba-vert-range::-moz-range-thumb {
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+  }
+    @media (max-width: 768px) {
+    
+    .ba-vert-slider {  height: 450px; }
+
+    }
+</style>
+
+<div class="ba-vert-section">
+  <div class="ba-vert-container">
+    {% if section.settings.heading != blank %}
+      <h2 class="ba-vert-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p class="ba-vert-subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="ba-vert-slider">
+      {% if section.settings.before_image != blank %}
+        <img src="{{ section.settings.before_image | image_url }}" alt="Before Image" class="ba-vert-before">
+      {% endif %}
+      {% if section.settings.after_image != blank %}
+        <img src="{{ section.settings.after_image | image_url }}" alt="After Image" class="ba-vert-after">
+      {% endif %}
+
+      <div class="ba-vert-handle">
+        <div class="ba-vert-circle">
+          <!-- Horizontal drag icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M10 6l-6 6 6 6V6zm4 0v12l6-6-6-6z"/>
+          </svg>
+        </div>
+      </div>
+
+      <input type="range" class="ba-vert-range" min="0" max="100" value="50" aria-label="Horizontal Comparison Slider">
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('.ba-vert-slider').forEach(function(slider) {
+    const range = slider.querySelector('.ba-vert-range');
+    const afterImg = slider.querySelector('.ba-vert-after');
+    const handle = slider.querySelector('.ba-vert-handle');
+
+    function updateSlider(val) {
+      let percentage = val + '%';
+      slider.style.setProperty('--pos', percentage);
+      afterImg.style.clipPath = `polygon(0 0, ${percentage} 0, ${percentage} 100%, 0 100%)`;
+      handle.style.left = percentage;
+    }
+
+    range.addEventListener('input', function() {
+      updateSlider(this.value);
+    });
+
+    function dragHandler(clientX) {
+      const rect = slider.getBoundingClientRect();
+      let position = clientX - rect.left;
+      let percentage = (position / rect.width) * 100;
+      percentage = Math.max(0, Math.min(100, percentage));
+      range.value = percentage;
+      updateSlider(percentage);
+    }
+
+    function startDrag(e) {
+      e.preventDefault();
+      document.body.style.userSelect = "none";
+      if (e.type === "mousedown") {
+        dragHandler(e.clientX);
+        window.addEventListener('mousemove', moveDrag);
+        window.addEventListener('mouseup', endDrag, { once: true });
+      } else if (e.type === "touchstart") {
+        dragHandler(e.touches[0].clientX);
+        window.addEventListener('touchmove', moveTouch, { passive: false });
+        window.addEventListener('touchend', endDrag, { once: true });
+      }
+    }
+
+    function moveDrag(e) { dragHandler(e.clientX); }
+    function moveTouch(e) { dragHandler(e.touches[0].clientX); }
+    function endDrag() {
+      document.body.style.userSelect = "";
+      window.removeEventListener('mousemove', moveDrag);
+      window.removeEventListener('touchmove', moveTouch);
+    }
+
+    slider.addEventListener('mousedown', startDrag);
+    slider.addEventListener('touchstart', startDrag, { passive: false });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Horizontal Before & After",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "See The Transformation"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Before and after using our product."
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image",
+      "label": "Before Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image",
+      "label": "After Image"
+    },
+    {
+      "type": "text",
+      "id": "aspect_ratio",
+      "label": "Aspect Ratio",
+      "default": "16/9",
+      "info": "Example: 16/9 for horizontal, 9/16 for vertical"
+    },
+    {
+  "type": "color",
+  "id": "bg_color",
+  "label": "Background Color",
+  "default": "#ECBDB4"
+},
+{
+  "type": "range",
+  "id": "height",
+  "label": "Slider Height (px)",
+  "min": 200,
+  "max": 1000,
+  "step": 10,
+  "default": 500
+}
+
+
+  ],
+  "presets": [
+    {
+      "name": "Horizontal Before & After",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

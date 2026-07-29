@@ -1,0 +1,235 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "1e0c79e9-7de0-4eee-b9c5-f27132635fb8": {
+          "type": "title",
+          "settings": {
+            "spacing_bottom": "1"
+          }
+        },
+        "8effeb43-55b7-4ec4-ab9b-68bcd89b865b": {
+          "type": "price",
+          "settings": {
+            "spacing_bottom": "1",
+            "show_price_tax_info": true,
+            "show_price_shipping_info": false,
+            "show_price_custom_info": ""
+          }
+        },
+        "1e939cd6-0958-4135-a9e5-c50faef01437": {
+          "type": "variant_picker",
+          "settings": {
+            "spacing_bottom": "1",
+            "title": "Variant picker",
+            "size_guide_page": "size-guide",
+            "sizes_option": "Size"
+          }
+        },
+        "1e939cd6-0955-4135-a9e5-c50faef01437": {
+          "type": "purchase_options",
+          "settings": {
+            "spacing_bottom": "1"
+          }
+        },
+        "8604a6ff-ad0b-44dd-8068-1de4e062f8e8": {
+          "type": "buy_buttons",
+          "settings": {
+            "spacing_bottom": "1",
+            "show_quantity": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "b2dabe12-2158-4ba6-bc54-9baae453acf5": {
+          "type": "text",
+          "settings": {
+            "spacing_bottom": "1",
+            "link_to_resource": "none"
+          }
+        },
+        "1ad0121e-439d-45c0-b45d-4f080836ade5": {
+          "type": "text",
+          "settings": {
+            "spacing_bottom": "1",
+            "link_to_resource": "none"
+          }
+        },
+        "7be6b89c-da83-4ff2-9b85-44fb28cbfa27": {
+          "type": "pickup-availability",
+          "settings": {
+            "spacing_bottom": "1"
+          }
+        }
+      },
+      "block_order": [
+        "1e0c79e9-7de0-4eee-b9c5-f27132635fb8",
+        "8effeb43-55b7-4ec4-ab9b-68bcd89b865b",
+        "1e939cd6-0958-4135-a9e5-c50faef01437",
+        "1e939cd6-0955-4135-a9e5-c50faef01437",
+        "8604a6ff-ad0b-44dd-8068-1de4e062f8e8",
+        "b2dabe12-2158-4ba6-bc54-9baae453acf5",
+        "1ad0121e-439d-45c0-b45d-4f080836ade5",
+        "7be6b89c-da83-4ff2-9b85-44fb28cbfa27"
+      ],
+      "settings": {
+        "product_media_layout": "product__media-layout--full",
+        "product_media_layout_mobile": "product__media-layout--full--sm",
+        "product_media_aspect_ratio": "1/1",
+        "product_media_object_fit": "cover",
+        "product_slider_auto_height": false,
+        "media_transparent_background": false,
+        "display_media_zoom": "none",
+        "product_media_with_thumbs": "none",
+        "product_media_thumbs_ratio": "auto",
+        "product_media_thumbs_object_fit": "cover",
+        "gallery_arrows_show_on": "desktop",
+        "display_media_gallery_pagination": "none",
+        "media_gallery_info": "",
+        "metafield_as_seen_on": "",
+        "color_scheme_gallery": "",
+        "enable_sticky_info": true,
+        "enable_actions_bar": true,
+        "media_grid_size": "large",
+        "media_grid_position": "start",
+        "grid_gap": "2",
+        "spacing_grid": 1.6,
+        "grid_content_alignment": "start",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "complete_the_set_TUh6Af": {
+      "type": "complete-the-set",
+      "blocks": {
+        "collapsible_iqm8Hc": {
+          "type": "collapsible",
+          "settings": {
+            "block_type": "drawer",
+            "heading": "Description",
+            "link": "",
+            "content": "<p>[description]</p>",
+            "page": ""
+          }
+        },
+        "collapsible_yqCWXC": {
+          "type": "collapsible",
+          "settings": {
+            "block_type": "drawer",
+            "heading": "Delivery & Returns",
+            "link": "",
+            "content": "<p>With the convenience of digital gift certificates, you can easily surprise someone with a special gift. All digital gift certificates are delivered by mail and can be printed or forwarded.</p><p>This is a great way to show someone you care, celebrate a special occasion, or simply say thank you. With gift card delivery, you can show your appreciation in a thoughtful and convenient way.</p>",
+            "page": ""
+          }
+        },
+        "collapsible_gzwFdy": {
+          "type": "collapsible",
+          "settings": {
+            "block_type": "drawer",
+            "heading": "Contact us",
+            "link": "",
+            "content": "<p>If you have any questions you can always reach us through our contact form <a href=\"/pages/contact\" title=\"Contact us\">here</a>.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_iqm8Hc",
+        "collapsible_yqCWXC",
+        "collapsible_gzwFdy"
+      ],
+      "settings": {
+        "content_type": "products",
+        "featured_image_aspect_ratio": "4/3",
+        "flip_desktop": true,
+        "flip_mobile": true,
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "layout": "layout-2",
+        "enable_slideshow_overflow": false,
+        "heading": "You may also like",
+        "subheading": "",
+        "button_label": "View all",
+        "button_link": "",
+        "button_style": "button--filled",
+        "show_navigation_arrows": true,
+        "slider_autoplay": 3,
+        "tabs_button_style": "tab-btn-filled",
+        "max_products": 8,
+        "show_unavailable_products": false,
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "recently_viewed": {
+      "type": "recently-viewed-products",
+      "disabled": true,
+      "settings": {
+        "layout": "layout-1",
+        "enable_slideshow_overflow": false,
+        "heading": "Recently viewed",
+        "subheading": "",
+        "button_label": "View all",
+        "button_link": "",
+        "button_style": "button--filled",
+        "show_navigation_arrows": true,
+        "slider_autoplay": 3,
+        "tabs_button_style": "tab-btn-filled",
+        "max_products": 8,
+        "show_unavailable_products": false,
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "e86737b7-1cc0-43fc-8537-509199f13681": {
+      "type": "trust-indicators",
+      "blocks": {
+        "template--17423162900795__e86737b7-1cc0-43fc-8537-509199f13681-1673866949c520be61-0": {
+          "type": "icon",
+          "settings": {
+            "title": "Fast global shopping"
+          }
+        },
+        "template--17423162900795__e86737b7-1cc0-43fc-8537-509199f13681-1673866949c520be61-1": {
+          "type": "icon",
+          "settings": {
+            "title": "30 days return policy"
+          }
+        },
+        "template--17423162900795__e86737b7-1cc0-43fc-8537-509199f13681-1673866949c520be61-2": {
+          "type": "icon",
+          "settings": {
+            "title": "100% secure payments"
+          }
+        }
+      },
+      "block_order": [
+        "template--17423162900795__e86737b7-1cc0-43fc-8537-509199f13681-1673866949c520be61-0",
+        "template--17423162900795__e86737b7-1cc0-43fc-8537-509199f13681-1673866949c520be61-1",
+        "template--17423162900795__e86737b7-1cc0-43fc-8537-509199f13681-1673866949c520be61-2"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "complete_the_set_TUh6Af",
+    "recommendations",
+    "recently_viewed",
+    "e86737b7-1cc0-43fc-8537-509199f13681"
+  ]
+}

@@ -1,0 +1,38 @@
+{%- comment -%}
+  Compact product card for recommendations / drawer.
+  params: product_ref, button_style, button_label
+{%- endcomment -%}
+
+<a href="{{- product_ref.url -}}" class="card-product-small">
+  <div class="media card-product-small-media">
+    {%- render 'image', image: product_ref.featured_image, alt: product_ref.featured_image.alt | escape -%}
+  </div>
+  {%- liquid
+    assign quick_btn_class = 'quick-cart-drawer__trigger quick-cart-drawer__trigger--recommendations button '
+    assign quick_btn_variant = button_style | default: 'button--filled'
+    assign quick_btn_class = quick_btn_class | append: quick_btn_variant
+    assign quick_btn_text = button_label | default: 'cart.quick_add' | t
+  -%}
+  <div class="card-product-small-details">
+    <h6 class="card-product-small-title">{{- product_ref.title | escape -}}</h6>
+
+    <p class="card-product-small-price">
+      {%- if product_ref.compare_at_price_min > product_ref.price_min -%}
+        <span class="visually-hidden">{{- 'product.price_regular' | t -}}</span>
+        <del>{{- product_ref.compare_at_price_min | money -}}</del>
+        <span class="visually-hidden">{{- 'product.price_sale' | t -}}</span>
+        <ins>{{- product_ref.price_min | money -}}</ins>
+      {%- else -%}
+        <span class="visually-hidden">{{- 'product.price_regular' | t -}}</span>
+        {{- product_ref.price_min | money -}}
+      {%- endif -%}
+    </p>
+
+    {%- if settings.product_card_enable_quick_add_to_cart_button -%}
+      <button type="button" class="{{ quick_btn_class }}" aria-expanded="false" onclick="preventDefault(event)" aria-controls="quick-cart-drawer" data-product-url="{{- product_ref.handle | prepend: '/products/' -}}">
+        {{ quick_btn_text }}
+        <div class="quick-cart-drawer__trigger--loading">{%- render 'loading-spinner' -%}</div>
+      </button>
+    {%- endif -%}
+  </div>
+</a>

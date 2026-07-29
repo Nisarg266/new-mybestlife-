@@ -1,0 +1,1436 @@
+{
+    "sections":  {
+                     "ingrediant_hero_section_eAJrL9":  {
+                                                            "type":  "Ingrediant-hero-section",
+                                                            "name":  "Hero Image Left Content",
+                                                            "settings":  {
+                                                                             "extra_heading":  "",
+                                                                             "heading":  "",
+                                                                             "heading_size":  36,
+                                                                             "subheading":  "",
+                                                                             "button_label":  "",
+                                                                             "button_link":  "shopify://collections/collection",
+                                                                             "secondary_button_label":  "",
+                                                                             "secondary_button_link":  "",
+                                                                             "heading_color":  "#000000",
+                                                                             "subheading_color":  "#000000",
+                                                                             "button_bg_color":  "#000000",
+                                                                             "button_text_color":  "#b4975a",
+                                                                             "button_hover_bg_color":  "#b4975a",
+                                                                             "button_hover_text_color":  "#000000",
+                                                                             "background_color":  "#ffffff",
+                                                                             "background_image":  "shopify://shop_images/About_Us_Web_Banner_1_copy.jpg",
+                                                                             "mobile_background_image":  "shopify://shop_images/About_Us_Mobile_Banner_1_copy.jpg",
+                                                                             "padding_top":  40,
+                                                                             "padding_bottom":  40,
+                                                                             "section_height":  "70vh"
+                                                                         }
+                                                        },
+                     "paragraph_NT6iJb":  {
+                                              "type":  "paragraph",
+                                              "name":  "Paragraph + Button Left",
+                                              "settings":  {
+                                                               "paragraph_text":  "\u003cp\u003eMy Best Life™ was created for those who demand more from their wellness journey. Maximising physical and mental wellbeing requires uncompromising solutions. Our premium supplements are powered by scientific precision and nature’s intelligence. Rooted in rigorous research, our products provide the optimal foundation for you to thrive.\u003cbr/\u003e\u003c/p\u003e\u003cp\u003eMy Best Life™ is more than a supplement brand. It’s a movement to bridge the gap between science and everyday wellness — delivering trusted, effective, and accessible health solutions for those committed to living their best life, every day.\u003cbr/\u003e\u003cbr/\u003e\u003c/p\u003e",
+                                                               "button_text":  "Shop Now",
+                                                               "button_link":  "shopify://collections/collection",
+                                                               "background_color":  "#ffffff",
+                                                               "text_color":  "#111111",
+                                                               "button_bg_color":  "#2a2a2a",
+                                                               "button_text_color":  "#b4975a",
+                                                               "padding_top_desktop":  40,
+                                                               "padding_bottom_desktop":  40,
+                                                               "padding_top_mobile":  20,
+                                                               "padding_bottom_mobile":  20
+                                                           }
+                                          },
+                     "aboutus_vison_YPJBzR":  {
+                                                  "type":  "aboutus-vison",
+                                                  "name":  "Heading + Subheading",
+                                                  "settings":  {
+                                                                   "heading":  "OUR VISION",
+                                                                   "subheading":  "We are committed to building a transformative nutraceutical brand — one that redefines preventive health for the modern world.",
+                                                                   "bg_color":  "#f5f5f5",
+                                                                   "padding_top":  40,
+                                                                   "padding_bottom":  40
+                                                               }
+                                              },
+                     "aboutus_whychos_QiPtqa":  {
+                                                    "type":  "aboutus-whychos",
+                                                    "name":  "Two Column Text + Image",
+                                                    "settings":  {
+                                                                     "heading":  "WHY CHOOSE US",
+                                                                     "subheading":  "Where Innovation Meets Purpose",
+                                                                     "paragraph":  "At My Best Life™, we blend innovation with intention—creating\nwellness solutions that are sustainably sourced and scientifically\nformulated. Our expert team ensures every product delivers\nmaximum efficacy, enhanced bioavailability, and uncompromised\nsafety—powered by liposomal tech, plant-based actives, and a deep\ncommitment to your well-being.",
+                                                                     "button_label":  "Shop Now",
+                                                                     "button_link":  "shopify://collections/collection",
+                                                                     "image":  "shopify://shop_images/freepik__upload__25558_copy.jpg",
+                                                                     "padding_top_desktop":  60,
+                                                                     "padding_bottom_desktop":  60,
+                                                                     "padding_top_mobile":  30,
+                                                                     "padding_bottom_mobile":  30
+                                                                 }
+                                                },
+                     "aboutus_vakues_N86NLh":  {
+                                                   "type":  "aboutus-vakues",
+                                                   "blocks":  {
+                                                                  "value_FmQXBY":  {
+                                                                                       "type":  "value",
+                                                                                       "settings":  {
+                                                                                                        "icon":  "shopify://shop_images/1_1.png",
+                                                                                                        "title":  "Holistic Health",
+                                                                                                        "icon_bg":  "#b4975a"
+                                                                                                    }
+                                                                                   },
+                                                                  "value_cfjqP4":  {
+                                                                                       "type":  "value",
+                                                                                       "settings":  {
+                                                                                                        "icon":  "shopify://shop_images/icons_1_-04_69a93c07-2ecb-44ac-ae27-6c69ccb1df41.png",
+                                                                                                        "title":  "Scientific Integrity",
+                                                                                                        "icon_bg":  "#b4975a"
+                                                                                                    }
+                                                                                   },
+                                                                  "value_WcVHTR":  {
+                                                                                       "type":  "value",
+                                                                                       "settings":  {
+                                                                                                        "icon":  "shopify://shop_images/3_2479c0c0-a656-45ef-beab-76118b07e0df.png",
+                                                                                                        "title":  "Sustainable Wellness",
+                                                                                                        "icon_bg":  "#b4975a"
+                                                                                                    }
+                                                                                   },
+                                                                  "value_Kntg7M":  {
+                                                                                       "type":  "value",
+                                                                                       "settings":  {
+                                                                                                        "icon":  "shopify://shop_images/4_385ddc6a-3e26-4e34-a91c-e841da363a47.png",
+                                                                                                        "title":  "Access to Quality",
+                                                                                                        "icon_bg":  "#b4975a"
+                                                                                                    }
+                                                                                   }
+                                                              },
+                                                   "block_order":  [
+                                                                       "value_FmQXBY",
+                                                                       "value_cfjqP4",
+                                                                       "value_WcVHTR",
+                                                                       "value_Kntg7M"
+                                                                   ],
+                                                   "name":  "Our Values",
+                                                   "settings":  {
+                                                                    "heading":  "OUR VALUES",
+                                                                    "bg_color":  "#f1efec",
+                                                                    "heading_color":  "#b4975a",
+                                                                    "text_color":  "#000000"
+                                                                }
+                                               },
+                     "03a45767-3819-40b4-a750-ab1add481edc":  {
+                                                                  "type":  "dual-tiles",
+                                                                  "blocks":  {
+                                                                                 "template--18086433161531__03a45767-3819-40b4-a750-ab1add481edc-1677165430713b18f7-0":  {
+                                                                                                                                                                             "type":  "tile",
+                                                                                                                                                                             "settings":  {
+                                                                                                                                                                                              "show_on":  "both",
+                                                                                                                                                                                              "color_scheme":  "",
+                                                                                                                                                                                              "custom_background_color":  "",
+                                                                                                                                                                                              "heading":  "Heading for Dual Content Tiles",
+                                                                                                                                                                                              "heading_size":  "h3",
+                                                                                                                                                                                              "text":  "",
+                                                                                                                                                                                              "button_label":  "",
+                                                                                                                                                                                              "button_link":  "",
+                                                                                                                                                                                              "button_style":  "button--outlined",
+                                                                                                                                                                                              "product":  "",
+                                                                                                                                                                                              "product_width":  24,
+                                                                                                                                                                                              "show_other_elements_with_product":  true,
+                                                                                                                                                                                              "aspect_ratio":  "auto",
+                                                                                                                                                                                              "vertical_position":  "stretch",
+                                                                                                                                                                                              "content_position":  "justify-center",
+                                                                                                                                                                                              "content_alignment":  "text-center align-center",
+                                                                                                                                                                                              "product_position":  "between",
+                                                                                                                                                                                              "video_external":  "",
+                                                                                                                                                                                              "show_controls_on_video":  false,
+                                                                                                                                                                                              "aspect_ratio_mobile":  "auto",
+                                                                                                                                                                                              "content_alignment_mobile":  "text-center--mobile align-center--mobile",
+                                                                                                                                                                                              "content_position_mobile":  "justify-center--mobile",
+                                                                                                                                                                                              "product_position_mobile":  "between",
+                                                                                                                                                                                              "video_external_mobile":  "",
+                                                                                                                                                                                              "show_controls_on_video_mobile":  false,
+                                                                                                                                                                                              "spacing_inner":  "3"
+                                                                                                                                                                                          }
+                                                                                                                                                                         },
+                                                                                 "template--18086433161531__03a45767-3819-40b4-a750-ab1add481edc-1677165430713b18f7-1":  {
+                                                                                                                                                                             "type":  "tile",
+                                                                                                                                                                             "settings":  {
+                                                                                                                                                                                              "show_on":  "both",
+                                                                                                                                                                                              "color_scheme":  "",
+                                                                                                                                                                                              "custom_background_color":  "",
+                                                                                                                                                                                              "heading":  "Heading for Dual Content Tiles",
+                                                                                                                                                                                              "heading_size":  "h3",
+                                                                                                                                                                                              "text":  "",
+                                                                                                                                                                                              "button_label":  "",
+                                                                                                                                                                                              "button_link":  "",
+                                                                                                                                                                                              "button_style":  "button--outlined",
+                                                                                                                                                                                              "product":  "",
+                                                                                                                                                                                              "product_width":  24,
+                                                                                                                                                                                              "show_other_elements_with_product":  true,
+                                                                                                                                                                                              "aspect_ratio":  "auto",
+                                                                                                                                                                                              "vertical_position":  "stretch",
+                                                                                                                                                                                              "content_position":  "justify-center",
+                                                                                                                                                                                              "content_alignment":  "text-center align-center",
+                                                                                                                                                                                              "product_position":  "between",
+                                                                                                                                                                                              "video_external":  "",
+                                                                                                                                                                                              "show_controls_on_video":  false,
+                                                                                                                                                                                              "aspect_ratio_mobile":  "auto",
+                                                                                                                                                                                              "content_alignment_mobile":  "text-center--mobile align-center--mobile",
+                                                                                                                                                                                              "content_position_mobile":  "justify-center--mobile",
+                                                                                                                                                                                              "product_position_mobile":  "between",
+                                                                                                                                                                                              "video_external_mobile":  "",
+                                                                                                                                                                                              "show_controls_on_video_mobile":  false,
+                                                                                                                                                                                              "spacing_inner":  "3"
+                                                                                                                                                                                          }
+                                                                                                                                                                         }
+                                                                             },
+                                                                  "block_order":  [
+                                                                                      "template--18086433161531__03a45767-3819-40b4-a750-ab1add481edc-1677165430713b18f7-0",
+                                                                                      "template--18086433161531__03a45767-3819-40b4-a750-ab1add481edc-1677165430713b18f7-1"
+                                                                                  ],
+                                                                  "disabled":  true,
+                                                                  "settings":  {
+                                                                                   "section_layout":  "seperated",
+                                                                                   "block_size":  "half",
+                                                                                   "block_order_mobile":  false,
+                                                                                   "heading":  "",
+                                                                                   "heading_size":  "h3",
+                                                                                   "heading_alignment":  "start",
+                                                                                   "color_scheme":  "scheme-5",
+                                                                                   "section_width":  "max-w-page",
+                                                                                   "spacing_top":  "2",
+                                                                                   "spacing_bottom":  "2"
+                                                                               }
+                                                              },
+                     "features_KBTKDc":  {
+                                             "type":  "Features",
+                                             "blocks":  {
+                                                            "feature_DFkNUq":  {
+                                                                                   "type":  "feature",
+                                                                                   "settings":  {
+                                                                                                    "image_1":  "shopify://shop_images/tdsmidjourney2_A_premium_supplement_store_aisle_filled_with_amb_bb2d0bdf-ec5a-4b08-9597-cb88267cc213.jpg",
+                                                                                                    "video_url":  "",
+                                                                                                    "show_feature_box":  true,
+                                                                                                    "flex_direction":  "row",
+                                                                                                    "heading_1":  "",
+                                                                                                    "heading_2":  "",
+                                                                                                    "heading_3":  "",
+                                                                                                    "heading_4":  "",
+                                                                                                    "heading_5":  "",
+                                                                                                    "heading_6":  "",
+                                                                                                    "small_heading":  "",
+                                                                                                    "feature_heading":  "WHO WE ARE",
+                                                                                                    "description":  "\u003cp\u003e\u003cstrong\u003eMy Best Life™\u003c/strong\u003e  was created for those who demand more from their wellness journey. Maximising physical and mental  wellbeing requires uncompromising solutions. Our premium supplements are powered by scientific precision and nature’s intelligence. Rooted in rigorous research, our products provide the optimal foundation for you to thrive.\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eMy Best Life™\u003c/strong\u003e  is more than a  supplement brand. It’s a movement to bridge the gap between science and everyday wellness — delivering trusted, effective, and accessible health solutions for those committed to living their best life, every day.\u003c/p\u003e",
+                                                                                                    "feature_btn_link":  "shopify://collections",
+                                                                                                    "feature_btn_text":  "Shop now",
+                                                                                                    "custom_class_feature":  ""
+                                                                                                }
+                                                                               }
+                                                        },
+                                             "block_order":  [
+                                                                 "feature_DFkNUq"
+                                                             ],
+                                             "disabled":  true,
+                                             "name":  "Features",
+                                             "settings":  {
+                                                              "custom_class":  "",
+                                                              "background_color":  "#ffffff",
+                                                              "heading":  "",
+                                                              "heading_margin_top":  0,
+                                                              "heading_margin_bottom":  0,
+                                                              "heading_alignment":  "center",
+                                                              "load_css_section":  "",
+                                                              "top_padding":  80,
+                                                              "bottom_padding":  80,
+                                                              "left_padding":  0,
+                                                              "right_padding":  0,
+                                                              "feature_description_margin_top":  20,
+                                                              "padding_top_mobile":  0,
+                                                              "padding_bottom_mobile":  0
+                                                          }
+                                         },
+                     "custom_headings_fRUadV":  {
+                                                    "type":  "custom-headings",
+                                                    "blocks":  {
+                                                                   "heading_9d8fp3":  {
+                                                                                          "type":  "heading",
+                                                                                          "settings":  {
+                                                                                                           "heading":  "Our Vision",
+                                                                                                           "alignment":  "center"
+                                                                                                       }
+                                                                                      },
+                                                                   "text_qqtd8e":  {
+                                                                                       "type":  "text",
+                                                                                       "settings":  {
+                                                                                                        "text":  "\u003cp\u003eWe are committed to building a transformative nutraceutical brand — one that redefines preventive health for the modern world.\u003c/p\u003e",
+                                                                                                        "link":  "",
+                                                                                                        "margin_block":  10,
+                                                                                                        "alignment":  "center"
+                                                                                                    }
+                                                                                   }
+                                                               },
+                                                    "block_order":  [
+                                                                        "heading_9d8fp3",
+                                                                        "text_qqtd8e"
+                                                                    ],
+                                                    "disabled":  true,
+                                                    "name":  "Custom Headings",
+                                                    "settings":  {
+                                                                     "bg":  "#ffffff",
+                                                                     "show_width_control":  true,
+                                                                     "page_width_px":  1000,
+                                                                     "top_padding":  80,
+                                                                     "bottom_padding":  80,
+                                                                     "left_padding":  20,
+                                                                     "right_padding":  20,
+                                                                     "padding_top_mobile":  0,
+                                                                     "padding_bottom_mobile":  0
+                                                                 }
+                                                },
+                     "aboutus_ourmission_V8Q3Pe":  {
+                                                       "type":  "aboutus-ourmission",
+                                                       "blocks":  {
+                                                                      "item_6c7RdW":  {
+                                                                                          "type":  "item",
+                                                                                          "settings":  {
+                                                                                                           "icon":  "shopify://shop_images/Untitled_design.png",
+                                                                                                           "title":  "Premium Quality",
+                                                                                                           "text":  "Clean-label, responsibly formulated"
+                                                                                                       }
+                                                                                      },
+                                                                      "item_tf98yA":  {
+                                                                                          "type":  "item",
+                                                                                          "settings":  {
+                                                                                                           "icon":  "shopify://shop_images/02_cf648699-f515-4676-8dc8-d8d4371da170.png",
+                                                                                                           "title":  "Purpose-Driven",
+                                                                                                           "text":  "Tailored to specific health needs"
+                                                                                                       }
+                                                                                      },
+                                                                      "item_fNTdWM":  {
+                                                                                          "type":  "item",
+                                                                                          "settings":  {
+                                                                                                           "icon":  "shopify://shop_images/03.png",
+                                                                                                           "title":  "Third-Party Lab Tested",
+                                                                                                           "text":  "For transparency and safety"
+                                                                                                       }
+                                                                                      },
+                                                                      "item_Qfddqc":  {
+                                                                                          "type":  "item",
+                                                                                          "settings":  {
+                                                                                                           "icon":  "shopify://shop_images/04_65448554-1750-41a6-aa29-4086020ceea8.png",
+                                                                                                           "title":  "Clinically Proven",
+                                                                                                           "text":  "Backed by scientific research and clinical data"
+                                                                                                       }
+                                                                                      },
+                                                                      "item_UPWFgj":  {
+                                                                                          "type":  "item",
+                                                                                          "settings":  {
+                                                                                                           "icon":  "shopify://shop_images/05_30fcbc4e-0389-4a66-8e62-5fe7479c7dd6.png",
+                                                                                                           "title":  "Professionally Endorsed",
+                                                                                                           "text":  "Trusted by healthcare experts"
+                                                                                                       }
+                                                                                      }
+                                                                  },
+                                                       "block_order":  [
+                                                                           "item_6c7RdW",
+                                                                           "item_tf98yA",
+                                                                           "item_fNTdWM",
+                                                                           "item_Qfddqc",
+                                                                           "item_UPWFgj"
+                                                                       ],
+                                                       "name":  "Our Mission Section",
+                                                       "settings":  {
+                                                                        "image":  "shopify://shop_images/tdsmidjourney2_A_premium_supplement_store_aisle_filled_with_amb_bb2d0bdf-ec5a-4b08-9597-cb88267cc213_copy.jpg",
+                                                                        "heading":  "OUR MISSION",
+                                                                        "subheading":  "To empower individuals to take control of their health through clean, science-backed, and result-driven nutritional solutions that support modern lifestyles",
+                                                                        "description":  "We are on a mission to develop and deliver a diverse range of proprietary, cutting-edge solutions that assure:"
+                                                                    }
+                                                   },
+                     "custom_headings_86jxnC":  {
+                                                    "type":  "custom-headings",
+                                                    "blocks":  {
+                                                                   "heading_9J7TMc":  {
+                                                                                          "type":  "heading",
+                                                                                          "settings":  {
+                                                                                                           "heading":  "Our Mission",
+                                                                                                           "alignment":  "center"
+                                                                                                       }
+                                                                                      },
+                                                                   "text_ThkTGz":  {
+                                                                                       "type":  "text",
+                                                                                       "settings":  {
+                                                                                                        "text":  "\u003cp\u003eTo empower individuals to take control of their health through clean, science-backed, and result-driven nutritional solutions that support modern lifestyles\u003c/p\u003e",
+                                                                                                        "link":  "",
+                                                                                                        "margin_block":  20,
+                                                                                                        "alignment":  "center"
+                                                                                                    }
+                                                                                   }
+                                                               },
+                                                    "block_order":  [
+                                                                        "heading_9J7TMc",
+                                                                        "text_ThkTGz"
+                                                                    ],
+                                                    "disabled":  true,
+                                                    "name":  "Custom Headings",
+                                                    "settings":  {
+                                                                     "bg":  "#ffffff",
+                                                                     "show_width_control":  true,
+                                                                     "page_width_px":  1100,
+                                                                     "top_padding":  80,
+                                                                     "bottom_padding":  0,
+                                                                     "left_padding":  16,
+                                                                     "right_padding":  16,
+                                                                     "padding_top_mobile":  40,
+                                                                     "padding_bottom_mobile":  0
+                                                                 }
+                                                },
+                     "features_W4hbrY":  {
+                                             "type":  "Features",
+                                             "blocks":  {
+                                                            "feature_3dpWqi":  {
+                                                                                   "type":  "feature",
+                                                                                   "settings":  {
+                                                                                                    "image_1":  "shopify://shop_images/5af60ea40fbc140fb3b4d6c810bcafcda9d84219.jpg",
+                                                                                                    "video_url":  "",
+                                                                                                    "show_feature_box":  false,
+                                                                                                    "flex_direction":  "row",
+                                                                                                    "heading_1":  "\u003cp\u003e\u003cstrong\u003ePremium Quality – Clean-label, responsibly formulated\u003c/strong\u003e\u003c/p\u003e",
+                                                                                                    "icon_1":  "shopify://shop_images/Capa_100.png",
+                                                                                                    "heading_2":  "\u003cp\u003e\u003cstrong\u003ePurpose-Driven – Tailored to specific health needs\u003c/strong\u003e\u003c/p\u003e",
+                                                                                                    "icon_2":  "shopify://shop_images/Layer_123.svg",
+                                                                                                    "heading_3":  "\u003cp\u003e\u003cstrong\u003eThird-Party Lab Tested – For transparency and safety\u003c/strong\u003e\u003c/p\u003e",
+                                                                                                    "icon_3":  "shopify://shop_images/Frame0.svg",
+                                                                                                    "heading_4":  "\u003cp\u003e\u003cstrong\u003eClinically Proven – Backed by scientific research and clinical data\u003c/strong\u003e\u003c/p\u003e",
+                                                                                                    "icon_4":  "shopify://shop_images/svg9.svg",
+                                                                                                    "heading_5":  "\u003cp\u003e\u003cstrong\u003eProfessionally Endorsed – Trusted by healthcare experts\u003c/strong\u003e\u003c/p\u003e",
+                                                                                                    "icon_5":  "shopify://shop_images/Layer_1_791e3f91-17d7-4256-919a-4556b8e9d0a6.svg",
+                                                                                                    "heading_6":  "",
+                                                                                                    "small_heading":  "",
+                                                                                                    "feature_heading":  "",
+                                                                                                    "description":  "\u003cp\u003eWe are on a mission to develop and deliver a diverse range of proprietary, cutting-edge solutions that assure:\u003cbr/\u003e\u003c/p\u003e",
+                                                                                                    "feature_btn_link":  "",
+                                                                                                    "feature_btn_text":  "Get a Quote Today",
+                                                                                                    "custom_class_feature":  ""
+                                                                                                }
+                                                                               }
+                                                        },
+                                             "block_order":  [
+                                                                 "feature_3dpWqi"
+                                                             ],
+                                             "disabled":  true,
+                                             "name":  "Features",
+                                             "settings":  {
+                                                              "custom_class":  "Misssion",
+                                                              "background_color":  "#ffffff",
+                                                              "heading":  "",
+                                                              "heading_margin_top":  20,
+                                                              "heading_margin_bottom":  20,
+                                                              "heading_alignment":  "center",
+                                                              "load_css_section":  "",
+                                                              "top_padding":  0,
+                                                              "bottom_padding":  80,
+                                                              "left_padding":  0,
+                                                              "right_padding":  0,
+                                                              "feature_description_margin_top":  0,
+                                                              "padding_top_mobile":  0,
+                                                              "padding_bottom_mobile":  40
+                                                          }
+                                         },
+                     "benefits_yHAVKJ":  {
+                                             "type":  "benefits",
+                                             "blocks":  {
+                                                            "feature_block_ge4tPN":  {
+                                                                                         "type":  "feature_block",
+                                                                                         "settings":  {
+                                                                                                          "feature_icon_image":  "shopify://shop_images/Frame_2121453650.svg",
+                                                                                                          "feature_title":  "",
+                                                                                                          "feature_description_text":  "\u003cp\u003eGMO-free\u003c/p\u003e",
+                                                                                                          "feature_link":  ""
+                                                                                                      }
+                                                                                     },
+                                                            "feature_block_dmJiJf":  {
+                                                                                         "type":  "feature_block",
+                                                                                         "settings":  {
+                                                                                                          "feature_icon_image":  "shopify://shop_images/Frame_2121453656.svg",
+                                                                                                          "feature_title":  "",
+                                                                                                          "feature_description_text":  "\u003cp\u003eSoy-free\u003c/p\u003e",
+                                                                                                          "feature_link":  ""
+                                                                                                      }
+                                                                                     },
+                                                            "feature_block_xRH3kE":  {
+                                                                                         "type":  "feature_block",
+                                                                                         "settings":  {
+                                                                                                          "feature_icon_image":  "shopify://shop_images/Frame_2121453654.svg",
+                                                                                                          "feature_title":  "",
+                                                                                                          "feature_description_text":  "\u003cp\u003eLactose-free\u003c/p\u003e",
+                                                                                                          "feature_link":  ""
+                                                                                                      }
+                                                                                     },
+                                                            "feature_block_8pap7X":  {
+                                                                                         "type":  "feature_block",
+                                                                                         "settings":  {
+                                                                                                          "feature_icon_image":  "shopify://shop_images/Frame_2121453655.svg",
+                                                                                                          "feature_title":  "",
+                                                                                                          "feature_description_text":  "\u003cp\u003eVegan friendly\u003c/p\u003e",
+                                                                                                          "feature_link":  ""
+                                                                                                      }
+                                                                                     },
+                                                            "feature_block_3RTMAL":  {
+                                                                                         "type":  "feature_block",
+                                                                                         "settings":  {
+                                                                                                          "feature_icon_image":  "shopify://shop_images/Frame_2121453652.svg",
+                                                                                                          "feature_title":  "",
+                                                                                                          "feature_description_text":  "\u003cp\u003eNo Artificial Sweetener\u003c/p\u003e",
+                                                                                                          "feature_link":  ""
+                                                                                                      }
+                                                                                     },
+                                                            "feature_block_4eFgQP":  {
+                                                                                         "type":  "feature_block",
+                                                                                         "settings":  {
+                                                                                                          "feature_icon_image":  "shopify://shop_images/Frame_2121453653.svg",
+                                                                                                          "feature_title":  "",
+                                                                                                          "feature_description_text":  "\u003cp\u003eNo Added Preservatives\u003c/p\u003e",
+                                                                                                          "feature_link":  ""
+                                                                                                      }
+                                                                                     },
+                                                            "feature_block_rw37CA":  {
+                                                                                         "type":  "feature_block",
+                                                                                         "settings":  {
+                                                                                                          "feature_icon_image":  "shopify://shop_images/073_My_Best_Life_Stamp_2_white_2.png",
+                                                                                                          "feature_title":  "",
+                                                                                                          "feature_description_text":  "\u003cp\u003eThird Party Lab Tested \u0026 Clinically proven ingredients\u003c/p\u003e",
+                                                                                                          "feature_link":  ""
+                                                                                                      }
+                                                                                     }
+                                                        },
+                                             "block_order":  [
+                                                                 "feature_block_ge4tPN",
+                                                                 "feature_block_dmJiJf",
+                                                                 "feature_block_xRH3kE",
+                                                                 "feature_block_8pap7X",
+                                                                 "feature_block_3RTMAL",
+                                                                 "feature_block_4eFgQP",
+                                                                 "feature_block_rw37CA"
+                                                             ],
+                                             "disabled":  true,
+                                             "name":  "Satisfaction",
+                                             "settings":  {
+                                                              "heading":  "All the essentials, without unnecessary extras.",
+                                                              "alignment":  "center",
+                                                              "top_padding":  60,
+                                                              "bottom_padding":  60,
+                                                              "left_padding":  0,
+                                                              "right_padding":  0,
+                                                              "bg_color":  "#f7f1e9"
+                                                          }
+                                         },
+                     "aboutus_brand_GHCiFK":  {
+                                                  "type":  "aboutus-brand",
+                                                  "name":  "Essentials Icons",
+                                                  "settings":  {
+                                                                   "heading":  "ALL THE ESSENTIALS, WITHOUT UNNECESSARY EXTRAS.",
+                                                                   "icon_gap":  100,
+                                                                   "icon_width":  90
+                                                               }
+                                              },
+                     "marquees_CYtdtQ":  {
+                                             "type":  "marquees",
+                                             "blocks":  {
+                                                            "item_gAqpmR":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-11.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_4DzRRg":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-07.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_i3ETU6":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-06.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_mPNjWq":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-05.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_7eBYf7":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-02.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_mgDMyb":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-10.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_4Ftdxe":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-03.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_PKqh96":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-04_2.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_kttYta":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "theme-box",
+                                                                                                 "custom_icon":  "shopify://shop_images/Icons_2_-08.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_JYbVpn":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-08.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_WBAzCp":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/Untitled-1-12.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_EgQwUF":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-09.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_H8NFjJ":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-05.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_3xKfrQ":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-06.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_Ap9Nxg":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-03.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_gDEqnj":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-13.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            }
+                                                        },
+                                             "block_order":  [
+                                                                 "item_gAqpmR",
+                                                                 "item_4DzRRg",
+                                                                 "item_i3ETU6",
+                                                                 "item_mPNjWq",
+                                                                 "item_7eBYf7",
+                                                                 "item_mgDMyb",
+                                                                 "item_4Ftdxe",
+                                                                 "item_PKqh96",
+                                                                 "item_kttYta",
+                                                                 "item_JYbVpn",
+                                                                 "item_WBAzCp",
+                                                                 "item_EgQwUF",
+                                                                 "item_H8NFjJ",
+                                                                 "item_3xKfrQ",
+                                                                 "item_Ap9Nxg",
+                                                                 "item_gDEqnj"
+                                                             ],
+                                             "name":  "t:sections.marquees.name",
+                                             "settings":  {
+                                                              "enable_animation":  true,
+                                                              "marquee_duration_rate":  2,
+                                                              "marquee_font_size":  8,
+                                                              "marquee_items_spacing":  2,
+                                                              "color_scheme":  "scheme-49f23032-2a41-4ae8-b39d-db22aeb39437",
+                                                              "padding_top":  30,
+                                                              "padding_bottom":  30
+                                                          }
+                                         },
+                     "marquees_cDRqxA":  {
+                                             "type":  "marquees",
+                                             "blocks":  {
+                                                            "item_69zTKK":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-14.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_tgcLbJ":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-08.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_3zPdwE":  {
+                                                                                "type":  "item",
+                                                                                "disabled":  true,
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-12.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_YAdhm4":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-09.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_9jdph8":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-05.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_8TBtbF":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-06.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            },
+                                                            "item_MhwCHz":  {
+                                                                                "type":  "item",
+                                                                                "settings":  {
+                                                                                                 "icon":  "",
+                                                                                                 "custom_icon":  "shopify://shop_images/All_Icon-03.png",
+                                                                                                 "title":  "",
+                                                                                                 "link":  ""
+                                                                                             }
+                                                                            }
+                                                        },
+                                             "block_order":  [
+                                                                 "item_69zTKK",
+                                                                 "item_tgcLbJ",
+                                                                 "item_3zPdwE",
+                                                                 "item_YAdhm4",
+                                                                 "item_9jdph8",
+                                                                 "item_8TBtbF",
+                                                                 "item_MhwCHz"
+                                                             ],
+                                             "disabled":  true,
+                                             "name":  "t:sections.marquees.name",
+                                             "settings":  {
+                                                              "enable_animation":  true,
+                                                              "marquee_duration_rate":  2,
+                                                              "marquee_font_size":  8,
+                                                              "marquee_items_spacing":  2,
+                                                              "color_scheme":  "scheme-49f23032-2a41-4ae8-b39d-db22aeb39437",
+                                                              "padding_top":  30,
+                                                              "padding_bottom":  30
+                                                          }
+                                         },
+                     "aboutus_founder_LAweay":  {
+                                                    "type":  "aboutus-founder",
+                                                    "name":  "Meet the Mind Behind",
+                                                    "settings":  {
+                                                                     "bg_image":  "shopify://shop_images/img2.png",
+                                                                     "founder_image":  "shopify://shop_images/Founder_image_1_bb624e15-6460-476a-99bf-dfac0dc143fa.png",
+                                                                     "heading":  "MEET THE MIND BEHIND \u003cbr\u003e MY BEST LIFE™",
+                                                                     "text":  "\u003cp\u003e\u003cstrong\u003eAs a doctor deeply invested in health and wellness, I’ve witnessed firsthand the gap between market offerings and what true wellness demands. I believe wellness should be accessible, transparent, and truly effective. My Best Life\u003c/strong\u003e™\u003cstrong\u003e was born out of a passion for uncovering natural, science-backed solutions that deliver real results.\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eThis isn’t just a business — it’s a personal commitment to integrity, innovation, and transparency. With decades of experience across healthcare, pharmaceuticals, and nutraceuticals, I am dedicated to building a transformative brand that redefines preventive health.\u003c/strong\u003e\u003c/p\u003e\u003cp\u003e\u003cstrong\u003eOur mission is simple: to empower everyday wellness with pure, effective ingredients. My vision is to help you live a longer, healthier, and more vibrant life — every single day.\u003c/strong\u003e\u003c/p\u003e",
+                                                                     "author":  "–Dr. Vikram Shetty"
+                                                                 }
+                                                },
+                     "testimonial_slider_p6zQY8":  {
+                                                       "type":  "testimonial-slider",
+                                                       "blocks":  {
+                                                                      "testimonial_WD84UM":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Shantivardhini",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+                                                                                                                  "head_text":  "My Skin Finally Looks Alive Again",
+                                                                                                                  "review_text":  "I’ve struggled with dull, tired-looking skin for years, and nothing topical really helped. After about 9 weeks of Melt n Glo, my skin actually looks awake. The glutathione + vitamin C combo is doing something magical, my tone is more even, and I can skip foundation some days. The best part is it melts in your mouth, so I never forget to take it",
+                                                                                                                  "name":  "MELT N GLO CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             },
+                                                                      "testimonial_d9KeHd":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Shimmi Damodaran",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG_031b84d3-2439-465c-af33-310f6564f546.png",
+                                                                                                                  "head_text":  "Pigmentation Patches Are Fading",
+                                                                                                                  "review_text":  "I have stubborn hyperpigmentation on my cheeks from old acne marks, and I’ve been using Melt n Glo for 2 months now. The glutathione with selenium and zinc seems to be working, my spots are lighter and my skin looks brighter overall. Took off one star because I wish it came in more flavors, but the results are worth it",
+                                                                                                                  "name":  "MELT N GLO CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             },
+                                                                      "testimonial_j4BCHE":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Pooja Hemanth",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+                                                                                                                  "head_text":  "No more flaky patches",
+                                                                                                                  "review_text":  "Living in an air-conditioned office all day made my skin so dry that even expensive creams didn’t help. NutraDew works differently, ceramides repair the skin barrier while hyaluronic acid holds on to the moisture. Now my skin stays smooth and hydrated all day, and my makeup doesn’t crack around my eyes",
+                                                                                                                  "name":  "NUTRADEW CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             },
+                                                                      "testimonial_JdAfpT":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Renuka Ravi",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG_031b84d3-2439-465c-af33-310f6564f546.png",
+                                                                                                                  "head_text":  "From dull to dewy",
+                                                                                                                  "review_text":  "I’m in my 40s and have always struggled with rough texture and dehydration lines. After 8 weeks on NutraDew, my skin feels more supple, and I wake up looking fresher. It’s not a miracle overnight fix, but the hydration boost is real. Four stars only because I wish it came in a bigger pack!",
+                                                                                                                  "name":  "NUTRADEW CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             },
+                                                                      "testimonial_FDfpLC":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "disabled":  true,
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Vinitha Shetty",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+                                                                                                                  "head_text":  "Noticeable Brightness in Just Weeks",
+                                                                                                                  "review_text":  "I was skeptical about supplements, but I researched glutathione and vitamins C \u0026 E before trying this. Within 10 weeks, my uneven skin tone started evening out. Friends keep asking what skincare I’m using, but the only thing I changed was adding Melt n Glo to my routine. Love that it’s quick, tasty, and doesn’t feel like I’m taking “medicine.”",
+                                                                                                                  "name":  "MELT N GLO CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             },
+                                                                      "testimonial_bejPbe":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Revathi S.",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+                                                                                                                  "head_text":  "Fine lines fading",
+                                                                                                                  "review_text":  "Two months in, and I can see a visible difference in my crow’s feet and forehead lines. My skin feels bouncier and looks healthier overall. I’m convinced the ceramide-hyaluronic acid combo is the secret. This is the first supplement I’ve ever reordered without hesitation",
+                                                                                                                  "name":  "NUTRADEW CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             },
+                                                                      "testimonial_YXtjG3":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Sameeth K",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+                                                                                                                  "head_text":  "Confidence Without Makeup",
+                                                                                                                  "review_text":  "I’ve had uneven skin tone for years, and it always made me pile on concealer. After using Melt n Glo for 3 months, I’ve been going makeup-free more often. My skin looks more even, has a natural glow, and feels smoother. The mix of glutathione, pomegranate extract, vitamin E, and zinc really seems to be nourishing from the inside",
+                                                                                                                  "name":  "MELT N GLO CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             },
+                                                                      "testimonial_Xa9aX8":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "disabled":  true,
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Nandini Gowda",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+                                                                                                                  "head_text":  "My Go-To for Dull Skin Days",
+                                                                                                                  "review_text":  "I work long hours, and my skin used to look flat and lifeless. Melt n Glo has been a game-changer. The combination of glutathione, marigold extract, vitamin C, and selenium is giving me brightness I didn’t know I could get. Even my hyperpigmentation marks are less noticeable now. It’s so easy to take daily, no pills or mixing powders",
+                                                                                                                  "name":  "MELT N GLO CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             },
+                                                                      "testimonial_CMWB8z":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Rajiv Rajan",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+                                                                                                                  "head_text":  "Didn’t Think This Was for Guys, but…",
+                                                                                                                  "review_text":  "I’ll be honest, I bought Melt n Glo because my wife kept telling me my skin looked “tired” and uneven. I wasn’t expecting much, but after about 10 weeks, even I can see the difference. My face looks fresher, the tan patches from old sun damage have lightened, and I don’t look like I’ve been pulling all-nighters anymore. Plus, it’s super easy to take, no pills, just melts on your tongue. I’m sticking with it",
+                                                                                                                  "name":  "MELT N GLO CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             },
+                                                                      "testimonial_9fyQTB":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Archana Chopra",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+                                                                                                                  "head_text":  "My skin drinks this up",
+                                                                                                                  "review_text":  "I’ve had dry, tight skin for years, no matter how much moisturizer I used. NutraDew’s ceramides and hyaluronic acid combo is a game-changer. Within 6 weeks, my skin feels hydrated from the inside out. The flakiness around my nose is gone, and my cheeks feel soft all day. Even my smile lines look less noticeable.",
+                                                                                                                  "name":  "NUTRADEW CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             },
+                                                                      "testimonial_w7tpPH":  {
+                                                                                                 "type":  "testimonial",
+                                                                                                 "disabled":  true,
+                                                                                                 "settings":  {
+                                                                                                                  "stars":  5,
+                                                                                                                  "user_image":  "shopify://shop_images/142defe2dca0a9b7ef8f1ef8fce521516898713b.png",
+                                                                                                                  "name-person":  "Renuka Ravi",
+                                                                                                                  "position":  "",
+                                                                                                                  "stars_image":  "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+                                                                                                                  "head_text":  "Wrinkles? Softer now",
+                                                                                                                  "review_text":  "I started NutraDew mainly for dryness, but I’m surprised how much smoother my fine lines look. The hyaluronic acid really plumps up my skin, and the ceramides seem to lock in that moisture. People at work keep asking if I’ve changed my skincare, but nope, just this little tablet every day.",
+                                                                                                                  "name":  "NUTRADEW CUSTOMER",
+                                                                                                                  "date":  ""
+                                                                                                              }
+                                                                                             }
+                                                                  },
+                                                       "block_order":  [
+                                                                           "testimonial_WD84UM",
+                                                                           "testimonial_d9KeHd",
+                                                                           "testimonial_j4BCHE",
+                                                                           "testimonial_JdAfpT",
+                                                                           "testimonial_FDfpLC",
+                                                                           "testimonial_bejPbe",
+                                                                           "testimonial_YXtjG3",
+                                                                           "testimonial_Xa9aX8",
+                                                                           "testimonial_CMWB8z",
+                                                                           "testimonial_9fyQTB",
+                                                                           "testimonial_w7tpPH"
+                                                                       ],
+                                                       "name":  "Testimonial Slider",
+                                                       "settings":  {
+                                                                        "section_id":  "",
+                                                                        "background_color":  "#f1efec",
+                                                                        "heading":  "Take It From Them…",
+                                                                        "short_description":  "\u003cp\u003eLooking for the Right Supplement? Start with Our Most Helpful Customer Reviews\u003cbr/\u003e\u003cbr/\u003e\u003c/p\u003e",
+                                                                        "top_padding":  80,
+                                                                        "bottom_padding":  80,
+                                                                        "alignment":  "center",
+                                                                        "autoplay":  false,
+                                                                        "delay":  10,
+                                                                        "pagination":  true,
+                                                                        "padding_top_mobile":  40,
+                                                                        "padding_bottom_mobile":  40,
+                                                                        "slides_per_view_mobile":  1,
+                                                                        "slides_per_view_desktop":  2
+                                                                    }
+                                                   },
+                     "aboutus_certificate_DAdGPc":  {
+                                                        "type":  "aboutus-certificate",
+                                                        "blocks":  {
+                                                                       "icon_TYm4z4":  {
+                                                                                           "type":  "icon",
+                                                                                           "settings":  {
+                                                                                                            "icon_image":  "shopify://shop_images/06_9fd7e2d2-6129-4081-94fc-ed38805b044a.png",
+                                                                                                            "icon_text":  ""
+                                                                                                        }
+                                                                                       },
+                                                                       "icon_dK8EjG":  {
+                                                                                           "type":  "icon",
+                                                                                           "settings":  {
+                                                                                                            "icon_image":  "shopify://shop_images/07.png",
+                                                                                                            "icon_text":  ""
+                                                                                                        }
+                                                                                       },
+                                                                       "icon_xjLRCK":  {
+                                                                                           "type":  "icon",
+                                                                                           "settings":  {
+                                                                                                            "icon_image":  "shopify://shop_images/08.png",
+                                                                                                            "icon_text":  ""
+                                                                                                        }
+                                                                                       },
+                                                                       "icon_cCGTNF":  {
+                                                                                           "type":  "icon",
+                                                                                           "settings":  {
+                                                                                                            "icon_image":  "shopify://shop_images/09.png",
+                                                                                                            "icon_text":  ""
+                                                                                                        }
+                                                                                       },
+                                                                       "icon_B7qbWQ":  {
+                                                                                           "type":  "icon",
+                                                                                           "settings":  {
+                                                                                                            "icon_image":  "shopify://shop_images/10_455f49ca-81ed-48bf-8507-dda803254a8b.png",
+                                                                                                            "icon_text":  ""
+                                                                                                        }
+                                                                                       }
+                                                                   },
+                                                        "block_order":  [
+                                                                            "icon_TYm4z4",
+                                                                            "icon_dK8EjG",
+                                                                            "icon_xjLRCK",
+                                                                            "icon_cCGTNF",
+                                                                            "icon_B7qbWQ"
+                                                                        ],
+                                                        "name":  "Essentials Icons2",
+                                                        "settings":  {
+                                                                         "heading":  "MANUFACTURED IN A CERTIFIED FACILITY YOU CAN TRUST",
+                                                                         "icon_gap":  90,
+                                                                         "icon_width":  130,
+                                                                         "first_item_custom_size":  false,
+                                                                         "first_item_width":  260,
+                                                                         "first_item_height":  75,
+                                                                         "marquee_speed":  25
+                                                                     }
+                                                    },
+                     "aboutus_brand_fLTNMR":  {
+                                                  "type":  "aboutus-brand",
+                                                  "blocks":  {
+                                                                 "icon_e7rXpD":  {
+                                                                                     "type":  "icon",
+                                                                                     "settings":  {
+                                                                                                      "icon_image":  "shopify://shop_images/35f2f19b9abec3702376d67df5489d0defbaffda.png",
+                                                                                                      "icon_text":  ""
+                                                                                                  }
+                                                                                 },
+                                                                 "icon_4zmg8t":  {
+                                                                                     "type":  "icon",
+                                                                                     "settings":  {
+                                                                                                      "icon_image":  "shopify://shop_images/391bd8af0a7fa4d0f9c7100fda8d3cf90930dc81.png",
+                                                                                                      "icon_text":  ""
+                                                                                                  }
+                                                                                 },
+                                                                 "icon_MTtkUi":  {
+                                                                                     "type":  "icon",
+                                                                                     "settings":  {
+                                                                                                      "icon_image":  "shopify://shop_images/6705b6f993e5e5b48e351288c26763205d2c02f3.png",
+                                                                                                      "icon_text":  ""
+                                                                                                  }
+                                                                                 },
+                                                                 "icon_CDHjqE":  {
+                                                                                     "type":  "icon",
+                                                                                     "settings":  {
+                                                                                                      "icon_image":  "shopify://shop_images/ea4dfeb056b05f85062a01f1dde0ef5d1c7fa50b.png",
+                                                                                                      "icon_text":  ""
+                                                                                                  }
+                                                                                 },
+                                                                 "icon_3ghrab":  {
+                                                                                     "type":  "icon",
+                                                                                     "settings":  {
+                                                                                                      "icon_image":  "shopify://shop_images/2c832f4344bc3af6d601212cc8310d2a4919e9e8.png",
+                                                                                                      "icon_text":  ""
+                                                                                                  }
+                                                                                 }
+                                                             },
+                                                  "block_order":  [
+                                                                      "icon_e7rXpD",
+                                                                      "icon_4zmg8t",
+                                                                      "icon_MTtkUi",
+                                                                      "icon_CDHjqE",
+                                                                      "icon_3ghrab"
+                                                                  ],
+                                                  "disabled":  true,
+                                                  "name":  "Essentials Icons",
+                                                  "settings":  {
+                                                                   "heading":  "Manufactured in a Certified Facility You Can Trust",
+                                                                   "icon_gap":  100,
+                                                                   "icon_width":  189
+                                                               }
+                                              },
+                     "marquee_AAjtYA":  {
+                                            "type":  "marquee",
+                                            "blocks":  {
+                                                           "review_Gik49z":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/35f2f19b9abec3702376d67df5489d0defbaffda.png",
+                                                                                                  "feature_description_text":  ""
+                                                                                              }
+                                                                             },
+                                                           "review_dDq7qH":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/391bd8af0a7fa4d0f9c7100fda8d3cf90930dc81.png",
+                                                                                                  "feature_description_text":  ""
+                                                                                              }
+                                                                             },
+                                                           "review_x86GLD":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/6705b6f993e5e5b48e351288c26763205d2c02f3.png",
+                                                                                                  "feature_description_text":  ""
+                                                                                              }
+                                                                             },
+                                                           "review_bQYfN7":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/ea4dfeb056b05f85062a01f1dde0ef5d1c7fa50b.png",
+                                                                                                  "feature_description_text":  ""
+                                                                                              }
+                                                                             },
+                                                           "review_7mQziV":  {
+                                                                                 "type":  "image-badge",
+                                                                                 "settings":  {
+                                                                                                  "image":  "shopify://shop_images/2c832f4344bc3af6d601212cc8310d2a4919e9e8.png",
+                                                                                                  "feature_description_text":  ""
+                                                                                              }
+                                                                             }
+                                                       },
+                                            "block_order":  [
+                                                                "review_Gik49z",
+                                                                "review_dDq7qH",
+                                                                "review_x86GLD",
+                                                                "review_bQYfN7",
+                                                                "review_7mQziV"
+                                                            ],
+                                            "disabled":  true,
+                                            "name":  "Brand Info",
+                                            "settings":  {
+                                                             "custom_class":  "",
+                                                             "subheading":  "",
+                                                             "heading":  "Manufactured in a Certified Facility You Can Trust",
+                                                             "padding_top":  80,
+                                                             "padding_bottom":  80,
+                                                             "padding_top_mobile":  40,
+                                                             "padding_bottom_mobile":  40,
+                                                             "bg_color":  "#ffffff",
+                                                             "autoplay":  true,
+                                                             "delay":  10,
+                                                             "speed":  800,
+                                                             "pagination":  true,
+                                                             "showslider_mobile":  true,
+                                                             "slides_per_view_mobile":  2,
+                                                             "slides_per_view_desktop":  5
+                                                         }
+                                        },
+                     "section_accordion_faq_aLCgcK":  {
+                                                          "type":  "section--accordion-faq",
+                                                          "blocks":  {
+                                                                         "accordion_item_B8Eb3n":  {
+                                                                                                       "type":  "accordion_item",
+                                                                                                       "settings":  {
+                                                                                                                        "title":  "What is My Best Life\u003csup\u003eTM \u003c/sup\u003e",
+                                                                                                                        "description":  "My Best Life\u003csup\u003eTM \u003c/sup\u003e is a premium health and wellness brand offering science-backed, clean-label nutritional supplements designed to support everyday well-being. We combine modern research with nature’s best ingredients to help you live a healthier, more vibrant life."
+                                                                                                                    }
+                                                                                                   },
+                                                                         "accordion_item_rNBqW4":  {
+                                                                                                       "type":  "accordion_item",
+                                                                                                       "settings":  {
+                                                                                                                        "title":  "Who is behind My Best Life\u003csup\u003eTM \u003c/sup\u003e ?",
+                                                                                                                        "description":  "Founded by a doctor with deep experience in healthcare, pharmaceuticals, and nutraceuticals, My Best Life\u003csup\u003eTM \u003c/sup\u003e is backed by a team of medical experts, formulation specialists, and clinical nutritionists dedicated to transparency, integrity, and innovation."
+                                                                                                                    }
+                                                                                                   },
+                                                                         "accordion_item_yfjU9X":  {
+                                                                                                       "type":  "accordion_item",
+                                                                                                       "settings":  {
+                                                                                                                        "title":  "What makes My Best Life\u003csup\u003eTM \u003c/sup\u003esupplements different?",
+                                                                                                                        "description":  "Our formulas are made using clinically studied, branded ingredients, with a strong focus on bioavailability and efficacy. We use innovative delivery systems like liposomal and mouth-dissolving formats to ensure optimal absorption and real results."
+                                                                                                                    }
+                                                                                                   },
+                                                                         "accordion_item_LNteLn":  {
+                                                                                                       "type":  "accordion_item",
+                                                                                                       "settings":  {
+                                                                                                                        "title":  "Are your supplements scientifically tested?",
+                                                                                                                        "description":  "Yes. All our products are based on published scientific research and formulated in consultation with healthcare professionals. We prioritize evidence-based and clinically validated ingredients."
+                                                                                                                    }
+                                                                                                   },
+                                                                         "accordion_item_6KtiyB":  {
+                                                                                                       "type":  "accordion_item",
+                                                                                                       "settings":  {
+                                                                                                                        "title":  "Where are your products manufactured?",
+                                                                                                                        "description":  "All My Best Life\u003csup\u003eTM \u003c/sup\u003e supplements are manufactured in India at a cGMP-certified, FSSC 22000-compliant, HACCP-compliant, Halal-certified and FSSAI-approved facility that meets international quality standards."
+                                                                                                                    }
+                                                                                                   },
+                                                                         "accordion_item_rC7E3m":  {
+                                                                                                       "type":  "accordion_item",
+                                                                                                       "settings":  {
+                                                                                                                        "title":  "Are your products vegan or vegetarian?",
+                                                                                                                        "description":  "Our formulations are 100% vegetarian or vegan. Product-specific details are clearly listed on each label for your convenience."
+                                                                                                                    }
+                                                                                                   },
+                                                                         "accordion_item_YWYN3c":  {
+                                                                                                       "type":  "accordion_item",
+                                                                                                       "settings":  {
+                                                                                                                        "title":  "Are there any artificial additives in your products?",
+                                                                                                                        "description":  "No. We believe in clean-label supplements — our products are free from artificial sweeteners, preservatives, gluten, and GMOs."
+                                                                                                                    }
+                                                                                                   },
+                                                                         "accordion_item_ypqiiU":  {
+                                                                                                       "type":  "accordion_item",
+                                                                                                       "settings":  {
+                                                                                                                        "title":  "Is My Best Life\u003csup\u003eTM\u003c/sup\u003e safe for long-term use?",
+                                                                                                                        "description":  "Yes. Our supplements are designed for regular use and formulated to be safe, effective, and well-tolerated when taken as directed. However, we always recommend consulting your healthcare provider before starting any new supplement, especially if you have pre-existing conditions."
+                                                                                                                    }
+                                                                                                   },
+                                                                         "accordion_item_zA8ewX":  {
+                                                                                                       "type":  "accordion_item",
+                                                                                                       "settings":  {
+                                                                                                                        "title":  "How do I know which supplement is right for me?",
+                                                                                                                        "description":  "You can browse our product range based on your specific health goals — such as skin health, women’s health, brain health, or cellular health — or reach out to our customer care team for personalized recommendations."
+                                                                                                                    }
+                                                                                                   },
+                                                                         "accordion_item_iFtK8E":  {
+                                                                                                       "type":  "accordion_item",
+                                                                                                       "settings":  {
+                                                                                                                        "title":  "Where can I buy My Best Life\u003csup\u003eTM\u003c/sup\u003e  supplements?",
+                                                                                                                        "description":  "Our products are currently available in our official website and at select retail pharmacies and doctor’s clinics. Very soon, you’ll also be able to purchase them from leading e-commerce marketplaces."
+                                                                                                                    }
+                                                                                                   }
+                                                                     },
+                                                          "block_order":  [
+                                                                              "accordion_item_B8Eb3n",
+                                                                              "accordion_item_rNBqW4",
+                                                                              "accordion_item_yfjU9X",
+                                                                              "accordion_item_LNteLn",
+                                                                              "accordion_item_6KtiyB",
+                                                                              "accordion_item_rC7E3m",
+                                                                              "accordion_item_YWYN3c",
+                                                                              "accordion_item_ypqiiU",
+                                                                              "accordion_item_zA8ewX",
+                                                                              "accordion_item_iFtK8E"
+                                                                          ],
+                                                          "custom_css":  [
+                                                                             "sup {font-size: 12px;}"
+                                                                         ],
+                                                          "name":  "Accordion",
+                                                          "settings":  {
+                                                                           "section_id":  "",
+                                                                           "heading":  "\u003ch4\u003eYou\u0027ve Got Any Questions?\u003c/h4\u003e",
+                                                                           "sub-heading":  "",
+                                                                           "short_description":  "\u003ch5\u003eStill Have Questions?\u003c/h5\u003e",
+                                                                           "accordion-position":  "accordion-right",
+                                                                           "show_button_view":  true,
+                                                                           "button_label_view":  "Here to help",
+                                                                           "button_link_view":  "shopify://pages/contact",
+                                                                           "pre_button_description":  "Feel free to ask any questions you have!",
+                                                                           "top_padding":  80,
+                                                                           "bottom_padding":  80,
+                                                                           "left_padding":  0,
+                                                                           "right_padding":  0,
+                                                                           "image-bg":  "shopify://shop_images/img1.jpg",
+                                                                           "padding_top_mobile":  40,
+                                                                           "padding_bottom_mobile":  40
+                                                                       }
+                                                      },
+                     "our_reels_QzQtPU":  {
+                                              "type":  "our-reels",
+                                              "blocks":  {
+                                                             "video_xAUhqN":  {
+                                                                                  "type":  "video",
+                                                                                  "settings":  {
+                                                                                                   "video_url":  "https://cdn.shopify.com/videos/c/o/v/9920b0e9295b44afaab62483162ba6f8.mp4",
+                                                                                                   "instagram_link":  "https://cdn.shopify.com/videos/c/o/v/9920b0e9295b44afaab62483162ba6f8.mp4"
+                                                                                               }
+                                                                              },
+                                                             "video_KH4iVk":  {
+                                                                                  "type":  "video",
+                                                                                  "settings":  {
+                                                                                                   "video_url":  "https://cdn.shopify.com/videos/c/o/v/3c64542ce65a4a64b5158aa81c8ddb06.mp4",
+                                                                                                   "instagram_link":  "https://cdn.shopify.com/videos/c/o/v/3c64542ce65a4a64b5158aa81c8ddb06.mp4"
+                                                                                               }
+                                                                              },
+                                                             "video_AgLBgn":  {
+                                                                                  "type":  "video",
+                                                                                  "settings":  {
+                                                                                                   "video_url":  "https://cdn.shopify.com/videos/c/o/v/237712093c3e447fbf24131db9b33a18.mp4",
+                                                                                                   "instagram_link":  "https://cdn.shopify.com/videos/c/o/v/237712093c3e447fbf24131db9b33a18.mp4"
+                                                                                               }
+                                                                              },
+                                                             "video_NFqhJC":  {
+                                                                                  "type":  "video",
+                                                                                  "settings":  {
+                                                                                                   "video_url":  "https://cdn.shopify.com/videos/c/o/v/5ab7788e9d744f608709c17861004e85.mp4",
+                                                                                                   "instagram_link":  "https://cdn.shopify.com/videos/c/o/v/5ab7788e9d744f608709c17861004e85.mp4"
+                                                                                               }
+                                                                              },
+                                                             "video_wg8Fnh":  {
+                                                                                  "type":  "video",
+                                                                                  "settings":  {
+                                                                                                   "video_url":  "https://cdn.shopify.com/videos/c/o/v/4cfeed0c81974e429faaf7a1a17772ca.mp4",
+                                                                                                   "instagram_link":  "https://cdn.shopify.com/videos/c/o/v/4cfeed0c81974e429faaf7a1a17772ca.mp4"
+                                                                                               }
+                                                                              }
+                                                         },
+                                              "block_order":  [
+                                                                  "video_xAUhqN",
+                                                                  "video_KH4iVk",
+                                                                  "video_AgLBgn",
+                                                                  "video_NFqhJC",
+                                                                  "video_wg8Fnh"
+                                                              ],
+                                              "custom_css":  [
+                                                                 ".video-preview-section {padding: 60px 150px;}",
+                                                                 "@media (max-width: 768px) {.video-preview-section {padding: 40px 20px; }}"
+                                                             ],
+                                              "name":  "Our Reels",
+                                              "settings":  {
+                                                               "bg_color":  "#ffffff",
+                                                               "heading":  "Discover What Living Your Best Life Truly Feels Like",
+                                                               "heading_font_size":  46,
+                                                               "subheading":  "",
+                                                               "subheading_font_size":  30,
+                                                               "padding_top":  30,
+                                                               "padding_bottom":  30,
+                                                               "autoplay":  true,
+                                                               "controls":  false,
+                                                               "muted":  true
+                                                           }
+                                          },
+                     "apps_ADPeNy":  {
+                                         "type":  "apps",
+                                         "blocks":  {
+                                                        "instafeed_app_block_7Un43F":  {
+                                                                                           "type":  "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+                                                                                           "settings":  {
+                                                                                                            "title":  "",
+                                                                                                            "title_color":  "",
+                                                                                                            "title_size_v2":  0,
+                                                                                                            "alignment":  "center",
+                                                                                                            "instafeed_margin_top":  0,
+                                                                                                            "instafeed_margin_bottom":  0,
+                                                                                                            "instafeed_margin_sides":  0,
+                                                                                                            "show_instagram_link":  false,
+                                                                                                            "link_alignment":  "left",
+                                                                                                            "link_color":  "#000000",
+                                                                                                            "background_color":  "",
+                                                                                                            "feed_id":  "",
+                                                                                                            "html_area":  ""
+                                                                                                        }
+                                                                                       }
+                                                    },
+                                         "block_order":  [
+                                                             "instafeed_app_block_7Un43F"
+                                                         ],
+                                         "settings":  {
+
+                                                      }
+                                     },
+                     "find_us_on_aVHjpi":  {
+                                               "type":  "find-us-on",
+                                               "disabled":  true,
+                                               "name":  "Find Us On",
+                                               "settings":  {
+                                                                "bg_color":  "#fefcf9",
+                                                                "padding_top":  40,
+                                                                "padding_bottom":  20,
+                                                                "logo_width":  200,
+                                                                "logo_gap":  60,
+                                                                "logo_2":  "shopify://shop_images/XMLID_109_6d10e992-ee1e-4345-89c0-c52e353f1f07.png",
+                                                                "logo_height":  100
+                                                            }
+                                           }
+                 },
+    "order":  [
+                  "ingrediant_hero_section_eAJrL9",
+                  "paragraph_NT6iJb",
+                  "aboutus_vison_YPJBzR",
+                  "aboutus_whychos_QiPtqa",
+                  "aboutus_vakues_N86NLh",
+                  "03a45767-3819-40b4-a750-ab1add481edc",
+                  "features_KBTKDc",
+                  "custom_headings_fRUadV",
+                  "aboutus_ourmission_V8Q3Pe",
+                  "custom_headings_86jxnC",
+                  "features_W4hbrY",
+                  "benefits_yHAVKJ",
+                  "aboutus_brand_GHCiFK",
+                  "marquees_CYtdtQ",
+                  "marquees_cDRqxA",
+                  "aboutus_founder_LAweay",
+                  "testimonial_slider_p6zQY8",
+                  "aboutus_certificate_DAdGPc",
+                  "aboutus_brand_fLTNMR",
+                  "marquee_AAjtYA",
+                  "section_accordion_faq_aLCgcK",
+                  "our_reels_QzQtPU",
+                  "apps_ADPeNy",
+                  "find_us_on_aVHjpi"
+              ]
+}

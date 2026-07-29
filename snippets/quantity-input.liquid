@@ -1,0 +1,41 @@
+{%- comment -%}
+  Quantity stepper with +/- controls.
+  params: product_ref, value, name, min, max, index, hide_label, compact, context, cart_item
+{%- endcomment -%}
+
+{%- liquid
+  assign qty_name = name | default: 'quantity'
+  assign qty_min = min | default: 1
+  assign qty_max = max | default: 99
+  assign qty_val = value | default: 1
+  assign qty_id_root = index | default: product_ref.id
+  assign qty_id_suffix = ''
+  if cart_item
+    assign qty_id_suffix = 'cart-item'
+  endif
+-%}
+
+<quantity-input class="quantity{% if compact %} quantity--compact{% endif %} field">
+  <label for="ProductQuantity-{{- qty_id_root -}}-{{- context -}}{% if cart_item %}cart-item{% endif %}" class="{% if hide_label %}visually-hidden{% else %}field__label{% endif %}">
+    {{- 'product.quantity' | t -}}:
+  </label>
+
+  <div class="quantity__wrapper">
+    <button class="quantity__button" name="decrement" type="button">
+      <span class="visually-hidden">{{- 'product.quantity_decrease_for_product' | t: product: product_ref.title | escape -}}</span>
+      {%- render 'icon', icon_name: 'theme-minus', class: 'icon' -%}
+    </button>
+
+    <input class="quantity__input" type="number"
+      name="{{- qty_name -}}"
+      id="ProductQuantity-{{- qty_id_root -}}-{{- context -}}{% if cart_item %}cart-item{% endif %}"
+      min="{{- qty_min -}}" max="{{- qty_max -}}" value="{{- qty_val -}}"
+      {%- if index %} data-index="{{- index -}}"{% endif -%}
+    >
+
+    <button class="quantity__button" name="increment" type="button">
+      <span class="visually-hidden">{{- 'product.quantity_increase_for_product' | t: product: product_ref.title | escape -}}</span>
+      {%- render 'icon', icon_name: 'theme-plus', class: 'icon' -%}
+    </button>
+  </div>
+</quantity-input>

@@ -1,0 +1,189 @@
+{% comment %}
+  Before & After Compare Slider Section (Instant Drag)
+{% endcomment %}
+
+<style>
+  .before-after-section {
+    padding: 60px 20px;
+  }
+
+  .before-after-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+    text-align: center;
+  }
+
+  .before-after-heading {
+    font-size: clamp(26px, 5vw, 60px) !important;
+    text-transform: uppercase;
+    color: #b4975a !important;
+    margin-bottom: 0.8rem;
+  }
+
+  .before-after-subheading {
+    font-size: clamp(16px, 2vw, 23px) !important;
+    color: #2a2a2a;
+    margin-bottom: 2.4rem;
+  }
+
+  .before-after-slider {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: {{ section.settings.aspect_ratio }};
+    border-radius: 0.8rem;
+    --pos: 50%;
+  }
+
+.ba-vert-slider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* show full image without cropping */
+    background: #ECBDB4; /* fallback behind transparent areas */
+    pointer-events: none;
+    user-select: none;
+    transition: none;
+}
+.before-after-slider .after-image {
+  clip-path: polygon(0 0, var(--pos) 0, var(--pos) 100%, 0 100%);
+}
+
+.before-after-slider .before-image {
+  clip-path: none !important;
+}
+  .before-image {
+    z-index: 1;
+    clip-path: none;
+  }
+
+  .after-image {
+    z-index: 2;
+  }
+
+  /* Handle Line */
+  .slider-handle {
+    position: absolute;
+    top: 0;
+    left: var(--pos);
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: white;
+    z-index: 3;
+  }
+
+  /* Circle in middle */
+  .slider-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+  }
+  .slider-circle:active {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+
+  .slider-circle svg {
+    width: 18px;
+    height: 18px;
+    fill: black;
+  }
+</style>
+
+<div class="before-after-section">
+  <div class="before-after-container">
+    {% if section.settings.heading != blank %}
+      <h2 class="before-after-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p class="before-after-subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="before-after-slider">
+      {% if section.settings.before_image != blank %}
+        <img src="{{ section.settings.before_image | image_url }}" alt="Before Image" class="before-image">
+      {% endif %}
+      {% if section.settings.after_image != blank %}
+        <img src="{{ section.settings.after_image | image_url }}" alt="After Image" class="after-image">
+      {% endif %}
+
+      <div class="slider-handle">
+        <div class="slider-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M10 6l-6 6 6 6V6zm4 12l6-6-6-6v12z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll('.before-after-slider').forEach(function(slider) {
+    const afterImg = slider.querySelector('.after-image');
+    const handle = slider.querySelector('.slider-handle');
+    let isDragging = false;
+
+    function updateSlider(x) {
+      const rect = slider.getBoundingClientRect();
+      let offsetX = x - rect.left;
+      let percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+      slider.style.setProperty('--pos', percentage + '%');
+      afterImg.style.clipPath = `polygon(0 0, ${percentage}% 0, ${percentage}% 100%, 0 100%)`;
+      handle.style.left = percentage + '%';
+    }
+
+    slider.addEventListener('mousedown', e => {
+      isDragging = true;
+      updateSlider(e.clientX);
+    });
+    slider.addEventListener('touchstart', e => {
+      isDragging = true;
+      updateSlider(e.touches[0].clientX);
+    });
+
+    window.addEventListener('mousemove', e => {
+      if (isDragging) updateSlider(e.clientX);
+    });
+    window.addEventListener('touchmove', e => {
+      if (isDragging) updateSlider(e.touches[0].clientX);
+    });
+
+    window.addEventListener('mouseup', () => isDragging = false);
+    window.addEventListener('touchend', () => isDragging = false);
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Before & After Slider",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "See The Transformation" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Before and after using our product." },
+    { "type": "image_picker", "id": "before_image", "label": "Before Image" },
+    { "type": "image_picker", "id": "after_image", "label": "After Image" },
+    { "type": "text", "id": "aspect_ratio", "label": "Aspect Ratio", "default": "16/9" }
+  ],
+  "presets": [
+    { "name": "Before & After Slider (Instant Drag)", "category": "Image" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,314 @@
+{% schema %}
+{
+  "name": "Results Progress Section",
+  "tag": "section",
+  "class": "results-progress",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Main Title",
+      "default": "RESULTS BACKED BY CLINICAL SCIENCE"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Right Column Intro Text",
+      "default": "Over 3 months of clinical use, Omegia® significantly showed improvement by:"
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_image",
+      "label": "Arrow image (overlaps before image)"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "Top spacing",
+      "options": [
+        { "value": "0", "label": "No" },
+        { "value": "1", "label": "S" },
+        { "value": "2", "label": "M" },
+        { "value": "4", "label": "L" },
+        { "value": "6", "label": "XL" }
+      ],
+      "default": "0"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "Bottom spacing",
+      "options": [
+        { "value": "0", "label": "No" },
+        { "value": "1", "label": "S" },
+        { "value": "2", "label": "M" },
+        { "value": "4", "label": "L" },
+        { "value": "6", "label": "XL" }
+      ],
+      "default": "0"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "before_image",
+      "name": "Before Image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Before image" }
+      ]
+    },
+    {
+      "type": "after_image",
+      "name": "After Image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "After image" }
+      ]
+    },
+  {
+  "type": "stat",
+  "name": "Statistic",
+  "settings": [
+    { "type": "text", "id": "value", "label": "Percent value", "default": "49%" },
+    { "type": "text", "id": "label", "label": "Label line 1", "default": "in skin hydration" },
+    { "type": "text", "id": "label2", "label": "Label line 2 (optional)" }
+  ]
+}
+  ],
+  "max_blocks": 10,
+  "presets": [{ "name": "Results Progress Section" }]
+}
+{% endschema %}
+
+{% if section.blocks.size > 0 %}
+{%- style -%}
+#shopify-section-{{ section.id }} > div {
+  padding-block-start: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_top }});
+  padding-block-end: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_bottom }});
+}
+
+/* Heading */
+.section__heading {
+  text-transform: uppercase;
+  color: #b4975a;
+  text-align: center;
+  margin: 0 0 24px;
+  font-weight: 700;
+}
+
+/* 3 equal columns */
+.results-progress__row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 55px;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Images */
+.results-progress__col {
+  position: relative;
+}
+.results-progress__img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Arrow overlaps BEFORE image, horizontally centered */
+.results-progress__arrow {
+  position: absolute;
+  right: -41px;       /* slight overlap outside the before column */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 72px;
+  pointer-events: none; /* decorative */
+  z-index: 2;
+}
+
+/* Right column text + stats */
+.results-progress__text { text-align: left; }
+.results-progress__intro { margin: 0 0 18px; }
+
+    .results-progress__intro{
+    LINE-HEIGHT: 1.4;
+        font-size:23px!important;
+    }
+.results-progress__stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.results-progress__stat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.results-progress__badge {
+  background: #b4975a;
+  color: #2a2a2a;
+  font-weight: 700;
+  font-size: 32px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.results-progress__label {
+    max-width: 200px;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+/* Responsive stack */
+.results-progress__mobile { display: none; }
+.results-progress__desktop { display: block; }
+
+@media (max-width: 756px) {
+  .results-progress__desktop { display: none; }
+  .results-progress__mobile { padding-left:20px;display: block; }
+
+  .results-progress__intro {
+    line-height: normal;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+
+  .results-progress__image-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 10px;
+  }
+  .results-progress__image-scroll img {
+    flex: 0 0 auto;
+    scroll-snap-align: center;
+    max-width: 80%;
+    border-radius: 10px;
+  }
+  .results-progress__arrow {
+    position: static;
+    transform: none;
+    width: 50px;
+    align-self: center;
+    flex: 0 0 auto;
+  }
+.results-progress__label {
+    max-width: 130px;
+  font-size: 18px;
+  line-height: 1.4;
+}
+  .results-progress__stats {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+  .results-progress__stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: flex-start;
+  }
+}
+{%- endstyle -%}
+
+<div class="results-progress__wrapper {{ section.settings.color_scheme }}">
+<div class="results-progress__desktop">
+    <h2 class="section__heading">{{ section.settings.heading }}</h2>
+
+  <div class="results-progress__row">
+    <!-- 33%: BEFORE (arrow overlaps this column) -->
+    <div class="results-progress__col">
+      {%- assign before = section.blocks | where: 'type', 'before_image' | first -%}
+      {%- if before and before.settings.image != blank -%}
+        <img class="results-progress__img before" src="{{ before.settings.image | image_url: width: 1000 }}" alt="Before">
+      {%- endif -%}
+      {%- if section.settings.arrow_image != blank -%}
+        <img class="results-progress__arrow" src="{{ section.settings.arrow_image | image_url: width: 200 }}" alt="" aria-hidden="true" role="presentation">
+      {%- endif -%}
+    </div>
+
+    <!-- 33%: AFTER -->
+    <div class="results-progress__col">
+      {%- assign after = section.blocks | where: 'type', 'after_image' | first -%}
+      {%- if after and after.settings.image != blank -%}
+        <img class="results-progress__img after" src="{{ after.settings.image | image_url: width: 1000 }}" alt="After">
+      {%- endif -%}
+    </div>
+
+    <!-- 33%: CONTENT -->
+    <div class="results-progress__col results-progress__text">
+      <p class="results-progress__intro">{{ section.settings.description }}</p>
+      <div class="results-progress__stats">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stat' -%}
+            <div class="results-progress__stat">
+              <span class="results-progress__badge">{{ block.settings.value }}</span>
+              <span class="results-progress__label">
+                {{ block.settings.label }}
+                {%- if block.settings.label2 != blank -%}<br>{{ block.settings.label2 }}{%- endif -%}
+              </span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+  </div>
+<!-- MOBILE VERSION -->
+  <div class="results-progress__mobile">
+    <h2 class="section__heading">{{ section.settings.heading }}</h2>
+    <p class="results-progress__intro">{{ section.settings.description }}</p>
+
+    <!-- Scrollable Before/Arrow/After -->
+    <div class="results-progress__image-scroll">
+      {%- assign before = section.blocks | where: 'type', 'before_image' | first -%}
+      {%- if before and before.settings.image != blank -%}
+        <img src="{{ before.settings.image | image_url: width: 1000 }}" alt="Before">
+      {%- endif -%}
+
+      {%- if section.settings.arrow_image != blank -%}
+        <img class="results-progress__arrow" src="{{ section.settings.arrow_image | image_url: width: 200 }}" alt="" aria-hidden="true" role="presentation">
+      {%- endif -%}
+
+      {%- assign after = section.blocks | where: 'type', 'after_image' | first -%}
+      {%- if after and after.settings.image != blank -%}
+        <img src="{{ after.settings.image | image_url: width: 1000 }}" alt="After">
+      {%- endif -%}
+    </div>
+
+    <!-- Stats stacked -->
+    <div class="results-progress__stats">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'stat' -%}
+          <div class="results-progress__stat">
+            <span class="results-progress__badge">{{ block.settings.value }}</span>
+            <span class="results-progress__label">
+              {{ block.settings.label }}
+              {%- if block.settings.label2 != blank -%}<br>{{ block.settings.label2 }}{%- endif -%}
+            </span>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+{% endif %}

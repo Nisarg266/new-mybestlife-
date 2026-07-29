@@ -1,0 +1,310 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "breadcrumbs": true,
+        "show_page_title": true,
+        "info_title": "",
+        "info_content": "",
+        "section_width": "max-w-narrower",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "seo_content_r7JGph": {
+      "type": "seo-content",
+      "settings": {
+        "heading_size": "h3",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "4",
+        "spacing_bottom": "0"
+      }
+    },
+    "featured_collections_BNkWXJ": {
+      "type": "featured-collections",
+      "blocks": {
+        "collection_slide_JN97x6": {
+          "type": "collection-slide",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "collection_slide_pMPqtF": {
+          "type": "collection-slide",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "collection_slide_YgTGjx": {
+          "type": "collection-slide",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "collection_slide_3G36q3": {
+          "type": "collection-slide",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_slide_JN97x6",
+        "collection_slide_pMPqtF",
+        "collection_slide_YgTGjx",
+        "collection_slide_3G36q3"
+      ],
+      "settings": {
+        "layout": "layout-1",
+        "heading": "",
+        "subheading": "",
+        "button_style": "button--text",
+        "card_title_style": "card-single-text",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "0",
+        "spacing_bottom": "0"
+      }
+    },
+    "seo_content_XJ6KGr": {
+      "type": "seo-content",
+      "settings": {
+        "heading_size": "h3",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "6",
+        "spacing_bottom": "6"
+      }
+    },
+    "dual_tiles_iGX63L": {
+      "type": "dual-tiles",
+      "blocks": {
+        "tile_iE7kXe": {
+          "type": "tile",
+          "settings": {
+            "color_scheme": "scheme-5",
+            "button_style": "button--outlined",
+            "product": "",
+            "product_width": 24,
+            "product_position": "between",
+            "product_position_mobile": "between"
+          }
+        },
+        "tile_w3BMEP": {
+          "type": "tile",
+          "settings": {
+            "color_scheme": "scheme-4",
+            "button_style": "button--filled",
+            "product": "",
+            "product_width": 24,
+            "product_position": "between",
+            "product_position_mobile": "between"
+          }
+        }
+      },
+      "block_order": [
+        "tile_iE7kXe",
+        "tile_w3BMEP"
+      ],
+      "settings": {
+        "section_layout": "seperated",
+        "block_order_mobile": false,
+        "color_scheme": "",
+        "section_width": "max-w-page",
+        "spacing_top": "2",
+        "spacing_bottom": "6"
+      }
+    },
+    "full_width_banner_H7TeAA": {
+      "type": "full-width-banner",
+      "blocks": {
+        "subheading_cePnHk": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "New Collection",
+            "link": ""
+          }
+        },
+        "heading_UH7aL7": {
+          "type": "heading",
+          "settings": {
+            "heading": "Transform your <em>look</em> this season",
+            "heading_size": "h2"
+          }
+        },
+        "buttons_P3LRar": {
+          "type": "buttons",
+          "settings": {
+            "button_link_1": "/",
+            "button_label_1": "Shop now",
+            "button_style_1": "button--filled",
+            "color_scheme_first_button": "scheme-72710708-64a0-4c87-b74b-16ad066d9ccd",
+            "button_link_2": "/",
+            "button_label_2": "Explore",
+            "button_style_2": "button--outlined",
+            "color_scheme_second_button": "scheme-72710708-64a0-4c87-b74b-16ad066d9ccd"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_cePnHk",
+        "heading_UH7aL7",
+        "buttons_P3LRar"
+      ],
+      "settings": {
+        "section_width": "max-w-full",
+        "color_scheme": "scheme-72710708-64a0-4c87-b74b-16ad066d9ccd",
+        "color_scheme_for_content": "scheme-4",
+        "spacing_top": "0",
+        "spacing_bottom": "2"
+      }
+    },
+    "featured_products_MAtb9j": {
+      "type": "featured-products",
+      "blocks": {
+        "collection_4y7kRU": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "",
+            "products": [],
+            "show_unavailable_products": true
+          }
+        }
+      },
+      "block_order": [
+        "collection_4y7kRU"
+      ],
+      "settings": {
+        "layout": "layout-1",
+        "heading": "SS24 Collection",
+        "subheading": "",
+        "button_style": "button--text",
+        "enable_slideshow_overflow": false,
+        "show_navigation_arrows": true,
+        "tab_button_style": "button button--filled",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "shop_the_look_R7dKxB": {
+      "type": "shop-the-look",
+      "blocks": {
+        "slide_KYiwz9": {
+          "type": "slide",
+          "settings": {
+            "product": "",
+            "dot_position_horizontal": 50,
+            "dot_position_vertical": 50
+          }
+        },
+        "slide_fzwjhL": {
+          "type": "slide",
+          "settings": {
+            "product": "",
+            "dot_position_horizontal": 50,
+            "dot_position_vertical": 50
+          }
+        }
+      },
+      "block_order": [
+        "slide_KYiwz9",
+        "slide_fzwjhL"
+      ],
+      "settings": {
+        "reverse_positions": true,
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "0",
+        "spacing_bottom": "0"
+      }
+    },
+    "featured_products_XzEjKy": {
+      "type": "featured-products",
+      "blocks": {
+        "collection_9TYU4z": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "",
+            "products": [],
+            "show_unavailable_products": true
+          }
+        }
+      },
+      "block_order": [
+        "collection_9TYU4z"
+      ],
+      "settings": {
+        "layout": "layout-1",
+        "heading": "New Collection",
+        "subheading": "",
+        "button_style": "button--text",
+        "enable_slideshow_overflow": false,
+        "show_navigation_arrows": true,
+        "tab_button_style": "button button--filled",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "4",
+        "spacing_bottom": "4"
+      }
+    },
+    "dual_tiles_MJqEHe": {
+      "type": "dual-tiles",
+      "blocks": {
+        "tile_CDAiMp": {
+          "type": "tile",
+          "settings": {
+            "color_scheme": "scheme-4",
+            "button_style": "button--filled",
+            "product": "",
+            "product_width": 24,
+            "product_position": "between",
+            "product_position_mobile": "between"
+          }
+        },
+        "tile_PQPphJ": {
+          "type": "tile",
+          "settings": {
+            "color_scheme": "scheme-5",
+            "button_style": "button--outlined",
+            "product": "",
+            "product_width": 24,
+            "product_position": "between",
+            "product_position_mobile": "between"
+          }
+        }
+      },
+      "block_order": [
+        "tile_CDAiMp",
+        "tile_PQPphJ"
+      ],
+      "settings": {
+        "section_layout": "seperated",
+        "block_order_mobile": false,
+        "color_scheme": "",
+        "section_width": "max-w-page",
+        "spacing_top": "2",
+        "spacing_bottom": "6"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "seo_content_r7JGph",
+    "featured_collections_BNkWXJ",
+    "seo_content_XJ6KGr",
+    "dual_tiles_iGX63L",
+    "full_width_banner_H7TeAA",
+    "featured_products_MAtb9j",
+    "shop_the_look_R7dKxB",
+    "featured_products_XzEjKy",
+    "dual_tiles_MJqEHe"
+  ]
+}

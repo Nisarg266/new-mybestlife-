@@ -1,0 +1,382 @@
+{% comment %}
+  ===========================================================================
+  main-product__media-gallery.liquid
+  ---------------------------------------------------------------------------
+  Renders the product media gallery (slider + thumbs, grid, or single media).
+  Rewritten implementation: identical rendered output, restructured internals.
+  ===========================================================================
+{% endcomment %}
+
+{%- liquid
+  # ---- Zoom / photoswipe mode --------------------------------------------
+  assign mg_zoom_mode = section.settings.display_media_zoom
+
+  # ---- Bucket media by type, then re-merge in original position order -----
+  assign mg_images = product.media | where: 'media_type', 'image'
+  assign mg_models = product.media | where: 'media_type', 'model'
+  assign mg_local_videos = product.media | where: 'media_type', 'video'
+  assign mg_external_videos = product.media | where: 'media_type', 'external_video'
+  assign mg_all_videos = mg_local_videos | concat: mg_external_videos
+  assign mg_media = mg_images | concat: mg_models | concat: mg_all_videos | sort: 'position'
+
+  # feat: hide variants media
+  assign mg_hide_variant_media = section.settings.hide_variants | default: false
+-%}
+
+{% comment %} PhotoSwipe assets are always emitted so the customiser never needs a save before init {% endcomment %}
+<link
+  data-photoswipe
+  rel="stylesheet"
+  href="{{- 'photoswipe.css' | asset_url -}}"
+  media="print"
+  onload="this.media='all'">
+<script
+  data-photoswipe
+  src="{{- 'photoswipe.umd.min.js' | asset_url -}}"
+  defer="defer"></script>
+<script
+  data-photoswipe
+  src="{{- 'photoswipe-lightbox.umd.min.js' | asset_url -}}"
+  defer="defer"></script>
+
+<script src="{{ 'product-media-gallery.js' | asset_url }}" async></script>
+
+{% style %}
+  #shopify-section-{{ section.id }} .main-product__media {
+    --product-media-aspect-ratio: {% if section.settings.product_media_aspect_ratio == 'fit' %}auto{% else %}{{ section.settings.product_media_aspect_ratio | default: 'auto' }}
+{% endif %};
+  --product-thumbs-aspect-ratio: {{ section.settings.product_media_thumbs_ratio | default: 'auto' }};
+  --product-media-object-fit: {{ section.settings.product_media_object_fit | default: 'cover' }};
+  --product-thumbs-object-fit: {{ section.settings.product_media_thumbs_object_fit | default: 'cover' }};
+}
+
+#shopify-section-{{ section.id }}
+.main-product__media--slider {
+  position: relative;
+}
+
+#shopify-section-{{ section.id }}
+.main-product__media--slider .product-card__badges {
+  position: absolute;
+  top: -10px;
+  left: 1.2rem;
+  z-index: 3;
+}
+
+{%- if section.settings.media_transparent_background -%}
+  .main-product__media .swiper--product-gallery .media {
+    background-color: transparent;
+  }
+{%- endif -%}
+{% endstyle %}
+
+{% comment %} Resolve thumbnail / arrow / pagination visibility per breakpoint {% endcomment %}
+{%- liquid
+  assign mg_thumbs_mode = section.settings.product_media_with_thumbs
+
+  assign mg_thumbs_desktop = true
+  assign mg_thumbs_mobile = true
+  if mg_thumbs_mode == 'only_mobile' or mg_thumbs_mode == 'none'
+    assign mg_thumbs_desktop = false
+  endif
+  if mg_thumbs_mode == 'only_desktop' or mg_thumbs_mode == 'none'
+    assign mg_thumbs_mobile = false
+  endif
+
+  assign mg_arrows_mode = section.settings.gallery_arrows_show_on
+  assign mg_arrows_mobile = true
+  if mg_arrows_mode == 'desktop' or mg_arrows_mode == 'none'
+    assign mg_arrows_mobile = false
+  endif
+
+  assign mg_pagination = false
+  if mg_thumbs_mobile == false and section.settings.display_media_gallery_pagination != 'none' or mg_thumbs_mobile == false and mg_arrows_mobile == false
+    assign mg_pagination = true
+  endif
+-%}
+
+{% comment %} METAFIELD FEATURES - MEDIA INFO marquee {% endcomment %}
+{%- capture mg_media_info_html -%}
+  {% if section.settings.media_gallery_info != blank %}
+    {%- assign mg_info_text = section.settings.media_gallery_info -%}
+    <product-media-info class="main-product__media--feat main-product__media--feat-media-info color-{{ section.settings.color_scheme_gallery }} gradient" style="opacity: 0">
+      <div class="product__media--info">
+        <div class="product__media--info-marquee">
+          <p aria-hidden="true">{{- mg_info_text -}}</p>
+          <p>{{- mg_info_text -}}</p>
+        </div>
+      </div>
+    </product-media-info>
+  {% endif %}
+{%- endcapture -%}
+
+{% comment %} METAFIELD FEATURES - AS SEEN ON {% endcomment %}
+{%- capture mg_as_seen_on_html -%}
+  {% if section.settings.metafield_as_seen_on != blank %}
+    {%- liquid
+      assign mg_aso_namespace = section.settings.metafield_as_seen_on | split: '.' | first
+      assign mg_aso_key = section.settings.metafield_as_seen_on | split: '.' | last
+      assign mg_aso_value = product.metafields[mg_aso_namespace][mg_aso_key]
+    -%}
+    {% if mg_aso_value != blank %}
+      <div class="main-product__media--feat main-product__media--feat-as-seen-on color-{{ section.settings.color_scheme_gallery }} gradient">
+        {%- render 'product-as-seen-on', product: product, metafield_as_seen_on: mg_aso_value -%}
+      </div>
+    {% endif %}
+  {% endif %}
+{%- endcapture -%}
+
+{% comment %}
+  When every media item shares the same aspect ratio, force swiper auto-height
+  off so the configured aspect ratio setting is not overwritten.
+{% endcomment %}
+{%- liquid
+  assign mg_uniform_ratio = true
+  assign mg_first_ratio = mg_media.first.aspect_ratio
+  for mg_ratio_item in mg_media
+    if forloop.index0 > 0
+      if mg_ratio_item.aspect_ratio != mg_first_ratio
+        assign mg_uniform_ratio = false
+        break
+      endif
+    endif
+  endfor
+
+  assign mg_slider_auto_height = section.settings.product_slider_auto_height | default: false
+  if mg_uniform_ratio == true
+    assign mg_slider_auto_height = false
+  endif
+-%}
+
+{% comment %}
+  ---------------------------------------------------------------------------
+  NOTE: the original snippet contained a large experimental "hide variant
+  media" grouping routine wrapped in a 'comment' block here. It never
+  executed (it was fully commented out) and produced no output, so it has been
+  omitted in this rewrite. The downstream `product-media-card` snippet still
+  receives `data_group_array` for interface compatibility (it resolves to nil,
+  exactly as in the original).
+  ---------------------------------------------------------------------------
+{% endcomment %}
+
+<div
+  id="MediaGallery-{{ section.id }}"
+  class="main-product__media "
+  {% if section.settings.product_media_aspect_ratio == 'fit' %}data-height-limited{% endif %}
+  {% if mg_slider_auto_height %}data-slider-auto-height{% endif %}
+  data-with-thumbs="{{ section.settings.product_media_with_thumbs }}"
+  {% if section.settings.product_media_layout == 'product__media-layout--grid' %}data-desktop-grid{% endif %}
+  {% if topbar_mobile == 'on-top' %}data-mobile-topbar{% endif %}
+  {% if product_has_single_media %}data-single-media{% endif %}
+  data-hide-other-variants-media="{% if mg_hide_variant_media %}true{% else %}false{% endif %}">
+
+{% unless product_has_single_media %}
+  {% comment %} SLIDER - PRODUCT MEDIA {% endcomment %}
+  <div
+    class="main-product__media--slider-wrapper{% if section.settings.product_media_layout == 'product__media-layout--grid' %} small-up-hide{% endif %}"
+    data-layout-desktop="{{- section.settings.product_media_layout -}}"
+    data-layout-mobile="{{- section.settings.product_media_layout_mobile -}}">
+    {% comment %} METAFIELD FEATURES - SLIDER {% endcomment %}
+    <div class="main-product__media--slider">
+      <div class="main-product__media--features">
+        {{- mg_media_info_html -}}
+        {{- mg_as_seen_on_html -}}
+      </div>
+
+      {%- comment -%} Overlay product badges on top of main image area {%- endcomment -%}
+      {% render 'product-badges', product: product %}
+
+      <swiper-product-gallery
+        handle="product-gallery"
+        {% unless section.settings.product_media_with_thumbs == 'none' %}thumbs="product-thumbs"{% endunless %}
+        {% unless mg_zoom_mode == 'none' %}zoom="{{- mg_zoom_mode -}}"{% endunless %}
+        data-hide-other-variants-media="{% if mg_hide_variant_media %}true{% else %}false{% endif %}">
+
+        {%- liquid
+          assign mg_gallery_slides = ''
+          if mg_media.size > 0
+            for mg_slide_media in mg_media
+              capture mg_gallery_slides
+                echo mg_gallery_slides
+                render 'product-media-card', media: mg_slide_media, card_type: 'slide', zoom_modal: mg_zoom_mode, media_index: forloop.index0, section_index: section.index, data_group_array: data_group_array
+              endcapture
+            endfor
+          endif
+        -%}
+
+        {% capture mg_gallery_options %}
+          {% if mg_pagination %}
+            {
+              "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
+              },
+              {% if section.settings.display_media_gallery_pagination != 'none' %}
+              "pagination": {
+                "el": ".swiper--product-gallery__pagination",
+                "clickable": {% if section.settings.display_media_gallery_pagination == 'dynamic' %}false{% else %}true{% endif %},
+                "dynamicBullets": {% if section.settings.display_media_gallery_pagination == 'dynamic' %}true{% else %}false{% endif %}
+              },
+              {% endif %}
+              "autoHeight": {{ mg_slider_auto_height }},
+              {% if section.settings.product_media_layout_mobile == 'product__media-layout--partial--sm' %}
+                "spaceBetween": 8,
+                "slidesPerView": 1.125,
+              {% endif %}
+              "breakpoints": {
+                "750": {
+                  "pagination": false,
+                  "spaceBetween": 8
+                  {% if section.settings.product_media_layout == 'product__media-layout--partial' %},
+                    "slidesPerView": 1.5
+                  {% elsif section.settings.product_media_layout == 'product__media-layout--full' %},
+                    "slidesPerView": 1
+                  {% endif %}
+                }
+              }
+            }
+          {% else %}
+            {
+              "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
+              },
+              "autoHeight": {{ mg_slider_auto_height }}
+              {% if section.settings.product_media_layout_mobile == 'product__media-layout--partial--sm' %},
+                "spaceBetween": 8,
+                "slidesPerView": 1.125
+              {% endif %}
+              {% if section.settings.product_media_layout == 'product__media-layout--partial' %},
+                "breakpoints": {
+                  "750": {
+                    "spaceBetween": 8,
+                    "slidesPerView": 1.5
+                  }
+                }
+              {% elsif section.settings.product_media_layout == 'product__media-layout--full' %},
+                "breakpoints": {
+                  "750": {
+                    "spaceBetween": 8,
+                    "slidesPerView": 1
+                  }
+                }
+              {% endif %}
+            }
+          {% endif %}
+        {% endcapture %}
+
+        {% render 'instance-swiper', handle: 'product-gallery', options: mg_gallery_options, slides: mg_gallery_slides, arrows: section.settings.gallery_arrows_show_on %}
+      </swiper-product-gallery>
+    </div>
+  </div>
+
+  {% unless section.settings.product_media_with_thumbs == 'none' %}
+    {% comment %} THUMBS - PRODUCT MEDIA {% endcomment %}
+    <div class="main-product__media--thumbs-wrapper{% unless mg_thumbs_mobile and mg_thumbs_desktop %}{% if mg_thumbs_mobile %} small-up-hide{% elsif mg_thumbs_desktop %} small-hide{% endif %}{% endunless %}{% if section.settings.product_media_layout == 'product__media-layout--grid' %} small-up-hide{% endif %}">
+      <swiper-product-thumbs handle="product-thumbs">
+        {% capture mg_thumbs_options %}
+          {
+            "direction": "horizontal",
+            {% if product.media.size > 5 %}
+            "centeredSlides": true,
+            "centeredSlidesBounds": true,
+            {% endif %}
+            "freeMode": true,
+            "mousewheel": true,
+            "slidesPerView": "auto",
+            "spaceBetween": 8,
+            "breakpoints": {
+              "750": {
+                {% unless product.media.size > 5 %}
+                "centeredSlides": true,
+                "centeredSlidesBounds": true,
+                {% endunless %}
+                "spaceBetween": 16,
+                "direction": "horizontal"
+              },
+              "990": {
+                {% unless product.media.size > 5 %}
+                "centeredSlides": true,
+                "centeredSlidesBounds": true,
+                {% endunless %}
+                "spaceBetween": 16,
+                "direction": "vertical"
+              }
+            }
+          }
+        {% endcapture %}
+
+        {%- liquid
+          assign mg_thumbs_slides = ''
+          if mg_media.size > 0
+            for mg_thumb_media in mg_media
+              capture mg_thumbs_slides
+                echo mg_thumbs_slides
+                render 'product-media-card', media: mg_thumb_media, card_type: 'thumbs', zoom_modal: mg_zoom_mode, media_index: forloop.index0, section_index: section.index, data_group_array: data_group_array
+              endcapture
+            endfor
+          endif
+        -%}
+
+        {% render 'instance-swiper', handle: 'product-thumbs', options: mg_thumbs_options, slides: mg_thumbs_slides %}
+      </swiper-product-thumbs>
+    </div>
+  {% endunless %}
+
+  {% if section.settings.product_media_layout == 'product__media-layout--grid' %}
+    {% comment %} GRID - PRODUCT MEDIA {% endcomment %}
+    <div class="main-product__media--grid small-hide photoswipe-wrapper">
+      {%- if mg_media.size > 0 -%}
+        {%- for mg_grid_media in mg_media -%}
+          <div class="main-product__media--grid-item">
+            {% comment %} METAFIELD FEATURES - GRID {% endcomment %}
+            {% if forloop.first or forloop.index0 == 1 %}
+              <div class="main-product__media--features">
+                {% if forloop.first %}{{- mg_as_seen_on_html -}}{% endif %}
+                {% if forloop.index0 == 1 %}{{- mg_media_info_html -}}{% endif %}
+              </div>
+            {% endif %}
+            {%- render 'product-media-card', media: mg_grid_media, card_type: 'grid', zoom_modal: mg_zoom_mode, media_index: forloop.index0, section_index: section.index, data_group_array: data_group_array -%}
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  {% endif %}
+{% else %}
+  {% comment %} SINGLE PRODUCT MEDIA {% endcomment %}
+  {% assign mg_single_media = mg_media.first %}
+  <div class="main-product__media--grid-item">
+    {% comment %} METAFIELD FEATURES - GRID {% endcomment %}
+    {% if forloop.first or forloop.index0 == 1 %}
+      <div class="main-product__media--features">
+        {% if forloop.first %}{{- mg_as_seen_on_html -}}{% endif %}
+        {% if forloop.index0 == 1 %}{{- mg_media_info_html -}}{% endif %}
+      </div>
+    {% endif %}
+    {%- render 'product-media-card', media: mg_single_media, card_type: 'grid', zoom_modal: mg_zoom_mode, media_index: forloop.index0, section_index: section.index, data_group_array: data_group_array -%}
+  </div>
+{% endunless %}
+
+</div>
+
+{% comment %}
+  PAGINATION - PRODUCT MEDIA GALLERY
+  Intentionally placed here (outside the gallery / after the grid): it is bound
+  by class name and only works correctly in this position.
+{% endcomment %}
+{% if mg_pagination %}
+<div class="swiper--product-gallery__pagination swiper-pagination{% if section.settings.display_media_gallery_pagination == 'dynamic' or section.settings.display_media_gallery_pagination == 'lines' %} swiper-pagination--{{ section.settings.display_media_gallery_pagination }}{% endif %} small-up-hide{% if section.settings.product_media_layout_mobile == 'product__media-layout--partial--sm' %} swiper-pagination--carousel{% endif %}"></div>
+{% endif %}
+
+{% unless mg_zoom_mode == 'none' %}
+  {% comment %} ZOOM MODAL BUTTONS {% endcomment %}
+  <div class="hidden" data-close-icon>
+    {%- render 'icon', icon_name: 'theme-close' -%}
+  </div>
+  <div class="hidden" data-prev-icon>
+    {%- render 'icon', icon_name: 'theme-chevron', class: 'icon--rotate-180' -%}
+  </div>
+  <div class="hidden" data-next-icon>
+    {%- render 'icon', icon_name: 'theme-chevron' -%}
+  </div>
+{% endunless %}

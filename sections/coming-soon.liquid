@@ -1,0 +1,288 @@
+﻿<section
+  class="hero-banner clickable-block"
+  style="
+    background-color: {{ section.settings.background_color }};
+    background-image: url({{ section.settings.background_image | image_url: width: 2000 }});
+    background-size: cover;
+    background-position: center;
+    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    {% comment %} height: {{ section.settings.section_height }}; {% endcomment %}
+    width: 100%;
+    aspect-ratio: {{ section.settings.background_image.width }}/{{ section.settings.background_image.height }};
+  "
+{% if section.settings.button_link != blank %}
+  onclick="window.location.href='{{ section.settings.button_link }}'" 
+    
+  {% endif %} 
+
+  
+>
+  <style>
+  .clickable-block[onclick] {
+    cursor: pointer;
+  }
+    @media screen and (max-width: 749px) {
+      .hero-banner {
+        {% if section.settings.mobile_background_image != blank %}
+          background-image: url({{ section.settings.mobile_background_image | image_url: width: 1000 }}) !important;
+          aspect-ratio: {{ section.settings.mobile_background_image.width }}/{{ section.settings.mobile_background_image.height }}  !important;
+        {% endif %}
+      }
+    }
+  </style>
+
+  <div class="page-width" style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    text-align: {{ section.settings.text_alignment }};
+    flex-direction: column;
+  ">
+    {% if section.settings.logo != blank %}
+      <img 
+        src="{{ section.settings.logo | image_url: width: 500 }}" 
+        alt="Hero Logo" 
+        style="
+          width: {{ section.settings.logo_width }}px;
+          max-width: 100%;
+          margin: {{ section.settings.logo_margin_top }}px 0 {{ section.settings.logo_margin_bottom }}px;
+        "
+      >
+    {% endif %}
+
+    <div 
+      class="heading" 
+      style="
+        color: {{ section.settings.heading_color }};
+        font-size: {{ section.settings.heading_size }}px;
+        margin-top: {{ section.settings.heading_margin_top }}px;
+        margin-bottom: {{ section.settings.heading_margin_bottom }}px;
+      "
+    >
+      <b>{{ section.settings.heading }}</b>
+    </div>
+
+    <div 
+      class="subheading" 
+      style="
+        color: {{ section.settings.subheading_color }};
+        font-size: {{ section.settings.subheading_size }}px;
+        margin-top: {{ section.settings.subheading_margin_top }}px;
+        margin-bottom: {{ section.settings.subheading_margin_bottom }}px;
+        padding-left: {{ section.settings.subheading_padding_left }}px;
+        padding-right: {{ section.settings.subheading_padding_right }}px;
+      "
+    >
+      <b>{{ section.settings.subheading }}</b>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+  "type": "url",
+  "id": "button_link",
+  "label": "Button Link"},
+    {
+      "type": "range",
+      "id": "logo_margin_top",
+      "label": "Logo Top Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "logo_margin_bottom",
+      "label": "Logo Bottom Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading Text (HTML Allowed)",
+      "default": "<span>Discover something amazing today.</span>"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Subheading Font Size (px)",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "subheading_color",
+      "label": "Subheading Color",
+      "default": "#eeeeee"
+    },
+    {
+      "type": "range",
+      "id": "subheading_margin_top",
+      "label": "Subheading Top Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "subheading_margin_bottom",
+      "label": "Subheading Bottom Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 10
+    },
+        {
+      "type": "range",
+      "id": "subheading_padding_left",
+      "label": "Subheading Padding Left",
+      "min": 200,
+      "max": 300,
+      "step": 5,
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "subheading_padding_right",
+      "label": "Subheading Padding Right",
+      "min": 200,
+      "max": 300,
+      "step": 5,
+      "default": 200
+    },
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading Text (HTML Allowed)",
+      "default": "<strong>Welcome to Our Store</strong>"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading Font Size (px)",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "default": 48
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_top",
+      "label": "Heading Top Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "label": "Heading Bottom Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 10
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#2A2A2A"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_image",
+      "label": "Background Image (Mobile)"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "default": "center",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 100
+    },
+    {
+  "type": "range",
+  "id": "logo_width",
+  "label": "Logo Width (px)",
+  "min": 50,
+  "max": 400,
+  "step": 10,
+  "default": 200
+},
+{
+  "type": "select",
+  "id": "section_height",
+  "label": "Section Height",
+  "default": "85vh",
+  "options": [
+    { "value": "100vh", "label": "100% Height (Full Screen)" },
+    { "value": "85vh", "label": "85% Height" },
+    { "value": "65vh", "label": "65% Height" },
+    { "value": "50vh", "label": "50% Height" },
+    { "value": "auto", "label": "Auto Height" }
+  ]
+}
+
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

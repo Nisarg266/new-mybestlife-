@@ -1,0 +1,451 @@
+﻿{% schema %}
+{
+  "name": "How to Use Steps",
+  "settings": [
+    {
+  "type": "color",
+  "id": "background_color",
+  "label": "Section Background Color",
+  "default": "#ffffff"
+},
+   {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Main Title",
+      "default": "Real Science. Real Hydration"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "h6", "label": "XS" },
+        { "value": "h5", "label": "S" },
+        { "value": "h4", "label": "M" },
+        { "value": "h3", "label": "L" },
+        { "value": "h2", "label": "XL" }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Side Image"
+    },
+    {
+  "type": "url",
+  "id": "right_video_url",
+  "label": "Video URL (MP4 only)"},
+    {
+  "type": "checkbox",
+  "id": "autoplay_video",
+  "label": "Autoplay video",
+  "default": false
+},
+
+        {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "t:sections.global.spacing.spacing_top.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "No"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "0"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "t:sections.global.spacing.spacing_bottom.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "No"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "0"
+    },
+            {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 92
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 92
+    },
+    {
+  "type": "range",
+  "id": "left_padding",
+  "label": "Left padding",
+  "min": 0,
+  "max": 160,
+  "step": 2,
+  "unit": "px",
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "right_padding",
+  "label": "Right padding",
+  "min": 0,
+  "max": 160,
+  "step": 2,
+  "unit": "px",
+  "default": 20
+}],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "step_desc",
+          "label": "Description",
+          "default": "1 tablet daily, after breakfast"
+        },
+        {
+          "type": "select",
+          "id": "color",
+          "label": "Icon Color",
+          "default": "green",
+          "options": [
+            { "value": "green", "label": "Green" },
+            { "value": "red", "label": "Red" },
+            { "value": "blue", "label": "Blue" }
+          ]
+        },
+        {
+        "type": "image_picker",
+        "id": "step_icon",
+        "label": "Step Icon"
+      }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How to Use Steps",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+
+          .step-desc {
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 1.5;
+            font-family: "Fira Sans";
+            color: #666 !important;
+          }
+          .step-title {
+            font-weight: 700 !important;
+            font-size: 22px !important;
+            line-height: 1.2;
+            font-family: "Fira Sans";
+            color: #2a2a2a;
+          }
+          .how-to-title {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 40px;
+                  font-family: "Fira Sans";
+          }
+          .step-card {
+            width: 85%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+          }
+          .how-to-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            align-items: flex-start;
+            justify-content: center;
+            margin-top: 30px;
+          }
+
+          .how-to-image {
+            width: auto;
+        }
+
+          .step-wrapper {
+            margin-bottom: 10px;
+            padding: 15px 24px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            border: none;
+            text-align: left;
+            display: flex;
+            align-items: left;
+            width: 100%;
+border-bottom: 1px solid #b4975a;          }
+          .step-wrapper.active {
+          
+          }
+          .how-to-steps {
+                
+    padding-left: 0px;
+    {% comment %} width: 50%; {% endcomment %}
+            position: relative;
+            flex: 1;
+          }
+          .step-circle img {
+             width: 70px;
+    height: 70px;
+            object-fit: fit;
+          }
+
+          .step-circle {
+            margin-right:35px;
+                margin-top: 2px;
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+  
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+
+.how-to-image img,
+.how-to-image .video-wrapper video,
+.how-to-image .image-placeholder {
+  width: 100%;
+  height: 600px;
+  border-radius: 12px;
+  background-color: #ecbdb4bd;
+  min-height: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: block;
+  margin: 0 auto;
+  object-fit: cover; /* âœ¨ Ensures full cover without distortion */
+}
+
+.heading123{
+  text-align:left;
+      font-size: clamp(30px, 5vw, 50px) !important;
+      text-transform:Uppercase;
+      color:#b4975a
+
+    }
+
+          /* Responsive styles */
+          @media screen and (max-width: 768px) {
+.heading123{
+  text-align:center;
+}
+                    .step-circle img {
+             width: 60px;
+    height: 60px;
+            object-fit: fit;
+          }
+            .section-template--24175769092380__how_to_use_nutradew_k3mxFW-padding {
+            padding:20px !important;
+            padding-bottom:10px !important;
+            
+            }
+   .step-circle {
+                margin-top: 10px;
+              }
+            .how-to-grid {
+              flex-direction: column;
+              gap: 30px;
+            }
+    .step-wrapper {
+        margin-bottom: 24px;
+        padding: 16px 20px;
+        width: 100%;
+        justify-content: flex-start;
+        gap: 16px;
+    }
+            .vertical-line {
+      left: 22px;
+              top: 35px;
+  }
+            .how-to-steps,
+            .how-to-image {
+   
+              width: 100%;
+              padding-bottom:10px;
+            }
+ .how-to-image{
+                padding-top:10px;
+
+}
+            .how-to-title {
+              font-size: 24px;
+              margin-bottom: 30px;
+            }
+
+        .step-card {
+        padding: 0px;
+        gap: 0;
+    }
+
+           .step-desc {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .step-title {
+        font-size: 18px;
+        line-height: 1.2;
+    }
+
+          .step-circle {
+            margin-right:0px;
+            background-color: white !important;
+            transition: background-color 0.3s ease;
+          }
+
+          .step-title,
+          .step-desc {
+            color: Black;
+            transition: color 0.3s ease;
+          }
+
+
+
+          .step-wrapper.active .step-title,
+          .step-wrapper.active .step-desc {
+            color: #2A2A2A;
+          }
+        }
+</style>
+
+{% if section.blocks.size > 0 %}
+  {%- style -%}
+    #shopify-section-{{ section.id }} > div {
+      padding-block-start: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_top }});
+      padding-block-end: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_bottom }});
+    }
+  {%- endstyle -%}
+  <section class="how-to-use-container container section-{{ section.id }}-padding" style="background-color: {{ section.settings.background_color }};">
+
+
+    <div class="how-to-grid">
+      <div class="how-to-steps">
+    {% if section.settings.heading != blank %}
+      <h2 style="" class="heading123">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}      
+      {% for block in section.blocks %}
+          <div class="step-wrapper">
+            <div class="step-circle step-{{ block.settings.color }}">
+              {% if block.settings.step_icon %}
+                <img src="{{ block.settings.step_icon | img_url: 'master' }}" alt="Step Icon">
+              {% else %}
+                <span>{{ forloop.index }}</span>
+              {% endif %}
+            </div>
+
+            <div class="step-card">
+              <div class="step-title">{{ block.settings.step_number }}</div>
+              <div class="step-desc">{{ block.settings.step_desc }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+<div class="how-to-image">
+  {% if section.settings.right_image %}
+    <img src="{{ section.settings.right_image | img_url: 'master' }}" alt="How to Use Image">
+  {% elsif section.settings.right_video_url %}
+ <div class="video-wrapper">
+  <video 
+    {% if section.settings.autoplay_video %}autoplay muted loop playsinline{% endif %} 
+    controls
+  >
+    <source src="{{ section.settings.right_video_url }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+  {% else %}
+    <div class="image-placeholder"></div>
+  {% endif %}
+</div>
+
+    </div>
+  </section>
+{% endif %}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.top_padding}}px !important;
+    padding-bottom: {{ section.settings.bottom_padding}}px !important;
+    padding-left: {{ section.settings.left_padding}}px !important;
+    padding-right: {{ section.settings.right_padding}}px !important;
+  }
+@media (max-width: 769px) {
+     .section-{{ section.id }}-padding {
+    padding-top: 20px !important;
+    padding-bottom: 10px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+    }
+
+  
+{%- endstyle -%}

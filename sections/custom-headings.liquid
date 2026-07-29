@@ -1,0 +1,416 @@
+﻿<style>
+  .custom-heading-GR {
+  font-weight: 500;
+  font-size: 45px;
+  line-height: 39px;
+      font-family: "Fira Sans";
+
+  }
+
+  .custom-paragraph-GR h2 {
+  font-size: 32px;
+      font-family: "Fira Sans";
+  }
+  .custom-paragraph-GR ul {
+  margin-block: 40px;
+      font-family: "Fira Sans";
+  }
+
+  .custom-paragraph-GR {
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 39px;
+  font-family: "Fira Sans";
+  color:rgba(42, 42, 42, 1);
+  }
+
+  .custom-section-GR-{{ section.id }} {
+  text-align: center;
+  background: {{ section.settings.bg }};
+  }
+
+  h1.main-page-title {
+  text-align: center;
+  padding: 41px;
+  font-size: 50px;
+      font-family: "Fira Sans";
+  line-height: 50px;
+  color: rgb(97, 97, 97);
+  }
+
+  .custom-paragraph-GR a {
+  color: {{ section.settings.highlight_color }};
+  text-decoration: underline;
+  }
+
+
+
+  .page-width-container {
+  max-width: {{ section.settings.page_width_px }}px;
+  margin: 0 auto;
+  }
+
+  .custom-button-GR {
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  }
+  svg.bi.bi-arrow-right {
+  width: 20px;
+  height: 20px;
+  }
+  .custom-button-wrapper {
+  display: flex;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  }
+  .custom-button-wrapper {
+  width: 100%;
+  display: inline;
+  }
+
+  .align-left {
+  text-align: left;
+  }
+
+  .align-center {
+  text-align: center;
+  }
+
+  .align-right {
+  text-align: right;
+  }
+  .custom-button-wrapper:hover a,
+  .custom-button-wrapper:hover svg{
+  color: #2a2a2a;
+  fill: black;
+  }
+
+
+
+  @media screen and (max-width: 768px) {
+  .custom-paragraph-GR {
+  font-size: 18px;
+  line-height: 27px;
+  }
+
+  .custom-paragraph-GR h1 {
+  text-align: center;
+  color: rgb(164, 139, 32);
+  font-size: 28px;
+  line-height: 33px;
+  text-transform: uppercase;
+  }
+
+  .custom-heading-GR {
+  font-size: 30px;
+  }
+
+  h1.main-page-title {
+  padding: 40px 10px;
+  }
+  .custom-paragraph-GR h2 {
+  font-size: 24px;
+  color: rgb(112, 112, 112);
+  }
+  }
+
+      @media screen and (max-width:768px){
+     .custom-section-GR-{{ section.id }}{
+
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+    }
+</style>
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.top_padding | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.bottom_padding | times: 0.75 | round: 0 }}px;
+    padding-left: {{ section.settings.left_padding | times: 0.75 | round: 0 }}px;
+    padding-right: {{ section.settings.right_padding | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.top_padding }}px;
+      padding-bottom: {{ section.settings.bottom_padding }}px;
+      padding-left: {{ section.settings.left_padding }}px;
+      padding-right: {{ section.settings.right_padding }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="custom-section-GR-{{ section.id }}  section-{{ section.id }} section-{{ section.id }}-padding ">
+  <div class="custom-section-GR-inner  {% if section.settings.show_width_control %}page-width-container{% endif %} ">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'heading' %}
+          <h1 class="custom-heading-GR">{{ block.settings.heading }}</h1>
+
+        {% when 'text' %}
+          <div
+            class="custom-paragraph-GR align-{{ block.settings.alignment }}"
+            style="margin-block: {{ block.settings.margin_block }}px; "
+          >
+            {{ block.settings.text }}
+          </div>
+
+        {% when 'button' %}
+          <div
+            class="custom-button-wrapper align-{{ block.settings.alignment }}"
+            style="
+              background-color: {{ block.settings.button_bg }};
+              color: {{ block.settings.button_color }};
+              font-size: {{ block.settings.font_size }}px;
+              padding: {{ block.settings.padding }}px 25px;
+              margin-block: {{ block.settings.margin_top }}px;
+            "
+          >
+            <a
+              href="{{ block.settings.button_link }}"
+              class="custom-button-GR"
+            >
+              {{ block.settings.button_text }}
+            </a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="#fff"
+              class="bi bi-arrow-right"
+              viewBox="0 0 16 16"
+            >
+              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
+            </svg>
+          </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Heading",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color"
+    },
+       {
+      "type": "checkbox",
+      "id": "show_width_control",
+      "label": "Visible (Enable Width Control)",
+      "default": true
+    },
+        {
+      "type": "range",
+      "id": "page_width_px",
+      "label": "Page Width (px)",
+      "min": 1000,
+      "max": 1500,
+      "step": 50,
+      "default": 1100
+    },
+         {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 92
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 92
+    },
+    {
+  "type": "range",
+  "id": "left_padding",
+  "label": "Left padding",
+  "min": 0,
+  "max": 160,
+  "step": 2,
+  "unit": "px",
+  "default": 20
+},
+{
+  "type": "range",
+  "id": "right_padding",
+  "label": "Right padding",
+  "min": 0,
+  "max": 160,
+  "step": 2,
+  "unit": "px",
+  "default": 20
+},
+       {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom mobile",
+        "default": 0
+      }],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading Text"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text Block",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Paragraph Text",
+          "default": "<p>lorem ipsum</p>"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Optional Link"
+        },
+        {
+          "type": "range",
+          "id": "margin_block",
+          "label": "Text Block Margin (px)",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "default": 20
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "default": "left",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Custom Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Click Here"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link"
+        },
+        {
+          "type": "color",
+          "id": "button_bg",
+          "label": "Button Background Color",
+          "default": "#2A2A2A"
+        },
+        {
+          "type": "color",
+          "id": "button_color",
+          "label": "Button Text Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "range",
+          "id": "font_size",
+          "label": "Font Size (px)",
+          "min": 10,
+          "max": 30,
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "padding",
+          "label": "Padding (px)",
+          "min": 5,
+          "max": 30,
+          "default": 12
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin Top (px)",
+          "min": 0,
+          "max": 100,
+          "default": 20
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "default": "center",
+          "options": [
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
+          ]
+        }
+      ]
+    }
+  ],
+  "max_blocks": 50,
+  "presets": [
+    {
+      "name": "Custom Headings"
+    }
+  ]
+}
+{% endschema %}

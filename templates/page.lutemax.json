@@ -1,0 +1,568 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "breadcrumbs": true,
+        "show_page_title": true,
+        "page_title_alignment": "text-center",
+        "info_title": "",
+        "info_content": "",
+        "section_width": "max-w-narrower",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "ingrediant_hero_section_qVfwBz": {
+      "type": "Ingrediant-hero-section",
+      "name": "Hero Image Left Content",
+      "settings": {
+        "extra_heading": "",
+        "heading": "",
+        "heading_size": 62,
+        "subheading": "",
+        "button_label": "",
+        "button_link": "shopify://products/melt-n-glo",
+        "secondary_button_label": "",
+        "secondary_button_link": "shopify://products/melt-n-glo",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "button_bg_color": "#000000",
+        "button_text_color": "#ecbdb4",
+        "button_hover_bg_color": "#ecbdb4",
+        "button_hover_text_color": "#000000",
+        "background_color": "#000000",
+        "background_image": "shopify://shop_images/Shop_All_Melt_n_Glow_Lutemax_1_-02.png",
+        "mobile_background_image": "shopify://shop_images/Shop_All_Melt_n_Glow_Mobile_Banner_Lutemax.jpg",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "section_height": "70vh"
+      }
+    },
+    "hero_banner_4cDz3k": {
+      "type": "hero-banner",
+      "blocks": {
+        "slide_qNaxxE": {
+          "type": "slide",
+          "settings": {
+            "banner_layout": "hero-banner--full",
+            "color_scheme": "scheme-c7a67c99-7a55-4bd9-95de-5da1241ba413",
+            "header_menu_text_color": "#ffffff",
+            "heading": "<h1><strong>Lutemax Skinglo</strong></h1>",
+            "subheading": "<strong>Nature’s Shield for  Radiance & Protection</strong>",
+            "subheading_link": "",
+            "text": "<p>Clinically studied blend of Lutein (10 mg) + Zeaxanthin (2 mg) derived from Marigold flowers</p>",
+            "button_link_1": "shopify://products/melt-n-glo",
+            "button_link_1_type": "button",
+            "button_label_1": "SHOP MELT N GLO™ WITH LUTEMAX SKINGLO",
+            "button_style_1": "button--filled",
+            "button_link_2": "/",
+            "button_label_2": "",
+            "button_style_2": "button--outlined",
+            "content_position": "center",
+            "content_alignment": "start",
+            "image": "shopify://shop_images/ingrediant_Header_lutemux.jpg",
+            "video_external": "",
+            "show_controls_on_video": false,
+            "enable_media_overlay_desktop": true,
+            "content_position_mobile": "center",
+            "content_alignment_mobile": "start",
+            "video_external_mobile": "",
+            "show_controls_on_video_mobile": false,
+            "enable_media_overlay_mobile": true
+          }
+        }
+      },
+      "block_order": [
+        "slide_qNaxxE"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".hero__content {padding-left: 12% !important;}"
+      ],
+      "name": "t:sections.hero-banner.name",
+      "settings": {
+        "enable_transparent_header": false,
+        "slider_height": 100,
+        "slideshow_autoplay_interval": 6,
+        "show_slideshow_navigation": true,
+        "slideshow_navigation_position": "hero__swiper-buttons--start",
+        "color_scheme_arrows": "scheme-bee356b7-cbac-4555-a386-71952b0ddc80",
+        "show_slideshow_pagination": true,
+        "slideshow_pagination_style": "style-1",
+        "floating_bar": false
+      }
+    },
+    "marquees_zK7pXz": {
+      "type": "marquees",
+      "blocks": {
+        "item_EGTEhP": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453647.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_HkrJ7b": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453650_4c5dc5a5-aae3-495e-b5c2-98d252f1fc98.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_YVx9Kp": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453643.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_MGfDQC": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453644.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_H9XLch": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453655.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_aLfFt3": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_RHFhDE": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453648.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_LzC8HV": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453618220.svg",
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_EGTEhP",
+        "item_HkrJ7b",
+        "item_YVx9Kp",
+        "item_MGfDQC",
+        "item_H9XLch",
+        "item_aLfFt3",
+        "item_RHFhDE",
+        "item_LzC8HV"
+      ],
+      "custom_css": [
+        ".marquee__item svg,.marquee__item img {height: 100px; width: 100%;}"
+      ],
+      "name": "t:sections.marquees.name",
+      "settings": {
+        "enable_animation": true,
+        "marquee_duration_rate": 2,
+        "marquee_font_size": 6,
+        "marquee_items_spacing": 6,
+        "color_scheme": "scheme-49f23032-2a41-4ae8-b39d-db22aeb39437",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "compare_si_JNg36p": {
+      "type": "compare-si",
+      "disabled": true,
+      "name": "Before & After Slider",
+      "settings": {
+        "heading": "Support Your Glow Over Time",
+        "subheading": "Backed by clinical studies, Lutemax Skinglo helps enhance radiance, filter harmful blue-light, <br> sand protect skin from oxidative stress within 12 weeks",
+        "before_image": "shopify://shop_images/Shop_All_Melt_n_Glow_Image_6b.jpg",
+        "after_image": "shopify://shop_images/Shop_All_Melt_n_Glow_Image_6.jpg",
+        "aspect_ratio": "4 / 6"
+      }
+    },
+    "compare_slider_6FkmBT": {
+      "type": "compare-slider",
+      "blocks": {
+        "image_before_slide_HtGCye": {
+          "type": "image-before-slide",
+          "settings": {
+            "image": "shopify://shop_images/Shop_All_Melt_n_Glow_Image_6b.jpg",
+            "title": "Image before",
+            "color_scheme": ""
+          }
+        },
+        "image_after_slide_mfVUDg": {
+          "type": "image-after-slide",
+          "settings": {
+            "image": "shopify://shop_images/Shop_All_Melt_n_Glow_Image_6.jpg",
+            "title": "Image after",
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_before_slide_HtGCye",
+        "image_after_slide_mfVUDg"
+      ],
+      "disabled": true,
+      "name": "t:sections.compare-slider.name",
+      "settings": {
+        "section_layout": "full",
+        "heading": "<strong>Support Your Glow Over Time</strong>",
+        "heading_size": "h3",
+        "text": "<p>Backed by clinical studies, Lutemax Skinglo helps enhance radiance, filter harmful blue-light, and protect skin from oxidative stress within 12 weeks</p>",
+        "button_label": "",
+        "button_link": "/",
+        "button_style": "button--filled",
+        "media_aspect_ratio": "1/1",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-1",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "compare_si1_eYYDxX": {
+      "type": "compare-si1",
+      "name": "Horizontal Before & After",
+      "settings": {
+        "heading": "Support Your Glow <span class=\"mobile-break\"></span> Over Time",
+        "subheading": "Backed by clinical studies, Lutemax Skinglo helps enhance radiance, filter harmful blue-light, and protect skin from oxidative stress within 12 weeks",
+        "before_image": "shopify://shop_images/After_4af5b44a-212d-4032-9ccc-6824c65ec7b4.png",
+        "after_image": "shopify://shop_images/Before_f5f943e7-be7e-4995-b3bf-3ce7f16ae230.png",
+        "aspect_ratio": "16/9",
+        "bg_color": "#ffffff",
+        "height": 600
+      }
+    },
+    "results_progress_ewVtNz": {
+      "type": "results-progress",
+      "blocks": {
+        "result_image_cyqkjG": {
+          "type": "result_image",
+          "settings": {
+            "skin_image": "shopify://shop_images/before-after-portrait-young-man-retouched_copy.jpg",
+            "step_label": ""
+          }
+        }
+      },
+      "block_order": [
+        "result_image_cyqkjG"
+      ],
+      "disabled": true,
+      "name": "Results Progress Section",
+      "settings": {
+        "heading": "<strong>Support Your Glow Over Time</strong>",
+        "subtitle": "Backed by clinical studies, Lutemax Skinglo helps enhance radiance, filter harmful blue-light, and protect skin from oxidative stress within 12 weeks",
+        "heading_size": "h2",
+        "color_scheme": "scheme-1",
+        "spacing_top": "6",
+        "spacing_bottom": "6"
+      }
+    },
+    "section_banner_cards_9hWGhn": {
+      "type": "section-banner-cards",
+      "blocks": {
+        "card_9g3EYh": {
+          "type": "card",
+          "settings": {
+            "logo": "shopify://shop_images/1_9047cce1-02f9-499d-8fcb-dd3d5cc20960.png",
+            "heading": "Extracted from Marigold Flowers",
+            "description": "Carefully cultivated and processed to retain purity and natural potency."
+          }
+        },
+        "card_zLhafm": {
+          "type": "card",
+          "settings": {
+            "logo": "shopify://shop_images/2_c93d08d8-617d-4b34-b7ae-92b674588454.png",
+            "heading": "Standardized for Efficacy",
+            "description": "Delivers 10 mg Lutein and 2 mg Zeaxanthin per dose with high bioavailability and antioxidant support."
+          }
+        }
+      },
+      "block_order": [
+        "card_9g3EYh",
+        "card_zLhafm"
+      ],
+      "name": "Banner with Cards",
+      "settings": {
+        "background_image": "shopify://shop_images/08388d8f8762edf0173e66a2c93f3c831ad9e2b7.gif",
+        "overlay_color": "#eeebe3",
+        "overlay_opacity": 95,
+        "heading": "<strong>Naturally Sourced, Scientifically Backed</strong>",
+        "heading_size": "h2"
+      }
+    },
+    "custom_capsules_section_KFJLUa": {
+      "type": "custom-capsules-section",
+      "blocks": {
+        "benefit_dYRHHH": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/3_da9c4cee-52b5-46a7-b62c-2ee019a9001c.png",
+            "heading": "Blue-Light Defense",
+            "subheading": "Helps filter high-energy blue-light from screens and sunlight to prevent oxidative skin damage."
+          }
+        },
+        "benefit_P66YB3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/4_64dc86db-1a8e-4b08-b39d-9d2c46a5d0e7.png",
+            "heading": "Boosts Radiance",
+            "subheading": "Supports a more luminous, vibrant complexion by fighting free radicals"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_dYRHHH",
+        "benefit_P66YB3"
+      ],
+      "name": "Custom Capsules Section",
+      "settings": {
+        "section_heading": "CORE BENEFITS",
+        "main_image": "shopify://shop_images/Melt_N_Glow_2.png"
+      }
+    },
+    "section_banner_timeline_97ehgR": {
+      "type": "section-banner-timeline",
+      "blocks": {
+        "timeline_step_ykVwVg": {
+          "type": "timeline_step",
+          "settings": {
+            "step_title": "Weeks 1 - 12",
+            "step_description": "Improved overall skin tone, increased skin brightness (higher luminance values), and enhanced photoprotection"
+          }
+        },
+        "timeline_step_WJCyw9": {
+          "type": "timeline_step",
+          "disabled": true,
+          "settings": {
+            "step_title": "Weeks 5-8",
+            "step_description": "Radiance may improve and skin texture starts becoming more refined"
+          }
+        },
+        "timeline_step_XzRRh4": {
+          "type": "timeline_step",
+          "disabled": true,
+          "settings": {
+            "step_title": "Weeks 9-12",
+            "step_description": "Visible glow, smoother skin, and enhanced resistance to daily blue-light exposure"
+          }
+        }
+      },
+      "block_order": [
+        "timeline_step_ykVwVg",
+        "timeline_step_WJCyw9",
+        "timeline_step_XzRRh4"
+      ],
+      "custom_css": [],
+      "name": "Banner With Timeline",
+      "settings": {
+        "banner_image": "shopify://shop_images/d21e598ce671a7c6ea5d9a510ac1a256c6f41d22_1.png",
+        "subtitle": "Based on clinical research on Lutein and Zeaxanthin supplementation",
+        "heading": "Likely Timeline of Visible Results",
+        "heading_size": "h2",
+        "left_image": "shopify://shop_images/Firefly_A_top_view_of_a_basket_filled_with_fresh_marigold_flowers._some_flowers_and_petals_sc_493086.jpg",
+        "spacing_top": "6",
+        "spacing_bottom": "6",
+        "color_scheme": "scheme-1",
+        "overlay_color": "#b4975a",
+        "overlay_opacity": 1
+      }
+    },
+    "section_ingredients_faq_AwJHhR": {
+      "type": "section-ingredients-faq",
+      "blocks": {
+        "topic_nCxf4V": {
+          "type": "topic",
+          "settings": {
+            "is_open": true,
+            "title": "What is Lutemax Skinglo and how does it benefit my skin?",
+            "text": "<p>Lutemax Skinglois a patented, clinically studied blend of lutein and zeaxanthin isomers derived from marigold flowers. It works from within to enhance skin hydration, elasticity, and radiance, while protecting against oxidative stress and environmental aggressors.</p>",
+            "page": ""
+          }
+        },
+        "topic_mkygRh": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "How does Lutemax Skinglo protect my skin from screen time and blue light exposure?",
+            "text": "<p>Lutemax Skinglo acts as an internal blue light filter, reducing the oxidative damage and inflammation caused by prolonged screen exposure. It helps maintain skin smoothness and tone, especially in individuals with high digital device usage.</p>",
+            "page": ""
+          }
+        },
+        "topic_JyKtfh": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Is Lutemax Skinglo backed by clinical research?",
+            "text": "<p>Yes. Lutemax Skinglo is supported by human clinical studies at a standardized dose of Lutein 10 mg and Zeaxanthin 2 mg demonstrating its ability to improve skin tone, moisture, and resilience, while also boosting visual performance and protecting skin from light-induced aging.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "topic_nCxf4V",
+        "topic_mkygRh",
+        "topic_JyKtfh"
+      ],
+      "custom_css": [
+        ".container {max-width: 800px !important;}",
+        "h2.section__heading.h2 {line-height: initial;}"
+      ],
+      "name": "ingredients-faq",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "heading_size": "h2",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-5d57539f-c53f-4370-8548-b72322db188c",
+        "spacing_top": "6",
+        "spacing_bottom": "6"
+      }
+    },
+    "our_reels_mGikjm": {
+      "type": "our-reels",
+      "blocks": {
+        "video_tKdqtF": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/9920b0e9295b44afaab62483162ba6f8.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/9920b0e9295b44afaab62483162ba6f8.mp4"
+          }
+        },
+        "video_8aLLLF": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/3c64542ce65a4a64b5158aa81c8ddb06.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/3c64542ce65a4a64b5158aa81c8ddb06.mp4"
+          }
+        },
+        "video_3RktH8": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/237712093c3e447fbf24131db9b33a18.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/237712093c3e447fbf24131db9b33a18.mp4"
+          }
+        },
+        "video_Nn4W6F": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/735d6bc2b10a461e88abf1ea42f3bb83.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/735d6bc2b10a461e88abf1ea42f3bb83.mp4"
+          }
+        },
+        "video_AKi6Xj": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/60ec823db9cb401b8c92e2274a2e3a5d.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/60ec823db9cb401b8c92e2274a2e3a5d.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_tKdqtF",
+        "video_8aLLLF",
+        "video_3RktH8",
+        "video_Nn4W6F",
+        "video_AKi6Xj"
+      ],
+      "name": "Our Reels",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading": "Discover What Living Your Best Life Truly Feels Like",
+        "heading_font_size": 46,
+        "subheading": "",
+        "subheading_font_size": 30,
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "autoplay": true,
+        "controls": false,
+        "muted": true
+      }
+    },
+    "apps_CFGzHV": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_nAiqKU": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_nAiqKU"
+      ],
+      "settings": {}
+    },
+    "find_us_on_7DnzXJ": {
+      "type": "find-us-on",
+      "disabled": true,
+      "name": "Find Us On",
+      "settings": {
+        "bg_color": "#fefcf9",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "logo_width": 170,
+        "logo_gap": 60,
+        "logo_1": "shopify://shop_images/Amazon-Logo_1_104a6845-86c1-435c-b7ca-d2d25847178c.png",
+        "logo_2": "shopify://shop_images/XMLID_109_6d10e992-ee1e-4345-89c0-c52e353f1f07.png",
+        "logo_height": 100
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ingrediant_hero_section_qVfwBz",
+    "hero_banner_4cDz3k",
+    "marquees_zK7pXz",
+    "compare_si_JNg36p",
+    "compare_slider_6FkmBT",
+    "compare_si1_eYYDxX",
+    "results_progress_ewVtNz",
+    "section_banner_cards_9hWGhn",
+    "custom_capsules_section_KFJLUa",
+    "section_banner_timeline_97ehgR",
+    "section_ingredients_faq_AwJHhR",
+    "our_reels_mGikjm",
+    "apps_CFGzHV",
+    "find_us_on_7DnzXJ"
+  ]
+}

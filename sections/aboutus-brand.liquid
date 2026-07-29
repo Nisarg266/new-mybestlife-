@@ -1,0 +1,173 @@
+{% comment %}
+  Brand Features Section
+{% endcomment %}
+
+<style>
+  .essentials-section {
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .essentials-section h2 {
+    font-weight: bold;
+    font-size: clamp(28px, 5vw, 50px) !important;
+    color: #b4975a; /* gold-like color */
+    margin-bottom: 0px; 
+    text-transform:uppercase;
+  }
+
+  /* Desktop / Tablet Grid */
+  .essentials-icons-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--icon-gap, 30px);
+  }
+
+  .essentials-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .essentials-icon img {
+    max-width: 100%;
+    width: var(--icon-width, 80px);
+    height: auto;
+  }
+
+  .essentials-icon span {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #2a2a2a;
+    word-wrap: break-word;
+  }
+
+  /* Mobile Marquee */
+  @media (max-width: 768px) {
+    .essentials-icons-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 40px;
+      animation: marquee 40s linear infinite; /* slowed down */
+      width: max-content;
+    }
+
+    .essentials-marquee {
+      overflow: hidden;
+      width: 100%;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-25%); } /* 4 duplicates */
+    }
+  }
+</style>
+
+<section class="essentials-section">
+  <h2> {{ section.settings.heading }}</h2>
+
+  <!-- Desktop / Tablet -->
+  <div class="essentials-icons-wrapper essentials-desktop" 
+       style="--icon-width:{{ section.settings.icon_width }}px; --icon-gap:{{ section.settings.icon_gap }}px;">
+    {% for block in section.blocks %}
+      <div class="essentials-icon">
+        {% if block.settings.icon_image != blank %}
+          <img src="{{ block.settings.icon_image | img_url: '200x' }}" alt="{{ block.settings.icon_text }}">
+        {% endif %}
+        <span>{{ block.settings.icon_text }}</span>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- Mobile -->
+  <div class="essentials-marquee essentials-mobile" style="display:none;">
+    <div class="essentials-icons-wrapper" 
+         style="--icon-width:{{ section.settings.icon_width }}px; --icon-gap:{{ section.settings.icon_gap }}px;">
+      {% for i in (1..4) %}
+        {% for block in section.blocks %}
+          <div class="essentials-icon">
+            {% if block.settings.icon_image != blank %}
+              <img src="{{ block.settings.icon_image | img_url: '200x' }}" alt="{{ block.settings.icon_text }}">
+            {% endif %}
+            <span>{{ block.settings.icon_text }}</span>
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    function toggleMarquee() {
+      if (window.innerWidth <= 768) {
+        document.querySelector(".essentials-desktop").style.display = "none";
+        document.querySelector(".essentials-mobile").style.display = "block";
+      } else {
+        document.querySelector(".essentials-desktop").style.display = "flex";
+        document.querySelector(".essentials-mobile").style.display = "none";
+      }
+    }
+    toggleMarquee();
+    window.addEventListener("resize", toggleMarquee);
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Brand Features",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "ALL THE ESSENTIALS, WITHOUT UNNECESSARY EXTRAS."
+    },
+    {
+      "type": "range",
+      "id": "icon_gap",
+      "label": "Gap Between Icons (px)",
+      "min": 5,
+      "max": 100,
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "icon_width",
+      "label": "Icon Width (px)",
+      "min": 90,
+      "max": 190,
+      "default": 100
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "icon_text",
+          "label": "Icon Text",
+          "default": "Quality Assured"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Brand Features",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,29 @@
+{%- comment -%}
+  Color/image swatch renderer.
+  params: swatch (object), shape ('square'|'circle'), where ('facet'|etc)
+{%- endcomment -%}
+
+{%- liquid
+  assign sw_val = null
+  if swatch.image
+    assign sw_img_url = swatch.image | image_url: width: 50
+    assign sw_val = 'url(' | append: sw_img_url | append: ')'
+    assign sw_focal = swatch.image.presentation.focal_point
+  elsif swatch.color
+    assign sw_val = 'rgb(' | append: swatch.color.rgb | append: ')'
+  endif
+
+  if where == 'facet'
+    assign sw_shape = 'square'
+  else
+    assign sw_shape = shape | default: settings.swatches_shape
+  endif
+-%}
+
+<span
+  {%- if sw_val %}
+    class="swatch product-option__swatch product-option__swatch--{{ sw_shape }}" style="--swatch--background: {{ sw_val }};{% if sw_focal %} --swatch-focal-point: {{ sw_focal }};{% endif %}"
+  {%- else %}
+    class="swatch product-option__swatch product-option__swatch--{{ sw_shape }} product-option__swatch--unavailable"
+  {%- endif %}
+></span>

@@ -1,0 +1,88 @@
+{%- comment -%}
+  Product page accordion (Product Info / How to Use / Ingredients).
+  Uses expand/collapse with inline SVG plus/minus icons.
+  params: block (with settings: usage_title, ingredients_title, top_margin, bottom_margin)
+{%- endcomment -%}
+
+{%- capture acc_icon -%}
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 6L12 18" stroke="currentColor" stroke-linecap="round" class="plus_a "></path>
+    <path d="M18 12L6 12" stroke="currentColor" stroke-linecap="round" class="plus_b"></path>
+  </svg>
+{%- endcapture -%}
+
+<section class="WI_pD_a_acc section-product-accordion section-{{ block.id }}-margin" id="product-accordion-{{ block.id }}">
+  {%- if product.description != blank -%}
+    <h6 class="WI_pD_a_acc_heading">Product Info {{ acc_icon }}</h6>
+    <div class="WI_pD_a_des">{{ product.description }}</div>
+  {%- endif -%}
+
+  {%- if product.metafields.custom.how_to.value != blank -%}
+    <h6 class="WI_pD_a_acc_heading">{{ block.settings.usage_title }} {{ acc_icon }}</h6>
+    <p class="WI_pD_a_des">{{ product.metafields.custom.how_to.value }}</p>
+  {%- endif -%}
+
+  {%- if product.metafields.custom.ingredients.value != blank -%}
+    <h6 class="WI_pD_a_acc_heading">{{ block.settings.ingredients_title }} {{ acc_icon }}</h6>
+    <p class="WI_pD_a_des">{{ product.metafields.custom.ingredients.value }}</p>
+  {%- endif -%}
+</section>
+
+{%- style -%}
+  .section-{{ block.id }}-margin {
+    margin-top: {{ block.settings.top_margin | times: 0.75 | round: 0 }}px;
+    margin-bottom: {{ block.settings.bottom_margin | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ block.id }}-margin {
+      margin-top: {{ block.settings.top_margin }}px;
+      margin-bottom: {{ block.settings.bottom_margin }}px;
+    }
+  }
+{%- endstyle -%}
+
+<style>
+  .WI_pD_a_acc { width: 100%; height: auto; }
+  .WI_pD_a_acc p { width: 100%; text-align: left; margin: 0; line-height: 26px; font-size: 16px; font-weight: var(--small-font-weight); }
+  .WI_pD_a_acc ul { margin: 0; padding: 0; list-style-type: disc; }
+  .WI_pD_a_acc ul { list-style-type: disc !important; padding-left: 1.5rem !important; margin: 1rem 0; display: block !important; }
+  .WI_pD_a_acc li { display: list-item !important; list-style-type: disc !important; }
+  .WI_pD_a_acc li { width: 100%; text-align: left; margin: 0; font-size: 17px; font-weight: 600; list-style-type: disc; }
+  .WI_pD_a_acc h6 { width: 100%; height: auto; padding: 15px 0; font-size: 18px; color: #2A2A2A; text-align: left; margin: 0; border-bottom: 3px dashed #f5f5f5; display: flex; justify-content: space-between; cursor: pointer; text-transform: uppercase; }
+  .WI_pD_a_acc h6 svg { stroke-width: 2px; width: 18px; height: 18px; }
+  .WI_pD_a_des { width: 100%; max-height: 0; overflow: hidden; transition: 0.2s ease-out; }
+  .plus_a { transition: 0.2s ease-out; transform-origin: center; }
+  .plus_a_rotate { transform: rotateZ(90deg); }
+  .WI_pD_a_acc_heading.active + .WI_pD_a_des { padding-block: 15px; }
+  @media screen and (max-width: 1020px) { .WI_pD_a_acc h6 { font-size: 18px; } }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const root = document.querySelector('#product-accordion-{{ block.id }}');
+    if (!root) return;
+    const headings = root.querySelectorAll('.WI_pD_a_acc_heading');
+    headings.forEach(function(heading) {
+      heading.addEventListener('click', function() {
+        const panel = this.nextElementSibling;
+        const icon = this.querySelector('.plus_a');
+        root.querySelectorAll('.WI_pD_a_acc_heading').forEach(function(other) {
+          if (other !== heading) {
+            other.nextElementSibling.style.maxHeight = null;
+            other.querySelector('.plus_a').classList.remove('plus_a_rotate');
+            other.classList.remove('active');
+          }
+        });
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+          icon.classList.remove('plus_a_rotate');
+          this.classList.remove('active');
+        } else {
+          panel.style.maxHeight = (panel.scrollHeight + 30) + 'px';
+          icon.classList.add('plus_a_rotate');
+          this.classList.add('active');
+        }
+      });
+    });
+  });
+</script>

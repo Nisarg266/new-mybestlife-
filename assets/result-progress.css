@@ -1,0 +1,110 @@
+.results-progress__wrapper {
+  text-align: center;
+  padding: 60px 20px !important; /* Added more top spacing */
+  background: #fff;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.results-progress__wrapper h1 {
+  font-size: clamp(28px, 5vw, 50px) !important;
+}
+
+.results-progress__wrapper p {
+  color: #2a2a2a;
+font-size: clamp(18px, 2vw, 23px) !important;
+  max-width: 900px;
+  text-align: center;
+  line-height:1.4 !important;
+  margin: auto;
+  padding-bottom: 30px;
+}
+
+.results-progress__images {
+  display: flex;
+  flex-wrap: nowrap; /* Changed to enable horizontal scroll */
+ 
+  align-items: center;
+  gap: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
+  scrollbar-width: none; /* Firefox scrollbar hidden */
+}
+
+/* Hide scrollbar for WebKit browsers */
+.results-progress__images::-webkit-scrollbar {
+  display: none;
+}
+
+/* Step block */
+.results-progress__step {
+  max-width: 350px;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0; /* Prevent shrinking on small screens */
+}
+
+.results-progress__step img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.step-label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Arrow block */
+.results-progress__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -15px; /* Overlap arrow onto image */
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.results-progress__arrow img {
+  max-width: 60px;
+  margin-top: -20px; /* Slight upward overlap */
+  margin-left: -20px;
+}
+
+@media screen and (max-width: 1024px) {
+  .results-progress__step {
+    max-width: 250px;
+  }
+  
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .results-progress__step {
+    flex-shrink: 0;
+    margin-right: -10px;
+    max-width: 200px;
+  }
+
+  .results-progress__arrow {
+    flex-shrink: 0;
+    margin-left: -10px;
+  }
+
+  .results-progress__arrow img {
+    max-width: 40px;
+    margin-top: -10px;
+  }
+
+  .results-progress__wrapper p {
+    color: #666;
+    font-size: 14px;
+    max-width: 800px;
+    text-align: center;
+    margin: auto;
+    padding-bottom: 30px;
+  }
+}

@@ -1,0 +1,181 @@
+{%- comment -%}
+  Collection/search facets (filters drawer, sorting, product count, active facets).
+  params: results, section, filters, container_width, opened_accordions, products_per_page
+{%- endcomment -%}
+
+{%- liquid
+  assign ft_sort = results.sort_by | default: results.default_sort_by
+  if results.url
+    assign ft_results_url = results.url
+  else
+    assign ft_terms = results.terms | escape
+    assign ft_results_url = '?q=' | append: ft_terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: ft_sort
+  endif
+  assign ft_sort_url = results.url | append: '?sort_by=' | append: ft_sort
+  assign ft_container = container_width | default: false
+  assign ft_open_acc = opened_accordions | default: false
+  assign ft_per_page = products_per_page | default: section.settings.products_per_page | times: 1 | default: 12
+-%}
+
+{%- if section.settings.enable_sorting -%}
+  {%- render 'css', css: 'component-custom-select.css' -%}
+  <script src="{{- 'custom-select.js' | asset_url -}}" defer="defer"></script>
+{%- endif -%}
+
+<facet-filters-form class="collection-facets" data-section-id="{{- section.id -}}">
+  <div class="container {{ ft_container }}">
+    <div class="collection-facets__inner">
+      {%- unless filters == 'none' -%}
+        <div class="collection-facets__item facets__filters {{ section.settings.button_style }} {% if filters == 'sidebar' %}small-up-hide{% endif %}">
+          <div class="facets">
+            <form id="FacetFiltersForm" class="facets__form">
+              {%- if results.terms -%}
+                <input type="hidden" name="q" value="{{- results.terms | escape -}}">
+                <input name="options[prefix]" type="hidden" value="last">
+              {%- endif -%}
+              {%- if results.current_vendor or results.current_type -%}
+                <input type="hidden" name="q" value="{{- results.current_vendor -}}{{- results.current_type -}}">
+              {%- endif -%}
+
+              <ul class="facets__actions-list list-unstyled">
+                {%- unless filters == 'none' -%}
+                  {%- if results.filters != empty -%}
+                    <li class="facets__actions-item">
+                      <menu-drawer class="drawer drawer--end drawer--sm facets__drawer">
+                        <details id="Filters-drawer-{{- section.id -}}" class="drawer__container">
+                          <summary class="drawer__button facets__button-filters facets__actions-button focus-inset" id="Filters-drawer-button-{{- section.id -}}">
+                            <span>{{- 'collection.filters' | t -}}</span>
+                            {% render 'icon', icon_name: 'theme-chevron-down' %}
+                            <noscript>{%- render 'icon', icon_name: 'theme-close' -%}</noscript>
+                          </summary>
+
+                          <div class="drawer__content drawer__content-facets js-drawer color-scheme-1" id="Filters-menu-drawer-{{- section.id -}}" tabindex="-1">
+                            <div class="drawer__content-top">
+                              <div class="drawer__content-wrapper slim-scrollbar">
+                                <div class="drawer__facets-close">
+                                  <button class="drawer__button-close drawer__button-close--facets facets-drawer button-reset no-js-hidden js-btn-close-drawer" aria-label="{{- 'theme.actions.close' | t -}}" aria-controls="Filters-menu-drawer-{{- section.id -}}" aria-expanded="false">{%- render 'icon', icon_name: 'theme-close' -%}</button>
+                                </div>
+                                <h5 class="drawer__title drawer__title-facets">{{- 'collection.filter_by' | t -}}</h5>
+                                <div class="drawer__row drawer__row--mb-lg">
+                                  <accordion-default class="accordion facets__accordion">
+                                    {% assign total_active_values = 0 %}
+                                    {%- for filter in results.filters -%}
+                                      {%- render 'facet', index: forloop.index, section_id: section.id, filter: filter, opened_accordions: ft_open_acc, total_active_values: total_active_values -%}
+                                    {%- endfor -%}
+                                  </accordion-default>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="drawer__row drawer__row--buttons">
+                              {%- assign ft_clear_txt = 'collection.clear_all' | t | escape -%}
+                              <facet-remove>{%- render 'button', type: 'link', class: 'button button--full facets__clear-button', button_style: 'button--outlined', value: ft_clear_txt, href: ft_sort_url -%}</facet-remove>
+                              {%- render 'button', type: 'button', class: 'button button--full js-btn-close-drawer no-js-hidden', button_style: 'button--filled', value: 'collection.apply_filters' | t -%}
+                            </div>
+                          </div>
+                        </details>
+                      </menu-drawer>
+                    </li>
+                  {%- endif -%}
+                {%- endunless -%}
+                <li class="facets__actions-item no-js"><button type="submit" class="button button--filled button--full button--full-height">{{- 'collection.apply_filters' | t -}}</button></li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      {%- endunless -%}
+
+      {%- if section.settings.enable_sorting -%}
+        <facet-filters-form class="collection-facets facets__sorting" data-section-id="{{- section.id -}}">
+          <div class="collection-facets__sorting-container {{ ft_container }}">
+            <div class="collection-facets__sorting">
+              <div class="collection-facets__item {{ section.settings.button_style }}">
+                <div class="facets">
+                  <form id="FacetFiltersForm" class="facets__form">
+                    <ul class="facets__actions-list list-unstyled">
+                      <li class="facets__actions-item js-filter" data-index="sort-by">
+                        {%- capture ft_chevron -%}{%- render 'icon', icon_name: 'theme-chevron-down' -%}{%- endcapture -%}
+                        <custom-select class="custom-select facets__custom-select" data-dropdown-id="SortByDropdown" data-label="{{- 'collection.sort_by' | t -}}" data-icon-chevron-down='{{- ft_chevron -}}'>
+                          <div class="facets__sort no-js">
+                            <select class="facets__sort-input facets__actions-button focus-inset" name="sort_by" id="SortBy" aria-describedby="a11y-refresh-page-message">
+                              {%- for option in results.sort_options -%}
+                                <option value="{{- option.value | escape -}}" {% if option.value == ft_sort %}selected="selected"{% endif %}>{{- option.name | escape -}}</option>
+                              {%- endfor -%}
+                            </select>
+                          </div>
+                        </custom-select>
+                      </li>
+                    </ul>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </facet-filters-form>
+      {%- endif -%}
+
+      {%- if section.settings.enable_products_count -%}
+        <div class="collection-facets__item facets__product-count">
+          {%- if results.filters != empty -%}<div class="facets__divider small-hide {% if filters == 'sidebar' %} small-up-hide{% endif %}">&nbsp;</div>{%- endif -%}
+          <div class="collection-facets__status" role="status">
+            {%- unless results.results_count < 1 -%}<span>{{- 'collection.product_show' | t -}}</span>{%- endunless -%}
+            {%- assign ft_avail_total = 0 -%}
+            {%- for ft_prod in results.products -%}{%- if ft_prod.available -%}{%- assign ft_avail_total = ft_avail_total | plus: 1 -%}{%- endif -%}{%- endfor -%}
+            <span class="collection-facets__product-count" id="ProductCount">
+              {%- if ft_avail_total > 0 -%}
+                {%- paginate results.products by ft_per_page -%}
+                  {%- assign ft_page_count = 0 -%}
+                  {%- for ft_prod in paginate.items -%}{%- if ft_prod.available -%}{%- assign ft_page_count = ft_page_count | plus: 1 -%}{%- endif -%}{%- endfor -%}
+                  {%- if paginate.pages > 1 -%}
+                    {{ 'collection.product_count_html' | t: product_count: ft_page_count, count: ft_avail_total }}
+                  {%- else -%}
+                    {{ 'collection.product_count_html' | t: product_count: ft_avail_total, count: ft_avail_total }}
+                  {%- endif -%}
+                {%- endpaginate -%}
+              {%- endif -%}
+            </span>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if results.filters != empty -%}
+      <div class="active-facets">
+        {%- assign ft_has_filter = false -%}
+        {%- for filter in results.filters -%}
+          {% if filter.active_values.size > 0 or filter.active %}{% assign ft_has_filter = true %}{% endif %}
+          {%- for value in filter.active_values -%}
+            <div class="active-facets__button">
+              <div class="active-facets__button-text {% if filter.param_name contains 'color' %}active-facets__button--color{% endif %}">
+                {%- if filter.presentation == 'swatch' -%}
+                  {% render 'product-option', type: 'checkbox', id: id, name: value.param_name, value: value.value, form_id: 'FacetFiltersForm', swatch_value: value.swatch, checked: value.active, visually_hidden: true, where: 'facets' %}
+                {%- elsif filter.param_name contains 'color' -%}
+                  <label class="active-facets__button--color-swatch" style="background:{{ value.label | downcase }}" title="{{ value.label }}"><span class="visually-hidden">{{ value.label | escape }}</span></label>
+                {%- endif -%}
+                <span>{{ value.label | escape }}</span>
+              </div>
+              <facet-remove><a href="{{ value.url_to_remove }}" class="active-facets__button-link"><div class="svg-wrapper">{%- render 'icon', icon_name: 'theme-close' -%}</div></a></facet-remove>
+            </div>
+          {%- endfor -%}
+          {% if filter.type == 'price_range' %}
+            {% assign ft_pr_min = filter.min_value.value %}
+            {% assign ft_pr_max = filter.max_value.value %}
+            {%- if ft_pr_min != null or ft_pr_max != null -%}
+              <facet-remove>
+                <a href="{{ filter.url_to_remove }}" class="active-facets__button active-facets__button-link">
+                  <span class="active-facets__button-text active-facets__button--price-range">{{ ft_pr_min | default: 0 | money }} - {{ ft_pr_max | default: filter.range_max | money }}<span class="svg-wrapper">{%- render 'icon', icon_name: 'theme-close' -%}</span></span>
+                </a>
+              </facet-remove>
+            {%- endif -%}
+          {% endif %}
+        {%- endfor -%}
+        {%- if ft_has_filter -%}
+          <div class="active-facets__button active-facets__vertical-filter">
+            <facet-remove class="active-facets__button-wrapper">
+              <a href="{{ ft_results_url }}" class="active-facets__button-remove active-facets__button-text facets__actions-button focus-inset"><span>{{- 'collection.clear_all' | t -}}</span></a>
+            </facet-remove>
+          </div>
+        {% endif %}
+      </div>
+    {%- endif -%}
+  </div>
+</facet-filters-form>

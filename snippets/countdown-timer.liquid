@@ -1,0 +1,110 @@
+{%- comment -%}
+  Countdown timer with configurable date/time/timezone and display options.
+  params: id, column_type, custom_text, timer_text_first_letter, timezone,
+          timer_year, timer_month, timer_day, timer_hour, timer_minute,
+          show_timer_days/hours/minutes/seconds, timer_end_message, timer_layout, class
+{%- endcomment -%}
+
+{%- liquid
+  assign cd_columns = column_type | default: 'col'
+  assign cd_custom = custom_text | default: false
+  assign cd_end_msg = timer_end_message | default: false
+  assign cd_layout = timer_layout | default: '1'
+
+  # Build timezone string
+  assign tz_raw = settings.timezone
+  assign tz_stripped = tz_raw | replace: '-', '' | replace: '+', ''
+  if tz_raw < 10 and tz_raw > -10
+    assign tz_padded = '0' | append: tz_stripped
+  else
+    assign tz_padded = tz_stripped
+  endif
+  if tz_raw < 0
+    assign tz_final = '-' | append: tz_padded | append: '00'
+  else
+    assign tz_final = '+' | append: tz_padded | append: '00'
+  endif
+
+  # Build date string DD-MM-YYYY
+  capture cd_date
+    assign d = timer_day
+    if d < '10'
+      assign d = '0' | append: d
+    endif
+    echo d | append: '-' | append: timer_month | append: '-' | append: timer_year
+  endcapture
+
+  # Build time string HH:MM
+  capture cd_time
+    assign h = timer_hour
+    assign m = timer_minute
+    if h < '10'
+      assign h = '0' | append: h
+    endif
+    if m < '10'
+      assign m = '0' | append: m
+    endif
+    echo h | append: ':' | append: m
+  endcapture
+
+  # Labels (first letter or full word)
+  if timer_text_first_letter
+    assign cd_day_label = 'sections.countdown_timer.days' | t | split: '' | first
+    assign cd_hour_label = 'sections.countdown_timer.hours' | t | split: '' | first
+    assign cd_min_label = 'sections.countdown_timer.minutes' | t | split: '' | first
+    assign cd_sec_label = 'sections.countdown_timer.seconds' | t | split: '' | first
+  else
+    assign cd_day_label = 'sections.countdown_timer.days' | t
+    assign cd_hour_label = 'sections.countdown_timer.hours' | t
+    assign cd_min_label = 'sections.countdown_timer.minutes' | t
+    assign cd_sec_label = 'sections.countdown_timer.seconds' | t
+  endif
+-%}
+
+<div class="countdown-timer {{ class }}">
+  <countdown-timer
+    id="timer-{{ id }}"
+    class="countdown-timer loading-effect"
+    data-date="{{ cd_date }}"
+    data-time="{{ cd_time }}"
+    data-timezone="{{ tz_final }}"
+    data-timer-layout="{{ cd_layout }}"
+    data-is-ended="false"
+    data-end-message="{{ cd_end_msg | escape }}"
+  >
+    <div class="countdown-timer__columns">
+      {%- if cd_custom -%}
+        <div class="countdown-timer__column countdown-timer__column--{{ cd_columns }} text">
+          <div><span class="countdown-timer__column-text">{{ cd_custom }}</span></div>
+        </div>
+      {%- endif -%}
+
+      {% if show_timer_days %}
+        <div class="countdown-timer__column countdown-timer__column--{{ cd_columns }} days">
+          <div><span class="countdown-timer__column-number">0</span><span class="countdown-timer__column-text">{{ cd_day_label }}</span></div>
+        </div>
+      {% endif %}
+
+      {% if show_timer_hours %}
+        <div class="countdown-timer__column countdown-timer__column--{{ cd_columns }} hours">
+          <div><span class="countdown-timer__column-number">0</span><span class="countdown-timer__column-text">{{ cd_hour_label }}</span></div>
+        </div>
+      {% endif %}
+
+      {% if show_timer_minutes %}
+        <div class="countdown-timer__column countdown-timer__column--{{ cd_columns }} minutes">
+          <div><span class="countdown-timer__column-number">0</span><span class="countdown-timer__column-text">{{ cd_min_label }}</span></div>
+        </div>
+      {% endif %}
+
+      {% if show_timer_seconds %}
+        <div class="countdown-timer__column countdown-timer__column--{{ cd_columns }} seconds">
+          <div><span class="countdown-timer__column-number">0</span><span class="countdown-timer__column-text">{{ cd_sec_label }}</span></div>
+        </div>
+      {% endif %}
+    </div>
+    {% if cd_end_msg != false %}
+      <div class="countdown-timer__message h3 hidden">{{ cd_end_msg }}</div>
+    {% endif %}
+  </countdown-timer>
+</div>

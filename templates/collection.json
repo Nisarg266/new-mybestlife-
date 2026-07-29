@@ -1,0 +1,144 @@
+{
+  "sections": {
+    "ingrediant_hero_section_3hYPGb": {
+      "type": "Ingrediant-hero-section",
+      "disabled": true,
+      "name": "Hero Image Left Content",
+      "settings": {
+        "extra_heading": "",
+        "heading": "",
+        "heading_size": 62,
+        "subheading": "",
+        "button_label": "",
+        "button_link": "#collection001",
+        "secondary_button_label": "",
+        "secondary_button_link": "shopify://products/melt-n-glo",
+        "heading_color": "#000000",
+        "subheading_color": "#000000",
+        "button_bg_color": "#000000",
+        "button_text_color": "#ecbdb4",
+        "button_hover_bg_color": "#ecbdb4",
+        "button_hover_text_color": "#000000",
+        "background_color": "#000000",
+        "background_image": "shopify://shop_images/Health_Web_Banner_1_copy.jpg",
+        "mobile_background_image": "shopify://shop_images/Health_Mobile_Banner_2_copy_2.jpg",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "section_height": "70vh"
+      }
+    },
+    "banner": {
+      "type": "page-banner",
+      "disabled": true,
+      "settings": {
+        "enable_transparent_header": true,
+        "heading": "",
+        "heading_size": "h3",
+        "text": "",
+        "show_default_description": true,
+        "show_on_description": "desktop",
+        "content_position": "center",
+        "content_alignment": "center",
+        "media_position": "background",
+        "page_menu": "",
+        "enable_breadcrumbs": true,
+        "section_height": "50svh",
+        "image": "shopify://shop_images/Health_Web_Banner_1_copy.jpg",
+        "video_external": "",
+        "show_controls_on_video": false,
+        "section_height_mobile": "50svh",
+        "video_external_mobile": "",
+        "show_controls_on_video_mobile": false,
+        "section_width": "max-w-narrow",
+        "color_scheme": "scheme-6",
+        "color_scheme_for_media": "",
+        "spacing_top": "1",
+        "spacing_bottom": "0"
+      }
+    },
+    "main": {
+      "type": "main-collection",
+      "blocks": {
+        "text_card_J6n8hn": {
+          "type": "text-card",
+          "settings": {
+            "color_scheme": "scheme-6",
+            "text": "<h3>Find strength in <br/>stylish <em>women</em> <br/>activewear</h3>",
+            "button_link": "",
+            "link_type": "button",
+            "button_label": "",
+            "button_style": "button--text",
+            "content_position": "center",
+            "content_alignment": "center",
+            "content_position_mobile": "center",
+            "content_alignment_mobile": "center",
+            "position": 13,
+            "column_factor": 1,
+            "row_factor": 1
+          }
+        },
+        "text_card_J6n8hm": {
+          "type": "text-card",
+          "settings": {
+            "color_scheme": "scheme-5",
+            "text": "<h3>Share info about your collection with your customers.</h3>",
+            "button_link": "",
+            "link_type": "button",
+            "button_label": "",
+            "button_style": "button--text",
+            "content_position": "center",
+            "content_alignment": "center",
+            "content_position_mobile": "center",
+            "content_alignment_mobile": "center",
+            "position": 7,
+            "column_factor": 2,
+            "row_factor": 2
+          }
+        }
+      },
+      "block_order": [
+        "text_card_J6n8hn",
+        "text_card_J6n8hm"
+      ],
+      "custom_css": [],
+      "settings": {
+        "show_top_border_for_utilities_bar": false,
+        "enable_products_count": true,
+        "enable_sorting": true,
+        "enable_opened_accordions": true,
+        "filters": "drawer",
+        "products_per_row": "4",
+        "products_per_row_mobile": "2",
+        "products_per_page": 19,
+        "pagination_style": "default",
+        "enable_infinity_scroll": false,
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "4",
+        "spacing_bottom": "4"
+      }
+    },
+    "f8303da3-c3cb-4a90-a63a-7a628615aa6f": {
+      "type": "seo-content",
+      "disabled": true,
+      "settings": {
+        "section_layout": "normal",
+        "heading": "Heading for SEO Content",
+        "heading_size": "h3",
+        "text": "<p>Enter your long text content here. This can include your store description or more detailed description of your brand.</p>",
+        "content_alignment": "center",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-5",
+        "spacing_inner": "2",
+        "spacing_top": "4",
+        "spacing_bottom": "4"
+      }
+    }
+  },
+  "order": [
+    "ingrediant_hero_section_3hYPGb",
+    "banner",
+    "main",
+    "f8303da3-c3cb-4a90-a63a-7a628615aa6f"
+  ]
+}

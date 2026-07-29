@@ -1,0 +1,172 @@
+{% schema %}
+{
+  "name": "Results Progress Section",
+  "tag": "section",
+  "class": "results-progress",
+  "settings": [
+       {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Main Title",
+      "default": "Real Science. Real Hydration"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "How It Works"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "h6", "label": "XS" },
+        { "value": "h5", "label": "S" },
+        { "value": "h4", "label": "M" },
+        { "value": "h3", "label": "L" },
+        { "value": "h2", "label": "XL" }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "spacing_top",
+      "label": "t:sections.global.spacing.spacing_top.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "No"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "0"
+    },
+    {
+      "type": "select",
+      "id": "spacing_bottom",
+      "label": "t:sections.global.spacing.spacing_bottom.label",
+      "options": [
+        {
+          "value": "0",
+          "label": "No"
+        },
+        {
+          "value": "1",
+          "label": "S"
+        },
+        {
+          "value": "2",
+          "label": "M"
+        },
+        {
+          "value": "4",
+          "label": "L"
+        },
+        {
+          "value": "6",
+          "label": "XL"
+        }
+      ],
+      "default": "0"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "result_image",
+      "name": "Result Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "skin_image",
+          "label": "Skin Tone Image"
+        },
+        {
+     "type": "image_picker",
+      "id": "arrow_image",
+     "label": "Arrow Image"
+       },
+        {
+          "type": "text",
+          "id": "step_label",
+          "label": "Step Label",
+          "default": "Before"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Results Progress Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+{% if section.blocks.size > 0 %}
+  {{ 'result-progress.css' | asset_url | stylesheet_tag }}
+
+  {%- style -%}
+    #shopify-section-{{ section.id }} > div {
+      padding-block-start: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_top }});
+      padding-block-end: calc(var(--section-spacing-unit-size) * {{ section.settings.spacing_bottom }});
+    }
+
+  .section__heading{
+text-transform: uppercase;
+color: #b4975a !important;
+margin-bottom:0px;
+  }
+
+  
+
+  {%- endstyle -%}
+<div class="results-progress__wrapper {{ section.settings.color_scheme }}">
+  
+   <h1 class="section__heading {{ section.settings.heading_size }}">
+        {{ section.settings.heading }}
+      </h1>
+      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+<div class="results-progress__images">
+  {% for block in section.blocks %}
+    <div class="results-progress__step">
+      {% if block.settings.skin_image %}
+        <img src="{{ block.settings.skin_image | image_url: width: 400 }}" alt="{{ block.settings.step_label }}">
+      {% endif %}
+      <p class="step-label">{{ block.settings.step_label }}</p>
+    </div>
+
+    {% unless forloop.last %}
+  {% if block.settings.arrow_image %}
+    <div class="results-progress__arrow">
+      <img src="{{ block.settings.arrow_image | image_url: width: 60 }}" alt="Arrow">
+    </div>
+  {% endif %}
+{% endunless %}
+
+  {% endfor %}
+</div>
+  </div>
+  {% endif %}

@@ -1,0 +1,61 @@
+{%- liquid
+  assign share_url = canonical_url | default: request.origin
+  assign og_type = 'website'
+
+  case request.page_type
+    when 'product'
+      assign og_type = 'product'
+    when 'article'
+      assign og_type = 'article'
+    when 'collection'
+      assign og_type = 'product.group'
+    when 'password'
+      assign share_url = request.origin
+  endcase
+
+  assign brand_title = 'My Best Life™: Science-Driven Health & Beauty Supplements'
+  assign brand_summary = 'Shop our premium range of supplements at the best prices, crafted to fuel your body, sharpen your mind, and glow from within. Own your health. Live your best life.'
+
+  assign social_image_width = 1200
+  assign social_image_height = 630
+  if page_image
+    assign social_image = page_image
+  elsif settings.favicon != blank
+    assign social_image = settings.favicon
+    assign social_image_width = 512
+    assign social_image_height = 512
+  else
+    assign social_image = blank
+  endif
+-%}
+
+<title>{{ brand_title }} {{ brand_summary }}</title>
+<meta name="description" content="{{ brand_summary }}">
+
+<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:url" content="{{ share_url }}">
+<meta property="og:title" content="{{ brand_title }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:description" content="{{ brand_summary }}">
+
+{%- if social_image != blank -%}
+  <meta property="og:image" content="https:{{ social_image | image_url: width: social_image_width }}">
+  <meta property="og:image:secure_url" content="https:{{ social_image | image_url: width: social_image_width }}">
+  <meta property="og:image:width" content="{{ social_image_width }}">
+  <meta property="og:image:height" content="{{ social_image_height }}">
+{%- endif -%}
+
+{%- if request.page_type == 'product' -%}
+  <meta property="product:price:amount" content="{{ product.price | money_without_currency | strip_html }}">
+  <meta property="product:price:currency" content="{{ cart.currency.iso_code }}">
+{%- endif -%}
+
+{%- if settings.social_twitter_link != blank -%}
+  <meta name="twitter:site" content="{{ settings.social_twitter_link | split: 'twitter.com/' | last | prepend: '@' }}">
+{%- endif -%}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ brand_title }}">
+<meta name="twitter:description" content="{{ brand_summary }}">
+{%- if social_image != blank -%}
+  <meta name="twitter:image" content="https:{{ social_image | image_url: width: social_image_width }}">
+{%- endif -%}

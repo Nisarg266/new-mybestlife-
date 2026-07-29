@@ -1,0 +1,612 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "breadcrumbs": true,
+        "show_page_title": true,
+        "page_title_alignment": "text-center",
+        "info_title": "",
+        "info_content": "",
+        "section_width": "max-w-narrower",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "ingrediant_hero_section_bMwXTR": {
+      "type": "Ingrediant-hero-section",
+      "name": "Hero Image Left Content",
+      "settings": {
+        "extra_heading": "",
+        "heading": "",
+        "heading_size": 62,
+        "subheading": "",
+        "button_label": "",
+        "button_link": "shopify://products/nutradew",
+        "secondary_button_label": "",
+        "secondary_button_link": "shopify://products/nutradew",
+        "heading_color": "#000000",
+        "subheading_color": "#080808",
+        "button_bg_color": "#000000",
+        "button_text_color": "#ecbdb4",
+        "button_hover_bg_color": "#ecbdb4",
+        "button_hover_text_color": "#000000",
+        "background_color": "#000000",
+        "background_image": "shopify://shop_images/Shop_All_Nutra_Dew_Omegia.png",
+        "mobile_background_image": "shopify://shop_images/Shop_All_Nutra_Dew_Mobile_Banner_copy_b824ba2c-7574-46ff-98cc-2aead478967f.jpg",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "section_height": "70vh"
+      }
+    },
+    "hero_banner_4cDz3k": {
+      "type": "hero-banner",
+      "blocks": {
+        "slide_qNaxxE": {
+          "type": "slide",
+          "settings": {
+            "banner_layout": "hero-banner--full",
+            "color_scheme": "scheme-1",
+            "header_menu_text_color": "#ffffff",
+            "heading": "<p><strong>Omegia® Sea Buckthorn Extract</strong></p>",
+            "subheading": "<strong>Clinically Proven Omega Complex for Skincare</strong>",
+            "subheading_link": "",
+            "text": "<p>Puredia SeaBerry® fruit and seed oil powder rich in Omega<br/>3-6-7-9 — supporting skin hydration, collagen synthesis, and wrinkle reduction.</p>",
+            "button_link_1": "shopify://products/nutradew",
+            "button_link_1_type": "button",
+            "button_label_1": "SHOP NUTRADEWTM WITH OMEGIA®",
+            "button_style_1": "button--filled",
+            "button_link_2": "/",
+            "button_label_2": "",
+            "button_style_2": "button--outlined",
+            "content_position": "center",
+            "content_alignment": "start",
+            "image": "shopify://shop_images/zsgs.png",
+            "video_external": "",
+            "show_controls_on_video": false,
+            "enable_media_overlay_desktop": true,
+            "content_position_mobile": "center",
+            "content_alignment_mobile": "start",
+            "video_external_mobile": "",
+            "show_controls_on_video_mobile": false,
+            "enable_media_overlay_mobile": true
+          }
+        }
+      },
+      "block_order": [
+        "slide_qNaxxE"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".hero__content {padding-left: 12% !important;}"
+      ],
+      "name": "t:sections.hero-banner.name",
+      "settings": {
+        "enable_transparent_header": false,
+        "slider_height": 100,
+        "slideshow_autoplay_interval": 6,
+        "show_slideshow_navigation": true,
+        "slideshow_navigation_position": "hero__swiper-buttons--start",
+        "color_scheme_arrows": "scheme-c7a67c99-7a55-4bd9-95de-5da1241ba413",
+        "show_slideshow_pagination": true,
+        "slideshow_pagination_style": "style-1",
+        "floating_bar": false
+      }
+    },
+    "marquees_zK7pXz": {
+      "type": "marquees",
+      "blocks": {
+        "item_EGTEhP": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453647.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_HkrJ7b": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453650_4c5dc5a5-aae3-495e-b5c2-98d252f1fc98.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_E8GDbg": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453643.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_YVx9Kp": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453644.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_MGfDQC": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_H9XLch": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453618220.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_dYFwWh": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453619.png",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_kPAiki": {
+          "type": "item",
+          "settings": {
+            "icon": "theme-box",
+            "custom_icon": "shopify://shop_images/NSF_Certified.png",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_BbCpkf": {
+          "type": "item",
+          "settings": {
+            "icon": "theme-box",
+            "custom_icon": "shopify://shop_images/HACCP_Compliant_2.png",
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_EGTEhP",
+        "item_HkrJ7b",
+        "item_E8GDbg",
+        "item_YVx9Kp",
+        "item_MGfDQC",
+        "item_H9XLch",
+        "item_dYFwWh",
+        "item_kPAiki",
+        "item_BbCpkf"
+      ],
+      "custom_css": [
+        ".marquee__item svg,.marquee__item img {height: 100px; width: 100%;}"
+      ],
+      "name": "t:sections.marquees.name",
+      "settings": {
+        "enable_animation": true,
+        "marquee_duration_rate": 2,
+        "marquee_font_size": 6,
+        "marquee_items_spacing": 6,
+        "color_scheme": "scheme-49f23032-2a41-4ae8-b39d-db22aeb39437",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "ingrdiant_omega_3KEGKW": {
+      "type": "ingrdiant-omega",
+      "disabled": true,
+      "name": "Heading-Subheading-Image",
+      "settings": {
+        "heading": "RESULTS BACKED BY CLINICAL SCIENCE",
+        "subheading": "",
+        "image": "shopify://shop_images/123.png",
+        "heading_color": "#b4975a",
+        "subheading_color": "#555555",
+        "heading_size_desktop": 36,
+        "heading_size_mobile": 20,
+        "subheading_size": 18,
+        "text_align": "center",
+        "image_width": 80,
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "ingredinat_result_BYTQcU": {
+      "type": "ingredinat-result",
+      "blocks": {
+        "before_image_9jjcDg": {
+          "type": "before_image",
+          "settings": {
+            "image": "shopify://shop_images/beforee.png"
+          }
+        },
+        "after_image_pcKEcV": {
+          "type": "after_image",
+          "settings": {
+            "image": "shopify://shop_images/afterr.png"
+          }
+        },
+        "stat_dVgCDP": {
+          "type": "stat",
+          "settings": {
+            "value": "49%",
+            "label": "in skin hydration",
+            "label2": ""
+          }
+        },
+        "stat_WKBjat": {
+          "type": "stat",
+          "settings": {
+            "value": "26%",
+            "label": "in skin elasticity",
+            "label2": ""
+          }
+        },
+        "stat_RKeGVd": {
+          "type": "stat",
+          "settings": {
+            "value": "18%",
+            "label": "in reduction of wrinkle depth",
+            "label2": ""
+          }
+        }
+      },
+      "block_order": [
+        "before_image_9jjcDg",
+        "after_image_pcKEcV",
+        "stat_dVgCDP",
+        "stat_WKBjat",
+        "stat_RKeGVd"
+      ],
+      "name": "Results Progress Section",
+      "settings": {
+        "heading": "RESULTS BACKED BY CLINICAL SCIENCE",
+        "description": "Over 3 months of clinical use, Omegia® significantly showed improvement by:",
+        "arrow_image": "shopify://shop_images/Group_1484581308.png",
+        "color_scheme": "",
+        "spacing_top": "4",
+        "spacing_bottom": "6"
+      }
+    },
+    "results_progress_ewVtNz": {
+      "type": "results-progress",
+      "blocks": {
+        "result_image_cyqkjG": {
+          "type": "result_image",
+          "settings": {
+            "skin_image": "shopify://shop_images/beforee.png",
+            "arrow_image": "shopify://shop_images/Group_1484581308.png",
+            "step_label": ""
+          }
+        },
+        "result_image_tJcByJ": {
+          "type": "result_image",
+          "settings": {
+            "skin_image": "shopify://shop_images/afterr.png",
+            "step_label": ""
+          }
+        },
+        "result_image_ENfkQ4": {
+          "type": "result_image",
+          "disabled": true,
+          "settings": {
+            "skin_image": "shopify://shop_images/image_15_1.png",
+            "step_label": "Wrinkle depth reduced by 18%"
+          }
+        }
+      },
+      "block_order": [
+        "result_image_cyqkjG",
+        "result_image_tJcByJ",
+        "result_image_ENfkQ4"
+      ],
+      "disabled": true,
+      "name": "Results Progress Section",
+      "settings": {
+        "heading": "<strong>Results Backed by Clinical Science</strong>",
+        "subtitle": "Over 3 months of clinical use, Omegia<strong>® </strong>significantly improved:",
+        "heading_size": "h2",
+        "color_scheme": "scheme-1",
+        "spacing_top": "6",
+        "spacing_bottom": "6"
+      }
+    },
+    "section_banner_cards_9hWGhn": {
+      "type": "section-banner-cards",
+      "blocks": {
+        "card_9g3EYh": {
+          "type": "card",
+          "settings": {
+            "logo": "shopify://shop_images/2_1.png",
+            "heading": "Rich Omega® Blend",
+            "description": "Contains Omega® 3, 6, 7 and 9 — each known for anti-inflammatory and skin-repair properties."
+          }
+        },
+        "card_zLhafm": {
+          "type": "card",
+          "settings": {
+            "logo": "shopify://shop_images/pdp_01.svg",
+            "heading": "Hydrate Beyond Skin",
+            "description": "Delivers deep hydration to the skin and internal linings—eyes, vaginal tissue, and gut—protecting against dryness and inflammation."
+          }
+        }
+      },
+      "block_order": [
+        "card_9g3EYh",
+        "card_zLhafm"
+      ],
+      "name": "Banner with Cards",
+      "settings": {
+        "background_image": "shopify://shop_images/08388d8f8762edf0173e66a2c93f3c831ad9e2b7.gif",
+        "overlay_color": "#eeebe3",
+        "overlay_opacity": 95,
+        "heading": "<strong>What Makes Omegia® Special</strong>",
+        "heading_size": "h2"
+      }
+    },
+    "custom_capsules_section_KFJLUa": {
+      "type": "custom-capsules-section",
+      "blocks": {
+        "benefit_qMTpxU": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/9_8116d4fd-82c9-4e03-8d6c-cc70d5c832af.png",
+            "heading": "Deep Hydration and Barrier Repair",
+            "subheading": "Omega-7 and Omega-3 restore skin’s water retention and mucosal moisture"
+          }
+        },
+        "benefit_dKRUen": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/3_68a094fe-bf7e-40ce-b066-c60c4b96f6fb.png",
+            "heading": "Improves Skin Elasticity and Glow",
+            "subheading": "Enhances elasticity, reduces roughness, and firms skin texture in 3 months."
+          }
+        },
+        "benefit_nki6EA": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shopify://shop_images/1_6e671a0d-f915-4811-a99d-75a0acab7309.png",
+            "heading": "Supports Hormonal Skin Health",
+            "subheading": "Ideal for peri-menopause and post-menopause dryness and inflammation concerns."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_qMTpxU",
+        "benefit_dKRUen",
+        "benefit_nki6EA"
+      ],
+      "name": "Custom Capsules Section",
+      "settings": {
+        "section_heading": "CORE BENEFITS",
+        "main_image": "shopify://shop_images/Nutra_Dew_4.png"
+      }
+    },
+    "section_banner_timeline_97ehgR": {
+      "type": "section-banner-timeline",
+      "blocks": {
+        "timeline_step_ykVwVg": {
+          "type": "timeline_step",
+          "settings": {
+            "step_title": "Weeks 1 - 4",
+            "step_description": "- Brightness improved by 1.2%  \n- Moisture increased by 7.4%  \n- Elasticity enhanced by 1.2% \n- Redness sensitivity reduced by 1.1%  \n- Texture improved by 13.1%  \n- Collagen density increased by 3.3%"
+          }
+        },
+        "timeline_step_WJCyw9": {
+          "type": "timeline_step",
+          "settings": {
+            "step_title": "Weeks 5 - 8",
+            "step_description": "- Brightness improved by 2.2% \n- Moisture increased by 8.5% \n- Elasticity enhanced by 2.7%  \n- Redness sensitivity reduced by 2.2%"
+          }
+        },
+        "timeline_step_XzRRh4": {
+          "type": "timeline_step",
+          "settings": {
+            "step_title": "Weeks 9 - 12",
+            "step_description": "- Texture improved by 14.1% \n- Pore size decreased by 14.6% \n- Collagen density increased by 10.0%"
+          }
+        }
+      },
+      "block_order": [
+        "timeline_step_ykVwVg",
+        "timeline_step_WJCyw9",
+        "timeline_step_XzRRh4"
+      ],
+      "custom_css": [],
+      "name": "Banner With Timeline",
+      "settings": {
+        "banner_image": "shopify://shop_images/d21e598ce671a7c6ea5d9a510ac1a256c6f41d22_1.png",
+        "subtitle": "Based on 3-month clinical studies of Omegia® using Sea Buckthorn Oil capsules",
+        "heading": "GET UNMATCHED RESULTS",
+        "heading_size": "h3",
+        "left_image": "shopify://shop_images/Image_6_077f94aa-2fb3-4df1-93c2-208394728b3e.jpg",
+        "spacing_top": "6",
+        "spacing_bottom": "6",
+        "color_scheme": "scheme-1",
+        "overlay_color": "#b4975a",
+        "overlay_opacity": 0.6
+      }
+    },
+    "section_ingredients_faq_AwJHhR": {
+      "type": "section-ingredients-faq",
+      "blocks": {
+        "topic_nCxf4V": {
+          "type": "topic",
+          "settings": {
+            "is_open": true,
+            "title": "What makes Omegia® Sea Buckthorn Extract unique?",
+            "text": "<p>Omegia® is a clinically validated extract from the whole berry and seed of Hippophae rhamnoides (Sea Buckthorn), providing a rare combination of Omega-3, 6, 7, and 9. It’s one of the few natural sources rich in palmitoleic acid (Omega-7), known to support skin and mucosal health.</p>",
+            "page": ""
+          }
+        },
+        "topic_mkygRh": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "How does Omegia® support skin and intimate wellness?",
+            "text": "<p>Omegia® nourishes the skin and internal mucous membranes—including the eyes, vagina, and gut—from within. It helps alleviate dryness, boost hydration, and reduce inflammation, making it ideal for addressing vaginal dryness,  perimenopausal symptoms, and overall skin radiance.</p>",
+            "page": ""
+          }
+        },
+        "topic_JyKtfh": {
+          "type": "topic",
+          "settings": {
+            "is_open": false,
+            "title": "Is Omegia® Sea Buckthorn Extract safe for daily use?",
+            "text": "<p>Yes. Omegia® is plant-based, sustainably sourced, and clinically studied for safety and efficacy. It’s free from fish, allergens, and synthetic additives, making it suitable for long-term use to support skin, hormonal, and mucosal health—especially in women.</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "topic_nCxf4V",
+        "topic_mkygRh",
+        "topic_JyKtfh"
+      ],
+      "custom_css": [
+        ".container {max-width: 800px;}",
+        "h2.section__heading.h2 {line-height: initial;}"
+      ],
+      "name": "ingredients-faq",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "heading_size": "h2",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-5d57539f-c53f-4370-8548-b72322db188c",
+        "spacing_top": "6",
+        "spacing_bottom": "6"
+      }
+    },
+    "our_reels_knBNBF": {
+      "type": "our-reels",
+      "blocks": {
+        "video_jG46Lp": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/9920b0e9295b44afaab62483162ba6f8.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/9920b0e9295b44afaab62483162ba6f8.mp4"
+          }
+        },
+        "video_T3HzyP": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/3c64542ce65a4a64b5158aa81c8ddb06.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/3c64542ce65a4a64b5158aa81c8ddb06.mp4"
+          }
+        },
+        "video_yef3nx": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/237712093c3e447fbf24131db9b33a18.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/237712093c3e447fbf24131db9b33a18.mp4"
+          }
+        },
+        "video_dyHgxT": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/735d6bc2b10a461e88abf1ea42f3bb83.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/735d6bc2b10a461e88abf1ea42f3bb83.mp4"
+          }
+        },
+        "video_mcCkNi": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/60ec823db9cb401b8c92e2274a2e3a5d.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/60ec823db9cb401b8c92e2274a2e3a5d.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_jG46Lp",
+        "video_T3HzyP",
+        "video_yef3nx",
+        "video_dyHgxT",
+        "video_mcCkNi"
+      ],
+      "name": "Our Reels",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading": "Discover What Living Your Best Life Truly Feels Like",
+        "heading_font_size": 46,
+        "subheading": "",
+        "subheading_font_size": 30,
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "autoplay": true,
+        "controls": false,
+        "muted": true
+      }
+    },
+    "apps_U4JTqj": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_WAxptz": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_WAxptz"
+      ],
+      "settings": {}
+    },
+    "find_us_on_cxGaT7": {
+      "type": "find-us-on",
+      "disabled": true,
+      "name": "Find Us On",
+      "settings": {
+        "bg_color": "#fefcf9",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "logo_width": 170,
+        "logo_gap": 60,
+        "logo_1": "shopify://shop_images/Amazon-Logo_1_104a6845-86c1-435c-b7ca-d2d25847178c.png",
+        "logo_2": "shopify://shop_images/XMLID_109_6d10e992-ee1e-4345-89c0-c52e353f1f07.png",
+        "logo_height": 100
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ingrediant_hero_section_bMwXTR",
+    "hero_banner_4cDz3k",
+    "marquees_zK7pXz",
+    "ingrdiant_omega_3KEGKW",
+    "ingredinat_result_BYTQcU",
+    "results_progress_ewVtNz",
+    "section_banner_cards_9hWGhn",
+    "custom_capsules_section_KFJLUa",
+    "section_banner_timeline_97ehgR",
+    "section_ingredients_faq_AwJHhR",
+    "our_reels_knBNBF",
+    "apps_U4JTqj",
+    "find_us_on_cxGaT7"
+  ]
+}

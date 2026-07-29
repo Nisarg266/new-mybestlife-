@@ -1,0 +1,81 @@
+{%- comment -%}
+  Button renderer.
+  Renders an <a> when type == 'link', otherwise a <button>.
+  params:
+    type: button | submit | link (default 'button')
+    name, id, value, href, target, class, style, fullwidth, disabled, attr
+    icon_name, loading_spinner, color_scheme
+    button_style: default | filled | outlined | secondary (default 'button--filled')
+{%- endcomment -%}
+
+{%- liquid
+  assign btn_type = type | default: 'button'
+  assign btn_name = name | default: false
+  assign btn_id = id | default: false
+  assign btn_value = value | default: false
+  assign btn_href = href | default: false
+  assign btn_target = target | default: false
+
+  assign btn_extra_class = class | default: ''
+  assign btn_fullwidth = fullwidth | default: false
+  assign btn_attr = attr | default: false
+  assign btn_disabled = disabled | default: false
+  assign btn_spinner = loading_spinner | default: false
+  assign btn_scheme = color_scheme | default: false
+
+  assign btn_variant = button_style | default: 'button--filled'
+  if btn_variant == 'default'
+    assign btn_variant = 'button--filled'
+  endif
+
+  assign btn_classes = btn_extra_class | append: ' ' | append: btn_variant
+
+  if settings.button_text_transform and settings.button_text_transform != 'none'
+    assign btn_classes = btn_classes | append: ' ' | append: settings.button_text_transform
+  endif
+
+  if btn_fullwidth
+    assign btn_classes = btn_classes | append: ' button--full'
+  endif
+
+  if btn_scheme
+    assign btn_classes = btn_classes | append: ' color-' | append: btn_scheme
+  endif
+-%}
+
+{%- if btn_value -%}
+  {%- if btn_type == 'link' -%}
+    <a
+      {%- if btn_id %} id="{{- btn_id -}}"{% endif -%}
+      {%- if btn_attr %} {{ btn_attr }}{% endif -%}
+      {%- if btn_disabled %} disabled{% endif -%}
+      {%- if btn_target %} target="{{- btn_target -}}"{% endif -%}
+      href="{{- btn_href -}}"
+      class="{{- btn_classes -}}">
+      {%- if icon_name -%}
+        {% render 'icon', icon_name: icon_name, class: 'icon', text: btn_value %}
+      {%- else -%}
+        {{- btn_value -}}
+      {%- endif -%}
+    </a>
+  {%- else -%}
+    <button
+      type="{{- btn_type -}}"
+      {%- if btn_id %} id="{{- btn_id -}}"{% endif -%}
+      {%- if btn_name %} name="{{- btn_name -}}"{% endif -%}
+      {%- if btn_attr %} {{ btn_attr }}{% endif -%}
+      {%- if btn_disabled %} disabled{% endif -%}
+      class="{{- btn_classes -}}">
+      {%- if icon_name -%}
+        {% render 'icon', icon_name: icon_name, class: 'icon', text: btn_value %}
+      {%- else -%}
+        {{- btn_value -}}
+      {%- endif -%}
+      {%- if btn_spinner -%}
+        <div class="button__spinner">
+          {%- render 'loading-spinner' -%}
+        </div>
+      {%- endif -%}
+    </button>
+  {%- endif -%}
+{%- endif -%}

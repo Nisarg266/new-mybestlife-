@@ -1,0 +1,657 @@
+{% style %}
+            .predictive-search__grid { column-gap: var(--grid-spacing); }
+            .badge.badge--type {
+              display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px;
+              background: var(--color-bg, #f3f4f6); color: var(--color-text, #374151); margin-right:6px;
+            }
+            .badge.badge--status {
+              display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px;
+              background:#e5e7eb; color:#111827; margin-bottom:6px;
+            }
+            .predictive-search__links-link { display:flex; align-items:center; gap:.4rem; }
+            .predictive-search__highlight mark { background: #fff3a3; padding: 0 .1em; border-radius: .2em; }
+
+            /* Hide any price UI inside product cards when flagged as coming soon */
+            .predictive-search__product-card.is-coming-soon [class*="price"] { display:none !important; }
+            .predictive-search__product-card.is-coming-soon [data-price],
+            .predictive-search__product-card.is-coming-soon .price,
+            .predictive-search__product-card.is-coming-soon .price__regular,
+            .predictive-search__product-card.is-coming-soon .price__sale,
+            .predictive-search__product-card.is-coming-soon .price-item { display:none !important; }
+          {% endstyle %}
+
+{%- if predictive_search.performed -%}
+  {{- 'component-card-product.css' | asset_url | stylesheet_tag -}}
+  <div class="predictive-search__results" id="predictive-search-results">
+    {%- if predictive_search.resources.pages == blank
+      and predictive_search.resources.products == blank
+      and predictive_search.resources.queries.size == 0
+      and predictive_search.resources.collections.size == 0
+      and predictive_search.resources.pages.size == 0
+      and predictive_search.resources.articles.size == 0 -%}
+      <div class="predictive-search__message">
+        <p>
+          {{- 'search.no_results_with_terms' | t: terms: predictive_search.terms | append: " " -}}
+          {{- 'search.change_terms' | t -}}
+        </p>
+      </div>
+    {%- endif -%}
+
+    {%- if predictive_search.resources.queries.size > 0
+      or predictive_search.resources.collections.size > 0
+      or predictive_search.resources.pages.size > 0
+      or predictive_search.resources.articles.size > 0 -%}
+      <div class="predictive-search__col">
+        {%- if predictive_search.resources.queries.size > 0 -%}
+          <div class="predictive-search__row">
+            <h6 class="predictive-search__title">{{- 'search.popular_searches' | t -}}</h6>
+            <ul class="predictive-search__links list-unstyled">
+              {%- for query in predictive_search.resources.queries limit: 3 -%}
+                <li class="predictive-search__links-item">
+                  <a href="{{- query.url -}}" class="predictive-search__links-link">
+                    <span class="js-hl" aria-label="{{ query.text }}">{{ query.styled_text }}</span>
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if predictive_search.resources.pages.size > 0 -%}
+          <div class="predictive-search__row">
+            <h6 class="predictive-search__title">{{- 'search.object_type.page' | t -}}</h6>
+            <ul class="predictive-search__links list-unstyled">
+              {%- for page in predictive_search.resources.pages limit: 5 -%}
+                <li class="predictive-search__links-item">
+                  <a href="{{- page.url -}}" class="predictive-search__links-link">
+                    <span class="badge badge--type">Page</span>
+                    <span class="js-hl">{{- page.title -}}</span>
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if predictive_search.resources.articles.size > 0 -%}
+          <div class="predictive-search__row">
+            <h6 class="predictive-search__title">{{- 'search.object_type.article' | t -}}</h6>
+            <ul class="predictive-search__links list-unstyled">
+              {%- for article in predictive_search.resources.articles limit: 5 -%}
+                <li class="predictive-search__links-item">
+                  <a href="{{- article.url -}}" class="predictive-search__links-link">
+                    <span class="badge badge--type">Blog</span>
+                    <span class="js-hl">{{- article.title -}}</span>
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        {%- if predictive_search.resources.collections.size > 0 -%}
+          <div class="predictive-search__row">
+            <h6 class="predictive-search__title">{{- 'search.collections' | t -}}</h6>
+            <ul class="predictive-search__links list-unstyled">
+              {%- for collection in predictive_search.resources.collections limit: 2 -%}
+                <li class="predictive-search__links-item">
+                  <a href="{{- collection.url -}}" class="predictive-search__links-link">
+                    <span class="badge badge--type">Collection</span>
+                    <span class="js-hl">
+                      {{- collection.title -}} <small>({{- collection.all_products_count -}})</small>
+                    </span>
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <!-- Products column -->
+    <div class="predictive-search__col predictive-search__col-product">
+      {%- if predictive_search.resources.products.size > 0 -%}
+        <div class="predictive-search__row">
+          <h6 class="predictive-search__title">{{- 'search.products' | t -}}</h6>
+
+          {% style %}
+            .predictive-search__grid { column-gap: var(--grid-spacing); }
+            .badge.badge--type {
+              display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px;
+              background: var(--color-bg, #f3f4f6); color: var(--color-text, #374151); margin-right:6px;
+            }
+            .badge.badge--status {
+              display:inline-block; font-size:11px; padding:2px 8px; border-radius:999px;
+              background:#e5e7eb; color:#111827; margin-bottom:6px;
+            }
+            .predictive-search__links-link { display:flex; align-items:center; gap:.4rem; }
+            .predictive-search__highlight mark { background: #fff3a3; padding: 0 .1em; border-radius: .2em; }
+
+            /* Hide any price UI inside product cards when flagged as coming soon */
+            .predictive-search__product-card.is-coming-soon [class*="price"] { display:none !important; }
+            .predictive-search__product-card.is-coming-soon [data-price],
+            .predictive-search__product-card.is-coming-soon .price,
+            .predictive-search__product-card.is-coming-soon .price__regular,
+            .predictive-search__product-card.is-coming-soon .price__sale,
+            .predictive-search__product-card.is-coming-soon .price-item { display:none !important; }
+          {% endstyle %}
+
+          <div class="predictive-search__grid">
+            {%- for product in predictive_search.resources.products limit: 3 -%}
+              {%- assign p_price_min = product.price_min | default: product.price | default: 0 -%}
+              {%- assign is_coming_soon = false -%}
+              {%- if p_price_min == 0 -%}{%- assign is_coming_soon = true -%}{%- endif -%}
+
+              <div class="predictive-search__product-card{% if is_coming_soon %} is-coming-soon{% endif %}">
+                <span class="badge badge--type">Product</span>
+                {%- if is_coming_soon -%}<span class="badge badge--status">Coming soon</span>{%- endif -%}
+                {%- render 'card-product',
+                  product_ref: product,
+                  section_id: section.id,
+                  search_product: true
+                -%}
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- unless predictive_search.resources.pages == blank
+      and predictive_search.resources.products == blank
+      and predictive_search.resources.queries.size == 0
+      and predictive_search.resources.collections.size == 0
+      and predictive_search.resources.pages.size == 0
+      and predictive_search.resources.articles.size == 0 -%}
+      <div class="predictive-search__col">
+        <div class="predictive-search__row">
+          {%- comment -%}
+            Use a direct link so the *full results page* searches page body/content too.
+            Predictive dropdown is limited and may miss matches that only exist in page body (e.g., Ingredients page).
+          {%- endcomment -%}
+          <a class="button button--text predictive-search__link"
+             href="/search?type=product,page,article,collection&q={{ predictive_search.terms | url_encode }}">
+            {{- 'search.view_results_with_terms' | t: terms: predictive_search.terms -}}
+          </a>
+        </div>
+      </div>
+    {%- endunless -%}
+  </div>
+
+  <!-- tiny term-highlighting for titles -->
+<!-- Deep content + On-this-page merged enhancer -->
+
+<!-- Deep content + On-this-page merged enhancer (site-wide EVERYTHING) -->
+<script>
+(function(){
+  /* =========================
+     CONFIG
+     ========================= */
+  var INDEX_KEY = 'siteSearchIndex_all_v3';
+  var INDEX_VER = '3';                 // bump to force rebuild
+  var REINDEX_AFTER_HOURS = 24;        // rebuild daily
+  var MAX_URLS = 150000;               // generous cap
+  var FETCH_CONCURRENCY = 10;          // parallel fetches
+  var TEXT_SLICE = 120000;             // bigger slice to catch long pages
+  var PROGRESS_STEP = 35;              // progressive render cadence
+  var DOM_SCAN_CAP = 12000;            // elements scanned per page run
+
+  /* =========================
+     GUARDS + HOOKS
+     ========================= */
+  var resultsRoot = document.getElementById('predictive-search-results');
+  if (!resultsRoot) return;
+  var q = {{ predictive_search.terms | json }};
+  if (!q || !q.trim()) return;
+  q = q.trim();
+
+  /* =========================
+     UI: ensure columns exist
+     ========================= */
+  function ensureCol(id, title){
+    if (document.getElementById(id)) return document.getElementById(id);
+    var beforeNode = resultsRoot.querySelector('.predictive-search__col-product') || resultsRoot.firstChild;
+    var col = document.createElement('div');
+    col.className = 'predictive-search__col';
+    col.innerHTML =
+      '<div class="predictive-search__row" id="'+id+'">' +
+        '<h6 class="predictive-search__title">'+ title +'</h6>' +
+        '<ul class="predictive-search__links list-unstyled" id="'+id+'-list"></ul>' +
+      '</div>';
+    resultsRoot.insertBefore(col, beforeNode);
+    return document.getElementById(id);
+  }
+  var deepWrap = ensureCol('sitewide-matches','Matches across the site');
+  var deepList = document.getElementById('sitewide-matches-list');
+  var onWrap   = ensureCol('this-page-matches','Matches on this page');
+  var onList   = document.getElementById('this-page-matches-list');
+
+  /* =========================
+     TEXT UTILS
+     ========================= */
+  function norm(s){ return (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); }
+  function escRe(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+  function tokenize(q){ return norm(q).split(/\s+/).filter(Boolean); }
+  function wbHit(text, tok){ return new RegExp('\\b'+escRe(tok)+'\\b','i').test(text||''); }
+  function matchesAll(text, tokens){
+    var t = norm(text);
+    var ok = tokens.every(function(tok){ return t.indexOf(tok)>=0; });
+    var wb = ok && tokens.some(function(tok){ return wbHit(text, tok); });
+    return { ok: ok, wb: wb };
+  }
+  function matchesAny(text, tokens){
+    var t = norm(text);
+    var ok = tokens.some(function(tok){ return t.indexOf(tok)>=0; });
+    var wb = ok && tokens.some(function(tok){ return wbHit(text, tok); });
+    return { ok: ok, wb: wb };
+  }
+  function highlight(text, q){
+    if (!text) return '';
+    tokenize(q).forEach(function(tok){
+      text = text.replace(new RegExp('('+escRe(tok)+')','ig'), '<mark>$1</mark>');
+    });
+    return text;
+  }
+  function snippet(text, q, span){
+    span = span || 110;
+    var t = (text||'').replace(/\s+/g,' ').trim();
+    var tokens = tokenize(q);
+    if (!tokens.length) return '';
+    var idx = Math.min.apply(null, tokens.map(function(tok){ var i = norm(t).indexOf(tok); return i<0?1e12:i; }));
+    if (idx >= 1e12) return '';
+    var s = Math.max(0, idx - span), e = Math.min(t.length, idx + tokens[0].length + span);
+    return (s>0?'…':'') + highlight(t.slice(s,e), q) + (e<t.length?'…':'');
+  }
+  function typeFromUrl(u){
+    if (/\/products\//.test(u)) return 'Product';
+    if (/\/collections\//.test(u)) return 'Collection';
+    if (/\/blogs?\//.test(u)) return 'Blog';
+    return 'Page';
+  }
+  function sameOrigin(u){ try{ var a=document.createElement('a'); a.href=u; return a.origin===location.origin; }catch(e){ return false; } }
+
+  /* =========================
+     THIS PAGE SCAN (anchors)
+     ========================= */
+  (function scanDOM(){
+    var SCAN='*', IGNORE='script,style,template,noscript,svg,canvas';
+    function visible(el){ var cs = window.getComputedStyle(el); return cs && cs.display!=='none' && cs.visibility!=='hidden'; }
+    function run(){
+      var all = document.querySelectorAll(SCAN);
+      var tokens = tokenize(q), hits=[], count=0;
+      for (var i=0;i<all.length;i++){
+        var el = all[i];
+        if (el.matches(IGNORE)) continue;
+        if (!visible(el)) continue;
+        var txt = (el.textContent||'').trim();
+        if (!txt) continue;
+        if (matchesAll(txt,tokens).ok || matchesAny(txt,tokens).ok){
+          if (!el.id) el.id='search-hit-'+Math.random().toString(36).slice(2,9);
+          hits.push({ id:el.id, text:txt });
+        }
+        if (++count>=DOM_SCAN_CAP) break;
+      }
+      onList.innerHTML='';
+      hits.slice(0,10).forEach(function(h){
+        var li=document.createElement('li');
+        li.className='predictive-search__links-item';
+        li.innerHTML =
+          '<a class="predictive-search__links-link" href="#'+h.id+'" data-scroll-hit="'+h.id+'">' +
+            '<span class="badge badge--type">This page</span>' +
+            '<span class="js-hl">'+ highlight(document.title || location.pathname, q) +'</span>' +
+          '</a>' +
+          '<div class="predictive-search__highlight"><small>'+ snippet(h.text, q) +'</small></div>';
+        onList.appendChild(li);
+      });
+      onWrap.style.display = onList.children.length ? '' : 'none';
+    }
+    run();
+
+    // brief late-content observe
+    if (!window.__predictiveScanObserver){
+      window.__predictiveScanObserver = new MutationObserver(function(){
+        clearTimeout(window.__predictiveScanTick);
+        window.__predictiveScanTick = setTimeout(run, 120);
+      });
+      window.__predictiveScanObserver.observe(document.body, { childList:true, subtree:true });
+      setTimeout(function(){ window.__predictiveScanObserver && window.__predictiveScanObserver.disconnect(); window.__predictiveScanObserver=null; }, 5000);
+    }
+
+    if (!resultsRoot.__scrollBound){
+      resultsRoot.__scrollBound = true;
+      resultsRoot.addEventListener('click', function(e){
+        var a = e.target.closest('a[data-scroll-hit]'); if (!a) return;
+        e.preventDefault();
+        var t = document.getElementById(a.getAttribute('data-scroll-hit')); if (!t) return;
+        t.scrollIntoView({ behavior:'smooth', block:'center' });
+        var o=t.style.outline, b=t.style.backgroundColor;
+        t.style.outline='2px solid #f59e0b'; t.style.backgroundColor='rgba(245,158,11,.12)';
+        setTimeout(function(){ t.style.outline=o||''; t.style.backgroundColor=b||''; }, 1200);
+      });
+    }
+  })();
+
+  /* =========================
+     LIGHTWEIGHT PROMISE LIMITER
+     ========================= */
+  function pLimit(concurrency){
+    var q=[], active=0;
+    function next(){ if (!q.length || active>=concurrency) return; active++; q.shift()().finally(function(){ active--; next(); }); next(); }
+    return function schedule(fn){ return new Promise(function(res,rej){ q.push(function(){ return fn().then(res,rej); }); next(); }); };
+  }
+
+  /* =========================
+     SITEMAP + FALLBACK CRAWLER
+     ========================= */
+  function qsaText(xml, sel){ return Array.from(xml.querySelectorAll(sel)).map(function(n){ return n.textContent.trim(); }); }
+  function fetchSitemap(url){
+    return fetch(url, { credentials:'same-origin' })
+      .then(function(r){ return r.ok ? r.text() : ''; })
+      .then(function(txt){
+        if (!txt) return { sitemaps:[], urls:[] };
+        var xml = new DOMParser().parseFromString(txt, 'application/xml');
+        return { sitemaps: qsaText(xml,'sitemap > loc'), urls: qsaText(xml,'url > loc') };
+      })
+      .catch(function(){ return { sitemaps:[], urls:[] }; });
+  }
+
+  function discoverFromHomepage(){
+    // Fallback: take homepage and collect same-origin links (1 hop)
+    return fetch('/', { credentials:'same-origin' })
+      .then(function(r){ return r.ok ? r.text() : ''; })
+      .then(function(html){
+        if (!html) return [];
+        var doc = new DOMParser().parseFromString(html,'text/html');
+        var links = Array.from(doc.querySelectorAll('a[href]'))
+          .map(function(a){ try{ return new URL(a.getAttribute('href'), location.origin).href; }catch(e){ return null; } })
+          .filter(Boolean)
+          .filter(sameOrigin);
+        return Array.from(new Set(links));
+      })
+      .catch(function(){ return []; });
+  }
+
+  /* =========================
+     PRODUCT JSON HELPERS
+     ========================= */
+  var __productCache = new Map();
+  function getHandleFromUrl(url){
+    try{ var a=document.createElement('a'); a.href=url; var m=a.pathname.match(/\/products\/([^\/?#]+)/i); return m ? decodeURIComponent(m[1]) : null; }catch(e){ return null; }
+  }
+  function fetchProductJSON(handle){
+    if (!handle) return Promise.resolve(null);
+    if (__productCache.has(handle)) return __productCache.get(handle);
+    var p = fetch('/products/'+encodeURIComponent(handle)+'.js', { credentials:'same-origin' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .catch(function(){ return null; });
+    __productCache.set(handle, p);
+    return p;
+  }
+  function moneyFromCents(cents){
+    try{
+      var n=(Number(cents)||0)/100;
+      return new Intl.NumberFormat(undefined, { style:'currency', currency:(window?.Shopify?.currency?.active||'USD') }).format(n);
+    }catch(e){ return ((Number(cents)||0)/100).toFixed(2); }
+  }
+
+  /* =========================
+     INDEX BUILD: HTML + PRODUCT JSON
+     ========================= */
+  function fetchTextAndMeta(url){
+    return fetch(url, { credentials:'same-origin' })
+      .then(function(r){ return r.ok ? r.text() : ''; })
+      .then(function(html){
+        var title=url, text='';
+        if (html){
+          var doc=new DOMParser().parseFromString(html,'text/html');
+          Array.from(doc.querySelectorAll('script,style,template,noscript')).forEach(function(n){ n.remove(); });
+          // include alt text + aria labels for richer indexing
+          Array.from(doc.querySelectorAll('[alt],[aria-label]')).forEach(function(n){
+            var alt=(n.getAttribute('alt')||'')+' '+(n.getAttribute('aria-label')||'');
+            if (alt) n.appendChild(doc.createTextNode(' '+alt+' '));
+          });
+          title = (doc.querySelector('title') && doc.querySelector('title').textContent) || url;
+          text  = (doc.body && doc.body.textContent || '').replace(/\s+/g,' ').trim().slice(0,TEXT_SLICE);
+        }
+        return { url:url, title:title, content:text };
+      })
+      .catch(function(){ return { url:url, title:url, content:'' }; });
+  }
+
+  function buildIndex(){
+    return fetchSitemap('/sitemap.xml').then(function(root){
+      var urls = (root.urls||[]);
+      var sub  = (root.sitemaps||[]).filter(sameOrigin);
+      var chain = Promise.resolve();
+      return Promise.all(sub.map(fetchSitemap)).then(function(list){
+        list.forEach(function(sm){ urls = urls.concat(sm.urls||[]); });
+        urls = urls.filter(sameOrigin);
+        if (!urls.length){
+          // fallback discovery
+          return discoverFromHomepage().then(function(found){ return found; });
+        }
+        return urls;
+      });
+    }).then(function(urls){
+      // de-dupe and prefer canonical paths
+      urls = Array.from(new Set(urls)).slice(0, MAX_URLS);
+
+      var schedule = pLimit(FETCH_CONCURRENCY);
+      var items=[], processed=0;
+
+      function progressiveRender(){
+        processed++;
+        if (processed % PROGRESS_STEP === 0){
+          renderSiteResults(searchIndex(items, q));
+        }
+      }
+
+      // job list
+      var jobs = urls.map(function(u){
+        return schedule(function(){
+          return fetchTextAndMeta(u).then(function(base){
+            var type = typeFromUrl(u);
+            // For products, enrich with JSON payload (description, tags, vendor, type, variants)
+            if (type==='Product'){
+              var handle = getHandleFromUrl(u);
+              return fetchProductJSON(handle).then(function(p){
+                if (p){
+                  var bodyPieces = [
+                    p.title||'',
+                    p.vendor||'',
+                    p.product_type||'',
+                    Array.isArray(p.tags)? p.tags.join(' ') : (p.tags||''),
+                    (p.options||[]).map(function(o){ return o.name + ' ' + (o.values||[]).join(' '); }).join(' '),
+                    (p.variants||[]).map(function(v){ return [v.title,v.sku,v.option1,v.option2,v.option3].filter(Boolean).join(' '); }).join(' '),
+                    (p.description||'')
+                  ].join(' • ');
+                  base.title   = p.title || base.title;
+                  base.content = (bodyPieces + ' • ' + base.content).slice(0, TEXT_SLICE);
+                }
+                items.push({ url:u, title:base.title, content:base.content, type:type });
+                progressiveRender();
+              });
+            } else {
+              items.push({ url:u, title:base.title, content:base.content, type:type });
+              progressiveRender();
+              return Promise.resolve();
+            }
+          }).then(function(){
+            // yield back to UI occasionally
+            return new Promise(function(done){
+              (window.requestIdleCallback || window.requestAnimationFrame)(function(){ done(); });
+            });
+          }).catch(function(){ /* ignore bad pages */ });
+        });
+      });
+
+      return Promise.all(jobs).then(function(){ return items; });
+    });
+  }
+
+  /* =========================
+     CACHE + SINGLETON
+     ========================= */
+  if (!window.__siteIndexPromise){
+    window.__siteIndexPromise = (function(){
+      var cached=null;
+      try{ cached = JSON.parse(localStorage.getItem(INDEX_KEY)); }catch(e){}
+      var fresh = !cached || cached.version!==INDEX_VER || !cached.builtAt ||
+                  (Date.now()-cached.builtAt) > REINDEX_AFTER_HOURS*3600*1000 ||
+                  !Array.isArray(cached.items);
+      if (!fresh) return Promise.resolve(cached.items);
+
+      deepList.innerHTML = '<li class="predictive-search__links-item"><span>Indexing entire site…</span></li>';
+      deepWrap.style.display = '';
+
+      return buildIndex().then(function(items){
+        try{ localStorage.setItem(INDEX_KEY, JSON.stringify({ version:INDEX_VER, builtAt:Date.now(), items:items })); }catch(e){}
+        return items;
+      }).catch(function(){ return []; });
+    })();
+  }
+
+  /* =========================
+     SEARCH + SCORE + RENDER
+     ========================= */
+  function scoreItem(it, tokens, mode){ // mode: 'AND' or 'OR'
+    var title = it.title || it.url || '', body = it.content || '';
+    var tHit = mode==='AND' ? matchesAll(title, tokens) : matchesAny(title, tokens);
+    var bHit = mode==='AND' ? matchesAll(body, tokens)  : matchesAny(body, tokens);
+    if (!tHit.ok && !bHit.ok) return null;
+
+    // Base score: lower is better
+    var earliest = Infinity;
+    tokens.forEach(function(tok){
+      var nt = norm(title), nb = norm(body);
+      var iT = nt.indexOf(tok); var iB = nb.indexOf(tok);
+      var i = iT>=0 ? iT : (iB>=0 ? iB : Infinity);
+      if (i < earliest) earliest = i;
+    });
+
+    var typeWeight = 0; // prioritize objects users usually want
+    if (it.type==='Product') typeWeight -= 80;
+    else if (it.type==='Collection') typeWeight -= 40;
+    else if (it.type==='Blog') typeWeight -= 10;
+
+    var score = (tHit.ok?0:200) + (tHit.wb? -70:0) + (bHit.wb? -20:0) + (earliest/10) + typeWeight;
+    return { it: it, score: score };
+  }
+
+  function searchIndex(items, q){
+    var tokens = tokenize(q);
+    if (!tokens.length) return [];
+    // AND first, then OR if empty
+    var andHits = items.map(function(it){ return scoreItem(it, tokens, 'AND'); })
+                       .filter(Boolean)
+                       .sort(function(a,b){ return a.score - b.score; })
+                       .slice(0, 16);
+    if (andHits.length) return andHits;
+    var orHits  = items.map(function(it){ return scoreItem(it, tokens, 'OR'); })
+                       .filter(Boolean)
+                       .sort(function(a,b){ return a.score - b.score; })
+                       .slice(0, 16);
+    return orHits;
+  }
+
+  function renderSiteResults(matches){
+    var wrap = document.getElementById('sitewide-matches-list');
+    if (!wrap) return;
+    wrap.innerHTML = '';
+
+    matches.forEach(function(m){
+      var it = m.it;
+      var isProduct = it.type==='Product';
+
+      // non-product (Page/Blog/Collection)
+      if (!isProduct){
+        var li = document.createElement('li');
+        li.className='predictive-search__links-item';
+        li.innerHTML =
+          '<a class="predictive-search__links-link" href="'+ it.url +'">' +
+            '<span class="badge badge--type">'+ (it.type||'Page') +'</span>' +
+            '<span class="js-hl">'+ highlight(it.title || it.url, q) +'</span>' +
+          '</a>' +
+          '<div class="predictive-search__highlight"><small>'+ snippet(it.content, q) +'</small></div>';
+        wrap.appendChild(li);
+        return;
+      }
+
+      // product row (hydrate with image/price)
+      var liP = document.createElement('li');
+      liP.className='predictive-search__links-item';
+      var pid = 'prod-mini-' + Math.random().toString(36).slice(2,9);
+      liP.innerHTML =
+        '<a class="predictive-search__links-link prod-mini" href="'+ it.url +'" id="'+pid+'">' +
+          '<span class="prod-thumb" aria-hidden="true"></span>' +
+          '<span class="prod-info">' +
+            '<span class="badge badge--type">Product</span>' +
+            '<span class="js-hl prod-title">'+ highlight(it.title || it.url, q) +'</span>' +
+            '<span class="prod-price"></span>' +
+          '</span>' +
+        '</a>' +
+        '<div class="predictive-search__highlight"><small>'+ snippet(it.content, q) +'</small></div>';
+      wrap.appendChild(liP);
+
+      var handle = getHandleFromUrl(it.url);
+      fetchProductJSON(handle).then(function(p){
+        var root = document.getElementById(pid);
+        if (!root || !p) return;
+
+        // title
+        var titleEl = root.querySelector('.prod-title');
+        if (p.title && titleEl) titleEl.innerHTML = highlight(p.title, q);
+
+        // image
+        var imgEl = root.querySelector('.prod-thumb');
+        var firstImg = (p.images && p.images[0]) ? p.images[0] : null;
+        if (imgEl && firstImg){
+          imgEl.style.backgroundImage = 'url('+ firstImg +')';
+          imgEl.setAttribute('role','img');
+          imgEl.setAttribute('aria-label', p.title || 'Product image');
+        }
+
+        // price (first available variant)
+        var priceEl = root.querySelector('.prod-price');
+        var firstVar = (p.variants || []).find(function(v){ return v; }) || null;
+        if (priceEl && firstVar){
+          var cents = Number(firstVar.price)||0;
+          if (cents<=0){
+            priceEl.innerHTML = '<span class="badge badge--status">Coming soon</span>';
+          } else {
+            priceEl.textContent = moneyFromCents(cents);
+          }
+        }
+      });
+    });
+
+    // show/hide container
+    var deepWrap = document.getElementById('sitewide-matches');
+    if (deepWrap) deepWrap.style.display = wrap.children.length ? '' : 'none';
+  }
+
+  // kick once cache ready
+  window.__siteIndexPromise.then(function(items){
+    renderSiteResults(searchIndex(items, q));
+  });
+
+})();
+</script>
+
+<style>
+  #sitewide-matches mark,
+  #this-page-matches mark,
+  #predictive-search-results .js-hl mark {
+    background:#fff3a3; padding:0 .1em; border-radius:.2em;
+  }
+  #sitewide-matches .predictive-search__highlight small,
+  #this-page-matches .predictive-search__highlight small { display:block; line-height:1.35; margin-top:2px; opacity:.85; }
+  .predictive-search__links-link.prod-mini { display:flex; align-items:center; gap:.6rem; }
+  .predictive-search__links-link .prod-thumb { width:48px; height:48px; flex:0 0 48px; border-radius:8px; background-size:cover; background-position:center; background-color:#f3f4f6; }
+  .predictive-search__links-link .prod-info { display:flex; flex-direction:column; min-width:0; }
+  .predictive-search__links-link .prod-title { display:block; line-height:1.2; }
+  .predictive-search__links-link .prod-price { font-size:12px; opacity:.9; margin-top:2px; }
+</style>
+
+{%- endif -%}

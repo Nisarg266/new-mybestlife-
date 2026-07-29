@@ -1,0 +1,215 @@
+{
+  "sections": {
+    "contactus_E3Pwcw": {
+      "type": "contactus",
+      "blocks": {
+        "field_6fbTr3": {
+          "type": "field",
+          "settings": {
+            "column_factor": "6",
+            "heading": "First Name",
+            "type": "text",
+            "required": false,
+            "checked": false,
+            "placeholder": "",
+            "binding": "custom",
+            "label_description": "",
+            "option_1": "",
+            "option_2": "",
+            "option_3": "",
+            "option_4": ""
+          }
+        },
+        "field_WVTQxd": {
+          "type": "field",
+          "settings": {
+            "column_factor": "6",
+            "heading": "Last Name",
+            "type": "text",
+            "required": false,
+            "checked": false,
+            "placeholder": "",
+            "binding": "custom",
+            "label_description": "",
+            "option_1": "",
+            "option_2": "",
+            "option_3": "",
+            "option_4": ""
+          }
+        },
+        "field_LpCi4D": {
+          "type": "field",
+          "settings": {
+            "column_factor": "6",
+            "heading": "How do you want us to contact you?",
+            "type": "checkbox",
+            "required": false,
+            "checked": false,
+            "placeholder": "",
+            "binding": "custom",
+            "label_description": "",
+            "option_1": "Email",
+            "option_2": "Phone",
+            "option_3": "SMS",
+            "option_4": ""
+          }
+        },
+        "field_KfPtVM": {
+          "type": "field",
+          "settings": {
+            "column_factor": "6",
+            "heading": "Phone No.",
+            "type": "text",
+            "required": true,
+            "checked": false,
+            "placeholder": "",
+            "binding": "custom",
+            "label_description": "",
+            "option_1": "",
+            "option_2": "",
+            "option_3": "",
+            "option_4": ""
+          }
+        }
+      },
+      "block_order": [
+        "field_6fbTr3",
+        "field_WVTQxd",
+        "field_LpCi4D",
+        "field_KfPtVM"
+      ],
+      "name": "Page + Contact Form",
+      "settings": {
+        "breadcrumbs": false,
+        "show_page_title": true,
+        "page_title_alignment": "text-start",
+        "info_title": "",
+        "info_content": "<p>\n  Contact Number: \n  <a href=\"tel:+919353580308\">+91 93535 80308</a>\n</p><p>WhatsApp Number: <a href=\"https://wa.me/919353580308\" target=\"_blank\">+91 93535 80308</a></p><p>Email: <a href=\"mailto:hello@mybestlifenutrition.com\">hello@mybestlifenutrition.com</a></p><p><strong>CoreRasa Nutrition Pvt. Ltd.</strong></p><p>My Best Life™</p><p>No. 526/105/1, 2nd Floor, SR Compound, <span class=\"mobile-break\"></span> 1st Main Road,</p><p>Bannerghatta Road, Arakere, Bengaluru, Karnataka 560076</p><p><strong>Support from</strong></p><p>Monday - Saturday (10 am to 7 pm)</p>",
+        "section_width": "max-w-fluid",
+        "color_scheme": "scheme-5",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "breadcrumbs": true,
+        "show_page_title": true,
+        "page_title_alignment": "text-start",
+        "info_title": "",
+        "info_content": "<p>Contact Number: +91 93535 80308</p><p>WhatsApp Number: <a href=\"https://wa.me/919353580308\" target=\"_blank\">+91 93535 80308</a></p><p>Email: <a href=\"mailto:hello@mybestlifenutrition.com\">hello@mybestlifenutrition.com</a></p><p><strong>CoreRasa Nutrition Pvt. Ltd.</strong></p><p>My Best LifeTM</p><p>No. 526/105/1, 2nd Floor, SR Compound, 1st<br/>Main Road,</p><p>Bannerghatta Road, Arakere, Bengaluru, Karnataka 560076</p><p><strong>Support from</strong></p><p>Monday - Saturday ( 10 am to 7 pm)</p>",
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-1",
+        "spacing_top": "2",
+        "spacing_bottom": "0"
+      }
+    },
+    "form": {
+      "type": "form-contact",
+      "blocks": {
+        "field_qaqAeN": {
+          "type": "field",
+          "settings": {
+            "column_factor": "3",
+            "heading": "First Name",
+            "type": "text",
+            "required": false,
+            "checked": false,
+            "placeholder": "",
+            "binding": "first_name",
+            "label_description": "",
+            "option_1": "",
+            "option_2": "",
+            "option_3": "",
+            "option_4": ""
+          }
+        },
+        "field_p8UeqH": {
+          "type": "field",
+          "settings": {
+            "column_factor": "3",
+            "heading": "Last Name",
+            "type": "text",
+            "required": false,
+            "checked": false,
+            "placeholder": "",
+            "binding": "last_name",
+            "label_description": "",
+            "option_1": "",
+            "option_2": "",
+            "option_3": "",
+            "option_4": ""
+          }
+        },
+        "field_CQfU3F": {
+          "type": "field",
+          "settings": {
+            "column_factor": "6",
+            "heading": "Contact Method",
+            "type": "checkbox",
+            "required": false,
+            "checked": false,
+            "placeholder": "",
+            "binding": "custom",
+            "label_description": "How do you want us to contact you?",
+            "option_1": "Email",
+            "option_2": "Phone",
+            "option_3": "SMS",
+            "option_4": ""
+          }
+        },
+        "field_HA6QrD": {
+          "type": "field",
+          "settings": {
+            "column_factor": "6",
+            "heading": "PHONE NO.",
+            "type": "tel",
+            "required": true,
+            "checked": false,
+            "placeholder": "",
+            "binding": "custom",
+            "label_description": "",
+            "option_1": "",
+            "option_2": "",
+            "option_3": "",
+            "option_4": ""
+          }
+        }
+      },
+      "block_order": [
+        "field_qaqAeN",
+        "field_p8UeqH",
+        "field_CQfU3F",
+        "field_HA6QrD"
+      ],
+      "disabled": true,
+      "settings": {
+        "section_width": "max-w-page",
+        "color_scheme": "scheme-5",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "map": {
+      "type": "map",
+      "disabled": true,
+      "settings": {
+        "api_key": "",
+        "address_query": "Nugle 2 broj 6 ,Bugojno, Bosnia",
+        "zoom_level": 13,
+        "section_width": "max-w-fluid",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    }
+  },
+  "order": [
+    "contactus_E3Pwcw",
+    "main",
+    "form",
+    "map"
+  ]
+}

@@ -1,0 +1,181 @@
+<section class="right-overlay-banner">
+  <div
+    class="banner-background"
+    style="background-image: url({{ section.settings.bg_image | image_url }});"
+    data-desktop-img="{{ section.settings.bg_image | image_url }}"
+    data-mobile-img="{{ section.settings.bg_image_mobile | image_url }}"
+  >
+    <div class="content-overlay">
+      <div class="text-content">
+        <h2>{{ section.settings.heading }}</h2>
+        <p>{{ section.settings.subheading }}</p>
+        <a href="{{ section.settings.button_link }}" class="banner-button">
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+              .right-overlay-banner {
+                width: 100%;
+                position: relative;
+              }
+
+              .banner-background {
+                background-size: cover;
+                background-position: center;
+                height: 500px;
+                position: relative;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                transition: background-image 0.3s ease;
+              }
+
+              .content-overlay {
+                width: 45%;
+                height: 100%;
+                background: linear-gradient(to left, rgba(255,255,255,1) 60%, rgba(255,255,255,0.5) 90%, rgba(255,255,255,0) 100%);
+                display: flex;
+                align-items: center;
+                padding: 40px;
+                box-sizing: border-box;
+              }
+
+              .text-content {
+                max-width: 400px;
+              }
+
+              .text-content h2 {
+                font-size: 32px;
+                font-weight: bold;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+                color: #2A2A2A;
+
+              }
+
+              .text-content p {
+                font-size: 18px;
+                margin-bottom: 20px;
+                color:  #2A2A2A;
+                font-weight: bold;
+              }
+
+              .banner-button {
+                display: inline-block;
+                background-color:  #2A2A2A;
+                color: white;
+                padding: 12px 44px;
+                text-decoration: none;
+                border-radius: 30px;
+                font-weight: bold;
+              }
+
+  @media screen and (max-width: 768px) {
+    .banner-background {
+      height: 500px;
+      justify-content: center;
+      align-items: flex-end;
+      background-position: center;
+      background-size: cover;
+    }
+
+    .content-overlay {
+      width: 100%;
+      height: 60%;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background: linear-gradient(to top, rgba(255, 255, 255, 0.39), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+      backdrop-filter: blur(6px); /* Softer than before */
+      -webkit-backdrop-filter: blur(1px);
+      box-sizing: border-box;
+    }
+
+    .text-content {
+      max-width: 100%;
+      text-align: center;
+      color: #111;
+    }
+
+
+  }
+   /* ✅ Large screens: 1400px+ */
+  @media screen and (min-width: 1400px) {
+    .banner-background {
+      height: 600px;
+    }
+
+    .text-content h2 {
+      font-size: 40px;
+    }
+
+    .text-content p {
+      font-size: 22px;
+    }
+
+    .banner-button {
+      font-size: 18px;
+      padding: 14px 30px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const bg = document.querySelector('.banner-background');
+    if (window.innerWidth <= 768 && bg.dataset.mobileImg) {
+      bg.style.backgroundImage = `url(${bg.dataset.mobileImg})`;
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Right Overlay Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Background Image (Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "TRANSFORM YOUR HEALTH : INSIDE AND OUT"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "A Boost You Can Feel - Packed with Powerhouse Ingredients"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Experience It Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Right Overlay Banner"
+    }
+  ]
+}
+{% endschema %}

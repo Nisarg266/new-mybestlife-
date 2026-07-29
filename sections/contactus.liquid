@@ -1,0 +1,278 @@
+{% comment %}
+  Combined Main Page + Contact Form
+  Left = Main Page content
+  Right = Contact Form
+{% endcomment %}
+
+{{- 'main-page.css' | asset_url | stylesheet_tag -}}
+{{- 'form-contact.css' | asset_url | stylesheet_tag -}}
+
+<style>
+  .main-contact-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    align-items: start;
+  }
+
+  .title123{
+    text-transform:uppercase
+}
+.con123{
+    max-width:1400px !important;
+}
+</style>
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="container con123 {{ section.settings.section_width }}">
+    <div class="main-contact-wrapper">
+
+      <!-- Left Column: Main Page Content -->
+      <div class="main-page">
+        {% if section.settings.breadcrumbs %}
+          <div class="main-page__breadcrumbs">
+            {%- render 'breadcrumbs', alignment: 'center' -%}
+          </div>
+        {% endif %}
+
+        {% if section.settings.show_page_title %}
+          <h2 class="main-page__title title123 h2 {{ section.settings.page_title_alignment }}">
+            {{ page.title }}
+          </h2>
+        {% endif %}
+
+        <div class="main-page__content rte">
+          {{ page.content }}
+        </div>
+
+        {% if section.settings.info_title != blank or section.settings.info_content != blank %}
+          <div class="main-page__foot rte">
+            {% if section.settings.info_title != blank %}
+              <h2 class="main-page__foot-title h4">{{ section.settings.info_title }}</h2>
+            {% endif %}
+            {% if section.settings.info_content != blank %}
+              {{ section.settings.info_content }}
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Right Column: Contact Form -->
+      <div class="form-contact">
+        {%- form 'contact', id: 'ContactForm', class: 'contact-form grid' -%}
+          {% if form.posted_successfully? %}
+            <p class="form-contact__message--success h4 col-span-6" tabindex="-1" autofocus>
+              {{ 'contact.success_message' | t }}
+            </p>
+          {% elsif form.errors %}
+            <div class="color-red">{{ form.errors | default_errors }}</div>
+          {% endif %}
+
+          {% assign field_type_list = '' %}
+          {% for block in section.blocks %}
+            {% assign field_type_list = field_type_list | append: block.settings.type | append: ',' %}
+            <div class="col-span-{{ block.settings.column_factor }}" {{ block.shopify_attributes }}>
+              {% liquid
+                assign label_default = 'field-' | append: forloop.index
+                assign label = block.settings.heading | default: label_default
+                assign label_handle = label | handle
+                assign id = 'ContactForm-' | append: label_handle
+                assign name = 'contact[' | append: label_handle | replace: '-', '_' | append: ']'
+                assign placeholder = block.settings.placeholder | default: false
+                assign required = block.settings.required | default: false
+
+                case block.settings.type
+                  when 'email'
+                    capture attr
+                      echo 'autocomplete="email"'
+                      echo 'spellcheck="false"'
+                      echo 'autocapitalize="off"'
+                    endcapture
+                    assign name = 'contact[email]'
+                    if form.email
+                      assign value = form.email
+                    elsif customer
+                      assign value = customer.email
+                    else
+                      assign value = ''
+                    endif
+                    if form.errors contains 'email'
+                      assign error = form.errors.translated_fields['email'] | capitalize | append: ' ' | append: form.errors.messages['email']
+                      assign has_error = true
+                    endif
+                    render 'text-input', type: 'email', id: id, label: label, name: name, placeholder: placeholder, required: required, attr: attr, value: value, has_error: has_error, message: error
+
+                  when 'tel'
+                    capture attr
+                      echo 'autocomplete="tel"'
+                    endcapture
+                    if form.phone
+                      assign value = form.phone
+                    elsif customer
+                      assign value = customer.phone
+                    else
+                      assign value = ''
+                    endif
+                    render 'text-input', type: 'tel', id: id, label: label, name: name, placeholder: placeholder, required: required, attr: attr, value: value, has_error: has_error, message: error
+
+                  when 'checkbox'
+                    assign label = block.settings.label_description | default: label
+                    assign required_attr = block.settings.required | default: false | if: ' required', else: ''
+                    echo '<div class="flex checkbox">'
+                      echo '<label class="field__label" for="' | append: id | append: '">' | append: label | append: '</label>'
+                      echo '<div class="field__options">'
+                      for i in (1..4)
+                        assign checked = ''
+                        if forloop.first and block.settings.checked
+                          assign checked = ' checked'
+                        endif
+                        assign option_name = 'option_' | append: i
+                        assign option = block.settings[option_name]
+                        if option != blank
+                          echo '<div class="field__option"><input type="checkbox" name="' | append: name | append: '" value="' | append: option | append: '" id="' | append: id | append: '-' | append: option | append: '"' | append: required_attr | append: checked | append: '><label for="' | append: id | append: '-' | append: option | append: '">' | append: option | append: '</label></div>'
+                        endif
+                      endfor
+                      echo '</div>'
+                    echo '</div>'
+
+                  when 'radio'
+                    assign label = block.settings.label_description | default: label
+                    assign required_attr = block.settings.required | default: false | if: ' required', else: ''
+                    echo '<div class="flex checkbox">'
+                      echo '<label class="field__label" for="' | append: id | append: '">' | append: label | append: '</label>'
+                      echo '<div class="field__options">'
+                      for i in (1..4)
+                        assign checked = ''
+                        if forloop.first and block.settings.checked
+                          assign checked = ' checked'
+                        endif
+                        assign option_name = 'option_' | append: i
+                        assign option = block.settings[option_name]
+                        if option != blank
+                          echo '<div class="field__option"><input type="radio" name="' | append: name | append: '" value="' | append: option | append: '" id="' | append: id | append: '-' | append: option | append: '"' | append: required_attr | append: checked | append: '><label for="' | append: id | append: '-' | append: option | append: '">' | append: option | append: '</label></div>'
+                        endif
+                      endfor
+                      echo '</div>'
+                    echo '</div>'
+
+                  else
+                    if block.settings.binding != 'custom'
+                      if form[label_handle]
+                        assign value = form[label_handle]
+                      elsif customer
+                        case block.settings.binding
+                          when 'email' then assign value = customer.email
+                          when 'name' then assign value = customer.name
+                          when 'first_name' then assign value = customer.first_name
+                          when 'last_name' then assign value = customer.last_name
+                          when 'id' then assign value = customer.id
+                          when 'phone' then assign value = customer.phone
+                          when 'last_order'
+                            assign customer_last_order = customer.orders | last
+                            assign value = customer_last_order.order_number
+                        endcase
+                      else
+                        assign value = ''
+                      endif
+                    endif
+                    render 'text-input', type: 'text', id: id, label: label, name: name, placeholder: placeholder, required: required, value: value, has_error: has_error, message: error
+                endcase
+              %}
+            </div>
+          {% endfor %}
+
+          {% assign field_type_list = field_type_list | split: ',' | uniq %}
+          {% unless field_type_list contains 'email' %}
+            <div class="col-span-6">
+              {% liquid
+                assign label = 'theme.form.email' | t
+                assign placeholder = 'theme.form.email_placeholder' | t
+                assign id = 'ContactForm-email'
+                assign name = 'contact[email]'
+                capture attr
+                  echo 'autocomplete="email"'
+                  echo 'spellcheck="false"'
+                  echo 'autocapitalize="off"'
+                endcapture
+                if form.email
+                  assign value = form.email
+                elsif customer
+                  assign value = customer.email
+                else
+                  assign value = ''
+                endif
+                if form.errors contains 'email'
+                  assign error = form.errors.translated_fields['email'] | capitalize | append: ' ' | append: form.errors.messages['email']
+                  assign has_error = true
+                endif
+                render 'text-input', type: 'email', id: id, label: label, name: name, placeholder: placeholder, attr: attr, value: value, has_error: has_error, message: error, required: true
+              %}
+            </div>
+          {% endunless %}
+
+          <div class="col-span-6">
+            {% liquid
+              assign label = 'contact.message' | t
+              assign placeholder = 'contact.message_placeholder' | t
+              render 'textarea-input', id: 'ContactForm-body', label: label, name: 'contact[message]', placeholder: placeholder, body: form.body
+            %}
+          </div>
+
+          <div class="form-row form-row--actions col-span-6">
+            {% assign value = 'contact.submit' | t %}
+            {% render 'button', type: 'submit', style: 'solid', value: value, class: 'button' %}
+            {% assign value = nil %}
+          </div>
+        {%- endform -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Main Page + Contact Form",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "📄 Page Content Settings" },
+    { "type": "checkbox", "id": "breadcrumbs", "label": "Show breadcrumbs", "default": true },
+    { "type": "checkbox", "id": "show_page_title", "label": "Show page title", "default": true },
+    { "type": "select", "id": "page_title_alignment", "label": "Page title alignment", "options": [ { "value": "text-start", "label": "Start" }, { "value": "text-center", "label": "Center" }, { "value": "text-end", "label": "End" } ], "default": "text-center" },
+    { "type": "inline_richtext", "id": "info_title", "label": "Info title" },
+    { "type": "textarea", "id": "info_content", "label": "Info content" },
+
+    { "type": "header", "content": "✉️ Contact Form Settings" },
+    { "type": "select", "id": "section_width", "label": "Section width", "options": [ { "value": "max-w-page", "label": "Page" }, { "value": "max-w-narrower", "label": "Narrow" }, { "value": "max-w-fluid", "label": "Full width" } ], "default": "max-w-narrower" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Color scheme", "default": "scheme-1" },
+    { "type": "select", "id": "spacing_top", "label": "Spacing top", "options": [ { "value": "0", "label": "No" }, { "value": "1", "label": "S" }, { "value": "2", "label": "M" }, { "value": "4", "label": "L" }, { "value": "6", "label": "XL" } ], "default": "2" },
+    { "type": "select", "id": "spacing_bottom", "label": "Spacing bottom", "options": [ { "value": "0", "label": "No" }, { "value": "1", "label": "S" }, { "value": "2", "label": "M" }, { "value": "4", "label": "L" }, { "value": "6", "label": "XL" } ], "default": "2" }
+  ],
+  "blocks": [
+    {
+      "type": "field",
+      "name": "Form field",
+      "settings": [
+        { "type": "select", "id": "column_factor", "label": "Column width", "options": [ { "value": "6", "label": "Full" }, { "value": "3", "label": "Half" } ], "default": "6" },
+        { "type": "text", "id": "heading", "label": "Field label", "default": "Label" },
+        { "type": "select", "id": "type", "label": "Field type", "options": [ { "value": "text", "label": "Text" }, { "value": "email", "label": "Email" }, { "value": "tel", "label": "Phone" }, { "value": "checkbox", "label": "Checkbox" }, { "value": "radio", "label": "Radio" } ], "default": "text" },
+        { "type": "checkbox", "id": "required", "label": "Required", "default": false },
+        { "type": "checkbox", "id": "checked", "label": "Checked by default", "default": false },
+        { "type": "text", "id": "placeholder", "label": "Placeholder" },
+        { "type": "select", "id": "binding", "label": "Bind to customer field", "options": [ { "value": "custom", "label": "Custom" }, { "value": "email", "label": "Email" }, { "value": "name", "label": "Name" }, { "value": "first_name", "label": "First name" }, { "value": "last_name", "label": "Last name" }, { "value": "id", "label": "ID" }, { "value": "phone", "label": "Phone" }, { "value": "last_order", "label": "Last order" } ], "default": "custom" },
+        { "type": "text", "id": "label_description", "label": "Label description" },
+        { "type": "text", "id": "option_1", "label": "Option 1" },
+        { "type": "text", "id": "option_2", "label": "Option 2" },
+        { "type": "text", "id": "option_3", "label": "Option 3" },
+        { "type": "text", "id": "option_4", "label": "Option 4" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page + Contact Form",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

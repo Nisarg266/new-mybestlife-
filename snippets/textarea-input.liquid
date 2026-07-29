@@ -1,0 +1,17 @@
+{%- comment -%}
+  Textarea field renderer.
+  params: id, label, name, placeholder, body
+{%- endcomment -%}
+
+<div class="field field--textarea">
+  {%- if label and id -%}
+    <label class="field__label" for="{{- id -}}">{{- label -}}</label>
+  {%- endif -%}
+
+  <textarea rows="5"
+    {%- if id %} id="{{- id -}}"{% endif -%}
+    {%- if name %} name="{{- name -}}"{% endif -%}
+    {%- if placeholder %} placeholder="{{- placeholder -}}"{% endif -%}
+    class="field__input"
+  >{%- if body -%}{{- body -}}{%- endif -%}</textarea>
+</div>

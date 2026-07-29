@@ -1,0 +1,86 @@
+/* Badges / Product card */
+.product-card__badges {
+  display: flex;
+  gap: .8rem;
+}
+
+.product-card__badge {
+  padding: 0.6rem 0.8rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  text-align: center;
+  font-size: 12px;
+  line-height: var(--line-height-static-sm);
+  letter-spacing: .14rem;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-medium);
+}
+
+.product-card__badge.product-card__badge--square {
+  border-radius: 4PX;
+}
+
+.product-card__badge.product-card__badge--rounded {
+  border-radius: 0.4rem;
+}
+
+.product-card__badge {
+  background-color: rgba(var(--color-tag-background));
+  color: rgba(var(--color-tag-foreground));
+}
+
+.product__title--with-badges {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.product-card__badge--discount {
+  background-color: var(--color-badge-discount-background);
+  color: var(--color-badge-discount-foreground);
+}
+
+/* Hide discount badge on product page only */
+.main-product__media--slider .product-card__badge--discount {
+  display: none;
+}
+
+/* BEST SELLER / BEST SELECTION Tag Styling & Flashing Animation */
+.product-card-tag,
+.product-card__badge--bestseller {
+  background-color: #e60000 !important;
+  color: #ffffff !important;
+  padding: 6px 12px !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  border-radius: 5px !important;
+  z-index: 10;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+  animation: seller-flash 1.4s infinite ease-in-out !important;
+  display: inline-block;
+}
+
+@keyframes seller-flash {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-card-tag,
+  .product-card__badge--bestseller {
+    padding: 5px 10px !important;
+    font-size: 11px !important;
+  }
+}

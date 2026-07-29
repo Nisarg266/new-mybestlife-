@@ -1,0 +1,235 @@
+{% comment %}
+  File: sections/two-column-text-image.liquid
+  Description: 40% text on left, 60% image on right, fully styled via CSS (no inline styles)
+{% endcomment %}
+
+<section class="two-column-section">
+  <div class="two-column-container">
+    
+    <!-- Left Column -->
+    <div class="two-column-text">
+      {% if section.settings.heading != blank %}
+        <h2 class="two-column-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <h4 class="two-column-subheading">{{ section.settings.subheading }}</h4>
+      {% endif %}
+
+      {% if section.settings.paragraph != blank %}
+        <p class="two-column-paragraph">{{ section.settings.paragraph }}</p>
+      {% endif %}
+
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="two-column-button">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- Right Column -->
+    <div class="two-column-image">
+      {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | img_url: 'master' }}" alt="">
+      {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Container layout */
+  .two-column-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Column sizing */
+  .two-column-text {
+    flex: 0 0 40%;
+  }
+
+  .two-column-image {
+    flex: 0 0 55%;
+  }
+
+  .two-column-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+        border-radius: 10px;
+  }
+
+  /* Typography styles */
+  .two-column-heading {
+    color: #b4975a;
+    font-size: clamp(28px, 5vw, 50px) !important;
+    text-transform: uppercase;
+     margin-bottom: 40px;
+  }
+
+  .two-column-subheading {
+       font-size: clamp(18px, 2vw, 30px);
+    font-weight: bold !important;
+    color: #000;
+    margin-bottom: 30px;
+  }
+
+  .two-column-paragraph {
+    color: #666;
+    font-size: clamp(16px, 2vw, 18px);
+    color:#666 !important;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  /* Button styles */
+  .two-column-button {
+    padding: 8px 20px;
+    font-size: 23px !important;
+    display: inline-block;
+    background-color: #1e1e1e;
+    border: none;
+    color: #b4975a;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500 !important;
+    transition: background-color 0.3s ease;
+  }
+
+  .two-column-button:hover {
+    background: #b4975a;
+    color: #2a2a2a;
+    border: 1px solid black;
+  }
+
+  /* Responsive & padding settings */
+  @media screen and (min-width: 768px) {
+    .two-column-section {
+      padding-top: {{ section.settings.padding_top_desktop }}px !important;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px !important;
+    }
+  }
+@media (max-width: 768px) {
+  .two-column-heading,
+  .two-column-subheading,
+  .two-column-paragraph,
+  .two-column-button {
+    max-width: max-content;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+    .two-column-button {
+    padding: 5px 15px;
+    font-size: 18px !important;
+  }
+}
+  @media screen and (max-width: 767px) {
+    .two-column-section {
+      padding-top: {{ section.settings.padding_top_mobile }}px !important;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
+    }
+    .two-column-container {
+      flex-direction: column-reverse;
+    }
+    .two-column-text,
+    .two-column-image {
+      flex: 0 0 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Two Column Text + Image",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Heading Here"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Your Subheading Here"
+    },
+    {
+      "type": "textarea",
+      "id": "paragraph",
+      "label": "Paragraph",
+      "default": "Your paragraph goes here. Add some details about your product or story."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Two Column Text + Image",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

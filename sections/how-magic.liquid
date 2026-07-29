@@ -1,0 +1,319 @@
+{% schema %}
+{
+  "name": "How to Use (Image Left)",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Main Title",
+      "default": "Real Science. Real Hydration"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading Size",
+      "options": [
+        { "value": "h6", "label": "XS" },
+        { "value": "h5", "label": "S" },
+        { "value": "h4", "label": "M" },
+        { "value": "h3", "label": "L" },
+        { "value": "h2", "label": "XL" }
+      ],
+      "default": "h3"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Side Image"
+    },
+    {
+      "type": "url",
+      "id": "left_video_url",
+      "label": "Video URL (MP4 only)"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_video",
+      "label": "Autoplay video",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "top_padding",
+      "label": "Top padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 92
+    },
+    {
+      "type": "range",
+      "id": "bottom_padding",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 92
+    },
+    {
+      "type": "range",
+      "id": "left_padding",
+      "label": "Left padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "right_padding",
+      "label": "Right padding",
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_number",
+          "label": "Step Number",
+          "default": "01"
+        },
+        {
+          "type": "text",
+          "id": "step_desc",
+          "label": "Description",
+          "default": "1 tablet daily, after breakfast"
+        },
+        {
+          "type": "select",
+          "id": "color",
+          "label": "Icon Color",
+          "default": "green",
+          "options": [
+            { "value": "green", "label": "Green" },
+            { "value": "red", "label": "Red" },
+            { "value": "blue", "label": "Blue" }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "step_icon",
+          "label": "Step Icon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How to Use (Image Left)",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  
+    .how-to-use-left-container {
+  background-color: var(--bg-color, #fff);
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto; /* centers horizontally */
+}
+  
+
+  .how-to-use-left-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  .how-to-use-left-image {
+    width: auto;
+  }
+
+  .how-to-use-left-image img,
+  .how-to-use-left-image .video-wrapper video,
+  .how-to-use-left-image .image-placeholder {
+    width: 100%;
+    height: 600px;
+    border-radius: 12px;
+    background-color: #ecbdb4bd;
+    min-height: 250px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    object-fit: cover;
+  }
+
+  .how-to-use-left-steps {
+    {% comment %} width: 50%; {% endcomment %}
+     flex: 1;
+    position: relative;
+  }
+
+  .how-to-use-left-step-wrapper {
+    margin-bottom: 25px;
+    padding: 17px 24px;
+    display: flex;
+    
+    border-bottom: 1px solid #b4975a;
+    gap: 20px;
+  }
+
+  .how-to-use-left-step-circle {
+    height: 100px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .how-to-use-left-step-circle img {
+    width: 70px;
+    height: 70px;
+        max-width: none;
+  }
+
+  .how-to-use-left-step-title {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.2;
+    color: #2a2a2a;
+  }
+
+  .how-to-use-left-step-desc {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.5;
+
+  }
+
+  .how-to-use-left-heading {
+    font-size: clamp(30px, 5vw, 50px) !important;
+    text-transform: uppercase;
+    color: #b4975a;
+    text-align: left;
+
+    font-weight: bold;
+  }
+
+  /* Mobile */
+  @media screen and (max-width: 768px) {
+  .how-to-use-left-step-circle img {
+    width: 60px;
+    height: 60px;
+  }
+    .how-to-use-left-heading {
+    text-align:center;
+    }
+    .how-to-use-left-grid {
+      flex-direction: column-reverse;
+      gap: 30px;
+    }
+    .how-to-use-left-image,
+    .how-to-use-left-steps {
+      width: 100%;
+    }
+    .how-to-use-left-step-wrapper {
+      padding: 16px 20px;
+    }
+    .how-to-use-left-step-circle {
+      width: 60px;
+      height: 56px;
+    }
+    .how-to-use-left-step-title {
+      font-size: 18px;
+    }
+    .how-to-use-left-step-desc {
+      font-size: 14px;
+    }
+  }
+  .abc124{
+      display: flex
+;
+    align-items: center;
+    vertical-align: middle;
+  }
+</style>
+
+{% if section.blocks.size > 0 %}
+  <section class="how-to-use-left-container section-{{ section.id }}-padding" style="--bg-color: {{ section.settings.background_color }}">
+    
+
+    <div class="how-to-use-left-grid">
+      <!-- Left side image/video -->
+      <div class="how-to-use-left-image">
+        {% if section.settings.left_image %}
+          <img src="{{ section.settings.left_image | img_url: 'master' }}" alt="How to Use Image">
+        {% elsif section.settings.left_video_url %}
+          <div class="video-wrapper">
+            <video {% if section.settings.autoplay_video %}autoplay muted loop playsinline{% endif %} controls>
+              <source src="{{ section.settings.left_video_url }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        {% else %}
+          <div class="image-placeholder"></div>
+        {% endif %}
+      </div>
+
+      <!-- Right side steps -->
+      <div class="how-to-use-left-steps">
+        {% if section.settings.heading != blank %}
+      <h2 class="how-to-use-left-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+        {% for block in section.blocks %}
+          <div class="how-to-use-left-step-wrapper">
+            <div class="how-to-use-left-step-circle step-{{ block.settings.color }}">
+              {% if block.settings.step_icon %}
+                <img src="{{ block.settings.step_icon | img_url: 'master' }}" alt="Step Icon">
+              {% else %}
+                <span>{{ forloop.index }}</span>
+              {% endif %}
+            </div>
+            <div class="abc124">
+              <div class="how-to-use-left-step-desc">{{ block.settings.step_desc }}</div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.top_padding }}px !important;
+      padding-bottom: {{ section.settings.bottom_padding }}px !important;
+      padding-left: {{ section.settings.left_padding }}px !important;
+      padding-right: {{ section.settings.right_padding }}px !important;
+    }
+    @media (max-width: 768px) {
+        .section-{{ section.id }}-padding {
+    padding-top: 10px !important;
+    padding-bottom: 20px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+    }
+  </style>
+{% endif %}

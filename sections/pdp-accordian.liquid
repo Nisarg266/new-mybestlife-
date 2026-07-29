@@ -1,0 +1,284 @@
+﻿<style>
+  .pdp-accordion-section{
+  padding: 50px !important;
+  }
+            .pdp-accordion {
+            margin: 2rem 0;
+            padding: 0;
+            list-style: none;
+            border-radius: 8px;
+            }
+
+            .pdp-accordion-item {
+              padding: 1rem;
+    border: 1px solid rgba(8, 15, 52, .2);
+    box-shadow: 0 4px 10px #080f3433;
+    border-radius: 12px;
+    background-color: #fff;
+    margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            padding: 10px 20px;
+            }
+            .pdp-accordion-inner a {
+            color: {{section.settings.accordion_link_color}};
+            }
+    .pdp-accordion-panel p { 
+      margin-left:20px;
+        margin-top: 20px;
+        margin-right: 20px;
+    }
+            li.pdp-accordion-item.active {
+            border: 1px solid rgba(34, 34, 34, 1);
+            }
+.pdp-accordion-thumb {
+  cursor: pointer;
+  color:#2a2a2a;
+  background: #fff;
+  font-size: 21px; /* updated font size */
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 6px;
+  padding-top: 10px;
+  text-underline-offset: .3rem;
+    transition: text-decoration-color var(--duration-default);
+}
+.pdp-accordion-thumb:hover {
+  color: #000; /* black text */
+  text-decoration: underline; /* underline on hover */
+}
+            .pdp-accordion-thumb::after {
+            content: "";
+            border: solid #2A2A2A;
+            border-width: 0 2px 2px 0;
+            padding: 4px;
+            transform: rotate(45deg);
+            transition: 0.3s;
+            }
+        li.pdp-accordion-item.active .pdp-accordion-thumb{
+                border-bottom: 1px solid #ddd;
+        }
+            .pdp-accordion-item.active .pdp-accordion-thumb::after {
+            transform: rotate(-135deg);
+            }
+            .pdp-accordion-panel {
+            max-height: 0;
+            overflow: hidden;
+            font-size: 1.85rem;
+            line-height: 1.6;
+            width: 50%;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            }
+
+            .pdp-accordion-item.active .pdp-accordion-panel {
+            max-height: 500px;
+            }
+
+            .pdp-accordion-panel-inner {
+            display: flex;
+            }
+
+            .pdp-panel-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            }
+            .metafield-rich_text_field p {
+            margin: 0;
+            }
+            .pdp-accordion-inner {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            }
+            @media screen and (max-width: 768px) {
+  .pdp-accordion-section{
+  padding: 20px !important;
+  }
+          
+            .pdp-accordion-item{
+            padding: 0px;
+            }
+
+            .pdp-accordion-panel-inner {
+            flex-direction: column;
+            }
+            .pdp-accordion-panel {
+            width: 100%;
+            }
+              .pdp-accordion-thumb {
+      padding: 10px 20px;
+  }
+            }
+</style>
+<div
+  class="pdp-accordion-section container section-{{ section.id }}-padding {% if section.settings.custom_class %}{{ section.settings.custom_class }}{% endif %}"
+>
+  {% if section.settings.heading != blank %}
+    <h2 class="section__heading">{{ section.settings.heading }}</h2>
+  {% endif %}
+
+  <ul class="pdp-accordion container">
+    <div class="pdp-accordion-inner">
+      {% for block in section.blocks %}
+        {% assign use_meta = block.settings.use_metafield %}
+        {% assign meta_key = block.settings.metafield_key %}
+        {% assign question = block.settings.question %}
+        {% assign answer = block.settings.answer %}
+        {% assign answer2 = block.settings.answer2 %}
+
+        {% if use_meta and product.metafields.custom[meta_key] != blank %}
+          <li class="pdp-accordion-item">
+            <div class="pdp-accordion-thumb">{{ question }}</div>
+            <div class="pdp-accordion-panel-inner">
+              <div class="pdp-accordion-panel">
+                {{ product.metafields.custom[meta_key] | metafield_tag }}
+              </div>
+              <div class="pdp-accordion-panel">
+                {{ product.metafields.custom[meta_key] | metafield_tag }}
+              </div>
+            </div>
+          </li>
+        {% elsif use_meta == false %}
+          <li class="pdp-accordion-item">
+            <div class="pdp-accordion-thumb">{{ question }}</div>
+            <div class="pdp-accordion-panel-inner">
+              <div class="pdp-accordion-panel">
+                {{ answer }}
+              </div>
+              <div class="pdp-accordion-panel">
+                {{ answer2 }}
+              </div>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </ul>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const items = document.querySelectorAll(".pdp-accordion-item");
+
+    items.forEach(item => {
+      const trigger = item.querySelector(".pdp-accordion-thumb");
+
+      trigger.addEventListener("click", () => {
+        items.forEach(i => {
+          if (i !== item) i.classList.remove("active");
+        });
+        item.classList.toggle("active");
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "PDP Accordion",
+  "tag": "section",
+  "class": "section-pdp-accordion",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Ingredients"
+    },
+        {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Section Class (Optional)"
+    },
+    {
+  "type": "color",
+  "id": "accordion_link_color",
+  "label": "Accordion Link Color",
+  "default": "#0000ff"
+},
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_top_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding top mobile",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom_mobile",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding bottom mobile",
+        "default": 0
+      }],
+   "blocks": [
+    {
+      "type": "accordion_item",
+      "name": "Accordion Item",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "use_metafield",
+          "label": "Use Metafield Value",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "metafield_key",
+          "label": "Metafield Key (e.g., accordion_1)"},
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Accordion Question",
+          "default": "What is this ingredient?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer (if not using metafield)",
+          "default": "<p>This is the answer content.</p>"
+        },
+           {
+          "type": "richtext",
+          "id": "answer2",
+          "label": "Answer (if not using metafield)",
+          "default": "<p>This is the answer content.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredient Accordion"}]
+}
+{% endschema %}

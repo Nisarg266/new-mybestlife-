@@ -1,0 +1,83 @@
+{
+  "sections": {
+    "main_article1_ymY7yh": {
+      "type": "main-article1",
+      "name": "Custom Article Layout",
+      "settings": {
+        "facebook_link": "https://www.facebook.com/",
+        "twitter_link": "https://x.com/",
+        "pinterest_link": "https://www.pinterest.com/",
+        "email_link": "mailto:rushigokani124@gmail.com",
+        "linkedin_link": "http://linkedin.com/",
+        "whatsapp_link": "tel:7016031546"
+      }
+    },
+    "main": {
+      "type": "main-article",
+      "blocks": {
+        "b9b26636-4100-497f-bd96-33811ff69949": {
+          "type": "tags",
+          "settings": {
+            "blog_tags_type": "links"
+          }
+        },
+        "f7fb3fae-1127-45cc-ad5a-6e59418b6ef5": {
+          "type": "title",
+          "settings": {
+            "blog_show_date": true,
+            "blog_show_author": true
+          }
+        },
+        "49dec847-5c39-4243-98ff-d31ae7b80081": {
+          "type": "featured_image",
+          "settings": {
+            "media_aspect_ratio": "16/9"
+          }
+        },
+        "86ec49f0-5185-4270-96d6-23ad2d7aecdc": {
+          "type": "content",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "b9b26636-4100-497f-bd96-33811ff69949",
+        "f7fb3fae-1127-45cc-ad5a-6e59418b6ef5",
+        "49dec847-5c39-4243-98ff-d31ae7b80081",
+        "86ec49f0-5185-4270-96d6-23ad2d7aecdc"
+      ],
+      "disabled": true,
+      "settings": {
+        "show_back_to_blog_button": true,
+        "show_socials_sharing": true,
+        "share_layout": "sticky",
+        "comments_per_page": 11,
+        "color_scheme_comments": "",
+        "section_width": "max-w-page",
+        "color_scheme": "",
+        "spacing_top": "1",
+        "spacing_bottom": "0"
+      }
+    },
+    "recommended_blog_kXcC6m": {
+      "type": "recommended-blog",
+      "disabled": true,
+      "name": "Recommended Blog",
+      "settings": {
+        "heading": "Recommended Blog",
+        "heading_size": "h3",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "background_color": "#ffffff",
+        "blog": "mbl-blogs",
+        "show_excerpt": true,
+        "show_read_more": true,
+        "section_width": "max-w-page"
+      }
+    }
+  },
+  "order": [
+    "main_article1_ymY7yh",
+    "main",
+    "recommended_blog_kXcC6m"
+  ]
+}

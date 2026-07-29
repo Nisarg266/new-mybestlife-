@@ -1,0 +1,111 @@
+.product-highlight-section {
+  padding: 40px 20px;
+  background: #fff;
+}
+
+.highlight-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: nowrap; /* Now wraps on small screens */
+}
+
+.product-card {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: flex-end;
+  margin: 10px;
+}
+
+.text-overlay {
+  width: 100%;
+  padding: 20px;
+  text-align: left;
+  box-sizing: border-box;
+      padding-top: 60px;
+    padding-left: 40px;
+}
+
+.text-overlay h3 {
+  font-size: 2rem;
+  font-weight: 700 ;
+  margin: 0 0 5px 0;
+}
+
+.text-overlay p {
+  margin: 0 0 10px;
+  font-size: 23px !important;
+  color: #2A2A2A;
+  font-weight: 500 !important;
+}
+
+.shop-btn {
+  background-color: #b4975a;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 400;
+  display: inline-block;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+}
+
+.shop-btn:hover {
+  background-color: #a78956;
+}
+
+/* ✅ Small screens (mobile) */
+@media (max-width: 768px) {
+  .product-card {
+  }
+
+  .text-overlay h3 {
+    font-size: 1rem;
+  }
+
+  .text-overlay p {
+    font-size: 0.85rem;
+  }
+
+  .shop-btn {
+    padding: 6px 14px;
+    font-size: 0.85rem;
+  }
+  .highlight-container {
+    flex-wrap: wrap; /* Now wraps on small screens */
+  }
+}
+
+/* ✅ Large screens (desktops and above) */
+@media (min-width: 1300px) {
+  .text-overlay h3 {
+    font-size: 3rem;
+  }
+
+  .text-overlay p {
+    font-size: 2rem;
+  }
+
+  .shop-btn {
+    padding: 8px 34px;
+    font-size: 1.05rem;
+  }
+
+  .product-card {
+    width: 100%;
+    max-width: 800px;
+    height: 600px;
+  }
+  .shop-btn {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,197 @@
+{% schema %}
+{
+  "name": "Paragraph + Button Left",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "paragraph_text",
+      "label": "Paragraph Text",
+      "default": "<p>Your paragraph goes here.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Paragraph + Button Left",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .paragraph-button-section {
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }} !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .paragraph-button-content {
+    color:#666;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .paragraph-button-content p {
+    font-size:18px !important;
+    margin-bottom: 1rem;
+    color:#666 !important;
+  }
+  .paragraph-button-content a {
+    display: inline-block;
+    background-color: #1e1e1e;
+    color: #b4975a;
+    font-size: 23px !important;
+    padding: 8px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500 !important;
+    transition: background-color 0.3s ease;
+  }
+  
+  .paragraph-button-content a:hover {
+    background: #b4975a;
+    color: #2a2a2a;
+    border: 1px solid black;
+  }
+  .avi123{
+    background-color: #1e1e1e;
+    color: #b4975a;
+    font-size: 30px !important;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background-color 0.3s ease;
+  }
+    .avi123:hover {
+    background: #b4975a;
+    color: #2a2a2a;
+    border: 1px solid black;
+  }
+  @media (min-width: 768px) {
+    .paragraph-button-section {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+  }
+  @media (max-width: 767px) {
+    .avi123{
+    font-size: 30px !important;
+  
+  }
+    .paragraph-button-content a {
+    display: inline-block;
+    background-color: #1e1e1e;
+    color: #b4975a;
+    font-size: 18px !important;
+    padding: 5px 15px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500 !important;
+    transition: background-color 0.3s ease;
+  }
+    .paragraph-button-section {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+  }
+  @media (max-width: 767px) {
+  .paragraph-button-content {
+    text-align: center; /* Center paragraph + button */
+  }
+
+  .paragraph-button-content a.avi123 {
+    margin: 0 auto; /* Ensure button itself centers */
+    display: inline-block; /* Keep button size */
+  
+
+  }
+}
+</style>
+
+<section class="paragraph-button-section">
+  <div class="paragraph-button-content">
+    {{ section.settings.paragraph_text }}
+     {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="avi123">{{ section.settings.button_text }}</a>
+    {% endif %}
+  </div>
+  
+</section>

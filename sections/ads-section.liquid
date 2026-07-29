@@ -1,0 +1,323 @@
+<section
+  class="custom-hero-image-container clickable-block"
+  
+  style="
+
+
+    background-color: {{ section.settings.background_color }};
+    {% comment %} height: {{ section.settings.section_height }}; {% endcomment %}
+    padding: {{ section.settings.padding_top }}px 20px {{ section.settings.padding_bottom }}px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+     /* New vars for controlling content on laptop & big screen */
+    --hero-max-width: 1400px;          /* cap for full container */
+    --hero-side-pad: clamp(16px, 4vw, 48px);
+    --hero-text-max: 700px;            /* max width for copy column */
+  "
+   {% if section.settings.button_link != blank %}
+    onclick="window.location.href='{{ section.settings.button_link }}'"
+  {% endif %}
+
+>
+  <style>
+    .clickable-block[onclick] {
+    cursor: pointer;
+  }
+    .custom-hero-bg-img {
+      object-position: bottom;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      aspect-ratio: {{ section.settings.background_image.width }}/{{ section.settings.background_image.height }};
+      {% comment %} height: 100%; {% endcomment %}
+      
+      object-fit: contain;
+      z-index: 0;
+    }
+    .custom-hero-image-container{
+      aspect-ratio: {{ section.settings.background_image.width }}/{{ section.settings.background_image.height }};
+    }
+
+    .custom-hero-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      /* Use hero-specific width if available */
+      max-width: var(--hero-max-width, var(--max-width));
+
+      margin: 0 auto;
+      height: 100%;
+      padding-inline: var(--hero-side-pad, 20px); /* adds side breathing room */
+    }
+
+
+   .custom-hero-right {
+      flex: 0 0 40%;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      /* Prevent text column from getting too wide */
+      max-width: var(--hero-text-max, 560px);
+      width: 100%;
+    }
+
+
+    .custom-hero-heading {
+      color: #2a2a2a;
+      font-size: 22px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .custom-hero-subheading {
+      font-size: 20px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .custom-hero-button {
+      background-color: #2a2a2a;
+      color: #b4975a;
+      padding: 12px 24px;
+      border: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 20px !important;
+      font-weight: 600 !important;
+      border-radius: 4px;
+    }
+
+    .custom-hero-button:hover {
+      background: #b4975a;
+      color: #2a2a2a;
+      border: 1px solid black;
+    }
+    /* Apply only on desktop and larger */
+    @media (min-width: 1025px) {
+      .custom-hero-image-container {
+        /* Prevent over-zooming on large screens */
+        {% comment %} height: clamp(520px, 85vh, 720px) !important; {% endcomment %}
+      } 
+      .custom-hero-right {
+        flex: 0 0 55%; /* Increase width of text area for laptops & desktops */
+      }
+    }
+
+    /* Desktop: keep more of the left side in frame */
+    @media (min-width: 1200px) {
+      .custom-hero-bg-img {
+        object-position: 20% center; /* adjust between 15–30% if needed */
+      }
+    }
+
+    /* Very large screens: a tad more left shift */
+    @media (min-width: 1600px) {
+      .custom-hero-bg-img {
+        object-position: 18% center;
+      }
+      .custom-hero-image-container{
+    --hero-max-width: 1600px;  /* widen the whole row */
+    --hero-text-max: 1000px;    /* allow wider copy */
+    --hero-side-pad: 60px;     /* optional: more side space */
+      }
+     
+    }
+
+    @media screen and (max-width: 749px) {
+      .custom-hero-image-container {
+        {% comment %} height: 80vh !important; {% endcomment %}
+         aspect-ratio:
+      }
+
+      .custom-hero-bg-img {
+        content: url({{ section.settings.mobile_background_image | image_url: width: 1000 }});
+        object-position: center;
+        aspect-ratio: {{ section.settings.mobile_background_image.width }}/{{ section.settings.mobile_background_image.height }}
+      }
+      .custom-hero-image-container{
+        aspect-ratio: {{ section.settings.mobile_background_image.width }}/{{ section.settings.mobile_background_image.height }}
+      }
+
+      .custom-hero-inner {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+       
+        text-align: center;
+      }
+
+      .custom-hero-right {
+        flex: unset;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+      }
+
+      .custom-hero-heading {
+        font-size: 26px;
+      }
+
+      .custom-hero-subheading {
+        font-size: 16px;
+      }
+    }
+  </style>
+
+  {% if section.settings.background_image != blank %}
+    <img 
+      src="{{ section.settings.background_image | image_url: width: 2000 }}" 
+      alt="Background"
+      class="custom-hero-bg-img"
+
+    >
+  {% endif %}
+
+  <div class="custom-hero-inner">
+    <div class="custom-hero-right">
+      {% if section.settings.logo != blank %}
+        <img 
+          src="{{ section.settings.logo | image_url: width: 600 }}" 
+          alt="Logo"
+          class="custom-hero-logo"
+          style="width: {{ section.settings.logo_width }}px; max-width: 100%; margin: {{ section.settings.logo_margin_top }}px 0 {{ section.settings.logo_margin_bottom }}px;">
+      {% endif %}
+      <div class="custom-hero-heading">{{ section.settings.heading }}</div>
+      <div class="custom-hero-subheading">{{ section.settings.subheading }}</div>
+    {% if section.settings.button_label != blank %}
+  <a href="{{ section.settings.button_link }}" class="custom-hero-button">
+    {{ section.settings.button_label }}
+  </a>
+{% endif %}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Image with Content",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "range",
+      "id": "logo_margin_top",
+      "label": "Logo Top Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "logo_margin_bottom",
+      "label": "Logo Bottom Margin",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo Width (px)",
+      "min": 100,
+      "max": 600,
+      "step": 10,
+      "default": 300
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_background_image",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Melt ‘n’ Glo"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "A next-gen skin brightening supplement that works from within."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "section_height",
+      "label": "Section Height",
+      "default": "auto",
+      "options": [
+        { "value": "100vh", "label": "100vh (Full Height)" },
+        { "value": "85vh", "label": "85vh" },
+        { "value": "65vh", "label": "65vh" },
+        { "value": "50vh", "label": "50vh" },
+        { "value": "auto", "label": "Auto Height" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Image with Content",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

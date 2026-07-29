@@ -1,0 +1,37 @@
+{%- comment -%}
+  Free shipping progress bar.
+  params: class
+{%- endcomment -%}
+
+{%- liquid
+  assign ship_threshold = settings.shipping_notification_threshold | times: 100
+  assign ship_pct = cart.total_price | times: 100.0 | divided_by: ship_threshold
+  if ship_pct < 0
+    assign ship_pct = 0
+  elsif ship_pct > 100
+    assign ship_pct = 100
+  endif
+-%}
+
+{%- style -%}
+  {%- if cart == empty -%}
+    .shipping-bar { visibility: hidden; }
+  {%- endif -%}
+{%- endstyle -%}
+
+{%- if settings.enable_shipping_notification and ship_threshold > 0 -%}
+  <shipping-bar
+    data-cart-total="{{ cart.total_price }}"
+    data-shipping-threshold="{{ ship_threshold }}"
+    data-progress="calc({{ ship_pct }}% + 2px)"
+    class="shipping-bar progress-bar {{ class }}"
+  >
+    <div class="progress-bar__top">
+      {%- render 'icon', icon_name: 'theme-package-check' -%}
+      <p class="progress-bar__text"></p>
+    </div>
+    <div class="progress-bar__progress">
+      <span data-progress-line class="progress-bar__progress-inner" style="width: 0%"></span>
+    </div>
+  </shipping-bar>
+{%- endif -%}

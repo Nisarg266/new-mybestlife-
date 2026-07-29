@@ -1,0 +1,213 @@
+{% comment %}
+  Brand Mission Section
+{% endcomment %}
+
+<section id="our-mission-{{ section.id }}" class="our-mission-section">
+  <div class="our-mission-header">
+    <h2 class="our-mission-heading">{{ section.settings.heading }}</h2>
+    <p class="our-mission-subheading">{{ section.settings.subheading }}</p>
+  </div>
+
+  <div class="our-mission-container">
+    <!-- LEFT IMAGE -->
+    <div class="our-mission-image">
+      <img src="{{ section.settings.image | img_url: 'master' }}" alt="Brand Mission Image">
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="our-mission-content">
+      <p class="our-mission-description">{{ section.settings.description }}</p>
+
+      <ul class="our-mission-list">
+        {% for block in section.blocks %}
+          <li class="our-mission-item">
+            <div class="our-mission-icon">
+              <img src="{{ block.settings.icon | img_url: '50x50' }}" alt="icon">
+            </div>
+            <div class="our-mission-text">
+            {{ block.settings.title }} – {{ block.settings.text }}
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .our-mission-section {
+    padding: 60px 20px;
+    background: #fff;
+  }
+
+  /* Heading + Subheading Centered */
+  .our-mission-header {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+  }
+
+  .our-mission-heading {
+    font-size: clamp(28px, 5vw, 50px) !important;
+    font-weight: 700;
+    color: #b4975a; /* gold color */
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  .our-mission-subheading {
+    margin-bottom: 75px !important;
+        line-height: 1.3;
+    font-size: 23px !important;
+    font-weight: 400;
+    color: #666 !important;
+    margin: 0 auto;
+    max-width: 900px;
+  }
+
+  /* Flex Layout */
+  .our-mission-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+     align-items: flex-start;
+    gap: 40px;
+  }
+
+  .our-mission-image {
+    flex: 1 1 45%;
+  }
+  .our-mission-image img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .our-mission-content {
+    flex: 1 1 50%;
+  }
+
+  .our-mission-description {
+        line-height: 1.3;
+    font-size: 23px !important;
+    margin-bottom: 40px;
+    margin-top:0px;
+    color: #666 !important;
+  }
+
+  .our-mission-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .our-mission-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #d1c8b0;
+    padding-bottom: 10px;
+  }
+  .our-mission-icon {
+    margin-right: 15px;
+    min-width: 40px;
+  }
+  .our-mission-icon img {
+    width: 50px;
+    height: 50px;
+  }
+  .our-mission-text {
+    font-weight:normal !important;
+    font-size: 20px;
+    color: #2a2a2a !important;
+    line-height: 1.5;
+  }
+
+  /* Mobile Responsive */
+  @media(max-width: 768px) {
+      .our-mission-description {
+        line-height: 1.3;
+    font-size: 18px !important;
+    margin-bottom: 40px;
+    margin-top:0px;
+    color: #666 !important;
+  }
+    .our-mission-icon img {
+        width: 40px;
+    height: 40px;
+    }
+    .our-mission-container {
+      flex-direction: column;
+      text-align: center;
+    }
+    .our-mission-item {
+      justify-content: center;
+      text-align: left;
+    }
+      .our-mission-subheading {
+    margin-bottom: 5px !important;
+    font-size: 18px !important;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Brand Mission",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Mission Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "OUR MISSION"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "To empower individuals to take control of their health through clean, science-backed, and result-driven nutritional solutions that support modern lifestyles"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "We are on a mission to develop and deliver a diverse range of proprietary, cutting-edge solutions that assure:"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Mission Statement",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Premium Quality"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Description",
+          "default": "Clean-label, responsibly formulated"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Mission",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1288 @@
+{
+  "sections": {
+    "intersection_homepage_Tim6i9": {
+      "type": "intersection-homepage",
+      "blocks": {
+        "slide_ry6Gzd": {
+          "type": "slide",
+          "settings": {
+            "background_image_desktop": "shopify://shop_images/Home_Web_Banner_New_1.jpg",
+            "background_image_mobile": "shopify://shop_images/Home_Mobile_Banner_New_1.jpg",
+            "main_heading": "",
+            "subheading": "",
+            "button_text": "",
+            "button_link": "shopify://collections/collection"
+          }
+        },
+        "slide_DH8VXL": {
+          "type": "slide",
+          "settings": {
+            "background_image_desktop": "shopify://shop_images/Home_Web_Banner_New_2.jpg",
+            "background_image_mobile": "shopify://shop_images/Home_Mobile_Banner_New_2.jpg",
+            "main_heading": "",
+            "subheading": "",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "slide_dxiXXQ": {
+          "type": "slide",
+          "settings": {
+            "background_image_desktop": "shopify://shop_images/Home_Web_Banner_New_3.jpg",
+            "background_image_mobile": "shopify://shop_images/Home_Mobile_Banner_New_3.jpg",
+            "main_heading": "",
+            "subheading": "",
+            "button_text": "",
+            "button_link": "shopify://products/melt-n-glo"
+          }
+        },
+        "slide_6Cmem7": {
+          "type": "slide",
+          "settings": {
+            "background_image_desktop": "shopify://shop_images/Home_Web_Banner_New_4.jpg",
+            "background_image_mobile": "shopify://shop_images/Home_Mobile_Banner_New_4.jpg",
+            "main_heading": "",
+            "subheading": "",
+            "button_text": "",
+            "button_link": "shopify://products/nutradew"
+          }
+        },
+        "slide_DR4XYF": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "background_image_desktop": "shopify://shop_images/Home_Web_Banner_4.png",
+            "background_image_mobile": "shopify://shop_images/Home_Mobule_Banner_4.jpg",
+            "main_heading": "FUEL THE BEST VERSION OF YOU–FROM THE INSIDE OUT.",
+            "subheading": "Powerhouse ingredients. Real Results. Wellness that works– for the life you’re building.",
+            "button_text": "Experience It Now",
+            "button_link": "shopify://collections/collection"
+          }
+        },
+        "slide_RDryDM": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "background_image_desktop": "shopify://shop_images/Home_Web_Banner_5.png",
+            "background_image_mobile": "shopify://shop_images/Home_Mobile_Banner5.jpg",
+            "main_heading": "FUEL THE BEST VERSION OF YOU–FROM THE INSIDE OUT.",
+            "subheading": "Powerhouse ingredients. Real Results. Wellness that works– for the life you’re building.",
+            "button_text": "Experience It Now",
+            "button_link": "shopify://collections/collection"
+          }
+        },
+        "slide_djyw7j": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "background_image_desktop": "shopify://shop_images/Home_Web_Banner_6.png",
+            "background_image_mobile": "shopify://shop_images/Home_Mobule_Banner_6.jpg",
+            "main_heading": "FUEL THE BEST VERSION OF YOU–FROM THE INSIDE OUT.",
+            "subheading": "Powerhouse ingredients. Real Results. Wellness that works– for the life you’re building.",
+            "button_text": "Experience It Now",
+            "button_link": "shopify://collections/collection"
+          }
+        }
+      },
+      "block_order": [
+        "slide_ry6Gzd",
+        "slide_DH8VXL",
+        "slide_dxiXXQ",
+        "slide_6Cmem7",
+        "slide_DR4XYF",
+        "slide_RDryDM",
+        "slide_djyw7j"
+      ],
+      "name": "Intersection Banner 2",
+      "settings": {}
+    },
+    "intersection_homepage_2_fbTdbL": {
+      "type": "Intersection-homepage-2",
+      "disabled": true,
+      "name": "Intersection Homepage 2",
+      "settings": {
+        "desktop_image": "shopify://shop_images/intersection_6df4efd4-18b7-41fb-8f3a-853f354e624f.png",
+        "mobile_image": "shopify://shop_images/intersection_mobile.png",
+        "image_link": "",
+        "height_mode": "auto"
+      }
+    },
+    "coming_soon_67dfWg": {
+      "type": "coming-soon",
+      "disabled": true,
+      "name": "Hero Banner",
+      "settings": {
+        "button_link": "",
+        "logo_margin_top": 0,
+        "logo_margin_bottom": 20,
+        "subheading": "",
+        "subheading_size": 20,
+        "subheading_color": "#eeeeee",
+        "subheading_margin_top": 10,
+        "subheading_margin_bottom": 10,
+        "subheading_padding_left": 200,
+        "subheading_padding_right": 200,
+        "heading": "",
+        "heading_size": 48,
+        "heading_color": "#ffffff",
+        "heading_margin_top": 0,
+        "heading_margin_bottom": 0,
+        "background_color": "#2a2a2a",
+        "background_image": "shopify://shop_images/Group_1484581498_09ad7e3c-5fa0-412b-89e9-f6ccbc78f939.png",
+        "mobile_background_image": "shopify://shop_images/Home_Mobile_Banner_1Layout.jpg",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 100,
+        "logo_width": 200,
+        "section_height": "85vh"
+      }
+    },
+    "herosection1_A6eCPY": {
+      "type": "herosection1",
+      "disabled": true,
+      "custom_css": [
+        "@media (min-width: 768px) and (max-width: 1024px) {.my-best-life-right img {padding: 0 0 0 160px; width: 600px; height: 774px; max-width: max-content; }}"
+      ],
+      "name": "Power Up Health Section",
+      "settings": {
+        "product_image": "shopify://shop_images/Home_MBL_Sets_Apart.png",
+        "heading": "WHAT SETS  <span class=\"mobile-break\"></span> MY BEST LIFE™ APART",
+        "point_1": "Science-Backed. Results-Driven",
+        "icon_1": "shopify://shop_images/13_b48aba70-f236-4e5b-b5e2-a52afd67c436.png",
+        "point_2": "Innovative Formulations",
+        "icon_2": "shopify://shop_images/2_a1840c33-cd31-4cb1-8b86-2a163e2394d4.png",
+        "point_3": "Goal Based Health Outcomes",
+        "icon_3": "shopify://shop_images/tik_png-01_1.png",
+        "point_4": "Modern Science Meets Traditional Wisdom",
+        "icon_4": "shopify://shop_images/4_b9564821-fa1c-4ae1-9837-4d8a90d2329a.png",
+        "point_5": "Clean, Transparent, and Ethical",
+        "icon_5": "shopify://shop_images/Frame-4_540bbe15-50f4-44a7-891c-8606b83a80e3.svg",
+        "point_6": "Doctor and Expert Friendly",
+        "icon_6": "shopify://shop_images/Frame-5_c0391676-6ca2-4725-9060-96c39ad195b4.svg",
+        "button_link": "shopify://collections/collection",
+        "button_label": "Experience it now"
+      }
+    },
+    "product_highlight_grid_home_AkwgTG": {
+      "type": "product-highlight-grid-home",
+      "blocks": {
+        "product_YHfVX9": {
+          "type": "product",
+          "settings": {
+            "product": "melt-n-glo",
+            "card_image": "shopify://shop_images/Home_Melt_n_Glow.jpg",
+            "card_link": "shopify://products/melt-n-glo",
+            "card_tag": "BEST SELLER",
+            "tag_bg_color": "#e60000",
+            "tag_text_color": "#ffffff",
+            "custom_price": "",
+            "button_label": "Add To Cart"
+          }
+        },
+        "product_DBWmq6": {
+          "type": "product",
+          "settings": {
+            "product": "nutradew",
+            "card_image": "shopify://shop_images/Home_NutraDew.jpg",
+            "card_link": "shopify://products/nutradew",
+            "card_tag": "",
+            "tag_bg_color": "#ffffff",
+            "tag_text_color": "#ffffff",
+            "custom_price": "",
+            "button_label": "Add To Cart"
+          }
+        }
+      },
+      "block_order": [
+        "product_YHfVX9",
+        "product_DBWmq6"
+      ],
+      "custom_css": [
+        "@media (min-width: 1024px) {.highlight-container {padding: 20px 40px; }}"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "spacing_top": 30,
+        "spacing_bottom": 30
+      }
+    },
+    "home_fitness_banner_n8DBiR": {
+      "type": "home-fitness-banner",
+      "disabled": true,
+      "settings": {
+        "bg_image": "shopify://shop_images/1b882e1c3cef1a25494c0a11c9940924fdbf13cd.jpg",
+        "heading": "TRANSFORM YOUR HEALTH: INSIDE AND OUT",
+        "subheading": "A Boost You Can Feel – Packed with Powerhouse Ingredients",
+        "button_label": "Experience It Now",
+        "button_link": "shopify://collections/skin"
+      }
+    },
+    "section_featured_home_VaciBP": {
+      "type": "section-featured-home",
+      "settings": {
+        "background_color": "#fefcf9",
+        "padding_top": 60,
+        "padding_bottom": 80,
+        "left_image": "shopify://shop_images/Image_3.png",
+        "heading1": "OWN YOUR HEALTH.  <span class=\"mobile-break\"></span> LIVE YOUR BEST LIFE.",
+        "heading2": "",
+        "icon_1": "shopify://shop_images/23_August_Icons-01.png",
+        "label_1": "Clean. Premium. Proven.",
+        "icon_2": "shopify://shop_images/23_August_Icons-02.png",
+        "label_2": "Clinically Backed Formulas",
+        "icon_3": "shopify://shop_images/23_August_Icons-03.png",
+        "label_3": "Third-Party Lab Tested for Trust",
+        "icon_4": "shopify://shop_images/23_August_Icons-04.png",
+        "label_4": "Targeted for Real Results",
+        "icon_5": "shopify://shop_images/23_August_Icons-05.png",
+        "label_5": "Trusted by Health Experts",
+        "icon_6": "shopify://shop_images/23_August_Icons-06.png",
+        "label_6": "Built for Modern Lifestyles"
+      }
+    },
+    "scrollable_cards_home_gfxxTw": {
+      "type": "scrollable-cards-home",
+      "blocks": {
+        "card_DJwKxt": {
+          "type": "card",
+          "settings": {
+            "card_heading": "OPITAC™ Glutathione",
+            "card_subheading": "High-purity glutathione naturally derived from Torula yeast. The master antioxidant for radiant, brighter skin.",
+            "card_flag": "shopify://shop_images/32px-Flag_of_Japan_svg.png",
+            "heading_font_size": 24,
+            "subheading_font_size": 14,
+            "padding_vertical": 30,
+            "card_background": "#f5f2ec",
+            "card_image": "shopify://shop_images/Image_7.jpg",
+            "card_link": "shopify://pages/opitac™-glutathione"
+          }
+        },
+        "card_dxheQg": {
+          "type": "card",
+          "settings": {
+            "card_heading": "Lutemax Skinglo",
+            "card_subheading": "Premium marigold-derived extract containing lutein and zeaxanthin. Shields skin from blue light damage and improves overall skin tone.",
+            "card_flag": "shopify://shop_images/32px-Flag_of_India_svg.png",
+            "heading_font_size": 24,
+            "subheading_font_size": 14,
+            "padding_vertical": 30,
+            "card_background": "#f5f2ec",
+            "card_image": "shopify://shop_images/Image_4.jpg",
+            "card_link": "shopify://pages/lutemax-skinglo"
+          }
+        },
+        "card_pxrwmQ": {
+          "type": "card",
+          "settings": {
+            "card_heading": "Ceramosides™",
+            "card_subheading": "Fast-acting wheat lipid extract rich in phytoceramides. Clinically proven to restore skin barrier and reduce moisture loss.",
+            "card_flag": "shopify://shop_images/32px-Flag_of_France_svg.png",
+            "heading_font_size": 24,
+            "subheading_font_size": 14,
+            "padding_vertical": 30,
+            "card_background": "#f5f2ec",
+            "card_image": "shopify://shop_images/Image_5.jpg",
+            "card_link": "shopify://pages/ceramosides™"
+          }
+        },
+        "card_4mr8kP": {
+          "type": "card",
+          "settings": {
+            "card_heading": "Omegia®",
+            "card_subheading": "Sea Buckthorn fruit and seed extract packed with Omegas 3, 6, 7 and 9. Deeply hydrates, soothes inflammation, and smooths wrinkles.",
+            "card_flag": "shopify://shop_images/32px-Flag_of_Hong_Kong_svg.png",
+            "heading_font_size": 24,
+            "subheading_font_size": 14,
+            "padding_vertical": 30,
+            "card_background": "#f5f2ec",
+            "card_image": "shopify://shop_images/Image_6.jpg",
+            "card_link": "shopify://pages/omegia®"
+          }
+        }
+      },
+      "block_order": [
+        "card_DJwKxt",
+        "card_dxheQg",
+        "card_pxrwmQ",
+        "card_4mr8kP"
+      ],
+      "settings": {
+        "section_heading": "Premium Ingredients",
+        "section_heading_font_size": 46,
+        "section_padding_top": 30,
+        "section_padding_bottom": 30,
+        "section_background_color": "#ffffff"
+      }
+    },
+    "icon_home_7HUiND": {
+      "type": "Icon-home",
+      "blocks": {
+        "icon_block_MUERCe": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/7_825dc8de-d909-4e51-a66e-3cff8edb64bb.png",
+            "label_text": "Backed by Science"
+          }
+        },
+        "icon_block_nKd7MD": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/9_39e779ab-25e5-4936-9b6f-5caa0a82329c.png",
+            "label_text": "Expert Formulated"
+          }
+        },
+        "icon_block_hQAcwE": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/8_b4c29f14-c8cb-440b-b468-314d48a072fe.png",
+            "label_text": "No Harmful Chemicals"
+          }
+        },
+        "icon_block_WC4HFH": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/10_398dc234-20dd-4570-af86-d8b17f9d244a.png",
+            "label_text": "Made in India"
+          }
+        },
+        "icon_block_Daba6T": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/11_5c00343c-d6c3-44bd-9642-d0976d55686b.png",
+            "label_text": "Fast Nationwide Shipping"
+          }
+        },
+        "icon_block_cKbGp3": {
+          "type": "icon_block",
+          "settings": {
+            "icon_image": "shopify://shop_images/12_bb2b9e2a-3492-473c-8ba0-11d27361e7cb.png",
+            "label_text": "Clean, Ethical, Proven"
+          }
+        }
+      },
+      "block_order": [
+        "icon_block_MUERCe",
+        "icon_block_nKd7MD",
+        "icon_block_hQAcwE",
+        "icon_block_WC4HFH",
+        "icon_block_Daba6T",
+        "icon_block_cKbGp3"
+      ],
+      "name": "Icon Row",
+      "settings": {
+        "background_color": "#fefcf9",
+        "circle_background_color": "#b4975a",
+        "icon_size": 94,
+        "gap_between_icons": 100
+      }
+    },
+    "marquees_f3LyUX": {
+      "type": "marquees",
+      "blocks": {
+        "item_qqtyB8": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453640.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_7WAdhn": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/shipping_c13af1af-f2f1-4cd5-82d5-befb5db64f27.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_qjfnXD": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/no_harmful_chemicals.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_fAJ3tG": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/backed_by_science.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_3RJ44i": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/expert_formulated.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_PUX78L": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453620.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_ktwd4z": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453618.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_EPpybU": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453621.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_eTafKG": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453618220.svg",
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_qqtyB8",
+        "item_7WAdhn",
+        "item_qjfnXD",
+        "item_fAJ3tG",
+        "item_3RJ44i",
+        "item_PUX78L",
+        "item_ktwd4z",
+        "item_EPpybU",
+        "item_eTafKG"
+      ],
+      "disabled": true,
+      "name": "t:sections.marquees.name",
+      "settings": {
+        "enable_animation": true,
+        "marquee_duration_rate": 2,
+        "marquee_font_size": 6,
+        "marquee_items_spacing": 6,
+        "color_scheme": "scheme-49f23032-2a41-4ae8-b39d-db22aeb39437",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "testimonial_slider_TkTcQr": {
+      "type": "testimonial-slider",
+      "blocks": {
+        "testimonial_Fkp6wR": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "name-person": "Shantivardhini",
+            "position": "",
+            "stars_image": "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+            "head_text": "My Skin Finally Looks Alive Again",
+            "review_text": "I’ve struggled with dull, tired-looking skin for years, and nothing topical really helped. After about 9 weeks of Melt n Glo, my skin actually looks awake. The glutathione + vitamin C combo is doing something magical, my tone is more even, and I can skip foundation some days. The best part is it melts in your mouth, so I never forget to take it.",
+            "name": "Melt N Glo Customer",
+            "date": ""
+          }
+        },
+        "testimonial_CgRinU": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "name-person": "Archana Chopra",
+            "position": "",
+            "stars_image": "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+            "head_text": "My skin drinks this up",
+            "review_text": "I’ve had dry, tight skin for years, no matter how much moisturizer I used. NutraDew’s ceramides and hyaluronic acid combo is a game-changer. Within 6 weeks, my skin feels hydrated from the inside out. The flakiness around my nose is gone, and my cheeks feel soft all day. Even my smile lines look less noticeable",
+            "name": "Nutradew Customer",
+            "date": ""
+          }
+        },
+        "testimonial_n9HUnL": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "user_image": "shopify://shop_images/ChatGPT_Image_Jun_27_2025_04_59_10_PM.png",
+            "name-person": "Shimmi Damodaran",
+            "position": "",
+            "stars_image": "shopify://shop_images/Golden-5-Star-Rating-PNG_031b84d3-2439-465c-af33-310f6564f546.png",
+            "head_text": "Pigmentation Patches Are Fading",
+            "review_text": "I have stubborn hyperpigmentation on my cheeks from old acne marks, and I’ve been using Melt n Glo for 2 months now. The glutathione with selenium and zinc seems to be working, my spots are lighter and my skin looks brighter overall. Took off one star because I wish it came in more flavours, but the results are worth it.",
+            "name": "Melt N Glo Customer",
+            "date": ""
+          }
+        },
+        "testimonial_BR7DUg": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "user_image": "shopify://shop_images/ChatGPT_Image_Jun_27_2025_04_59_10_PM.png",
+            "name-person": "Divya Jyothi",
+            "position": "",
+            "stars_image": "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+            "head_text": "Wrinkles? Softer now",
+            "review_text": "I started NutraDew mainly for dryness, but I’m surprised how much smoother my fine lines look. The hyaluronic acid really plumps up my skin, and the ceramides seem to lock in that moisture. People at work keep asking if I’ve changed my skincare, but nope, just this little tablet every day.",
+            "name": "Nutradew Customer",
+            "date": ""
+          }
+        },
+        "testimonial_nCCmqP": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "user_image": "shopify://shop_images/ChatGPT_Image_Jun_27_2025_04_59_10_PM.png",
+            "name-person": "Vinitha Shetty",
+            "position": "",
+            "stars_image": "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+            "head_text": "Just Amazing",
+            "review_text": "I was skeptical about supplements, but I researched glutathione and vitamins C & E before trying this. Within 10 weeks, my uneven skin tone started evening out. Friends keep asking what skincare I’m using, but the only thing I changed was adding Melt n Glo to my routine. Love that it’s quick, tasty, and doesn’t feel like I’m taking “medicine.”",
+            "name": "Melt N Glo Customer",
+            "date": ""
+          }
+        },
+        "testimonial_MbgGrp": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "user_image": "shopify://shop_images/ChatGPT_Image_Jun_27_2025_04_59_10_PM.png",
+            "name-person": "Renuka Ravi",
+            "position": "",
+            "stars_image": "shopify://shop_images/Golden-5-Star-Rating-PNG_031b84d3-2439-465c-af33-310f6564f546.png",
+            "head_text": "From dull to dewy",
+            "review_text": "I’m in my 40s and have always struggled with rough texture and dehydration lines. After 8 weeks on NutraDew, my skin feels more supple, and I wake up looking fresher. It’s not a miracle overnight fix, but the hydration boost is real. Four stars only because I wish it came in a bigger pack",
+            "name": "Nutradew Customer",
+            "date": ""
+          }
+        },
+        "testimonial_GVBWjg": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "user_image": "shopify://shop_images/ChatGPT_Image_Jun_27_2025_04_59_10_PM.png",
+            "name-person": "Pooja Hemanth",
+            "position": "",
+            "stars_image": "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+            "head_text": "No more flaky patches",
+            "review_text": "Living in an air-conditioned office all day made my skin so dry that even expensive creams didn’t help. NutraDew works differently, ceramides repair the skin barrier while hyaluronic acid holds on to the moisture. Now my skin stays smooth and hydrated all day, and my makeup doesn’t crack around my eyes",
+            "name": "Nutradew Customer",
+            "date": ""
+          }
+        },
+        "testimonial_hTTJYV": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "user_image": "shopify://shop_images/ChatGPT_Image_Jun_27_2025_04_59_10_PM.png",
+            "name-person": "Sameeth K",
+            "position": "",
+            "stars_image": "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+            "head_text": "Confidence Without Makeup",
+            "review_text": "I’ve had uneven skin tone for years, and it always made me pile on concealer. After using Melt n Glo for 3 months, I’ve been going makeup-free more often. My skin looks more even, has a natural glow, and feels smoother. The mix of glutathione, pomegranate extract, vitamin E, and zinc really seems to be nourishing from the inside.",
+            "name": "Melt N Glo Customer",
+            "date": ""
+          }
+        },
+        "testimonial_Ejpnjb": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "user_image": "shopify://shop_images/ChatGPT_Image_Jun_27_2025_04_59_10_PM.png",
+            "name-person": "Nandini Gowda",
+            "position": "",
+            "stars_image": "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+            "head_text": "My Go-To for Dull Skin Days",
+            "review_text": "I work long hours, and my skin used to look flat and lifeless. Melt n Glo has been a game-changer. The combination of glutathione, marigold extract, vitamin C, and selenium is giving me brightness I didn’t know I could get. Even my hyperpigmentation marks are less noticeable now. It’s so easy to take daily, no pills or mixing powders",
+            "name": "Melt N Glo Customer",
+            "date": ""
+          }
+        },
+        "testimonial_JnyPrc": {
+          "type": "testimonial",
+          "settings": {
+            "stars": 5,
+            "user_image": "shopify://shop_images/ChatGPT_Image_Jun_27_2025_04_59_10_PM.png",
+            "name-person": "Rajiv Rajan",
+            "position": "",
+            "stars_image": "shopify://shop_images/Golden-5-Star-Rating-PNG.png",
+            "head_text": "Didn’t Think This Was for Guys, but…",
+            "review_text": "I’ll be honest, I bought Melt n Glo because my wife kept telling me my skin looked “tired” and uneven. I wasn’t expecting much, but after about 10 weeks, even I can see the difference. My face looks fresher, the tan patches from old sun damage have lightened, and I don’t look like I’ve been pulling all-nighters anymore. Plus, it’s super easy to take, no pills, just melts on your tongue. I’m sticking with it. –",
+            "name": "Melt N Glo Customer",
+            "date": ""
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_Fkp6wR",
+        "testimonial_CgRinU",
+        "testimonial_n9HUnL",
+        "testimonial_BR7DUg",
+        "testimonial_nCCmqP",
+        "testimonial_MbgGrp",
+        "testimonial_GVBWjg",
+        "testimonial_hTTJYV",
+        "testimonial_Ejpnjb",
+        "testimonial_JnyPrc"
+      ],
+      "name": "Testimonial Slider",
+      "settings": {
+        "section_id": "",
+        "background_color": "#ffffff",
+        "heading": "See What Our Customers Are Saying",
+        "short_description": "<p>Over 500 satisfied customers<br/></p>",
+        "top_padding": 30,
+        "bottom_padding": 30,
+        "alignment": "center",
+        "autoplay": false,
+        "delay": 10,
+        "pagination": true,
+        "padding_top_mobile": 30,
+        "padding_bottom_mobile": 30,
+        "slides_per_view_mobile": 1.1,
+        "slides_per_view_desktop": 2.1
+      }
+    },
+    "testimonial_black_tYcFG9": {
+      "type": "testimonial-black",
+      "blocks": {
+        "testimonial_VETRwy": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Premium marigold-derived extract containing lutein and zeaxanthin. Shields skin from blue light damage and improves overall skin tone. Sourced from India",
+            "source": "rushi",
+            "rating": 5
+          }
+        },
+        "testimonial_RdwXWK": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "a formal written description or statement about the abilities, character and qualities of a person, often given by a previous employer; a formal written statement about the quality of a product, service, etc.",
+            "source": "Rushi",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_VETRwy",
+        "testimonial_RdwXWK"
+      ],
+      "disabled": true,
+      "name": "Testimonial Carousel",
+      "settings": {}
+    },
+    "marquee_logos_RwGChj": {
+      "type": "marquee-logos",
+      "blocks": {
+        "logo_pair_eMLVF7": {
+          "type": "logo_pair",
+          "settings": {
+            "logo_img": "shopify://shop_images/box_13181677_71893726-5527-4efa-8a56-0ace92510b53.svg",
+            "logo_text": "<p>Fast Shipping Nationwide</p>"
+          }
+        },
+        "logo_pair_Ck8WFn": {
+          "type": "logo_pair",
+          "settings": {
+            "logo_img": "shopify://shop_images/national_15878887_50ae198a-bd7a-48d4-ade0-bd8f1fd8119b.svg",
+            "logo_text": "<p>Made in India</p>"
+          }
+        },
+        "logo_pair_pFYmaU": {
+          "type": "logo_pair",
+          "settings": {
+            "logo_img": "shopify://shop_images/flask_2637044_1.svg",
+            "logo_text": "<p>No Harmful Chemicals</p>"
+          }
+        },
+        "logo_pair_niemJw": {
+          "type": "logo_pair",
+          "settings": {
+            "logo_img": "shopify://shop_images/scientific_9401924_682fa006-a001-4ff5-8b7a-36b48638d6ce.svg",
+            "logo_text": "<p>Backed by Science</p>"
+          }
+        },
+        "logo_pair_iihaiK": {
+          "type": "logo_pair",
+          "settings": {
+            "logo_img": "shopify://shop_images/chemistry_18756916_07e0059f-fa04-440a-82f0-1fefae23f4fa.svg",
+            "logo_text": "<p>Expert Formulated</p>"
+          }
+        }
+      },
+      "block_order": [
+        "logo_pair_eMLVF7",
+        "logo_pair_Ck8WFn",
+        "logo_pair_pFYmaU",
+        "logo_pair_niemJw",
+        "logo_pair_iihaiK"
+      ],
+      "disabled": true,
+      "name": "Marquee Logos",
+      "settings": {
+        "background_color": "#b4975a",
+        "logo_size": 30,
+        "speed": 118,
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "font_color": "#ffffff"
+      }
+    },
+    "marquees_CH3re4": {
+      "type": "marquees",
+      "blocks": {
+        "item_MVxhF6": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453613.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_rzLBrK": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453614.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_WCqMqj": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453618.png",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_Eff38z": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453615.png",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_Da698m": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453616_ce9b4a30-6db4-4477-a423-711c6da9060b.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_Bf6caQ": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453620.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_7yz8CL": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453618.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_apwg8V": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453621.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_GbGcft": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453618220.svg",
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_MVxhF6",
+        "item_rzLBrK",
+        "item_WCqMqj",
+        "item_Eff38z",
+        "item_Da698m",
+        "item_Bf6caQ",
+        "item_7yz8CL",
+        "item_apwg8V",
+        "item_GbGcft"
+      ],
+      "disabled": true,
+      "name": "t:sections.marquees.name",
+      "settings": {
+        "enable_animation": true,
+        "marquee_duration_rate": 2,
+        "marquee_font_size": 6,
+        "marquee_items_spacing": 6,
+        "color_scheme": "scheme-bee356b7-cbac-4555-a386-71952b0ddc80",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "marquee_logos_GhcRqn": {
+      "type": "marquee-logos",
+      "blocks": {
+        "logo_pair_7knQyb": {
+          "type": "logo_pair",
+          "settings": {
+            "logo_img": "shopify://shop_images/box_13181677_71893726-5527-4efa-8a56-0ace92510b53.svg",
+            "logo_text": "<p>Fast Shipping Nationwide</p>"
+          }
+        },
+        "logo_pair_6wAaCE": {
+          "type": "logo_pair",
+          "settings": {
+            "logo_img": "shopify://shop_images/national_15878887_50ae198a-bd7a-48d4-ade0-bd8f1fd8119b.svg",
+            "logo_text": "<p>Made in India</p>"
+          }
+        },
+        "logo_pair_EbAVGg": {
+          "type": "logo_pair",
+          "settings": {
+            "logo_img": "shopify://shop_images/flask_2637044_1.svg",
+            "logo_text": "<p>No Harmful Chemicals</p>"
+          }
+        },
+        "logo_pair_fXFJPc": {
+          "type": "logo_pair",
+          "settings": {
+            "logo_img": "shopify://shop_images/scientific_9401924_682fa006-a001-4ff5-8b7a-36b48638d6ce.svg",
+            "logo_text": "<p>Backed by Science</p>"
+          }
+        },
+        "logo_pair_yBDgCb": {
+          "type": "logo_pair",
+          "settings": {
+            "logo_img": "shopify://shop_images/chemistry_18756916_07e0059f-fa04-440a-82f0-1fefae23f4fa.svg",
+            "logo_text": "<p>Expert Formulated</p>"
+          }
+        }
+      },
+      "block_order": [
+        "logo_pair_7knQyb",
+        "logo_pair_6wAaCE",
+        "logo_pair_EbAVGg",
+        "logo_pair_fXFJPc",
+        "logo_pair_yBDgCb"
+      ],
+      "disabled": true,
+      "name": "Marquee Logos",
+      "settings": {
+        "background_color": "#b4975a",
+        "logo_size": 24,
+        "speed": 30,
+        "padding_top": 16,
+        "padding_bottom": 16,
+        "font_color": "#ffffff"
+      }
+    },
+    "marquees_7rHFxj": {
+      "type": "marquees",
+      "blocks": {
+        "item_bLBYYz": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/02_icon_8e0c8b6d-abd9-47aa-b93d-53b995b1699f.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_mJRUwX": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/01icon.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_UdzeqY": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/03_icon_26541aaa-660b-4010-94fe-ca17a005eddf.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_QdedDe": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/4_icon_d296a5b8-2322-4a13-9406-54adf4eee54a.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_rXnHPG": {
+          "type": "item",
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/05_icon_9b32c051-0b17-4fba-9ac3-97be94426367.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_bmDpad": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453620.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_N68aXB": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453618.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_AnEpb7": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453621.svg",
+            "title": "",
+            "link": ""
+          }
+        },
+        "item_wPYpEt": {
+          "type": "item",
+          "disabled": true,
+          "settings": {
+            "icon": "",
+            "custom_icon": "shopify://shop_images/Frame_2121453618220.svg",
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_bLBYYz",
+        "item_mJRUwX",
+        "item_UdzeqY",
+        "item_QdedDe",
+        "item_rXnHPG",
+        "item_bmDpad",
+        "item_N68aXB",
+        "item_AnEpb7",
+        "item_wPYpEt"
+      ],
+      "disabled": true,
+      "name": "t:sections.marquees.name",
+      "settings": {
+        "enable_animation": true,
+        "marquee_duration_rate": 2,
+        "marquee_font_size": 6,
+        "marquee_items_spacing": 6,
+        "color_scheme": "scheme-8",
+        "padding_top": 30,
+        "padding_bottom": 30
+      }
+    },
+    "ads_section_8CKCYD": {
+      "type": "ads-section",
+      "disabled": true,
+      "name": "Image Container Only",
+      "settings": {
+        "logo": "shopify://shop_images/Group-1.svg",
+        "logo_margin_top": 20,
+        "logo_margin_bottom": 20,
+        "logo_width": 420,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/Image_8.jpg",
+        "mobile_background_image": "shopify://shop_images/Home_Mobile_Divider_Banner.jpg",
+        "heading": "Glow from within",
+        "subheading": "A next-gen skin brightening supplement that works from within to reduce pigmentation, even out skin tone, and boost antioxidant defense. Designed for individuals seeking luminous, healthy skin without cosmetic quick fixes, Melt ‘n’ Glo™ Combines science-backed ingredients with a convenient melt-in-mouth format.",
+        "button_label": "Shop Now",
+        "button_link": "shopify://products/melt-n-glo",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_height": "auto"
+      }
+    },
+    "ads_section_CPyWdr": {
+      "type": "ads-section",
+      "name": "Image Container Only",
+      "settings": {
+        "logo_margin_top": 20,
+        "logo_margin_bottom": 20,
+        "logo_width": 420,
+        "background_color": "#ffffff",
+        "background_image": "shopify://shop_images/Home_Web_Divider_Banner_a583b70d-4faf-4418-9084-a5131061b285.jpg",
+        "mobile_background_image": "shopify://shop_images/Shop_All_Melt_n_Glow_Mobile_Banner_MnG_1.jpg",
+        "heading": "",
+        "subheading": "",
+        "button_label": "",
+        "button_link": "shopify://products/melt-n-glo",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "section_height": "50vh"
+      }
+    },
+    "section_our_founder_home_yUbwVQ": {
+      "type": "section-our-founder-home",
+      "name": "Our Founder Section",
+      "settings": {
+        "founder_image": "shopify://shop_images/shared_image_copy.png",
+        "founder_image_mobile": "shopify://shop_images/Founder_image_1_bb624e15-6460-476a-99bf-dfac0dc143fa.png",
+        "background_image": "shopify://shop_images/1600_px.png",
+        "mobile_background_image": "shopify://shop_images/Group_1484581510.png",
+        "quote_padding_top": 100,
+        "main_heading": "MEET THE VISIONARY BEHIND MY BEST LIFE™",
+        "left_box_title": "A Doctor with a Passion for Wellness",
+        "left_box_text": "Dr. Vikram Shetty blends medical insight with a deep commitment to preventive health. With years of experience across healthcare, nutraceuticals, and pharmaceuticals, he’s on a mission to create science-backed, clean-label supplements that deliver real, measurable results—without compromise.",
+        "right_box_title": "Committed to Transparency",
+        "right_box_text": "Honesty is at our core. We use only proven ingredients and share every detail willingly. Every product is crafted with integrity, ensuring you get exactly what we promise — real, effective wellness solutions.",
+        "quote_text": "True wellness isn’t a luxury; it’s a lifestyle choice. And I’m here to make that choice accessible for everyone.",
+        "quote_author": "- Dr. Vikram Shetty",
+        "button_text": "Discover our story",
+        "button_link": "shopify://pages/about-us"
+      }
+    },
+    "our_reels_rGY97Y": {
+      "type": "our-reels",
+      "blocks": {
+        "video_qiqxyY": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/9920b0e9295b44afaab62483162ba6f8.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/9920b0e9295b44afaab62483162ba6f8.mp4"
+          }
+        },
+        "video_Ea7kPM": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/3c64542ce65a4a64b5158aa81c8ddb06.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/3c64542ce65a4a64b5158aa81c8ddb06.mp4"
+          }
+        },
+        "video_cXUdit": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/237712093c3e447fbf24131db9b33a18.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/237712093c3e447fbf24131db9b33a18.mp4"
+          }
+        },
+        "video_wPGBUq": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/5ab7788e9d744f608709c17861004e85.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/5ab7788e9d744f608709c17861004e85.mp4"
+          }
+        },
+        "video_WifP3Y": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/4cfeed0c81974e429faaf7a1a17772ca.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/4cfeed0c81974e429faaf7a1a17772ca.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_qiqxyY",
+        "video_Ea7kPM",
+        "video_cXUdit",
+        "video_wPGBUq",
+        "video_WifP3Y"
+      ],
+      "custom_css": [
+        ".video-preview-section {padding: 60px 150px;}",
+        "@media (max-width: 768px) {.video-preview-section {padding: 40px 20px; }}"
+      ],
+      "name": "Our Reels",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading": "Discover What Living Your Best Life Truly Feels Like",
+        "heading_font_size": 46,
+        "subheading": "",
+        "subheading_font_size": 30,
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "autoplay": true,
+        "controls": false,
+        "muted": true
+      }
+    },
+    "section_testimonial_home_D9pfH8": {
+      "type": "section-testimonial-home",
+      "blocks": {
+        "testimonial_ErEpGG": {
+          "type": "testimonial",
+          "settings": {
+            "question": "How Crystal Lost 63lbs and Gained Back Her Confidence!",
+            "answer": "When I first started my 310 journey I was 231 Lbs and unhappy… I nearly weighed as much as my boyfriend and that hurt my confidence. I stayed up all night searching for something that could change me, and discovered a company called 310 Nutrition! The rest was history…",
+            "name": "Felicia S",
+            "role": "Verified Customer",
+            "reviewer_image": "shopify://shop_images/7095e8165ff7ad7be425959cb0553874e9124487.png"
+          }
+        },
+        "testimonial_i7tgef": {
+          "type": "testimonial",
+          "settings": {
+            "question": "How Katie L. Went From Feeling Out of Breath to Losing 50lbs!",
+            "answer": "“At first my biggest struggle was stopping the binge eating, and fixing my diet… But since discovering 310… I've regained my confidence, stamina to do my job properly, and my energy to be an active parent in my kids' lives!”",
+            "name": "Crystal",
+            "role": "Verified Customer",
+            "reviewer_image": "shopify://shop_images/473be24f11d5f610cf176a05e283bc7cdcd6bc55.png"
+          }
+        },
+        "testimonial_rRHaH9": {
+          "type": "testimonial",
+          "settings": {
+            "question": "How Crystal Lost 63lbs and Gained Back Her Confidence!",
+            "answer": "When I first started my 310 journey I was 231 Lbs and unhappy… I nearly weighed as much as my boyfriend and that hurt my confidence. I stayed up all night searching for something that could change me, and discovered a company called 310 Nutrition! The rest was history…",
+            "name": "Hannah M",
+            "role": "Verified Customer",
+            "reviewer_image": "shopify://shop_images/4271cadd58a8b49610df621d0d7a4602fd6721d1.png"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_ErEpGG",
+        "testimonial_i7tgef",
+        "testimonial_rRHaH9"
+      ],
+      "disabled": true,
+      "name": "Testimonials Section Home",
+      "settings": {
+        "heading": "Take It From Them…",
+        "subheading": "Want to know what people think of NutraDew? Check out our latest reviews for advice on product selections and more.",
+        "bg_image": "shopify://shop_images/b343d8fdab7ad82ecb3a81e3feadd2d16fa34ca7.jpg",
+        "see_reviews_button_label": "See Reviews",
+        "see_reviews_button_link": ""
+      }
+    },
+    "bestlife_blog_section_dNYF6J": {
+      "type": "bestlife-blog-section",
+      "name": "BestLife Blog Grid",
+      "settings": {
+        "heading": "<strong>THE MY BEST LIFE™ WELLNESS BLOG</strong>",
+        "heading_size": "h2",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "background_color": "#fefcf9",
+        "blog": "news",
+        "show_excerpt": true,
+        "show_read_more": true,
+        "section_width": "max-w-page",
+        "article_limit": 3
+      }
+    },
+    "1752053092866b24cc": {
+      "type": "apps",
+      "custom_css": [],
+      "settings": {}
+    },
+    "find_us_on_eE46Nw": {
+      "type": "find-us-on",
+      "disabled": true,
+      "name": "Find Us On",
+      "settings": {
+        "bg_color": "#fefcf9",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "logo_width": 170,
+        "logo_gap": 60,
+        "logo_2": "shopify://shop_images/XMLID_109_6d10e992-ee1e-4345-89c0-c52e353f1f07.png",
+        "logo_height": 100
+      }
+    },
+    "178464965732cfbd16": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_8xVtAL": {
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_8xVtAL"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "intersection_homepage_Tim6i9",
+    "intersection_homepage_2_fbTdbL",
+    "coming_soon_67dfWg",
+    "herosection1_A6eCPY",
+    "product_highlight_grid_home_AkwgTG",
+    "home_fitness_banner_n8DBiR",
+    "section_featured_home_VaciBP",
+    "scrollable_cards_home_gfxxTw",
+    "icon_home_7HUiND",
+    "marquees_f3LyUX",
+    "testimonial_slider_TkTcQr",
+    "testimonial_black_tYcFG9",
+    "marquee_logos_RwGChj",
+    "marquees_CH3re4",
+    "marquee_logos_GhcRqn",
+    "marquees_7rHFxj",
+    "ads_section_8CKCYD",
+    "ads_section_CPyWdr",
+    "section_our_founder_home_yUbwVQ",
+    "our_reels_rGY97Y",
+    "section_testimonial_home_D9pfH8",
+    "bestlife_blog_section_dNYF6J",
+    "1752053092866b24cc",
+    "find_us_on_eE46Nw",
+    "178464965732cfbd16"
+  ]
+}

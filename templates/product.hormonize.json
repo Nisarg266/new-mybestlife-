@@ -1,0 +1,473 @@
+{
+  "sections": {
+    "hero_banner_hLcPTc": {
+      "type": "hero-banner",
+      "blocks": {
+        "slide_tadAjp": {
+          "type": "slide",
+          "settings": {
+            "banner_layout": "hero-banner--full",
+            "color_scheme": "scheme-1",
+            "header_menu_text_color": "#ffffff",
+            "heading": "",
+            "subheading": "",
+            "subheading_link": "",
+            "text": "",
+            "button_link_1": "/",
+            "button_link_1_type": "button",
+            "button_label_1": "",
+            "button_style_1": "button--filled",
+            "button_link_2": "/",
+            "button_label_2": "",
+            "button_style_2": "button--outlined",
+            "content_position": "end",
+            "content_alignment": "center",
+            "image": "shopify://shop_images/hormonize_fe3846ee-9be7-4d9e-95c4-5eadada79361.png",
+            "video_external": "",
+            "show_controls_on_video": false,
+            "enable_media_overlay_desktop": true,
+            "content_position_mobile": "center",
+            "content_alignment_mobile": "center",
+            "video_external_mobile": "",
+            "show_controls_on_video_mobile": false,
+            "enable_media_overlay_mobile": true
+          }
+        }
+      },
+      "block_order": [
+        "slide_tadAjp"
+      ],
+      "disabled": true,
+      "name": "t:sections.hero-banner.name",
+      "settings": {
+        "enable_transparent_header": false,
+        "slider_height": 100,
+        "slideshow_autoplay_interval": 6,
+        "show_slideshow_navigation": true,
+        "slideshow_navigation_position": "hero__swiper-buttons--start",
+        "color_scheme_arrows": "",
+        "show_slideshow_pagination": true,
+        "slideshow_pagination_style": "style-1",
+        "floating_bar": false
+      }
+    },
+    "coming_soon_rxJQnr": {
+      "type": "coming-soon",
+      "disabled": true,
+      "name": "Hero Banner",
+      "settings": {
+        "button_link": "#launch100",
+        "logo_margin_top": 0,
+        "logo_margin_bottom": 0,
+        "subheading": "",
+        "subheading_size": 20,
+        "subheading_color": "#2a2a2a",
+        "subheading_margin_top": 10,
+        "subheading_margin_bottom": 10,
+        "subheading_padding_left": 200,
+        "subheading_padding_right": 200,
+        "heading": "",
+        "heading_size": 48,
+        "heading_color": "#ffffff",
+        "heading_margin_top": 10,
+        "heading_margin_bottom": 10,
+        "background_color": "#2a2a2a",
+        "background_image": "shopify://shop_images/Health_Web_Banner_2_copy_2.jpg",
+        "mobile_background_image": "shopify://shop_images/Health_Mobile_Banner_1_copy_2.jpg",
+        "text_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 100,
+        "logo_width": 200,
+        "section_height": "85vh"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "goback_zMzywG": {
+          "type": "goback",
+          "settings": {
+            "goback_style": "filled",
+            "goback_label": "",
+            "display_goback_mobile": "on-media",
+            "show_on": "desktop"
+          }
+        },
+        "breadcrumbs_JRrp9d": {
+          "type": "breadcrumbs",
+          "disabled": true,
+          "settings": {}
+        },
+        "text_w7iGN6": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "spacing_bottom": "1",
+            "heading": "",
+            "icon": "theme-check",
+            "link_to_resource": "vendor",
+            "text_before_link": false,
+            "heading_secondary": "",
+            "metafield_for_product_variant": "",
+            "show_block_content": true
+          }
+        },
+        "badge_dC66pN": {
+          "type": "badge",
+          "disabled": true,
+          "settings": {
+            "spacing_bottom": "1",
+            "show_badges": true,
+            "show_badges_discount": true,
+            "show_badges_sold": true
+          }
+        },
+        "glow_text_block_paa34p": {
+          "type": "glow_text_block",
+          "settings": {
+            "large_text": "",
+            "subtitlenew": "Holistic support for hormonal balance and lasting relief from PCOS symptoms | Clinically Backed"
+          }
+        },
+        "1e0c79e9-7de0-4eee-b9c5-f27132635fb8": {
+          "type": "title",
+          "settings": {
+            "spacing_bottom": "0",
+            "image": "shopify://shop_images/073_My_Best_Life_Hormonize_Logo_r2.png",
+            "image_size": 280
+          }
+        },
+        "glow_text_block_NARcKD": {
+          "type": "glow_text_block",
+          "settings": {
+            "large_text": "",
+            "subtitlenew": "Your Daily Hormonal Reset"
+          }
+        },
+        "glow_text_block_qGWkBk": {
+          "type": "glow_text_block",
+          "settings": {
+            "large_text": "",
+            "subtitlenew": "A clinically backed daily sachet designed to empower women in managing PCOS naturally. Hormonize™ blends traditional herbal wisdom with modern nutritional science to restore hormonal balance, regulate cycles, support fertility, and ease metabolic symptoms—offering a sustainable path to long-term well-being."
+          }
+        },
+        "glow_points_exrJmn": {
+          "type": "glow_points",
+          "settings": {
+            "line1": "Balances hormones and supports regular periods",
+            "icon1": "shopify://shop_images/more_icons-07_5c7d05fb-207b-4f1f-8f1b-2f436e6f11eb.png",
+            "line2": "Improves fertility and egg quality",
+            "icon2": "shopify://shop_images/more_icons-08_41562cc3-f923-41d0-8eaa-184a67729e6f.png",
+            "line3": "Reduces acne and facial hair",
+            "icon3": "shopify://shop_images/more_icons-05_385b0b93-e18d-4f65-8720-4d6b2a093f0c.png",
+            "line4": "Supports healthy weight management",
+            "icon4": "shopify://shop_images/more_icons-10_ad778be6-6879-4058-9947-a71393cf0d58.png",
+            "top_margin": 28,
+            "bottom_margin": 12
+          }
+        },
+        "description_qA3HqH": {
+          "type": "description",
+          "disabled": true,
+          "settings": {
+            "spacing_bottom": "2",
+            "behaviour": "plain",
+            "heading": "",
+            "text_truncate": 3,
+            "icon": "theme-info",
+            "metafield_for_product_variant": "",
+            "show_block_content": true
+          }
+        },
+        "8effeb43-55b7-4ec4-ab9b-68bcd89b865b": {
+          "type": "price",
+          "disabled": true,
+          "settings": {
+            "spacing_bottom": "1",
+            "show_price_tax_info": true,
+            "show_price_shipping_info": true,
+            "show_price_custom_info": ""
+          }
+        },
+        "sku_HNK7Ka": {
+          "type": "sku",
+          "settings": {
+            "spacing_bottom": "1"
+          }
+        },
+        "divider_HGwyhB": {
+          "type": "divider",
+          "disabled": true,
+          "settings": {
+            "spacing_bottom": "3"
+          }
+        },
+        "8604a6ff-ad0b-44dd-8068-1de4e062f8e8": {
+          "type": "buy_buttons",
+          "disabled": true,
+          "settings": {
+            "spacing_bottom": "3",
+            "show_quantity": true,
+            "layout": "inline",
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "e6d841d6-2f71-40b3-956a-912df13f9f6e": {
+          "type": "inventory_notice",
+          "disabled": true,
+          "settings": {
+            "spacing_bottom": "1",
+            "inventory_threshold": 15,
+            "notice_just_text": false
+          }
+        },
+        "7be6b89c-da83-4ff2-9b85-44fb28cbfa27": {
+          "type": "pickup-availability",
+          "disabled": true,
+          "settings": {
+            "spacing_bottom": "2"
+          }
+        },
+        "complementary_products_h7nWQd": {
+          "type": "complementary_products",
+          "settings": {
+            "spacing_bottom": "2",
+            "heading": "You may also like",
+            "icon": "theme-box",
+            "limit": 4
+          }
+        },
+        "four_icons_notify_UWCRbw": {
+          "type": "four_icons_notify",
+          "settings": {
+            "icon1": "shopify://shop_images/h1.svg",
+            "text1": "Balances hormones & supports regular periods",
+            "icon2": "shopify://shop_images/h2.svg",
+            "text2": "Improves fertility and egg quality ",
+            "icon3": "shopify://shop_images/h3.svg",
+            "text3": "Reduces acne and facial hair",
+            "icon4": "shopify://shop_images/h4.svg",
+            "text4": "Supports healthy weight management ",
+            "button_text": "Coming Soon",
+            "button_text_color": "#b4975a",
+            "button_bg_color": "#1e1e1e",
+            "notify_link": "#launch100"
+          }
+        }
+      },
+      "block_order": [
+        "goback_zMzywG",
+        "breadcrumbs_JRrp9d",
+        "text_w7iGN6",
+        "badge_dC66pN",
+        "glow_text_block_paa34p",
+        "1e0c79e9-7de0-4eee-b9c5-f27132635fb8",
+        "glow_text_block_NARcKD",
+        "glow_text_block_qGWkBk",
+        "glow_points_exrJmn",
+        "description_qA3HqH",
+        "8effeb43-55b7-4ec4-ab9b-68bcd89b865b",
+        "sku_HNK7Ka",
+        "divider_HGwyhB",
+        "8604a6ff-ad0b-44dd-8068-1de4e062f8e8",
+        "e6d841d6-2f71-40b3-956a-912df13f9f6e",
+        "7be6b89c-da83-4ff2-9b85-44fb28cbfa27",
+        "complementary_products_h7nWQd",
+        "four_icons_notify_UWCRbw"
+      ],
+      "custom_css": [
+        ".glow_points img {width: 60px !important; height: 60px !important; object-fit: contain;}",
+        ".glow_points .icon-container {display: flex; align-items: center; justify-content: flex-start; margin-bottom: 15px;}",
+        ".glow_points .icon-container img {margin-right: 15px;}",
+        ".glow_text_block p,.glow_text_block .subtitlenew,.glow_text_block {line-height: 1.4 !important;}"
+      ],
+      "settings": {
+        "product_media_layout": "product__media-layout--full",
+        "product_media_layout_mobile": "product__media-layout--partial--sm",
+        "product_media_aspect_ratio": "auto",
+        "product_media_object_fit": "cover",
+        "product_slider_auto_height": true,
+        "media_transparent_background": true,
+        "display_media_zoom": "click",
+        "product_media_with_thumbs": "none",
+        "product_media_thumbs_ratio": "auto",
+        "product_media_thumbs_object_fit": "cover",
+        "gallery_arrows_show_on": "desktop",
+        "display_media_gallery_pagination": "none",
+        "media_gallery_info": "",
+        "metafield_as_seen_on": "",
+        "color_scheme_gallery": "scheme-a174e16b-225b-4c0f-b709-3826ee75e48b",
+        "enable_sticky_info": true,
+        "enable_actions_bar": true,
+        "media_grid_size": "medium",
+        "media_grid_position": "start",
+        "grid_gap": "1",
+        "spacing_grid": 1.6,
+        "grid_content_alignment": "start",
+        "section_width": "max-w-fluid",
+        "color_scheme": "",
+        "spacing_top": "2",
+        "spacing_bottom": "2"
+      }
+    },
+    "mind360_ingredients_tFnhtQ": {
+      "type": "mind360-ingredients",
+      "blocks": {
+        "ingredient_dqcmJf": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/Harmonize_Ingredient_2.jpg",
+            "title": "Myo-Inositol",
+            "description": "A naturally occurring nutrient that improves insulin sensitivity and glucose metabolism – key to hormonal balance in women with PCOS. Clinically proven to enhance egg quality and support fertility.",
+            "pagination_dot_color": "#cccccc",
+            "pagination_dot_active_color": "#54BFBF"
+          }
+        },
+        "ingredient_URjXEr": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/Harmonize_Ingredient_4.jpg",
+            "title": "Shatavari Extract ",
+            "description": "A natural source of phytoestrogens that promotes menstrual regularity and supports uterine health. Helps restore hormonal balance and improve egg quality, especially in women with PCOS or fertility challenges.",
+            "pagination_dot_color": "#cccccc",
+            "pagination_dot_active_color": "#54BFBF"
+          }
+        },
+        "ingredient_VPMgwC": {
+          "type": "ingredient",
+          "settings": {
+            "image": "shopify://shop_images/Harmonize_Ingredient_6.jpg",
+            "title": "Chasteberry Extract ",
+            "description": "Helps regulate prolactin levels and supports healthy progesterone production. Restores ovulation, balances menstrual cycles, and boosts fertility - particularly beneficial for women with irregular cycles or hormonal imbalances.",
+            "pagination_dot_color": "#cccccc",
+            "pagination_dot_active_color": "#54BFBF"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_dqcmJf",
+        "ingredient_URjXEr",
+        "ingredient_VPMgwC"
+      ],
+      "name": "Mind360 Ingredients Section",
+      "settings": {
+        "heading": "Key Ingredients That Power Hormonize™ ",
+        "section_bg_color": "#f1efec",
+        "heading_color": "#2a2a2a",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "launchingsoon_mind360_section_TkN9MD": {
+      "type": "launchingsoon-mind360-section",
+      "name": "Launching Soon Section",
+      "settings": {
+        "background_image": "shopify://shop_images/Web_Banner_Harmonize_4.jpg",
+        "background_image_mobile": "shopify://shop_images/Mobile_Banner_Harmonize_2.jpg",
+        "heading": "WE ARE LAUNCHING IN",
+        "launch_date": "2026-10-01T00:00:00Z",
+        "description": "Be the first to know when we launch. Join our community for exclusive early access, expert insights, and special offers. ",
+        "email_placeholder": "Enter your email",
+        "button_label": "Subscribe",
+        "heading_color": "#ffffff",
+        "overlay_color": "#2a2a2a",
+        "overlay_opacity": 0.4,
+        "countdown_bg": "rgba(0,0,0,0)",
+        "description_color": "#ffffff",
+        "input_bg": "#ffffff",
+        "input_text_color": "#2a2a2a",
+        "button_bg": "#2a2a2a",
+        "button_text_color": "#b4975a"
+      }
+    },
+    "our_reels_tyaUqx": {
+      "type": "our-reels",
+      "blocks": {
+        "video_MDtKJh": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/9920b0e9295b44afaab62483162ba6f8.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/9920b0e9295b44afaab62483162ba6f8.mp4"
+          }
+        },
+        "video_xHhHnh": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/3c64542ce65a4a64b5158aa81c8ddb06.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/3c64542ce65a4a64b5158aa81c8ddb06.mp4"
+          }
+        },
+        "video_4NCNNk": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/237712093c3e447fbf24131db9b33a18.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/237712093c3e447fbf24131db9b33a18.mp4"
+          }
+        },
+        "video_nx4ekQ": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/5ab7788e9d744f608709c17861004e85.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/5ab7788e9d744f608709c17861004e85.mp4"
+          }
+        },
+        "video_DfpYc4": {
+          "type": "video",
+          "settings": {
+            "video_url": "https://cdn.shopify.com/videos/c/o/v/4cfeed0c81974e429faaf7a1a17772ca.mp4",
+            "instagram_link": "https://cdn.shopify.com/videos/c/o/v/4cfeed0c81974e429faaf7a1a17772ca.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "video_MDtKJh",
+        "video_xHhHnh",
+        "video_4NCNNk",
+        "video_nx4ekQ",
+        "video_DfpYc4"
+      ],
+      "custom_css": [
+        ".video-preview-section {padding: 60px 150px;}",
+        "@media (max-width: 768px) {.video-preview-section {padding: 40px 20px; }}"
+      ],
+      "name": "Our Reels",
+      "settings": {
+        "bg_color": "#ffffff",
+        "heading": "Discover What Living Your Best Life Truly Feels Like",
+        "heading_font_size": 46,
+        "subheading": "",
+        "subheading_font_size": 30,
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "autoplay": true,
+        "controls": false,
+        "muted": true
+      }
+    },
+    "find_us_on_P7zLyz": {
+      "type": "find-us-on",
+      "disabled": true,
+      "name": "Find Us On",
+      "settings": {
+        "bg_color": "#f5f2ec",
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "logo_width": 150,
+        "logo_gap": 60,
+        "logo_1": "shopify://shop_images/Amazon_logo_svg.png",
+        "logo_2": "shopify://shop_images/flipkart-logo-png-transparent.png",
+        "logo_height": 150
+      }
+    }
+  },
+  "order": [
+    "hero_banner_hLcPTc",
+    "coming_soon_rxJQnr",
+    "main",
+    "mind360_ingredients_tFnhtQ",
+    "launchingsoon_mind360_section_TkN9MD",
+    "our_reels_tyaUqx",
+    "find_us_on_P7zLyz"
+  ]
+}
