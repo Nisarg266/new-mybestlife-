@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "SCRAFT BASE Theme",
-    "theme_version": "1.0.2",
-    "theme_author": "SCRAFT",
-    "theme_documentation_url": "https://scraft.studio",
-    "theme_support_url": "https://scraft.studio"
+    "theme_name": "Horizon",
+    "theme_version": "1.0.0",
+    "theme_author": "Shopify",
+    "theme_documentation_url": "https://shopify.dev",
+    "theme_support_url": "https://support.shopify.com"
   },
   {
     "name": "t:settings_schema.typography.name",
