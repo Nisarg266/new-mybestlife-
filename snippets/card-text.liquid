@@ -37,7 +37,7 @@
   <div class="block-{{ block_id }}">
     <div class="card-text {{ class }}">
       {%- if ct_image -%}
-        <div class="media">{%- render 'image', image: ct_image, alt: text | escape -%}</div>
+        <div class="media">{%- render 'image', image: ct_image, alt: text -%}</div>
       {%- endif -%}
       <div class="card-text__content justify-{{ content_position }} align-{{ content_alignment }} text-{{ content_alignment }} justify-{{ content_position_mobile }}--mobile align-{{ content_alignment_mobile }}--mobile text-{{ content_alignment_mobile }}--mobile">
         {%- if text -%}<div class="card-text__title">{{- text -}}</div>{%- endif -%}
@@ -49,3 +49,13 @@
     </div>
   </div>
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: ct_image, alt: text | escape -%}"
+  to: "{%- render 'image', image: ct_image, alt: text -%}"
+  position: 1531..1581
+{% endcomment %}

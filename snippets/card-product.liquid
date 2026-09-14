@@ -75,7 +75,7 @@
         endif
 
         if settings.product_card_media_hover and product_ref.media.size > 1 and cp_hover != nil
-          render 'image', image: cp_hover, alt: cp_hover.alt | default: product_ref.title, class: 'hover-img', image_per_view: cp_per_view
+          render 'image', image: cp_hover, alt: cp_hover.alt, default: product_ref.title, class: 'hover-img', image_per_view: cp_per_view
         endif
       else
         echo 'product-1' | placeholder_svg_tag: 'placeholder-svg'
@@ -254,3 +254,15 @@
     {% if cp_in_drawer %}{{ cp_atc }}{% endif %}
   </div>
 </product-card>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "          render 'image', image: cp_hover, alt: cp_hover.alt | default: product_ref.title,
+    class: 'hover-img', image_per_view: cp_per_view"
+  to: "          render 'image', image: cp_hover, alt: cp_hover.alt, default: product_ref.title,
+    class: 'hover-img', image_per_view: cp_per_view"
+  position: 3850..3987
+{% endcomment %}

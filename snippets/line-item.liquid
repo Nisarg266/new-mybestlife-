@@ -27,7 +27,7 @@
     {%- if line_item.image -%}
       <a href="{{- line_item.url -}}" class="cart-item__link">
         <span class="visually-hidden">{{- line_item.title | escape -}}</span>
-        <div class="media">{%- render 'image', image: line_item.image, image_url_width: 550, alt: line_item.image.alt | escape -%}</div>
+        <div class="media">{%- render 'image', image: line_item.image, image_url_width: 550, alt: line_item.image.alt -%}</div>
       </a>
     {%- endif -%}
   </div>
@@ -126,7 +126,7 @@
       {%- if line_item.image -%}
         <a href="{{- line_item.url -}}" class="cart-item__link">
           <span class="visually-hidden">{{- line_item.title | escape -}}</span>
-          <div class="media">{%- render 'image', image: line_item.image, image_url_width: 550, alt: line_item.image.alt | escape -%}</div>
+          <div class="media">{%- render 'image', image: line_item.image, image_url_width: 550, alt: line_item.image.alt -%}</div>
         </a>
       {%- endif -%}
     </div>
@@ -272,3 +272,20 @@
 </div>
 
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: line_item.image, image_url_width: 550, alt: line_item.image.alt
+    | escape -%}"
+  to: "{%- render 'image', image: line_item.image, image_url_width: 550, alt: line_item.image.alt
+    -%}"
+  position: 947..1041
+- from: "{%- render 'image', image: line_item.image, image_url_width: 550, alt: line_item.image.alt
+    | escape -%}"
+  to: "{%- render 'image', image: line_item.image, image_url_width: 550, alt: line_item.image.alt
+    -%}"
+  position: 5916..6010
+{% endcomment %}

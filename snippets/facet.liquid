@@ -72,14 +72,14 @@
               {%- liquid
                 assign fc_min_ph = '0' | money_without_currency
                 assign fc_max_val = filter.range_max | money_without_currency
-                render 'text-input', type: 'number', class: 'facets__price-field', name: filter.min_value.param_name, id: 'Filter-' | append: filter.label | escape | append: '-GTE', label: 'collection.filters_from' | t, placeholder: fc_min_ph, min: 0, max: fc_max_val, hide_label: false
+                render 'text-input', type: 'number', class: 'facets__price-field', name: filter.min_value.param_name, id: 'Filter-', append: '-GTE', label: 'collection.filters_from', placeholder: fc_min_ph, min: 0, max: fc_max_val, hide_label: false
               -%}
             </div>
             <div class="facets__price-row">
               <span>{{- cart.currency.symbol -}}</span>
               {%- liquid
                 assign fc_max_ph = filter.range_max | money_without_currency
-                render 'text-input', type: 'number', class: 'facets__price-field', name: filter.max_value.param_name, id: 'Filter-' | append: filter.label | escape | append: '-LTE', label: 'collection.filters_to' | t, placeholder: fc_max_ph, min: 0, max: fc_max_ph, hide_label: false
+                render 'text-input', type: 'number', class: 'facets__price-field', name: filter.max_value.param_name, id: 'Filter-', append: '-LTE', label: 'collection.filters_to', placeholder: fc_max_ph, min: 0, max: fc_max_ph, hide_label: false
               -%}
             </div>
           </price-range>
@@ -87,3 +87,26 @@
     </div>
   </div>
 </details>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "                render 'text-input', type: 'number', class: 'facets__price-field',
+    name: filter.min_value.param_name, id: 'Filter-' | append: filter.label | escape
+    | append: '-GTE', label: 'collection.filters_from' | t, placeholder: fc_min_ph,
+    min: 0, max: fc_max_val, hide_label: false"
+  to: "                render 'text-input', type: 'number', class: 'facets__price-field',
+    name: filter.min_value.param_name, id: 'Filter-', append: '-GTE', label: 'collection.filters_from',
+    placeholder: fc_min_ph, min: 0, max: fc_max_val, hide_label: false"
+  position: 4082..4331
+- from: "                render 'text-input', type: 'number', class: 'facets__price-field',
+    name: filter.max_value.param_name, id: 'Filter-' | append: filter.label | escape
+    | append: '-LTE', label: 'collection.filters_to' | t, placeholder: fc_max_ph,
+    min: 0, max: fc_max_ph, hide_label: false"
+  to: "                render 'text-input', type: 'number', class: 'facets__price-field',
+    name: filter.max_value.param_name, id: 'Filter-', append: '-LTE', label: 'collection.filters_to',
+    placeholder: fc_max_ph, min: 0, max: fc_max_ph, hide_label: false"
+  position: 4571..4817
+{% endcomment %}

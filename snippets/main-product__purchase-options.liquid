@@ -60,13 +60,13 @@
                     <option value="{{- po_plan.id -}}" {% if po_plan_sel %}selected="selected"{% endif %}>{{- po_plan.name -}}</option>
                   {%- endfor -%}
                 {%- endcapture -%}
-                {%- render 'select-input', label: po_opt_lbl, id: 'Product-Selling-Plan-' | append: po_grp_opt.id, name: 'selling_plan', options: po_opt_opts_html, class: 'product__purchase-options', attr: po_opt_attr, custom: true -%}
+                {%- render 'select-input', label: po_opt_lbl, id: 'Product-Selling-Plan-', append: po_grp_opt.id, name: 'selling_plan', options: po_opt_opts_html, class: 'product__purchase-options', attr: po_opt_attr, custom: true -%}
               {%- endfor -%}
             </div>
           {%- endcapture -%}
         {%- endfor -%}
 
-        {%- render 'select-input', label: 'product.selling_plan_purchase_options' | t, id: 'Product-Purchase-Options', name: 'selling_plan_group', options: po_opts_html, class: 'product__purchase-options', attr: 'data-selling-plan-group-selector', custom: true -%}
+        {%- render 'select-input', label: 'product.selling_plan_purchase_options', id: 'Product-Purchase-Options', name: 'selling_plan_group', options: po_opts_html, class: 'product__purchase-options', attr: 'data-selling-plan-group-selector', custom: true -%}
 
         <div class="product__purchase-options-body {% if po_variant.requires_selling_plan == false and po_variant.selected_selling_plan_allocation == nil %} is-hidden{% endif %}" data-selling-plans-wrapper>{{- po_groups_html -}}</div>
       </purchase-options>
@@ -129,3 +129,26 @@
     </div>
   </noscript>
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'select-input', label: po_opt_lbl, id: 'Product-Selling-Plan-'
+    | append: po_grp_opt.id, name: 'selling_plan', options: po_opt_opts_html, class:
+    'product__purchase-options', attr: po_opt_attr, custom: true -%}"
+  to: "{%- render 'select-input', label: po_opt_lbl, id: 'Product-Selling-Plan-',
+    append: po_grp_opt.id, name: 'selling_plan', options: po_opt_opts_html, class:
+    'product__purchase-options', attr: po_opt_attr, custom: true -%}"
+  position: 3937..4155
+- from: "{%- render 'select-input', label: 'product.selling_plan_purchase_options'
+    | t, id: 'Product-Purchase-Options', name: 'selling_plan_group', options: po_opts_html,
+    class: 'product__purchase-options', attr: 'data-selling-plan-group-selector',
+    custom: true -%}"
+  to: "{%- render 'select-input', label: 'product.selling_plan_purchase_options',
+    id: 'Product-Purchase-Options', name: 'selling_plan_group', options: po_opts_html,
+    class: 'product__purchase-options', attr: 'data-selling-plan-group-selector',
+    custom: true -%}"
+  position: 4265..4517
+{% endcomment %}

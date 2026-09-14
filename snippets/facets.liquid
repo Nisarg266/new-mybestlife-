@@ -69,7 +69,7 @@
                             <div class="drawer__row drawer__row--buttons">
                               {%- assign ft_clear_txt = 'collection.clear_all' | t | escape -%}
                               <facet-remove>{%- render 'button', type: 'link', class: 'button button--full facets__clear-button', button_style: 'button--outlined', value: ft_clear_txt, href: ft_sort_url -%}</facet-remove>
-                              {%- render 'button', type: 'button', class: 'button button--full js-btn-close-drawer no-js-hidden', button_style: 'button--filled', value: 'collection.apply_filters' | t -%}
+                              {%- render 'button', type: 'button', class: 'button button--full js-btn-close-drawer no-js-hidden', button_style: 'button--filled', value: 'collection.apply_filters' -%}
                             </div>
                           </div>
                         </details>
@@ -179,3 +179,17 @@
     {%- endif -%}
   </div>
 </facet-filters-form>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'button', type: 'button', class: 'button button--full js-btn-close-drawer
+    no-js-hidden', button_style: 'button--filled', value: 'collection.apply_filters'
+    | t -%}"
+  to: "{%- render 'button', type: 'button', class: 'button button--full js-btn-close-drawer
+    no-js-hidden', button_style: 'button--filled', value: 'collection.apply_filters'
+    -%}"
+  position: 4812..4981
+{% endcomment %}

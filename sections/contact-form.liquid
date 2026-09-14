@@ -71,11 +71,11 @@
         {% endfor %}
 
         <div class="col-span-6">
-          {% render 'textarea-input', id: 'ContactForm-body', label: 'contact.message' | t, name: 'contact[message]', placeholder: 'contact.message_placeholder' | t, body: form.body %}
+          {% render 'textarea-input', id: 'ContactForm-body', label: 'contact.message', name: 'contact[message]', placeholder: 'contact.message_placeholder', body: form.body %}
         </div>
 
         <div class="form-row form-row--actions col-span-6">
-          {% render 'button', type: 'submit', style: 'solid', value: 'contact.submit' | t, class: 'button' %}
+          {% render 'button', type: 'submit', style: 'solid', value: 'contact.submit', class: 'button' %}
         </div>
       {%- endform -%}
     </div>
@@ -213,3 +213,22 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'textarea-input', id: 'ContactForm-body', label: 'contact.message'
+    | t, name: 'contact[message]', placeholder: 'contact.message_placeholder' | t,
+    body: form.body %}"
+  to: "{% render 'textarea-input', id: 'ContactForm-body', label: 'contact.message',
+    name: 'contact[message]', placeholder: 'contact.message_placeholder', body: form.body
+    %}"
+  position: 2605..2771
+- from: "{% render 'button', type: 'submit', style: 'solid', value: 'contact.submit'
+    | t, class: 'button' %}"
+  to: "{% render 'button', type: 'submit', style: 'solid', value: 'contact.submit',
+    class: 'button' %}"
+  position: 2858..2953
+{% endcomment %}

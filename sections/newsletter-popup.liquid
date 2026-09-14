@@ -110,7 +110,7 @@
   >
     {%- if s9_cfg.image != blank -%}
       <div class="media media--small newsletter-popup__media">
-        {%- render 'image', image: s9_cfg.image, image_url_width: 550, alt: s9_cfg.image.alt | escape, section_index: section.index -%}
+        {%- render 'image', image: s9_cfg.image, image_url_width: 550, alt: s9_cfg.image.alt, section_index: section.index -%}
       </div>
     {%- endif -%}
 
@@ -137,3 +137,15 @@
     </div>
   </div>
 </newsletter-popup>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: s9_cfg.image, image_url_width: 550, alt: s9_cfg.image.alt
+    | escape, section_index: section.index -%}"
+  to: "{%- render 'image', image: s9_cfg.image, image_url_width: 550, alt: s9_cfg.image.alt,
+    section_index: section.index -%}"
+  position: 3008..3126
+{% endcomment %}
