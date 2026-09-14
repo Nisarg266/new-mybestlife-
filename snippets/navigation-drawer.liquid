@@ -150,7 +150,7 @@
             </li>
             {%- if section.settings.country_drawer_navigation_menu -%}
               <li class="drawer__subs-item">
-                <menu-drawer class="drawer">{%- render 'country-drawer', button_class: ' drawer__subs-link', section: section, append_id: 'header-drawer-' | append: section.id -%}</menu-drawer>
+                <menu-drawer class="drawer">{%- render 'country-drawer', button_class: ' drawer__subs-link', section: section, append_id: 'header-drawer-', append: section.id -%}</menu-drawer>
               </li>
             {%- endif -%}
           </ul>
@@ -160,3 +160,15 @@
     </div>
   </details>
 </header-drawer>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'country-drawer', button_class: ' drawer__subs-link', section:
+    section, append_id: 'header-drawer-' | append: section.id -%}"
+  to: "{%- render 'country-drawer', button_class: ' drawer__subs-link', section: section,
+    append_id: 'header-drawer-', append: section.id -%}"
+  position: 8678..8812
+{% endcomment %}

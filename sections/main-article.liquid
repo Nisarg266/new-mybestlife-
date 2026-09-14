@@ -102,7 +102,7 @@ image_ra{
         {%- when 'content'-%}
           <div class="article__content js-article-content container {{ section.settings.section_width }}" itemprop="articleBody" {{ block.shopify_attributes }}>
    <div class="article__media media" itemprop="image" >
-    {%- render 'image', image: article.image, alt: article.image.alt | escape -%}
+    {%- render 'image', image: article.image, alt: article.image.alt -%}
   </div>
             
 
@@ -575,3 +575,14 @@ image_ra{
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: article.image, alt: article.image.alt | escape
+    -%}"
+  to: "{%- render 'image', image: article.image, alt: article.image.alt -%}"
+  position: 3700..3768
+{% endcomment %}

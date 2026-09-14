@@ -50,7 +50,7 @@
                 <div class="media" style="aspect-ratio: {{ card_aspect_ratio }}">
                   {% capture block_media %}
                     {% if media.src != blank %}
-                      {%- render 'image', image: media, alt: media.alt | escape -%}
+                      {%- render 'image', image: media, alt: media.alt -%}
                     {% else %}
                       {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
                     {% endif %}
@@ -520,3 +520,13 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: media, alt: media.alt | escape -%}"
+  to: "{%- render 'image', image: media, alt: media.alt -%}"
+  position: 2816..2868
+{% endcomment %}

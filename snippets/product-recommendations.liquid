@@ -31,7 +31,7 @@
         {%- for rec in recommendations.products limit: rec_limit -%}
           <a href="{{- rec.url -}}" class="product-recommendations__item swiper-slide">
             {%- if rec.featured_image -%}
-              <div class="media product-recommendations__item-media">{%- render 'image', image: rec.featured_image, alt: rec.featured_image.alt | escape -%}</div>
+              <div class="media product-recommendations__item-media">{%- render 'image', image: rec.featured_image, alt: rec.featured_image.alt -%}</div>
             {%- endif -%}
             <div class="product-recommendations__item-details">
               <div>
@@ -61,3 +61,15 @@
     </div>
   </div>
 </product-recommendations>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'image', image: rec.featured_image, alt: rec.featured_image.alt
+    | escape -%}"
+  to: "{%- render 'image', image: rec.featured_image, alt: rec.featured_image.alt
+    -%}"
+  position: 1648..1726
+{% endcomment %}

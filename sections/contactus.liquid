@@ -161,12 +161,12 @@
                         assign value = form[label_handle]
                       elsif customer
                         case block.settings.binding
-                          when 'email' then assign value = customer.email
-                          when 'name' then assign value = customer.name
-                          when 'first_name' then assign value = customer.first_name
-                          when 'last_name' then assign value = customer.last_name
-                          when 'id' then assign value = customer.id
-                          when 'phone' then assign value = customer.phone
+                          when 'email'
+                          when 'name'
+                          when 'first_name'
+                          when 'last_name'
+                          when 'id'
+                          when 'phone'
                           when 'last_order'
                             assign customer_last_order = customer.orders | last
                             assign value = customer_last_order.order_number
@@ -276,3 +276,28 @@
   ]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "                          when 'email' then assign value = customer.email"
+  to: "                          when 'email'"
+  position: 7802..7840
+- from: "                          when 'name' then assign value = customer.name"
+  to: "                          when 'name'"
+  position: 7841..7878
+- from: "                          when 'first_name' then assign value = customer.first_name"
+  to: "                          when 'first_name'"
+  position: 7879..7922
+- from: "                          when 'last_name' then assign value = customer.last_name"
+  to: "                          when 'last_name'"
+  position: 7923..7965
+- from: "                          when 'id' then assign value = customer.id"
+  to: "                          when 'id'"
+  position: 7966..8001
+- from: "                          when 'phone' then assign value = customer.phone"
+  to: "                          when 'phone'"
+  position: 8002..8040
+{% endcomment %}

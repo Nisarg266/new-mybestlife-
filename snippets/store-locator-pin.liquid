@@ -52,7 +52,7 @@
       {%- if search -%}
         <div class="store-locator__search-controls">
           {%- capture sl_search_attr -%}autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false"{%- endcapture -%}
-          {%- render 'text-input', id: 'search-store-locator', label: 'sections.store_locator.search' | t, type: 'search', name: 'search', placeholder: 'sections.store_locator.search_placeholder' | t, hide_label: true, class: 'store-locator__search', attr: sl_search_attr -%}
+          {%- render 'text-input', id: 'search-store-locator', label: 'sections.store_locator.search', type: 'search', name: 'search', placeholder: 'sections.store_locator.search_placeholder', hide_label: true, class: 'store-locator__search', attr: sl_search_attr -%}
           <button type="submit" class="store-locator__search-button search__button search__button--submit button-reset js-btn-submit">{{ 'sections.store_locator.search' | t }}</button>
         </div>
       {%- else -%}
@@ -68,7 +68,7 @@
   <div class="store-locator-card store-locator-card--{{ section.settings.card_background_style }}{% unless hide_images %}{% if sl_img %} store-locator-card__with-image{% if sl_layout == 'image-overlay' %}--overlay{% endif %}{% endif %}{% else %} store-locator-card__without-image{% endunless %}{% if section.settings.layout == 'map' %} swiper-slide{% endif %}" data-marker-index="{{ marker_index }}">
     {%- if search -%}<div class="store-locator-card__cross">{%- render 'icon', icon_name: 'theme-close' -%}</div>{%- endif -%}
     {%- if sl_img -%}
-      <div class="store-locator-card__image">{%- render 'image', image: block.settings.store_image, alt: block.settings.store_image.alt | escape -%}</div>
+      <div class="store-locator-card__image">{%- render 'image', image: block.settings.store_image, alt: block.settings.store_image.alt -%}</div>
       {{- sl_card_body -}}
     {%- else -%}
       {{- sl_card_body -}}
@@ -77,3 +77,22 @@
 {%- elsif block.type == 'see-more' -%}
   {{ sl_see_more }}
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'text-input', id: 'search-store-locator', label: 'sections.store_locator.search'
+    | t, type: 'search', name: 'search', placeholder: 'sections.store_locator.search_placeholder'
+    | t, hide_label: true, class: 'store-locator__search', attr: sl_search_attr -%}"
+  to: "{%- render 'text-input', id: 'search-store-locator', label: 'sections.store_locator.search',
+    type: 'search', name: 'search', placeholder: 'sections.store_locator.search_placeholder',
+    hide_label: true, class: 'store-locator__search', attr: sl_search_attr -%}"
+  position: 3817..4074
+- from: "{%- render 'image', image: block.settings.store_image, alt: block.settings.store_image.alt
+    | escape -%}"
+  to: "{%- render 'image', image: block.settings.store_image, alt: block.settings.store_image.alt
+    -%}"
+  position: 5225..5319
+{% endcomment %}

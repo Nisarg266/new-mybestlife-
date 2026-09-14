@@ -46,7 +46,7 @@
               assign af_err = form.errors.translated_fields['first_name'] | capitalize | append: ' ' | append: form.errors.messages['first_name']
               assign af_has_err = true
             endif
-            render 'text-input', label: 'theme.form.first_name' | t, placeholder: 'theme.form.first_name_placeholder' | t, id: 'AddressFirstName_' | append: form.id, attr: 'autocomplete="given-name"', name: 'address[first_name]', value: form.first_name, message: af_err, has_error: af_has_err, required: true
+            render 'text-input', label: 'theme.form.first_name', placeholder: 'theme.form.first_name_placeholder', id: 'AddressFirstName_', append: form.id, attr: 'autocomplete="given-name"', name: 'address[first_name]', value: form.first_name, message: af_err, has_error: af_has_err, required: true
           -%}
           {%- liquid
             assign af_err = ''
@@ -55,12 +55,12 @@
               assign af_err = form.errors.translated_fields['last_name'] | capitalize | append: ' ' | append: form.errors.messages['last_name']
               assign af_has_err = true
             endif
-            render 'text-input', label: 'theme.form.last_name' | t, placeholder: 'theme.form.last_name_placeholder' | t, id: 'AddressLastName_' | append: form.id, attr: 'autocomplete="family-name"', name: 'address[last_name]', value: form.last_name, message: af_err, has_error: af_has_err, required: true
+            render 'text-input', label: 'theme.form.last_name', placeholder: 'theme.form.last_name_placeholder', id: 'AddressLastName_', append: form.id, attr: 'autocomplete="family-name"', name: 'address[last_name]', value: form.last_name, message: af_err, has_error: af_has_err, required: true
           -%}
         </div>
 
         <div class="form-row form-row--double">
-          {%- render 'text-input', label: 'customer.addresses.company' | t, placeholder: 'customer.addresses.company_placeholder' | t, id: 'AddressCompany_' | append: form.id, attr: 'autocomplete="organization"', name: 'address[company]', value: form.company -%}
+          {%- render 'text-input', label: 'customer.addresses.company', placeholder: 'customer.addresses.company_placeholder', id: 'AddressCompany_', append: form.id, attr: 'autocomplete="organization"', name: 'address[company]', value: form.company -%}
           {%- liquid
             assign af_err = ''
             assign af_has_err = false
@@ -68,12 +68,12 @@
               assign af_err = form.errors.translated_fields['address1'] | capitalize | append: ' ' | append: form.errors.messages['address1']
               assign af_has_err = true
             endif
-            render 'text-input', label: 'customer.addresses.address1' | t, placeholder: 'customer.addresses.address1_placeholder' | t, id: 'AddressLine1_' | append: form.id, attr: 'autocomplete="address-line1"', name: 'address[address1]', value: form.address1, message: af_err, has_error: af_has_err, required: true
+            render 'text-input', label: 'customer.addresses.address1', placeholder: 'customer.addresses.address1_placeholder', id: 'AddressLine1_', append: form.id, attr: 'autocomplete="address-line1"', name: 'address[address1]', value: form.address1, message: af_err, has_error: af_has_err, required: true
           -%}
         </div>
 
         <div class="form-row form-row--double">
-          {%- render 'text-input', label: 'customer.addresses.address2' | t, placeholder: 'customer.addresses.address2_placeholder' | t, id: 'AddressLine2_' | append: form.id, attr: 'autocomplete="address-line2"', name: 'address[address2]', value: form.address2 -%}
+          {%- render 'text-input', label: 'customer.addresses.address2', placeholder: 'customer.addresses.address2_placeholder', id: 'AddressLine2_', append: form.id, attr: 'autocomplete="address-line2"', name: 'address[address2]', value: form.address2 -%}
           {%- liquid
             assign af_err = ''
             assign af_has_err = false
@@ -81,7 +81,7 @@
               assign af_err = form.errors.translated_fields['city'] | capitalize | append: ' ' | append: form.errors.messages['city']
               assign af_has_err = true
             endif
-            render 'text-input', label: 'customer.addresses.city' | t, placeholder: 'customer.addresses.city_placeholder' | t, id: 'AddressCity_' | append: form.id, attr: 'autocomplete="address-level2"', name: 'address[city]', value: form.city, message: af_err, has_error: af_has_err, required: true
+            render 'text-input', label: 'customer.addresses.city', placeholder: 'customer.addresses.city_placeholder', id: 'AddressCity_', append: form.id, attr: 'autocomplete="address-level2"', name: 'address[city]', value: form.city, message: af_err, has_error: af_has_err, required: true
           -%}
         </div>
 
@@ -101,7 +101,7 @@
                 echo 'data-address-country-select'
               endif
             endcapture
-            render 'select-input', id: 'AddressCountry_' | append: form.id, label: 'customer.addresses.country' | t, name: 'address[country]', options: all_country_option_tags, attr: af_country_attr, custom: true, element: 'customer-country-select', message: af_err, has_error: af_has_err, required: true
+            render 'select-input', id: 'AddressCountry_', append: form.id, label: 'customer.addresses.country', name: 'address[country]', options: all_country_option_tags, attr: af_country_attr, custom: true, element: 'customer-country-select', message: af_err, has_error: af_has_err, required: true
           -%}
           <div id="AddressProvinceContainer_{{- form.id -}}" style="display:none;">
             {%- liquid
@@ -109,7 +109,7 @@
                 echo 'data-default="' | append: form.province | append: '"'
                 echo 'autocomplete="address-level1"'
               endcapture
-              render 'select-input', id: 'AddressProvince_' | append: form.id, label: 'customer.addresses.province' | t, name: 'address[province]', attr: af_prov_attr, custom: true, element: 'customer-country-select', placeholder: 'customer.addresses.province_placeholder' | t
+              render 'select-input', id: 'AddressProvince_', append: form.id, label: 'customer.addresses.province', name: 'address[province]', attr: af_prov_attr, custom: true, element: 'customer-country-select', placeholder: 'customer.addresses.province_placeholder'
             -%}
           </div>
         </div>
@@ -126,7 +126,7 @@
               echo 'autocapitalize="characters"'
               echo 'autocomplete="postal-code"'
             endcapture
-            render 'text-input', label: 'customer.addresses.zip' | t, placeholder: 'customer.addresses.zip_placeholder' | t, id: 'AddressZip_' | append: form.id, attr: af_zip_attr, name: 'address[zip]', value: form.zip, message: af_err, has_error: af_has_err, required: true
+            render 'text-input', label: 'customer.addresses.zip', placeholder: 'customer.addresses.zip_placeholder', id: 'AddressZip_', append: form.id, attr: af_zip_attr, name: 'address[zip]', value: form.zip, message: af_err, has_error: af_has_err, required: true
           -%}
           {%- liquid
             assign af_err = ''
@@ -135,7 +135,7 @@
               assign af_err = form.errors.translated_fields['phone'] | capitalize | append: ' ' | append: form.errors.messages['phone']
               assign af_has_err = true
             endif
-            render 'text-input', label: 'customer.addresses.phone' | t, placeholder: 'customer.addresses.phone_placeholder' | t, id: 'AddressPhone_' | append: form.id, attr: 'autocomplete="tel"', name: 'address[phone]', value: form.phone, type: 'tel', message: af_err, has_error: af_has_err, required: true
+            render 'text-input', label: 'customer.addresses.phone', placeholder: 'customer.addresses.phone_placeholder', id: 'AddressPhone_', append: form.id, attr: 'autocomplete="tel"', name: 'address[phone]', value: form.phone, type: "tel", message: af_err, has_error: af_has_err, required: true
           -%}
         </div>
 
@@ -163,3 +163,99 @@
     </div>
   </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '            render ''text-input'', label: ''theme.form.first_name'' | t,
+    placeholder: ''theme.form.first_name_placeholder'' | t, id: ''AddressFirstName_''
+    | append: form.id, attr: ''autocomplete="given-name"'', name: ''address[first_name]'',
+    value: form.first_name, message: af_err, has_error: af_has_err, required: true'
+  to: '            render ''text-input'', label: ''theme.form.first_name'', placeholder:
+    ''theme.form.first_name_placeholder'', id: ''AddressFirstName_'', append: form.id,
+    attr: ''autocomplete="given-name"'', name: ''address[first_name]'', value: form.first_name,
+    message: af_err, has_error: af_has_err, required: true'
+  position: 1642..1941
+- from: '            render ''text-input'', label: ''theme.form.last_name'' | t, placeholder:
+    ''theme.form.last_name_placeholder'' | t, id: ''AddressLastName_'' | append: form.id,
+    attr: ''autocomplete="family-name"'', name: ''address[last_name]'', value: form.last_name,
+    message: af_err, has_error: af_has_err, required: true'
+  to: '            render ''text-input'', label: ''theme.form.last_name'', placeholder:
+    ''theme.form.last_name_placeholder'', id: ''AddressLastName_'', append: form.id,
+    attr: ''autocomplete="family-name"'', name: ''address[last_name]'', value: form.last_name,
+    message: af_err, has_error: af_has_err, required: true'
+  position: 2295..2590
+- from: '{%- render ''text-input'', label: ''customer.addresses.company'' | t, placeholder:
+    ''customer.addresses.company_placeholder'' | t, id: ''AddressCompany_'' | append:
+    form.id, attr: ''autocomplete="organization"'', name: ''address[company]'', value:
+    form.company -%}'
+  to: '{%- render ''text-input'', label: ''customer.addresses.company'', placeholder:
+    ''customer.addresses.company_placeholder'', id: ''AddressCompany_'', append: form.id,
+    attr: ''autocomplete="organization"'', name: ''address[company]'', value: form.company
+    -%}'
+  position: 2679..2922
+- from: '            render ''text-input'', label: ''customer.addresses.address1''
+    | t, placeholder: ''customer.addresses.address1_placeholder'' | t, id: ''AddressLine1_''
+    | append: form.id, attr: ''autocomplete="address-line1"'', name: ''address[address1]'',
+    value: form.address1, message: af_err, has_error: af_has_err, required: true'
+  to: '            render ''text-input'', label: ''customer.addresses.address1'',
+    placeholder: ''customer.addresses.address1_placeholder'', id: ''AddressLine1_'',
+    append: form.id, attr: ''autocomplete="address-line1"'', name: ''address[address1]'',
+    value: form.address1, message: af_err, has_error: af_has_err, required: true'
+  position: 3259..3565
+- from: '{%- render ''text-input'', label: ''customer.addresses.address2'' | t, placeholder:
+    ''customer.addresses.address2_placeholder'' | t, id: ''AddressLine2_'' | append:
+    form.id, attr: ''autocomplete="address-line2"'', name: ''address[address2]'',
+    value: form.address2 -%}'
+  to: '{%- render ''text-input'', label: ''customer.addresses.address2'', placeholder:
+    ''customer.addresses.address2_placeholder'', id: ''AddressLine2_'', append: form.id,
+    attr: ''autocomplete="address-line2"'', name: ''address[address2]'', value: form.address2
+    -%}'
+  position: 3654..3900
+- from: '            render ''text-input'', label: ''customer.addresses.city'' | t,
+    placeholder: ''customer.addresses.city_placeholder'' | t, id: ''AddressCity_''
+    | append: form.id, attr: ''autocomplete="address-level2"'', name: ''address[city]'',
+    value: form.city, message: af_err, has_error: af_has_err, required: true'
+  to: '            render ''text-input'', label: ''customer.addresses.city'', placeholder:
+    ''customer.addresses.city_placeholder'', id: ''AddressCity_'', append: form.id,
+    attr: ''autocomplete="address-level2"'', name: ''address[city]'', value: form.city,
+    message: af_err, has_error: af_has_err, required: true'
+  position: 4225..4515
+- from: "            render 'select-input', id: 'AddressCountry_' | append: form.id,
+    label: 'customer.addresses.country' | t, name: 'address[country]', options: all_country_option_tags,
+    attr: af_country_attr, custom: true, element: 'customer-country-select', message:
+    af_err, has_error: af_has_err, required: true"
+  to: "            render 'select-input', id: 'AddressCountry_', append: form.id,
+    label: 'customer.addresses.country', name: 'address[country]', options: all_country_option_tags,
+    attr: af_country_attr, custom: true, element: 'customer-country-select', message:
+    af_err, has_error: af_has_err, required: true"
+  position: 5269..5568
+- from: "              render 'select-input', id: 'AddressProvince_' | append: form.id,
+    label: 'customer.addresses.province' | t, name: 'address[province]', attr: af_prov_attr,
+    custom: true, element: 'customer-country-select', placeholder: 'customer.addresses.province_placeholder'
+    | t"
+  to: "              render 'select-input', id: 'AddressProvince_', append: form.id,
+    label: 'customer.addresses.province', name: 'address[province]', attr: af_prov_attr,
+    custom: true, element: 'customer-country-select', placeholder: 'customer.addresses.province_placeholder'"
+  position: 5879..6146
+- from: "            render 'text-input', label: 'customer.addresses.zip' | t, placeholder:
+    'customer.addresses.zip_placeholder' | t, id: 'AddressZip_' | append: form.id,
+    attr: af_zip_attr, name: 'address[zip]', value: form.zip, message: af_err, has_error:
+    af_has_err, required: true"
+  to: "            render 'text-input', label: 'customer.addresses.zip', placeholder:
+    'customer.addresses.zip_placeholder', id: 'AddressZip_', append: form.id, attr:
+    af_zip_attr, name: 'address[zip]', value: form.zip, message: af_err, has_error:
+    af_has_err, required: true"
+  position: 6717..6982
+- from: '            render ''text-input'', label: ''customer.addresses.phone'' |
+    t, placeholder: ''customer.addresses.phone_placeholder'' | t, id: ''AddressPhone_''
+    | append: form.id, attr: ''autocomplete="tel"'', name: ''address[phone]'', value:
+    form.phone, type: ''tel'', message: af_err, has_error: af_has_err, required: true'
+  to: '            render ''text-input'', label: ''customer.addresses.phone'', placeholder:
+    ''customer.addresses.phone_placeholder'', id: ''AddressPhone_'', append: form.id,
+    attr: ''autocomplete="tel"'', name: ''address[phone]'', value: form.phone, type:
+    "tel", message: af_err, has_error: af_has_err, required: true'
+  position: 7324..7621
+{% endcomment %}

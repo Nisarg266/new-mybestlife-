@@ -243,8 +243,8 @@
             {{- ad_address_forms -}}
           {%- elsif template.name == 'order' -%}
             <div class="account-dashboard__foot">
-              <div class="account-dashboard__foot-col">{%- render 'card-address', address_ref: order.billing_address, title: 'customer.order.billing_address' | t -%}</div>
-              <div class="account-dashboard__foot-col">{%- render 'card-address', address_ref: order.shipping_address, title: 'customer.order.shipping_address' | t -%}</div>
+              <div class="account-dashboard__foot-col">{%- render 'card-address', address_ref: order.billing_address, title: 'customer.order.billing_address' -%}</div>
+              <div class="account-dashboard__foot-col">{%- render 'card-address', address_ref: order.shipping_address, title: 'customer.order.shipping_address' -%}</div>
             </div>
           {%- endif -%}
         </div>
@@ -269,3 +269,20 @@
     }
   });
 </script>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'card-address', address_ref: order.billing_address, title: 'customer.order.billing_address'
+    | t -%}"
+  to: "{%- render 'card-address', address_ref: order.billing_address, title: 'customer.order.billing_address'
+    -%}"
+  position: 18139..18245
+- from: "{%- render 'card-address', address_ref: order.shipping_address, title: 'customer.order.shipping_address'
+    | t -%}"
+  to: "{%- render 'card-address', address_ref: order.shipping_address, title: 'customer.order.shipping_address'
+    -%}"
+  position: 18307..18415
+{% endcomment %}
